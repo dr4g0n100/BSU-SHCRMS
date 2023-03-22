@@ -7,7 +7,7 @@
     header('Location: ../index.html');
     }
 
-    if(!empty($_POST['idnumber'])){
+    if(isset($_POST['idnumber'])){
         $id = $_POST['idnumber'];
         $query ="SELECT * FROM PersonalMedicalRecord WHERE StudentIDNumber = '$id'";  
         $resultStudent = mysqli_query($connect, $query);
@@ -238,9 +238,15 @@
   </nav>     
         <div>
             <form action="studentSummary.php" method="POST">
-                <label for="idnumber" class="col-form-label">Search</label><br>
-                <input type="text" name="idnumber" id="idnumber" placeholder="ID Number">
-                <button type="Submit" value="Search" id="btnSearch">Search</button>
+                <div class="form-group">
+                    <div class="search-input">
+                        <label for="idnumber" class="col-form-label">Search</label><br>
+                        <input type="text" name="idnumber" id="idnumber" placeholder="ID Number">
+                        <button class="btn btn-primary" type="Submit" value="Search" name="btnSearch" id="btnSearch">Search</button>
+                    </div>
+                    
+                </div>
+                
             </form>
             
         </div>
@@ -264,21 +270,42 @@
                         <table id="student_info" class="table table-striped table-bordered">  
                               <thead>  
                                    <tr>  
-                                      <th>Vaccine Name</th>
-                                      <th>Action</th>
-                                            
+                                        <th>ID</th>
+                                        <th>Full Name</th>
+                                        <th>Course / Strand</th>
+                                        <th>Age</th>
+                                        <th>Sex</th>
+                                        <th>Contact Number</th>
+                                        <th>Date</th>
+                                        <th>Action</th>
                                    </tr>  
                               </thead>  
                               <?php 
 
                               if(!empty($resultStudent)){
-                                while($Row = $resultStudent->fetch_array()) 
+                                while($RowStudent = $resultStudent->fetch_array()) 
                                   {  
+                                    $Sex = ucwords($RowStudent['Sex']);
+                                    $course = "";
+                                    $StudentName = "$RowStudent[Lastname], $RowStudent[Firstname] $RowStudent[Middlename]";
+                                        if($RowStudent['Course'] != ""){
+                                            $course = $RowStudent['Course'];
+                                        }else{
+                                            $course = ucwords($RowStudent['StudentCategory']);
+                                        }
                                     ?>
-                                        
                                         <tr>
-                                            <td>123</td>
-                                            <td>123</td>
+                                            <td><?php echo $RowStudent['StudentIDNumber']; ?></td>
+                                            <td><?php echo "$StudentName"; ?></td>
+                                            <td><?php echo "$course";?></td>
+                                            <td><?php echo $RowStudent['Age'];?></td>
+                                            <td><?php echo "$Sex";?></td>
+                                            <td><?php echo $RowStudent['StudentContactNumber'];?></td>
+                                            <td><?php echo $RowStudent['Date'];?></td>
+                                            <td>
+                                                <a class="viewBTN btn btn-primary btn-sm" href="Student/pages/newRecord.php?id=<?php echo $RowStudent['StudentIDNumber']; ?>&type=viewRecord">View</a>
+                                                <a class='viewBTN btn btn-primary btn-sm' id='archiveBTN' onclick='userArchiveRecord(<?php echo $RowStudent['StudentIDNumber']; ?>)'>Archive</a>
+                                            </td>
                                         </tr>
                                   <?php
                                        
@@ -295,7 +322,12 @@
                         <table id="cons_info" class="table table-striped table-bordered">  
                               <thead>  
                                    <tr>  
-                                      <th>Vaccine Name</th>
+                                      <th>ID</th>
+                                      <th>Full name</th>
+                                      <th>Diagnosis</th>
+                                      <th>Treatment</th>
+                                      <th>Staff</th>
+                                      <th>Date</th>
                                       <th>Action</th>
                                             
                                    </tr>  
@@ -303,13 +335,24 @@
                               <?php 
 
                               if(!empty($resultCons)){
-                                while($Row = $resultCons->fetch_array()) 
+                                while($RowCons = $resultCons->fetch_array()) 
                                   {  
+                                    $Staff = ucwords(strtolower($RowCons['Physician']));
                                     ?>
                                         
                                         <tr>
-                                            <td>123</td>
-                                            <td>123</td>
+                                            <td><?php echo $RowCons['IdNumb']; ?></td>
+                                            <td><?php echo "$StudentName"; ?></td>
+                                            <td><?php echo $RowCons['Diagnosis']; ?></td>
+                                            <td><?php echo $RowCons['DiagnosticTestNeeded']; ?></td>
+                                            <td><?php echo $Staff; ?></td>
+                                            <td><?php echo $RowCons['Dates']; ?></td>
+                                            <td>
+                                                <a class="viewBTN btn btn-primary btn-sm"  href="Consultation/pages/newConsultation.php?num=<?php echo $RowCons['Num']; ?>&type=viewCons">View</a>
+                                                <a class="viewBTN btn btn-primary btn-sm"  href="Followup/index.php?id=<?php echo $RowCons['IdNumb']; ?>&date=<?php echo $RowCons['Dates']; ?>&time=<?php echo $RowCons['Times']; ?>&type=checkRelFU">Follow-ups</a>
+                                                <a class="viewBTN btn btn-primary btn-sm" id="archiveBTN" onclick='userArchiveRecord(<?php echo $RowCons['Num']; ?>)'>Archive</a>
+                                            </td>
+
                                         </tr>
                                   <?php
                                        
@@ -326,7 +369,10 @@
                         <table id="mc_info" class="table table-striped table-bordered">  
                               <thead>  
                                    <tr>  
-                                      <th>Vaccine Name</th>
+                                      <th>ID</th>
+                                      <th>Full Name</th>
+                                      <th>Staff</th>
+                                      <th>Date Requested</th>
                                       <th>Action</th>
                                             
                                    </tr>  
@@ -334,13 +380,20 @@
                               <?php 
 
                               if(!empty($resultMC)){
-                                while($Row = $resultMC->fetch_array()) 
+                                while($RowMC = $resultMC->fetch_array()) 
                                   {  
+                                    $staffMC = ucwords(strtolower($RowMC['mc_physician'])) ;
                                     ?>
                                         
                                         <tr>
-                                            <td>123</td>
-                                            <td>123</td>
+                                            <td><?php echo $RowMC['student_id']; ?></td>
+                                            <td><?php echo $StudentName; ?></td>
+                                            <td><?php echo $staffMC; ?></td>
+                                            <td><?php echo $RowMC['date_requested']; ?></td>
+                                            <td>
+                                                <a class="viewBTN btn btn-primary btn-sm" href="MedicalCertificate/page/medicalCertificate.php?studentID=<?php echo $RowMC['student_id']; ?>&id=<?php echo $RowMC['mc_id_num']; ?>&type=viewMC">View</a>
+                                                <a class="viewBTN btn btn-primary btn-sm" id="archiveBTN" onclick="userArchiveRecord(<?php echo $RowMC['mc_id_num']; ?>)">Archive</a>
+                                            </td>
                                         </tr>
                                   <?php
                                        

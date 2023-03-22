@@ -333,3 +333,34 @@ nav{
   max-width: max-content;
   min-width: 87%;
 }
+
+input[type='text'], input[type='number'], input[type='date'], input[type='Time'], select, #TCourse, #TGPCategory, #TYear, #TSection, #TGPCategory1, #TGPCategory2{
+    background: white;
+    border: none;
+    border-bottom: solid 2px black;
+    border-top: solid 1px gray;
+    border-right: solid 1px gray;
+    border-left: solid 1px gray;
+    color: #062102;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin: 0em 0 1.875em 0;
+    padding: 0.5em 0.5em 0.3em 0.5em;
+    /*text-transform: uppercase;*/
+    width: 70%;
+    box-sizing: border-box;
+    transition: all 0.3s;
+}
+
+.search-input{
+    margin-left: 5%;
+    width: 40%;
+}
+
+.search-input button{
+    margin: 0em 0 0.4em 0;
+}
+
+.search-input label{
+    font-size: 18px;
+}
