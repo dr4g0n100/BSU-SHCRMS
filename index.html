@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Login Account</title>
+	<link rel="stylesheet" type="text/css" href="css/login-style.css">
+  <link rel = "icon" href = "images/BSU-Logo.webp" type = "image/x-icon">
+  <script src="dist/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="dist/jquery-confirm.min.css">
+  <link rel="stylesheet" href="pages/Staff/dist/bootstrap-icons.css"> <!-- https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css -->
+  <script src="dist/jquery-confirm.min.js"></script>
+  <script type="text/javascript">
+
+    function logAction(userAction){
+        var act = userAction;
+        $.ajax({
+            url:"php/logAction.php",
+            method:"POST",
+            data:jQuery.param({ action: act, isSuccess:"1" }),
+            dataType: "xml",
+            success:function(xml){
+
+                }
+        })
+    }
+
+    function autoArchive(){
+                $.ajax({
+                    url:"../../php/archive.php?type=autoArchive",
+                        method:"GET",
+                        data:"",
+                        contentType: false,
+                        processData: false,
+                        cache: false,
+                        dataType: "xml",
+                        success:function(xml)
+                        {   
+                            $(xml).find('output').each(function(){
+                                var message = $(this).attr('Message');
+                                var error = $(this).attr('error');
+
+                                if(error == 1){
+                                    $.alert(
+                                    {theme: 'modern',
+                                    content:'Failed in auto archiving records!',
+                                    title:'', 
+                                    useBootstrap: false,
+                                    buttons:{
+                                        Ok:{
+                                        text:'Ok',
+                                        btnClass: 'btn-red'
+                                    }}});
+                                }/*else{
+                                    $.alert(
+                                    {theme: 'modern',
+                                    content:message,
+                                    title:'', 
+                                    useBootstrap: false,
+                                    buttons:{
+                                        Ok:{
+                                        text:'Ok',
+                                        btnClass: 'btn-green'
+                                    }}});
+                                }*/
+                                
+                            });
+                            
+
+                        },
+                        error: function (e)
+                            {
+                                //Display Alert Box
+                                $.alert(
+                                {theme: 'modern',
+                                content:'Failed to execute due to errors',
+                                title:'', 
+                                useBootstrap: false,
+                                buttons:{
+                                    Ok:{
+                                    text:'Ok',
+                                    btnClass: 'btn-red'
+                                }}});
+                            }
+                });
+            }
+
+    function login(form_data)
+            {   
+              var level = "0";
+              form_data.append('Level',level);
+                $.ajax(
+                {
+                    url:"php/login.php",
+                    method:"POST",
+                    data:form_data,
+                    contentType: false,
+                    processData: false,
+                    cache: false,
+                    dataType: "xml",
+                    success:function(xml)
+                    {
+                        $(xml).find('output').each(function()
+                        {  
+                            var message = $(this).attr('Message');
+                            var verify = $(this).attr('Verify');
+                            var accStatus = $(this).attr('AccStatus');
+
+                            window.sessionStorage.setItem("isLoggedIn", 'true');
+                            //autoArchive();
+
+                            //if Account status is Active
+                            if(accStatus == "Active"){
+                                //if login credentials is true
+                                if (verify) {
+                                    //Display Alert Box
+                                    $.alert(
+                                    {theme: 'modern',
+                                    content: message,
+                                    title:'', 
+                                    useBootstrap: false,
+                                    buttons:{
+                                        Ok:{
+                                        text:'Ok',
+                                        btnClass: 'btn-green'
+                                    }}});
+                                    //jump to homepage
+                                    setTimeout(function(){
+                                    window.location.href = 'pages/Homepage/index.php';
+                                    }, 3000);
+                                }else{
+
+                                    //Display Alert Box
+                                    $.alert(
+                                    {theme: 'modern',
+                                    content: message,
+                                    title:'', 
+                                    useBootstrap: false,
+                                    buttons:{
+                                        Ok:{
+                                        text:'Ok',
+                                        btnClass: 'btn-red'
+                                    }}});
+
+                                    $('#TxtUserName').val('');
+                                    $('#TxtPassword').val('');
+
+                                }
+                            }else if(accStatus == "Blocked"){
+                                
+                                //set variable message to be used for logs
+                                message = 'Account blocked, ask password reset code to the admin.';
+                                $.alert(
+                                {theme: 'modern',
+                                content: message,
+                                title:'', 
+                                useBootstrap: false,
+                                buttons:{
+                                    Ok:{
+                                    text:'Ok',
+                                    btnClass: 'btn-red'
+                                }}});
+                                //jump to confirm OTP sent by Admin to Email
+                                setTimeout(function(){
+                                window.location.href = 'pages/forgotpassword/reset-code.php';
+                                }, 3000); 
+                            }else{
+                                //set variable message to be used for logs
+                                //message = 'Staff account does not exist';
+                                $.alert(
+                                {theme: 'modern',
+                                content: message,
+                                title:'', 
+                                useBootstrap: false,
+                                buttons:{
+                                    Ok:{
+                                    text:'Ok',
+                                    btnClass: 'btn-red'
+                                }}});
+
+                                $('#TxtUserName').val('');
+                                $('#TxtPassword').val('');
+                            }
+                            //log message
+                            logAction(message);
+                        });
+                     },
+                    error: function (e)
+                    {
+                        //Display Alert Box
+                        $.alert(
+                        {theme: 'modern',
+                        content:'Failed to search user due to errors',
+                        title:'', 
+                        useBootstrap: false,
+                        buttons:{
+                            Ok:{
+                            text:'Ok',
+                            btnClass: 'btn-red'
+                        }}});
+                    }
+                });
+            }
+
+    $(document).ready(function() 
+    {
+        
+        const togglePassword = document.getElementById('togglePassword');
+        const password = document.getElementById('TxtPassword');    
+
+        togglePassword.addEventListener("click", function () {
+            // toggle the type attribute
+            const type = password.getAttribute("type") === "password" ? "text" : "password";
+            password.setAttribute("type", type);
+            
+            // toggle the icon
+            this.classList.toggle("bi-eye");
+        });
+
+      sessionStorage.setItem('isStandard', true);
+
+      $("#login-Form").submit(function(event)
+      {                
+          /* stop form from submitting normally */
+          event.preventDefault();
+          var form_data = new FormData(this);
+
+          login(form_data);                  
+      });    
+    });
+  </script>
+</head>
+<body>
+	  <div id="form_wrapper">
+      <div id="form_left">
+        <img src="images/bsu.webp" alt="BSU Logo" />
+      </div>
+      <div id="form_right">
+        <h1>Staff Login</h1>
+        <form action="#" method="post" id="login-Form">
+          <div class="input_container">
+            <svg xmlns="http://www.w3.org/2000/svg" class="button__svg" viewBox="0 0 64 64" stroke-width="5" stroke="#6b6b6b" fill="none"><circle cx="32" cy="18.14" r="11.14"/><path d="M54.55,56.85A22.55,22.55,0,0,0,32,34.3h0A22.55,22.55,0,0,0,9.45,56.85Z"/></svg>
+            <label for="TxtUsername"></label>
+            <input placeholder="Username" type="text" name="TxtUsername" id="TxtUserName" class="input_field" required />
+          </div>
+          <div class="input_container">
+            <svg xmlns="http://www.w3.org/2000/svg" class="button__svg" viewBox="0 0 64 64" stroke-width="5" stroke="#6b6b6b" fill="none"><rect x="12.34" y="25.5" width="39.32" height="30.95" rx="1.5"/><path d="M32,7.55h0A11.29,11.29,0,0,1,43.29,18.84V25.5a0,0,0,0,1,0,0H20.71a0,0,0,0,1,0,0V18.84A11.29,11.29,0,0,1,32,7.55Z"/><circle cx="32" cy="42.83" r="3.76"/><line x1="32" y1="46.6" x2="32" y2="51.83"/></svg>
+            <label for="TxtPassword"></label>
+            <input placeholder="Password" type="password" name="TxtPassword" id="TxtPassword" class="input_field" required />
+            <i class="bi bi-eye-slash" id="togglePassword"></i>
+          </div>
+          <br>
+          <span style="color:#F2F3EB;"><a href="index1.html">Login using Administrator account</a></span><br><br>
+          <span style="color:#F2F3EB;"><a href="#" onclick="window.open('files/DPPolicy.pdf');
+            window.open('files/DPNotice.pdf');">Data Privacy Policy / Notice</a></span>
+          <div id="submit">
+            <button id="BtnLogin" type="submit">Login</button> 
+          </div>
+        </form>
+      </div>
+    </div>
+</body>
+</html>

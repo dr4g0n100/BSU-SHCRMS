@@ -1,0 +1,145 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Georgia', sans-serif;
+  overflow: hidden;
+}
+
+h1{
+  padding-bottom: 3%;
+  color:#062102;
+  height: fit-content;
+  font-size: 3vw;
+}
+
+#BtnLogin {
+	overflow: visible;
+  text-transform: none;
+  border: solid 2px #062102;
+  cursor: pointer;
+  font-weight: bold;
+  outline: none;
+  padding: 20px 35px;
+  transition: all 0.3s;
+  background: none;
+  color: white;
+  text-align: center;
+  border-radius: 360px;
+  margin-top: 8%;
+}
+
+#BtnLogin:hover {
+  background: #062102;
+  color: white;
+}
+
+#form_wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height:100vh;
+}
+
+#form_left {
+  width: 50%;
+  height: 100%;
+  /* center the image */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#form_left img {
+  width: 100%;
+  height: 100%;
+}
+
+#form_right {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+  padding-top: 8%;
+  background-color: #299F7E;
+}
+
+#login-Form{
+  margin-top: 5%;
+}
+
+.input_container {
+  background-color: #e5e5e5;
+  /* vertically align icon and text inside the div*/
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  height: 3%;
+  border-radius: 30px;
+  width: 80%;
+  margin: 3% auto;
+  padding: 4%;
+}
+
+#submit{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input_container:hover {
+  background-color: #F2F3EB;
+}
+
+.input_container:focus-within {
+  border: 2px solid black;
+}
+
+.input_field {
+  /* customize the input tag with lighter font and some padding*/
+  color: #6b6b6b;
+  background-color: inherit;
+  width: 90%;
+  border: none;
+  font-size: 1.5vw;
+  font-weight: 400;
+  padding-left: 30px;
+}
+
+.input_field:hover, .input_field:focus {
+  /* remove the outline */
+  outline: none;
+}
+
+/* Change the white to any color ;) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+}
+
+h1, span {
+  text-align: center;
+}
+
+span{
+  margin-left: 11%;
+  font-size: 1vw;
+}
+
+a {
+  /* remove default underline */
+  text-decoration: none;
+  /*color: var(--submit_bg);*/
+  color: #062102;
+  font-size: 1vw;
+}
+
+a:hover {
+  color: rgb(223, 223, 17);
+}
+
+.button__svg {
+  height: 2vw;
+  width: 2vw;
+}

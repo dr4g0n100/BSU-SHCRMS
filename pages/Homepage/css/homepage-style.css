@@ -1,0 +1,188 @@
+/* Global Affects all pages */
+*{
+  margin: 0px;
+  padding: 0px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 1.2vw;
+}
+
+body{
+    background: #299F7E;
+}
+
+
+/* ----Homepage CSS only----- */
+
+
+/* body{
+  background: linear-gradient(to top, rgba(41,159,126,0.75), rgba(41,159,126,0.75)), url(../images/clinic.webp) no-repeat top center;
+  background-size: 100vw 100vh;
+} */
+
+body{
+  background: #299F7E !important;
+}
+
+#myChart{
+  width: 100%; 
+  height: 400px;
+  
+}
+
+.card{
+  background-color: #f2eeeb !important;
+}
+
+/* Navigation */
+
+.navbar.bg-light {
+  background-color: #f2eeeb !important;
+}
+
+.form-control {
+    border-radius: 4.25rem;
+}
+
+.active{
+  background-color: #299F7E !important; 
+  color: white !important;
+  border: 2px solid #299F7E !important;
+}
+
+.nav-item{
+  padding: 1% 0 !important;
+}
+
+.navbar{
+  padding: 0 1% !important;
+}
+
+.active .nav-link{
+  color: white !important;
+}
+
+li:not(.active):not(.userFN){
+  background-image: linear-gradient(to right,#299F7E,#299F7E 50%,#000 50%) !important;
+  background-size: 200% 100% !important;
+  background-position: -100% !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  transition: all 0.3s ease-in-out !important;
+}
+
+.dropdown-item{
+  -webkit-text-fill-color: #000 !important;
+  
+}
+
+.dropdown-item:hover{
+  background-image: linear-gradient(to right,#299F7E,#299F7E 50%,#000 50%) !important;
+  background-size: 200% 100% !important;
+  background-position: 0% !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  transition: all 1s ease-in-out !important;
+}
+
+.dropdown-menu{
+  background-color: #f2eeeb !important;
+}
+
+li:before {
+  content: '' !important;
+  background: white !important;
+  display: block !important;
+  position: absolute !important;
+  bottom: -3px !important;
+  left: 0 !important;
+  width: 0 !important;
+  height: 3px !important;
+  transition: all 0.3s ease-in-out !important;
+}
+
+li:hover:not(.active) {
+  background-position: 0 !important; 
+}
+
+nav{
+  margin-bottom: 2% !important;
+}
+
+.userFN{
+  list-style-type: none;
+}
+
+::-webkit-scrollbar-track {
+  background-color: white;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #299f7e79;
+}
+
+.hidden {
+  display: none;
+}
+
+#customDates{
+  margin-bottom: 1%;
+}
+
+#maleFemalePieChart, #studentCategoryPieChart{
+  background-color: transparent;
+  margin-bottom: 3%;
+  padding: 3%;
+ 
+}
+
+input[type='date'], select{
+  background: white;
+  border: none;
+  border-bottom: solid 2px black;
+  border-top: solid 1px gray;
+  border-right: solid 1px gray;
+  border-left: solid 1px gray;
+  color: #062102;
+  font-weight: 400;
+  letter-spacing: 1px;
+  padding: 0.1em 0.1em 0.1em 0.1em;
+  /*text-transform: uppercase;*/
+  width: max-content;
+  box-sizing: border-box;
+  transition: all 0.3s;
+}
+
+#customButton{
+  overflow: visible;
+  text-transform: none;
+  border: solid 2px #062102;
+  cursor: pointer;
+  font-weight: bold;
+  outline: none;
+  padding: 5px 20px;
+  margin-left: 10px;
+  transition: all 0.3s;
+  background: white;
+  color: #062102;
+  text-align: center;
+  border-radius: 360px;
+  
+}
+
+#PieCharts{
+  background-color: #f2eeeb;
+  padding: 3% 5%;
+  margin-bottom: 3%;
+  margin-left: 0.05%;
+}
+
+.printReport{
+  float:right;
+}
+
+
+

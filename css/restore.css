@@ -1,0 +1,440 @@
+*{
+  margin: 0px;
+  padding: 0px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 1.2vw;
+}
+
+body{
+  overflow: hidden;
+}
+
+body{
+  background: linear-gradient(to top, rgba(41,159,126,0.75), rgba(41,159,126,0.75)), url(../images/clinic.webp) no-repeat top center;
+  background-size: 100vw 100vh;
+}
+
+h1{
+  padding-bottom: 3%;
+  color:#F2F3EB;
+  height: fit-content;
+  font-size: 3vw;
+}
+
+#form_wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+#form_left {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 3%;
+  margin-left: 4%;
+  margin-right: 8%;
+  margin-top: 5%;
+  
+}
+
+#vission{
+  margin-bottom: 8%;
+}
+
+p{
+  line-height: 24px;
+}
+
+#form_right {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  height: 100%;
+  padding-top: 8%;
+}
+
+#bsuUHS-logo{
+  width: 37.5%;
+  height: 37.5%;
+  margin-top: 22.5%;
+  margin-left: -2%;
+  border: 3px solid white;
+  border-radius: 50%;
+  padding: 2%;
+}
+
+@supports (background: paint(houdini)) {
+  @property --opacity {
+    syntax: "<number>";
+    initial-value: 0.5;
+    inherits: false;
+  }
+
+  @property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  @keyframes opacityChange {
+    to {
+      --opacity: 1;
+    }
+  }
+
+  @keyframes rotate {
+    to {
+      --angle: 360deg;
+    }
+  }
+}
+
+#form_left{
+  animation: rotate 4s linear infinite, opacityChange 3s infinite alternate;
+}
+
+#bsu-logo{
+  width: 50%;
+  height: 50%;
+  margin-left: -10%;
+  margin-top: -12%;
+  border: 3px solid white;
+  border-radius: 50%;
+}
+
+#tableMedicalInfo{
+  width: 75%;
+  margin: 0 12.5% 0 12.5%;
+}
+
+#tablePersonalInfo{
+  width: 96.5%;
+}
+
+#tablePersonalInfo input{
+  margin: 0;
+  padding: 0.25em;
+}
+
+.DocumentCode{
+  width: 25%;
+}
+
+.RevisionNumber{
+  width: 25%;
+}
+
+#topHeader{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 2%;
+}
+
+#PhysicalExaminationHeader{
+  display: flex;
+  flex-direction: row;
+  height: 11vh;
+  width: 40vw;
+  padding: 0 1% 0 1%;
+}
+
+#PhysicalExaminationHeader h3{
+   padding-top: 4.5vh;
+  padding-bottom: 6.5vh; 
+  padding-left: 3%;
+}
+
+#ISO{
+  width: 60vw;
+  padding: 0 1% 0 1%;
+}
+
+#TAHearingDistance, #TASpeech, #TAEyes, #TAEars, #TANose, #TAHead, #TAAbdomen, #TAGenitoUrinary, #TALymphGlands, #TASkin, #TAExtremities, #TADeformities, #TACavityAndThroat, #TALungs, #TAHeart, #TABreast, #TARadiologicExams, #TABloodAnalysis, #TAUrinalysis, #TAFecalysis, #TAPregnancyTest, #TAHBSAg{
+  width: 100%;
+  height: 5vh;
+  overflow: hidden;
+  resize: none;
+  display: none;
+}
+
+#TxtOthers{
+  height: 10vh;
+  width: 100%;
+  overflow: hidden;
+  resize: none;
+}
+
+#TxtRemarks, #TxtRecommendation{
+  height: 10vh;
+  overflow: hidden;
+  resize: none;
+}
+
+#TxtHearingDistanceOption, #TxtSpeechOption, #TxtEyesOption, #TxtEarsOption, #TxtNoseOption, #TxtHeadOption, #TxtAbdomenOption, #TxtGenitoUrinaryOption, #TxtLymphGlandsOption, #TxtSkinOption, #TxtExtremitiesOption, #TxtDeformitiesOption, #TxtCavityAndThroatOption, #TxtLungsOption, #TxtHeartOption, #TxtBreastOption, #TxtRadiologicExamsOption, #TxtBloodAnalysisOption, #TxtUrinalysisOption, #TxtFecalysisOption, #TxtPregnancyTestOption, #TxtHBSAgOption{
+  height: 5vh;
+  margin: 0;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown 
+.dropdown:hover .dropbtn {background-color: black;}*/
+
+.container{
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+#restoreIcon{
+  margin-top: -10%;
+  width: 50%;
+}
+
+#leftHeader{
+  margin-bottom: 3%;
+  font-size: 1.4vw;
+}
+
+#leftSubHeader{
+  font-size: 1.2vw;
+}
+
+input[type='text']{
+  background: white;
+  border: none;
+  border-bottom: solid 2px black;
+  border-top: solid 1px gray;
+  border-right: solid 1px gray;
+  border-left: solid 1px gray;
+  color: #062102;
+  font-weight: 400;
+  letter-spacing: 1px;
+  margin: 0em 0 1em 0;
+  padding: 0.5em 0.5em 0.3em 0.5em;
+  text-transform: uppercase;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.3s;
+}
+
+.form-button{
+  overflow: visible;
+  text-transform: none;
+  border: solid 2px white;
+  cursor: pointer;
+  font-weight: bold;
+  outline: none;
+  padding: 15px 35px;
+  transition: all 0.3s;
+  background: none;
+  background-color: white;
+  text-align: center;
+  border-radius: 5px;  
+}
+
+.form-button:hover {
+  background: transparent;
+  color: white
+}
+
+        /* ------------------ NAVIGATION BAR ------------------ */
+
+        nav{
+          position: fixed;
+          display: block;
+          width: 100%;
+          height: 10.40%;
+          background: #f2eeeb; /* f2eeeb */
+          font-size: 0;
+          box-shadow: 0 2px 3px 0 rgba(0,0,0,.1);
+          margin-bottom: 3%;
+      }
+      
+      nav a, #userFullname{
+          color: #062102;
+          text-decoration: none;
+          position: relative;
+          z-index: 1;
+          display: inline-block;
+          text-align: center;
+          vertical-align: middle; 
+          padding: 1.6% 0 1.7% 0;
+          margin: -0.8% 0 -0.8% 0;
+          
+      }
+      
+      .dropbtn{
+          color: #062102;
+      }
+      .active{
+          background-color: #299F7E; /* #2e8806 */
+          color: white;
+          border-top: 1px solid #299F7E;
+          border-bottom: 1px solid #299F7E;
+      }
+      
+      .nav-pages{
+          font-weight: bold;
+      }
+      
+      a:not(.active){
+          background-image: linear-gradient(to right,#299F7E,#299F7E 50%,#000 50%);
+          background-size: 200% 100%;
+          background-position: -100%;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          transition: all 0.3s ease-in-out;
+      }
+      
+      #nav1:before{
+          content: '';
+          background: white;
+          display: block;
+          position: absolute;
+          bottom: -3px;
+          left: 0;
+          width: 0;
+          height: 3px;
+          transition: all 0.4s ease-in-out;
+      }
+      
+      a:hover:not(.active) {
+          background-position: 0;
+      }
+      
+      a:hover:not(.active)::before {
+          width: 100%;
+      }
+      
+      #userFullname{
+          text-align:left;
+          width: 49%;
+          margin-left: 1%;
+          margin-top: 0.05%;
+          margin-bottom: 0.05%;
+        }
+      
+      nav a:nth-child(5){
+          width: 10%;
+        }
+        
+        nav a:nth-child(2), nav a:nth-child(3), nav a:nth-child(4), nav a:nth-child(6), nav a:nth-child(7){
+          width: 7.5%;
+        }
+      
+        nav{
+          height: 54px;
+      }
+      
+      #userFullname, #nav2, #nav3, #nav4, #nav5, #nav7, #nav8, #back{
+          text-decoration: none;
+          position: relative;
+          z-index: 1;
+          display: inline-block;
+          height: 100%;
+          line-height: 55px;
+          text-align: center;
+          vertical-align: middle;
+          padding: 0;
+          margin: 0px; /* margin: -0.8% 0 -0.8% 0; */
+      }
+
+      #back{
+        margin-left: 1%;
+      }
+      
+      nav div{
+          color: #062102;
+          text-decoration: none;
+          position: relative;
+          z-index: 1;
+          display: inline-block;
+          height: 100%;
+          text-align: center;
+          vertical-align: middle;
+          padding: 0;
+          margin: 0px; /* margin: -0.8% 0 -0.8% 0; */
+      }
+      
+      #userFullname{
+          text-align:left;
+          width: 44%;
+          margin-left: 1%;
+          margin-top: 0.05%;
+          margin-bottom: 0.05%;
+        }
+      
+        #nav5, #nav6{
+          width: 10%;
+        }
+      
+        #nav2, #nav3, #nav4, #nav7, #nav8{
+          width: 7%;
+        }
+      
+         /* The container <div> - needed to position the dropdown content */
+      .dropdown {
+          position: relative;
+          display: inline-block;
+          margin:  0;
+          /* background-color: #299F7E; */
+        }
+        
+        /* Dropdown Button */
+        .dropbtn {
+          font-weight: bold;
+          border: none;
+         /*  background-color: #299F7E; */
+          color: #062102;
+          position: relative;
+          display: inline-block;
+          text-align: center;
+          vertical-align: middle; 
+          height: 100%; /* height: 64px; */
+          background: transparent;
+          padding: 20px 0;
+          margin: 0px;
+        }
+        
+        /* Dropdown Content (Hidden by Default) */
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+          width: 10vw;
+          height:fit-content;
+          background-color: #f1f1f1;
+        }
+        
+        /* Links inside the dropdown */
+        .dropdown-content a {
+          text-decoration: none;
+          display: block;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          height: fit-content;
+        }
+        
+        .dropA{
+          padding: 0 6.25vw 0 1vw;
+          border-bottom: 1px solid rgba(128, 128, 128, 0.438);
+        }
+      
+        .dropdown-content a:nth-child(2), .dropdown-content a:nth-child(3), .dropdown-content a:nth-child(4), .dropdown-content a:nth-child(5), .dropdown-content a:nth-child(6), .dropdown-content a:nth-child(7){
+          padding: 0 8.10vw 0 1vw;
+          padding-top: 10px;
+          padding-bottom: 10px;
+        }
+        
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {background-color: #ddd;}
+        
+        /* Show the dropdown menu on hover */
+        .dropdown:hover .dropdown-content {display: block;}
+
+        #form_wrapper{
+          padding-top: 8%;
+        }

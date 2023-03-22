@@ -1,0 +1,321 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.2vw;
+}
+
+body{
+    background: #299F7E;
+}
+
+/* ------------------ Tabs ------------------ */
+.cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 90vw;
+}
+
+.tabs{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: #f2eeeb;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.05);
+    margin-bottom: 3%;
+    border-radius: 16px;
+}
+
+#ListPatient{
+   border: 1px solid black;
+}
+
+.tabs-head{
+    display: flex;
+    align-items: stretch;
+}
+
+.tabs-toggle{
+    display: flex;
+    width: 100%;
+    padding: 2%;
+    align-items: center;
+    justify-content: center;
+    background: #f2eeeb;
+    font-size: 1.8vw;
+    font-weight: bold;
+    color: #062102;
+}
+
+#tab1{
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+}
+
+.tabs-toggle.is-active{
+    background: #f2eeeb;
+}
+
+.tabs-content{
+    padding: 2%;
+    display: none;
+}
+
+.tabs-content.is-active{
+    display: block;
+}
+
+.tabs-text{
+    color: #062102;
+}
+
+td a{
+    width: 100%;
+}
+
+.btnUp {
+  position: fixed;
+  bottom: 2%;      
+  right: 1%;      
+  place-self: end;
+  
+  /* visual styling */
+  width:45px;
+  aspect-ratio:1;
+  background:white;
+  border-radius:10px;
+}
+.btnUp:before {
+  content:"";
+  position:absolute;
+  inset:30%;
+  transform:translateY(20%) rotate(-45deg);
+  border-top:5px solid black;
+  border-right:5px solid black;
+}
+.btnUp:hover{
+ color:#333;
+ background-color:slategrey;
+}
+
+.viewBTN{
+    background-color: #299F7E;
+    border: 1px solid #299F7E;
+}
+
+.viewBTN:hover{
+    background: #23886b;
+}
+
+#newRecord{
+    width: 25%;
+    margin-left: 2%;
+    background-color: #299F7E;
+    border: 1px solid #299F7E;
+}
+
+#newRecord:hover{
+    background: #23886b;
+}
+
+#notif{
+    display: flex;
+}
+
+#NumRecord{
+    padding-top: 1%;
+    margin-left: 45%;
+    font-weight: bold;
+}
+
+#archiveBTN{
+    margin-top: 3%;
+}
+
+
+.pagination > li > a, .pagination > li > span{color: gray;}
+.pagination > li.active > a, .pagination > li.active > span{background-color:#299F7E}
+.pagination:hover > li.active > a, .pagination > li.active > span{background-color:#299F7E}
+.pagination:not(:hover) > li.active > a, .pagination > li.active > span{background-color:#299F7E}
+
+/* ------------------------------------- Changes Start Here ---------------------------------- */
+
+#tableMedicalInfo{
+    width: 75%;
+    margin: 0 12.5% 0 12.5%;
+}
+
+#tablePersonalInfo{
+    width: 96.5%;
+}
+
+#tablePersonalInfo input{
+    margin: 0;
+    padding: 0.25em;
+}
+
+.DocumentCode{
+    width: 25%;
+}
+
+.RevisionNumber{
+    width: 25%;
+}
+
+#topHeader{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2%;
+}
+
+#PhysicalExaminationHeader{
+    display: flex;
+    flex-direction: row;
+    height: 11vh;
+    width: 40vw;
+    padding: 0 1% 0 1%;
+}
+
+#PhysicalExaminationHeader h3{
+     padding-top: 4.5vh;
+    padding-bottom: 6.5vh; 
+    padding-left: 3%;
+}
+
+#ISO{
+    width: 60vw;
+    padding: 0 1% 0 1%;
+}
+
+  #TAHearingDistance, #TASpeech, #TAEyes, #TAEars, #TANose, #TAHead, #TAAbdomen, #TAGenitoUrinary, #TALymphGlands, #TASkin, #TAExtremities, #TADeformities, #TACavityAndThroat, #TALungs, #TAHeart, #TABreast, #TARadiologicExams, #TABloodAnalysis, #TAUrinalysis, #TAFecalysis, #TAPregnancyTest, #TAHBSAg{
+    width: 100%;
+    height: 5vh;
+    overflow: hidden;
+    resize: none;
+    display: none;
+}
+
+#TxtOthers{
+    height: 10vh;
+    width: 100%;
+    overflow: hidden;
+    resize: none;
+}
+
+#TxtRemarks, #TxtRecommendation{
+    height: 10vh;
+    overflow: hidden;
+    resize: none;
+}
+
+#TxtHearingDistanceOption, #TxtSpeechOption, #TxtEyesOption, #TxtEarsOption, #TxtNoseOption, #TxtHeadOption, #TxtAbdomenOption, #TxtGenitoUrinaryOption, #TxtLymphGlandsOption, #TxtSkinOption, #TxtExtremitiesOption, #TxtDeformitiesOption, #TxtCavityAndThroatOption, #TxtLungsOption, #TxtHeartOption, #TxtBreastOption, #TxtRadiologicExamsOption, #TxtBloodAnalysisOption, #TxtUrinalysisOption, #TxtFecalysisOption, #TxtPregnancyTestOption, #TxtHBSAgOption{
+    height: 5vh;
+    margin: 0;
+}
+  
+  /* Change the background color of the dropdown button when the dropdown content is shown 
+  .dropdown:hover .dropbtn {background-color: black;}*/
+
+  ::-webkit-scrollbar-track {
+    background-color: white;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #299f7e79;
+  }
+
+ /* Navigation */
+
+ .navbar.bg-light {
+    background-color: #f2eeeb !important;
+  }
+  
+  .form-control {
+      border-radius: 4.25rem;
+  }
+  
+  .active{
+    background-color: #299F7E !important; 
+    color: white !important;
+    border: 1px solid #299F7E !important;
+  }
+  
+  .nav-item{
+    padding: 1% 0 !important;
+  }
+  
+  .navbar{
+    padding: 0 1% !important;
+  }
+  
+  .active .nav-link{
+    color: white !important;
+  }
+  
+  li:not(.active):not(.userFN){
+    background-image: linear-gradient(to right,#299F7E,#299F7E 50%,#000 50%) !important;
+    background-size: 200% 100% !important;
+    background-position: -100% !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    transition: all 0.3s ease-in-out !important;
+  }
+  
+  .dropdown-item{
+    -webkit-text-fill-color: #000 !important;
+    
+  }
+  
+  .dropdown-item:hover{
+    background-image: linear-gradient(to right,#299F7E,#299F7E 50%,#000 50%) !important;
+    background-size: 200% 100% !important;
+    background-position: 0% !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    transition: all 1s ease-in-out !important;
+  }
+  
+  .dropdown-menu{
+    background-color: #f2eeeb !important;
+  }
+  
+  li:before {
+    content: '' !important;
+    background: white !important;
+    display: block !important;
+    position: absolute !important;
+    bottom: -3px !important;
+    left: 0 !important;
+    width: 0 !important;
+    height: 3px !important;
+    transition: all 0.3s ease-in-out !important;
+  }
+  
+  li:hover:not(.active) {
+    background-position: 0 !important; 
+  }
+  
+  nav{
+    margin-bottom: 2% !important;
+  }
+  
+  .userFN{
+    list-style-type: none;
+  }
+  
+  .viewBTN{
+    color: white !important;
+  }
+  
+  .container{
+    max-width: max-content;
+    min-width: 87%;
+  }

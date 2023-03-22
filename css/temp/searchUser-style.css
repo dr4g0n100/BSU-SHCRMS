@@ -1,0 +1,307 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.2vw;
+}
+
+body{
+    background: #062102;
+}
+
+/* ------------------ NAVIGATION BAR ------------------ */
+
+nav{
+    position: relative;
+    width: 99%;
+    height: 10%;
+    background: #F1D50F;
+    font-size: 0;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,.1);
+    padding: 0.5%;
+    margin-bottom: 3%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+nav a{
+    color: #062102;
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle; 
+}
+
+.nav-pages{
+    font-weight: bold;
+}
+
+nav .animation{
+    position: absolute;
+    height: 5px;
+    bottom: 15%;
+    z-index: 0;
+    background: #062102;
+    border-radius: 8px;
+    transition: all .5s ease 0s;
+}
+
+a:nth-child(1){
+    text-align:left;
+    width: 49%;
+}
+
+a:nth-child(1) img{
+    width: 55%;
+}
+
+a:nth-child(2){
+    width: 4.67%;
+}
+
+a:nth-child(2):hover~.animation{
+    width: 3.8%;
+    left: 49.5%;
+}
+
+a:nth-child(3){
+    width: 9.33%;
+}
+
+a:nth-child(3):hover~.animation{
+    width: 5.8%;
+    left: 55.4%;
+}
+
+a:nth-child(4){
+    width: 8.33%;
+}
+
+nav .line, a:nth-child(4):hover~.animation{
+    width: 7.5%;
+    left: 63.3%;
+}
+
+a:nth-child(5){
+    width: 10.33%;
+}
+
+a:nth-child(5):hover~.animation{
+    width: 7%;
+    left: 72.7%;
+} 
+
+a:nth-child(6){
+    width: 10%;
+}
+
+a:nth-child(6):hover~.animation{
+    width: 8.7%;
+    left: 82%;
+} 
+
+a:nth-child(7){
+    width: 8.33%;
+}
+
+a:nth-child(7):hover~.animation{
+    width: 4.2%;
+    left: 93.3%;
+} 
+
+a:nth-child(8){
+    width: 8.33%;
+}
+
+a:nth-child(8):hover~.animation{
+    width: 4.3%;
+    left: 94%;
+} 
+
+/* ------------------ Tabs ------------------ */
+.searchContainer{
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    margin-bottom: 3%;
+    margin-left: 2%;
+    color: #F2F3EB;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.tabs{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    background: #fff;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.05);
+    margin-bottom: 3%;
+    border-radius: 16px;
+}
+
+.tabs-head{
+    display: flex;
+    align-items: stretch;
+}
+
+.tabs-toggle{
+    display: flex;
+    width: 100%;
+    padding: 2%;
+    align-items: center;
+    justify-content: center;
+    background: #f2f2f2;
+    font-size: 1.8vw;
+    font-weight: bold;
+    color: #062102;
+}
+
+#tab1{
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+
+.tabs-toggle.is-active{
+    background: #fff;
+}
+
+.tabs-content{
+    padding: 2%;
+    display: none;
+}
+
+.tabs-content.is-active{
+    display: block;
+}
+
+.tabs-text{
+    color: #062102;
+}
+
+/* ------------------ Tabs-Content ------------------ */
+.Two-Info div, .Three-Info div{
+    display: inline-block;
+}
+
+.FirstName, .MiddleName, .LastName{
+    width: 30.5%;
+    padding: 0 1% 0 1%;
+}
+
+.Position, .AccessLevel, .Username, .Password{
+    width: 46.9%;
+    padding: 0 1% 0 1%;
+}
+
+.searchButton:hover {
+    background: #F2F3EB;
+    color: #062102;
+  }
+
+.form-button:hover{
+    background: #062102;
+    color: #F2F3EB;
+}
+
+button, input{
+    color: #5A5A5A;
+    margin: 0;
+}
+
+input {
+    line-height: normal;
+}
+
+input[type='text'], input[type='password']{
+    background: none;
+    border: none;
+    border-bottom: solid 2px black;
+    color: #062102;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin: 0em 0 1.875em 0;
+    padding: 0.5em 0 0.3em 0;
+    text-transform: uppercase;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.3s;
+}
+
+input[type='text']:focus, input[type='password']:focus{
+  outline: none;
+  padding: 0.5em 0 0.3em 0;
+}
+
+.searchField{
+    border-bottom: solid 2px #F2F3EB !important;
+    color: #F2F3EB !important;
+}
+
+.searchButton{
+    overflow: visible;
+    text-transform: none;
+    border: solid 2px #F2F3EB;
+    cursor: pointer;
+    font-weight: bold;
+    outline: none;
+    padding: 8px 16px;
+    transition: all 0.3s;
+    background: none;
+    color: #F2F3EB;
+    text-align: center;
+    border-radius: 360px;
+}
+
+.form-button{
+    overflow: visible;
+    text-transform: none;
+    border: solid 2px #062102;
+    cursor: pointer;
+    font-weight: bold;
+    outline: none;
+    padding: 20px 35px;
+    transition: all 0.3s;
+    background: none;
+    color: #062102;
+    text-align: center;
+    border-radius: 360px;
+}
+
+.submit{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2% 0 2% 0;
+}
+
+#twoButton{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#BtnUpdate, #BtnDelete{
+    margin-left: .5vw;
+    margin-right: .5vw;
+}
+  
+button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button__svg {
+    margin-left: 8px;
+    height: 24px;
+    width: 24px;
+  }
+  
