@@ -4,6 +4,8 @@
     if(empty($_SESSION['logged_in'])){
         header('Location: ../../index.html');
     } 
+
+    $query = mysqli_query($connect, "SELECT * FROM USERACCOUNTS");
     
 ?>
 
@@ -437,6 +439,9 @@
           var datacollege = [];
           var datagrad = [];
 
+          var tblSumData = [];
+          var tblRowData = [];
+
           /*var startDate = '';
           var endDate = '';*/
 
@@ -472,40 +477,61 @@
                       var CountSHS = $(this).attr('CountSHS');
                       var CountCollege = $(this).attr('CountCollege');
                       var CountGrad = $(this).attr('CountGrad');
-                      //startDate = $(this).attr('startDate');
-                      //endDate = $(this).attr('endDate');
                             
+                      var elementArr = [];
+                      var total = 0;
+
                       const datesResultArr = datesResult.split(",");
 
                       datesResultArr.forEach((element) => {
-                        var elementArr = element.split("-");
+                        elementArr = element.split("-");
                         dates.push(elementArr[0] +" " +elementArr[1] +", " +elementArr[2]);  
                       });
 
                       //alert(start + "   " + end);
 
                       const CountPMArr = CountPM.split(",");
-
+                        
                       CountPMArr.forEach((element) => {
-                        data1.push(element);  
+                        elementArr = element.split("-");
+                        total = 0;
+                        elementArr.forEach((data) => {
+                          total = total + parseInt(data);
+                        });
+                        data1.push(total);
                       });
 
                       const CountConsArr = CountCons.split(",");
 
                       CountConsArr.forEach((element) => {
-                        data2.push(element);  
+                        elementArr = element.split("-");
+                        total = 0;
+                        elementArr.forEach((data) => {
+                          total = total + parseInt(data);
+                        });
+                        data2.push(total);  
                       });
 
                       const CountFUArr = CountFU.split(",");
 
                       CountFUArr.forEach((element) => {
-                        data3.push(element);  
+                        elementArr = element.split("-");
+                        total = 0;
+                        elementArr.forEach((data) => {
+                          total = total + parseInt(data);
+                        });
+                        data3.push(total);  
                       });
 
                       const CountMCArr = CountMC.split(",");
 
                       CountMCArr.forEach((element) => {
-                        data4.push(element);  
+                        elementArr = element.split("-");
+                        total = 0;
+                        elementArr.forEach((data) => {
+                          total = total + parseInt(data);
+                        });
+                        data4.push(total);  
                       });
 
                       const CountMaleArr = CountMale.split(",");

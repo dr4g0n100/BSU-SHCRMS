@@ -29,26 +29,17 @@ date_default_timezone_set('Asia/Manila');
   //$endDate = date("Y-m-d", strtotime($endDate));
 
     $dates = "";
-    $CountPMMale = "";
-    $CountPMFemale = "";
-    $CountConsMale = "";
-    $CountConsFemale = "";
-    $CountFUMale = "";
-    $CountFUFemale = "";
-    $CountMCMale = "";
-    $CountMCFemale = "";
+    $CountPM = "";
+    $CountCons = "";
+    $CountFU = "";
+    $CountMC = "";
     $CountMale = "";
     $CountFemale = "";
-    $CountElemMale = "";
-    $CountElemFemale = "";
-    $CountHSMale = "";
-    $CountHSFemale = "";
-    $CountSHSMale = "";
-    $CountSHSFemale = "";
-    $CountCollegeMale = "";
-    $CountCollegeFemale = "";
-    $CountGradMale = "";
-    $CountGradFemale = "";
+    $CountElem = "";
+    $CountHS = "";
+    $CountSHS = "";
+    $CountCollege = "";
+    $CountGrad = "";
 
 
 
@@ -76,18 +67,14 @@ date_default_timezone_set('Asia/Manila');
       $Error = "1";    
     } 
 
-  $XMLData = '';	
-  $XMLData .= ' <output ';
-  $XMLData .= ' Message = ' . '"'.$Message.'"';
+  $XMLData = '';    
+    $XMLData .= ' <output ';
+    $XMLData .= ' Message = ' . '"'.$Message.'"';
   $XMLData .= ' Error = ' . '"'.$Error.'"';
   $XMLData .= ' dates = ' . '"'.$dates.'"';
   $XMLData .= ' CountPM = ' . '"'.$CountPM.'"';
-  $XMLData .= ' CountPM = ' . '"'.$CountPM.'"';
-  $XMLData .= ' CountCons = ' . '"'.$CountCons.'"';
   $XMLData .= ' CountCons = ' . '"'.$CountCons.'"';
   $XMLData .= ' CountFU = ' . '"'.$CountFU.'"';
-  $XMLData .= ' CountFU = ' . '"'.$CountFU.'"';
-  $XMLData .= ' CountMC = ' . '"'.$CountMC.'"';
   $XMLData .= ' CountMC = ' . '"'.$CountMC.'"';
   $XMLData .= ' CountMale = ' . '"'.$CountMale.'"';
   $XMLData .= ' CountFemale = ' . '"'.$CountFemale.'"';
@@ -99,15 +86,15 @@ date_default_timezone_set('Asia/Manila');
   $XMLData .= ' startDate = ' . '"'.$startDate.'"';
   $XMLData .= ' endDate = ' . '"'.$endDate.'"';
 
-	$XMLData .= ' />';
-	
-	//Generate XML output
-	header('Content-Type: text/xml');
-	//Generate XML header
-	echo '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
-	echo '<Document>';    	
-	echo $XMLData;
-	echo '</Document>';
+    $XMLData .= ' />';
+    
+    //Generate XML output
+    header('Content-Type: text/xml');
+    //Generate XML header
+    echo '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
+    echo '<Document>';      
+    echo $XMLData;
+    echo '</Document>';
 
   function FetchCount($startDate, $endDate){
     $sql;
@@ -128,6 +115,8 @@ date_default_timezone_set('Asia/Manila');
     $CountCollegeArr = array();
     $CountGradArr = array();
 
+    
+
     $startDateObj = new DateTime($startDate);
     $endDateObj = new DateTime($endDate);
     $endDateObj->modify('+1 day');
@@ -136,58 +125,492 @@ date_default_timezone_set('Asia/Manila');
     $period = new DatePeriod($startDateObj, $interval, $endDateObj);
 
     foreach ($period as $dt) {
+
+        $SubCountPMArr = array();
+        $SubCountConsArr = array();
+        $SubCountFUArr = array();
+        $SubCountMCArr = array();
+
         $dt1= $dt-> format("Y-m-d");
         $dt2 = date('Y-m-d', strtotime($dt1. ' + 1 days'));
         $datesArr[] =$dt-> format("F-d-Y");
         //$datesArr[] = date("F-d-Y", strtotime($dt1. ' + 1 days'));
 
-        $sql = "SELECT COUNT(*) FROM PersonalMedicalRecord WHERE (Date >= '$dt1' AND Date < '$dt2') AND Sex = 'male'";
+        $sql = "SELECT COUNT(*) FROM PersonalMedicalRecord WHERE (Date >= '$dt1' AND Date < '$dt2') AND (StudentCategory='elementary' AND Sex='male')";
         $result = mysqli_query($connection, $sql);
 
         if(mysqli_num_rows($result) > 0){
             $Row = $result->fetch_array(); 
             if($Row){        
-                $CountPMArr[] = stripslashes($Row['COUNT(*)']);;
+                $SubCountPMArr[] = stripslashes($Row['COUNT(*)']);;
               }           
         }else{
-          $CountPMArr[] = 0;
+          $SubCountPMArr[] = 0;
         }
 
-        $sql = "SELECT COUNT(*) FROM ConsultationInfo WHERE Dates >= '$dt1' AND Dates < '$dt2'";
+        $sql = "SELECT COUNT(*) FROM PersonalMedicalRecord WHERE (Date >= '$dt1' AND Date < '$dt2') AND (StudentCategory='elementary' AND Sex='female')";
         $result = mysqli_query($connection, $sql);
 
         if(mysqli_num_rows($result) > 0){
             $Row = $result->fetch_array(); 
             if($Row){        
-                $CountConsArr[] = stripslashes($Row['COUNT(*)']);;
+                $SubCountPMArr[] = stripslashes($Row['COUNT(*)']);;
               }           
         }else{
-          $CountConsArr[] = 0;
+          $SubCountPMArr[] = 0;
         }
 
-        $sql = "SELECT COUNT(*) FROM followup WHERE Dates >= '$dt1' AND Dates < '$dt2'";
+        $sql = "SELECT COUNT(*) FROM PersonalMedicalRecord WHERE (Date >= '$dt1' AND Date < '$dt2') AND (StudentCategory='junior highschool' AND Sex='male')";
         $result = mysqli_query($connection, $sql);
 
         if(mysqli_num_rows($result) > 0){
             $Row = $result->fetch_array(); 
             if($Row){        
-                $CountFUArr[] = stripslashes($Row['COUNT(*)']);;
+                $SubCountPMArr[] = stripslashes($Row['COUNT(*)']);;
               }           
         }else{
-          $CountFUArr[] = 0;
+          $SubCountPMArr[] = 0;
         }
 
-        $sql = "SELECT COUNT(*) FROM medicalcertificate WHERE created_at >= '$dt1' AND created_at < '$dt2'";
+        $sql = "SELECT COUNT(*) FROM PersonalMedicalRecord WHERE (Date >= '$dt1' AND Date < '$dt2') AND (StudentCategory='junior highschool' AND Sex='female')";
         $result = mysqli_query($connection, $sql);
 
         if(mysqli_num_rows($result) > 0){
             $Row = $result->fetch_array(); 
             if($Row){        
-                $CountMCArr[] = stripslashes($Row['COUNT(*)']);;
+                $SubCountPMArr[] = stripslashes($Row['COUNT(*)']);;
               }           
         }else{
-          $CountMCArr[] = 0;
+          $SubCountPMArr[] = 0;
         }
+
+        $sql = "SELECT COUNT(*) FROM PersonalMedicalRecord WHERE (Date >= '$dt1' AND Date < '$dt2') AND (StudentCategory='senior highschool' AND Sex='male')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountPMArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountPMArr[] = 0;
+        }
+
+        $sql = "SELECT COUNT(*) FROM PersonalMedicalRecord WHERE (Date >= '$dt1' AND Date < '$dt2') AND (StudentCategory='senior highschool' AND Sex='female')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountPMArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountPMArr[] = 0;
+        }
+
+        $sql = "SELECT COUNT(*) FROM PersonalMedicalRecord WHERE (Date >= '$dt1' AND Date < '$dt2') AND (StudentCategory='college' AND Sex='male')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountPMArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountPMArr[] = 0;
+        }
+
+        $sql = "SELECT COUNT(*) FROM PersonalMedicalRecord WHERE (Date >= '$dt1' AND Date < '$dt2') AND (StudentCategory='college' AND Sex='female')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountPMArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountPMArr[] = 0;
+        }
+
+        $sql = "SELECT COUNT(*) FROM PersonalMedicalRecord WHERE (Date >= '$dt1' AND Date < '$dt2') AND (StudentCategory='graduate' AND Sex='male')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountPMArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountPMArr[] = 0;
+        }
+
+        $sql = "SELECT COUNT(*) FROM PersonalMedicalRecord WHERE (Date >= '$dt1' AND Date < '$dt2') AND (StudentCategory='graduate' AND Sex='female')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountPMArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountPMArr[] = 0;
+        }
+
+    $CountPMArr[] = implode("-",$SubCountPMArr);
+
+        $sql = "SELECT COUNT(*) FROM ConsultationInfo LEFT JOIN personalmedicalrecord ON ConsultationInfo.IdNumb = personalmedicalrecord.StudentIDNumber WHERE (Dates >= '$dt1' AND Dates < '$dt2') AND (StudentCategory='elementary' AND Sex='male')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountConsArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountConsArr[] = 0;
+        }
+
+        $sql = "SELECT COUNT(*) FROM ConsultationInfo LEFT JOIN personalmedicalrecord ON ConsultationInfo.IdNumb = personalmedicalrecord.StudentIDNumber WHERE (Dates >= '$dt1' AND Dates < '$dt2') AND (StudentCategory='elementary' AND Sex='female')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountConsArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountConsArr[] = 0;
+        }
+
+        $sql = "SELECT COUNT(*) FROM ConsultationInfo LEFT JOIN personalmedicalrecord ON ConsultationInfo.IdNumb = personalmedicalrecord.StudentIDNumber WHERE (Dates >= '$dt1' AND Dates < '$dt2') AND (StudentCategory='junior highschool' AND Sex='male')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountConsArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountConsArr[] = 0;
+        }
+
+        $sql = "SELECT COUNT(*) FROM ConsultationInfo LEFT JOIN personalmedicalrecord ON ConsultationInfo.IdNumb = personalmedicalrecord.StudentIDNumber WHERE (Dates >= '$dt1' AND Dates < '$dt2') AND (StudentCategory='junior highschool' AND Sex='female')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountConsArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountConsArr[] = 0;
+        }
+
+        $sql = "SELECT COUNT(*) FROM ConsultationInfo LEFT JOIN personalmedicalrecord ON ConsultationInfo.IdNumb = personalmedicalrecord.StudentIDNumber WHERE (Dates >= '$dt1' AND Dates < '$dt2') AND (StudentCategory='senior highschool' AND Sex='male')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountConsArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountConsArr[] = 0;
+        }
+
+        $sql = "SELECT COUNT(*) FROM ConsultationInfo LEFT JOIN personalmedicalrecord ON ConsultationInfo.IdNumb = personalmedicalrecord.StudentIDNumber WHERE (Dates >= '$dt1' AND Dates < '$dt2') AND (StudentCategory='senior highschool' AND Sex='female')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountConsArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountConsArr[] = 0;
+        }
+
+        $sql = "SELECT COUNT(*) FROM ConsultationInfo LEFT JOIN personalmedicalrecord ON ConsultationInfo.IdNumb = personalmedicalrecord.StudentIDNumber WHERE (Dates >= '$dt1' AND Dates < '$dt2') AND (StudentCategory='college' AND Sex='male')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountConsArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountConsArr[] = 0;
+        }
+
+        $sql = "SELECT COUNT(*) FROM ConsultationInfo LEFT JOIN personalmedicalrecord ON ConsultationInfo.IdNumb = personalmedicalrecord.StudentIDNumber WHERE (Dates >= '$dt1' AND Dates < '$dt2') AND (StudentCategory='college' AND Sex='female')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountConsArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountConsArr[] = 0;
+        }
+
+        $sql = "SELECT COUNT(*) FROM ConsultationInfo LEFT JOIN personalmedicalrecord ON ConsultationInfo.IdNumb = personalmedicalrecord.StudentIDNumber WHERE (Dates >= '$dt1' AND Dates < '$dt2') AND (StudentCategory='graduate' AND Sex='male')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountConsArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountConsArr[] = 0;
+        }
+
+        $sql = "SELECT COUNT(*) FROM ConsultationInfo LEFT JOIN personalmedicalrecord ON ConsultationInfo.IdNumb = personalmedicalrecord.StudentIDNumber WHERE (Dates >= '$dt1' AND Dates < '$dt2') AND (StudentCategory='graduate' AND Sex='female')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountConsArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountConsArr[] = 0;
+        }
+
+    $CountConsArr[] = implode("-",$SubCountConsArr);
+
+        $sql = "SELECT COUNT(*) FROM followup LEFT JOIN personalmedicalrecord ON followup.IdNumb = personalmedicalrecord.StudentIDNumber WHERE (Dates >= '$dt1' AND Dates < '$dt2') AND (StudentCategory='elementary' AND Sex='male')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountFUArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountFUArr[] = 0;
+        }
+
+        $sql = "SELECT COUNT(*) FROM followup LEFT JOIN personalmedicalrecord ON followup.IdNumb = personalmedicalrecord.StudentIDNumber WHERE (Dates >= '$dt1' AND Dates < '$dt2') AND (StudentCategory='elementary' AND Sex='female')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountFUArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountFUArr[] = 0;
+        }
+
+        $sql = "SELECT COUNT(*) FROM followup LEFT JOIN personalmedicalrecord ON followup.IdNumb = personalmedicalrecord.StudentIDNumber WHERE (Dates >= '$dt1' AND Dates < '$dt2') AND (StudentCategory='junior highschool' AND Sex='male')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountFUArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountFUArr[] = 0;
+        }
+
+        $sql = "SELECT COUNT(*) FROM followup LEFT JOIN personalmedicalrecord ON followup.IdNumb = personalmedicalrecord.StudentIDNumber WHERE (Dates >= '$dt1' AND Dates < '$dt2') AND (StudentCategory='junior highschool' AND Sex='female')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountFUArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountFUArr[] = 0;
+        }
+
+        $sql = "SELECT COUNT(*) FROM followup LEFT JOIN personalmedicalrecord ON followup.IdNumb = personalmedicalrecord.StudentIDNumber WHERE (Dates >= '$dt1' AND Dates < '$dt2') AND (StudentCategory='senior highschool' AND Sex='male')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountFUArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountFUArr[] = 0;
+        }
+
+        $sql = "SELECT COUNT(*) FROM followup LEFT JOIN personalmedicalrecord ON followup.IdNumb = personalmedicalrecord.StudentIDNumber WHERE (Dates >= '$dt1' AND Dates < '$dt2') AND (StudentCategory='college' AND Sex='male')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountFUArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountFUArr[] = 0;
+        }
+
+        $sql = "SELECT COUNT(*) FROM followup LEFT JOIN personalmedicalrecord ON followup.IdNumb = personalmedicalrecord.StudentIDNumber WHERE (Dates >= '$dt1' AND Dates < '$dt2') AND (StudentCategory='college' AND Sex='female')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountFUArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountFUArr[] = 0;
+        }
+
+        $sql = "SELECT COUNT(*) FROM followup LEFT JOIN personalmedicalrecord ON followup.IdNumb = personalmedicalrecord.StudentIDNumber WHERE (Dates >= '$dt1' AND Dates < '$dt2') AND (StudentCategory='graduate' AND Sex='male')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountFUArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountFUArr[] = 0;
+        }
+
+        $sql = "SELECT COUNT(*) FROM followup LEFT JOIN personalmedicalrecord ON followup.IdNumb = personalmedicalrecord.StudentIDNumber WHERE (Dates >= '$dt1' AND Dates < '$dt2') AND (StudentCategory='graduate' AND Sex='female')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountFUArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountFUArr[] = 0;
+        }
+
+    $CountFUArr[] = implode("-",$SubCountFUArr);
+
+        $sql = "SELECT COUNT(*) FROM medicalcertificate LEFT JOIN personalmedicalrecord ON medicalcertificate.student_id = personalmedicalrecord.StudentIDNumber WHERE (date_requested >= '$dt1' AND date_requested < '$dt2') AND (StudentCategory='elementary' AND Sex='male')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountMCArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountMCArr[] = 0;
+        }
+
+        $sql = "SELECT COUNT(*) FROM medicalcertificate LEFT JOIN personalmedicalrecord ON medicalcertificate.student_id = personalmedicalrecord.StudentIDNumber WHERE (date_requested >= '$dt1' AND date_requested < '$dt2') AND (StudentCategory='elementary' AND Sex='female')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountMCArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountMCArr[] = 0;
+        }
+
+        $sql = "SELECT COUNT(*) FROM medicalcertificate LEFT JOIN personalmedicalrecord ON medicalcertificate.student_id = personalmedicalrecord.StudentIDNumber WHERE (date_requested >= '$dt1' AND date_requested < '$dt2') AND (StudentCategory='junior highschool' AND Sex='male')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountMCArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountMCArr[] = 0;
+        }
+
+        $sql = "SELECT COUNT(*) FROM medicalcertificate LEFT JOIN personalmedicalrecord ON medicalcertificate.student_id = personalmedicalrecord.StudentIDNumber WHERE (date_requested >= '$dt1' AND date_requested < '$dt2') AND (StudentCategory='junior highschool' AND Sex='female')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountMCArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountMCArr[] = 0;
+        }
+
+        $sql = "SELECT COUNT(*) FROM medicalcertificate LEFT JOIN personalmedicalrecord ON medicalcertificate.student_id = personalmedicalrecord.StudentIDNumber WHERE (date_requested >= '$dt1' AND date_requested < '$dt2') AND (StudentCategory='senior highschool' AND Sex='male')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountMCArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountMCArr[] = 0;
+        }
+
+        $sql = "SELECT COUNT(*) FROM medicalcertificate LEFT JOIN personalmedicalrecord ON medicalcertificate.student_id = personalmedicalrecord.StudentIDNumber WHERE (date_requested >= '$dt1' AND date_requested < '$dt2') AND (StudentCategory='senior highschool' AND Sex='female')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountMCArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountMCArr[] = 0;
+        }
+
+        $sql = "SELECT COUNT(*) FROM medicalcertificate LEFT JOIN personalmedicalrecord ON medicalcertificate.student_id = personalmedicalrecord.StudentIDNumber WHERE (date_requested >= '$dt1' AND date_requested < '$dt2') AND (StudentCategory='college' AND Sex='male')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountMCArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountMCArr[] = 0;
+        }
+
+        $sql = "SELECT COUNT(*) FROM medicalcertificate LEFT JOIN personalmedicalrecord ON medicalcertificate.student_id = personalmedicalrecord.StudentIDNumber WHERE (date_requested >= '$dt1' AND date_requested < '$dt2') AND (StudentCategory='college' AND Sex='female')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountMCArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountMCArr[] = 0;
+        }
+
+        $sql = "SELECT COUNT(*) FROM medicalcertificate LEFT JOIN personalmedicalrecord ON medicalcertificate.student_id = personalmedicalrecord.StudentIDNumber WHERE (date_requested >= '$dt1' AND date_requested < '$dt2') AND (StudentCategory='graduate' AND Sex='male')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountMCArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountMCArr[] = 0;
+        }
+
+        $sql = "SELECT COUNT(*) FROM medicalcertificate LEFT JOIN personalmedicalrecord ON medicalcertificate.student_id = personalmedicalrecord.StudentIDNumber WHERE (date_requested >= '$dt1' AND date_requested < '$dt2') AND (StudentCategory='graduate' AND Sex='female')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountMCArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountMCArr[] = 0;
+        }
+
+    $CountMCArr[] = implode("-",$SubCountMCArr);
 
         $sql = "SELECT COUNT(*) FROM PersonalMedicalRecord WHERE sex='male' AND (Date >= '$dt1' AND Date < '$dt2')";
         $result = mysqli_query($connection, $sql);
