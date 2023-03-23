@@ -29,6 +29,7 @@ date_default_timezone_set('Asia/Manila');
   //$endDate = date("Y-m-d", strtotime($endDate));
 
     $dates = "";
+    $Staffs = "";
     $CountPM = "";
     $CountCons = "";
     $CountFU = "";
@@ -72,6 +73,7 @@ date_default_timezone_set('Asia/Manila');
     $XMLData .= ' Message = ' . '"'.$Message.'"';
   $XMLData .= ' Error = ' . '"'.$Error.'"';
   $XMLData .= ' dates = ' . '"'.$dates.'"';
+  $XMLData .= ' Staffs = ' . '"'.$Staffs.'"';
   $XMLData .= ' CountPM = ' . '"'.$CountPM.'"';
   $XMLData .= ' CountCons = ' . '"'.$CountCons.'"';
   $XMLData .= ' CountFU = ' . '"'.$CountFU.'"';
@@ -100,9 +102,10 @@ date_default_timezone_set('Asia/Manila');
     $sql;
 
     //Access Global Variables
-    global $connection, $Error, $ClinicRecordsDB, $Message, $CountPM, $CountCons, $CountFU, $CountMC, $CountMale, $CountFemale, $CountElem, $CountHS, $CountSHS, $CountCollege, $CountGrad, $dates;
+    global $connection, $Error, $ClinicRecordsDB, $Message, $Staffs, $CountPM, $CountCons, $CountFU, $CountMC, $CountMale, $CountFemale, $CountElem, $CountHS, $CountSHS, $CountCollege, $CountGrad, $dates;
 
     $datesArr = array();
+    $StaffsArr = array();
     $CountPMArr = array();
     $CountConsArr = array();
     $CountFUArr = array();
@@ -115,7 +118,22 @@ date_default_timezone_set('Asia/Manila');
     $CountCollegeArr = array();
     $CountGradArr = array();
 
-    
+    $sql = "SELECT * FROM useraccounts";
+    $result = mysqli_query($connection, $sql);
+
+    if(mysqli_num_rows($result) > 0){
+        while ($Row = $result->fetch_array()) {
+            if($Row){     
+                $LastName = stripslashes($Row['LastName']);;
+                $FirstName = stripslashes($Row['FirstName']);;
+                $StaffsArr[] = "$LastName, $FirstName";
+              }
+        }
+         
+                   
+    }else{
+      $StaffsArr[] = "";
+    }
 
     $startDateObj = new DateTime($startDate);
     $endDateObj = new DateTime($endDate);
@@ -696,6 +714,7 @@ date_default_timezone_set('Asia/Manila');
           $CountGradArr[] = 0;
         }
 
+        $Staffs = implode("-",$StaffsArr);
         $CountMale = implode(", ",$CountMaleArr);
         $CountFemale = implode(", ",$CountFemaleArr);
         $CountElem = implode(", ",$CountElemArr);

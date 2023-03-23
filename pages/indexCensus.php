@@ -439,8 +439,18 @@
           var datacollege = [];
           var datagrad = [];
 
-          var tblSumData = [];
-          var tblRowData = [];
+          var staffs = [];
+
+          var dataPMMale = [];
+          var dataPMFemale = [];
+          var dataConsMale = [];
+          var dataConsFemale = [];
+          var dataFUMale = [];
+          var dataFUFemale = [];
+          var dataMCMale = [];
+          var dataMCFemale = [];
+
+
 
           /*var startDate = '';
           var endDate = '';*/
@@ -466,6 +476,7 @@
                       var message = $(this).attr('Message');
                       var error = $(this).attr('Error');
                       var datesResult = $(this).attr('dates');
+                      var Staffs = $(this).attr('Staffs');
                       var CountPM = $(this).attr('CountPM');
                       var CountCons = $(this).attr('CountCons');
                       var CountFU = $(this).attr('CountFU');
@@ -488,15 +499,33 @@
                         dates.push(elementArr[0] +" " +elementArr[1] +", " +elementArr[2]);  
                       });
 
-                      //alert(start + "   " + end);
+                      const StaffsArr = Staffs.split("-");
+
+                      StaffsArr.forEach((element) => {
+                        staffs.push(element);  
+                      });
 
                       const CountPMArr = CountPM.split(",");
                         
                       CountPMArr.forEach((element) => {
                         elementArr = element.split("-");
                         total = 0;
-                        elementArr.forEach((data) => {
-                          total = total + parseInt(data);
+
+                        var male = [];
+                        var female = [];
+                        for (var i = 0; i < elementArr.length; ++i) {
+                            if (i % 2 === 0) {
+                                male.push(elementArr[i]);
+                            } else {
+                                female.push(elementArr[i]);
+                            }
+                        }
+
+                        while(male.length) dataPMMale.push(male.splice(0,5));
+                        while(female.length) dataPMFemale.push(female.splice(0,5));
+
+                        elementArr.forEach((dataPM) => {
+                          total = total + parseInt(dataPM);
                         });
                         data1.push(total);
                       });
@@ -506,8 +535,22 @@
                       CountConsArr.forEach((element) => {
                         elementArr = element.split("-");
                         total = 0;
-                        elementArr.forEach((data) => {
-                          total = total + parseInt(data);
+
+                        var male = [];
+                        var female = [];
+                        for (var i = 0; i < elementArr.length; ++i) {
+                            if (i % 2 === 0) {
+                                male.push(elementArr[i]);
+                            } else {
+                                female.push(elementArr[i]);
+                            }
+                        }
+
+                        while(male.length) dataConsMale.push(male.splice(0,5));
+                        while(female.length) dataConsFemale.push(female.splice(0,5));
+
+                        elementArr.forEach((dataCons) => {
+                          total = total + parseInt(dataCons);
                         });
                         data2.push(total);  
                       });
@@ -517,8 +560,22 @@
                       CountFUArr.forEach((element) => {
                         elementArr = element.split("-");
                         total = 0;
-                        elementArr.forEach((data) => {
-                          total = total + parseInt(data);
+
+                        var male = [];
+                        var female = [];
+                        for (var i = 0; i < elementArr.length; ++i) {
+                            if (i % 2 === 0) {
+                                male.push(elementArr[i]);
+                            } else {
+                                female.push(elementArr[i]);
+                            }
+                        }
+
+                        while(male.length) dataFUMale.push(male.splice(0,5));
+                        while(female.length) dataFUFemale.push(female.splice(0,5));
+
+                        elementArr.forEach((dataFU) => {
+                          total = total + parseInt(dataFU);
                         });
                         data3.push(total);  
                       });
@@ -528,11 +585,34 @@
                       CountMCArr.forEach((element) => {
                         elementArr = element.split("-");
                         total = 0;
-                        elementArr.forEach((data) => {
-                          total = total + parseInt(data);
+
+                        var male = [];
+                        var female = [];
+                        for (var i = 0; i < elementArr.length; ++i) {
+                            if (i % 2 === 0) {
+                                male.push(elementArr[i]);
+                            } else {
+                                female.push(elementArr[i]);
+                            }
+                        }
+
+                        while(male.length) dataMCMale.push(male.splice(0,5));
+                        while(female.length) dataMCFemale.push(female.splice(0,5));
+
+                        elementArr.forEach((dataMC) => {
+                          total = total + parseInt(dataMC);
                         });
                         data4.push(total);  
                       });
+
+                      console.log(dataPMMale);
+          console.log(dataPMFemale);
+          console.log(dataConsMale);
+          console.log(dataConsFemale);
+          console.log(dataFUMale);
+          console.log(dataFUFemale);
+          console.log(dataMCMale);
+          console.log(dataMCFemale);
 
                       const CountMaleArr = CountMale.split(",");
 
@@ -931,126 +1011,123 @@
 
           function fetchCount(startDate, endDate){
 
-                    /*startDate = startDate.toISOString();
-                    endDate = endDate.toISOString();*/
-                    
-                    //alert(startDate +'//' +endDate);
+              /*startDate = startDate.toISOString();
+              endDate = endDate.toISOString();*/
+              
+              //alert(startDate +'//' +endDate);
 
-                    var form_data = new FormData();
-                    form_data.append("startDate", startDate);
-                    form_data.append("endDate", endDate);
+              var form_data = new FormData();
+              form_data.append("startDate", startDate);
+              form_data.append("endDate", endDate);
 
-                    $.ajax(
-                    { 
-                        url:"../php/Homepage/FetchCounts.php",
-                        method:"POST",
-                        data:form_data, 
-                        contentType: false,
-                        processData: false,
-                        cache: false,
-                        dataType: "xml",
-                        success:function(xml)
-                        {
-                            $(xml).find('output').each(function()
-                            {
-                                var message = $(this).attr('Message');
-                                var error = $(this).attr('Error');
-                                var datesResult = $(this).attr('dates');
-                                var CountPM = $(this).attr('CountPM');
-                                var CountCons = $(this).attr('CountCons');
-                                var CountFU = $(this).attr('CountFU');
-                                var CountMC = $(this).attr('CountMC');
-                                var CountMale = $(this).attr('CountMale');
-                                var CountFemale = $(this).attr('CountFemale');
-                                var CountElem = $(this).attr('CountElem');
-                                var CountHS = $(this).attr('CountHS');
-                                var CountSHS = $(this).attr('CountSHS');
-                                var CountCollege = $(this).attr('CountCollege');
-                                var CountGrad = $(this).attr('CountGrad');
+              $.ajax(
+              { 
+                  url:"../php/Homepage/FetchCounts.php",
+                  method:"POST",
+                  data:form_data, 
+                  contentType: false,
+                  processData: false,
+                  cache: false,
+                  dataType: "xml",
+                  success:function(xml)
+                  {
+                      $(xml).find('output').each(function()
+                      {
+                          var message = $(this).attr('Message');
+                          var error = $(this).attr('Error');
+                          var datesResult = $(this).attr('dates');
+                          var CountPM = $(this).attr('CountPM');
+                          var CountCons = $(this).attr('CountCons');
+                          var CountFU = $(this).attr('CountFU');
+                          var CountMC = $(this).attr('CountMC');
+                          var CountMale = $(this).attr('CountMale');
+                          var CountFemale = $(this).attr('CountFemale');
+                          var CountElem = $(this).attr('CountElem');
+                          var CountHS = $(this).attr('CountHS');
+                          var CountSHS = $(this).attr('CountSHS');
+                          var CountCollege = $(this).attr('CountCollege');
+                          var CountGrad = $(this).attr('CountGrad');
 
-                                dates.length = 0;
-                                data1.length = 0;
-                                data2.length = 0;
-                                data3.length = 0;
-                                data4.length = 0;
-                            
-                                const datesResultArr = datesResult.split(",");
+                          dates.length = 0;
+                          data1.length = 0;
+                          data2.length = 0;
+                          data3.length = 0;
+                          data4.length = 0;
+                      
+                          const datesResultArr = datesResult.split(",");
 
-                                datesResultArr.forEach((element) => {
-                                  var elementArr = element.split("-");
-                                  dates.push(elementArr[0] +" " +elementArr[1] +", " +elementArr[2]);  
-                                });
+                          datesResultArr.forEach((element) => {
+                            var elementArr = element.split("-");
+                            dates.push(elementArr[0] +" " +elementArr[1] +", " +elementArr[2]);  
+                          });
 
-                                //alert(dates);
+                          //alert(dates);
 
-                                const CountPMArr = CountPM.split(",");
+                          const CountPMArr = CountPM.split(",");
 
-                                CountPMArr.forEach((element) => {
-                                  data1.push(element);  
-                                });
+                          CountPMArr.forEach((element) => {
+                            data1.push(element);  
+                          });
 
-                                const CountConsArr = CountCons.split(",");
+                          const CountConsArr = CountCons.split(",");
 
-                                CountConsArr.forEach((element) => {
-                                  data2.push(element);  
-                                });
+                          CountConsArr.forEach((element) => {
+                            data2.push(element);  
+                          });
 
-                                const CountFUArr = CountFU.split(",");
+                          const CountFUArr = CountFU.split(",");
 
-                                CountFUArr.forEach((element) => {
-                                  data3.push(element);  
-                                });
+                          CountFUArr.forEach((element) => {
+                            data3.push(element);  
+                          });
 
-                                const CountMCArr = CountMC.split(",");
+                          const CountMCArr = CountMC.split(",");
 
-                                CountMCArr.forEach((element) => {
-                                  data4.push(element);  
-                                });
+                          CountMCArr.forEach((element) => {
+                            data4.push(element);  
+                          });
 
 
-                                /*for (var d = startDate; d <= endDate; d.setDate(d.getDate() + 1)) {
-                                  var dateStr = d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-                                  dates.push(dateStr);
-                                  data1.push(Math.floor(Math.random() * 50));
-                                  data2.push(Math.floor(Math.random() * 50));
-                                  data3.push(Math.floor(Math.random() * 50));
-                                  data4.push(Math.floor(Math.random() * 50));
-                                }*/
+                          /*for (var d = startDate; d <= endDate; d.setDate(d.getDate() + 1)) {
+                            var dateStr = d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+                            dates.push(dateStr);
+                            data1.push(Math.floor(Math.random() * 50));
+                            data2.push(Math.floor(Math.random() * 50));
+                            data3.push(Math.floor(Math.random() * 50));
+                            data4.push(Math.floor(Math.random() * 50));
+                          }*/
 
-                                     //Display Alert Box
-                                    /*$.alert(
-                                    {theme: 'modern',
-                                    content: 'Date: '+dates +', PM: '+CountPM +', Cons: '+CountCons +', FU: '+CountFU +', MC: '+CountMC +', Male: '+CountMale +', Female: '+CountFemale +', Elem: '+CountElem +', HS: '+CountHS +', SHS: '+CountSHS +', College: '+CountCollege +', Grad: '+CountGrad,
-                                    title:'', 
-                                    buttons:{
-                                        Ok:{
-                                        text:'Ok',
-                                        btnClass: 'btn-green'
-                                    }}}); */
+                               //Display Alert Box
+                              /*$.alert(
+                              {theme: 'modern',
+                              content: 'Date: '+dates +', PM: '+CountPM +', Cons: '+CountCons +', FU: '+CountFU +', MC: '+CountMC +', Male: '+CountMale +', Female: '+CountFemale +', Elem: '+CountElem +', HS: '+CountHS +', SHS: '+CountSHS +', College: '+CountCollege +', Grad: '+CountGrad,
+                              title:'', 
+                              buttons:{
+                                  Ok:{
+                                  text:'Ok',
+                                  btnClass: 'btn-green'
+                              }}}); */
 
-                                //alert(startDate +" " +endDate +" = " +dates);
+                          //alert(startDate +" " +endDate +" = " +dates);
 
-                            });
-                        },  
-                        error: function (e)
-                        {
-                            //Display Alert Box
-                            $.alert(
-                            {theme: 'modern',
-                            content:'Failed to fetch information due to error',
-                            title:'', 
-                            useBootstrap: false,
-                            buttons:{
-                                Ok:{
-                                text:'Ok',
-                                btnClass: 'btn-red'
-                            }}});
-                        }
-                    });
-                
-
-                
-            }
+                      });
+                  },  
+                  error: function (e)
+                  {
+                      //Display Alert Box
+                      $.alert(
+                      {theme: 'modern',
+                      content:'Failed to fetch information due to error',
+                      title:'', 
+                      useBootstrap: false,
+                      buttons:{
+                          Ok:{
+                          text:'Ok',
+                          btnClass: 'btn-red'
+                      }}});
+                  }
+              });   
+          }
 
           function updateCustomChart(sDate, eDate) {
             var startDate = new Date(sDate);
