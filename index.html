@@ -7,7 +7,7 @@
   <link rel = "icon" href = "images/BSU-Logo.webp" type = "image/x-icon">
   <script src="dist/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="dist/jquery-confirm.min.css">
-  <link rel="stylesheet" href="pages/Staff/dist/bootstrap-icons.css"> <!-- https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css -->
+  <link rel="stylesheet" href="dist/bootstrap-icons.css"> <!-- https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css -->
   <script src="dist/jquery-confirm.min.js"></script>
   <script type="text/javascript">
 
@@ -23,66 +23,6 @@
                 }
         })
     }
-
-    function autoArchive(){
-                $.ajax({
-                    url:"../../php/archive.php?type=autoArchive",
-                        method:"GET",
-                        data:"",
-                        contentType: false,
-                        processData: false,
-                        cache: false,
-                        dataType: "xml",
-                        success:function(xml)
-                        {   
-                            $(xml).find('output').each(function(){
-                                var message = $(this).attr('Message');
-                                var error = $(this).attr('error');
-
-                                if(error == 1){
-                                    $.alert(
-                                    {theme: 'modern',
-                                    content:'Failed in auto archiving records!',
-                                    title:'', 
-                                    useBootstrap: false,
-                                    buttons:{
-                                        Ok:{
-                                        text:'Ok',
-                                        btnClass: 'btn-red'
-                                    }}});
-                                }/*else{
-                                    $.alert(
-                                    {theme: 'modern',
-                                    content:message,
-                                    title:'', 
-                                    useBootstrap: false,
-                                    buttons:{
-                                        Ok:{
-                                        text:'Ok',
-                                        btnClass: 'btn-green'
-                                    }}});
-                                }*/
-                                
-                            });
-                            
-
-                        },
-                        error: function (e)
-                            {
-                                //Display Alert Box
-                                $.alert(
-                                {theme: 'modern',
-                                content:'Failed to execute due to errors',
-                                title:'', 
-                                useBootstrap: false,
-                                buttons:{
-                                    Ok:{
-                                    text:'Ok',
-                                    btnClass: 'btn-red'
-                                }}});
-                            }
-                });
-            }
 
     function login(form_data)
             {   
@@ -125,7 +65,7 @@
                                     }}});
                                     //jump to homepage
                                     setTimeout(function(){
-                                    window.location.href = 'pages/Homepage/index.php';
+                                    window.location.href = 'pages/indexHomepage.php';
                                     }, 3000);
                                 }else{
 
@@ -161,7 +101,7 @@
                                 }}});
                                 //jump to confirm OTP sent by Admin to Email
                                 setTimeout(function(){
-                                window.location.href = 'pages/forgotpassword/reset-code.php';
+                                window.location.href = 'pages/reset-code.php';
                                 }, 3000); 
                             }else{
                                 //set variable message to be used for logs

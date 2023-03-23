@@ -26,33 +26,10 @@
 
           
         <link rel = "icon" href = "../images/BSU-Logo.webp" type = "image/x-icon">
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="Staff/dist/bootstrap2.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+ 
+        <?php include '../includes/dependencies0.php'; ?>
+
         <link rel="stylesheet" href="../css/help.css">
-        
-        <link rel="stylesheet" href="Staff/dist/dataTables.bootstrap.min.css" />
-
-        <link rel="stylesheet" type="text/css" href="../dist/dataTable/jquery.dataTables.min.css">
-        <link rel="stylesheet" type="text/css" href="../dist/dataTable/buttons.dataTables.min.css">
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="Staff/dist/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="Staff/dist/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="Staff/dist/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <script src="Staff/dist/jquery.min.js"></script> 
-        <script src="Staff/dist/dataTables.bootstrap.min.js"></script>   
-        <script type="text/javascript" src="../dist/dataTable/jquery-3.5.1.js"></script>
-        <script type="text/javascript" src="../dist/dataTable/jquery.dataTables.min.js"></script>
-        <script type="text/javascript" src="../dist/dataTable/dataTables.buttons.min.js"></script>
-        <script type="text/javascript" src="../dist/dataTable/jszip.min.js"></script>
-        <script type="text/javascript" src="../dist/dataTable/pdfmake.min.js"></script>
-        <script type="text/javascript" src="../dist/dataTable/vfs_fonts.js"></script>
-        <script type="text/javascript" src="../dist/dataTable/buttons.html5.min.js"></script>
-        <script type="text/javascript" src="../dist/dataTable/buttons.print.min.js"></script>
-
-        
-
-       
 
         <script>  
         // ---------------------------start functions for System Logs---------------------------------------
@@ -188,66 +165,7 @@
         </script>  
     </head>
     <body>
-    <nav class="navbar navbar-expand navbar-light bg-light">
-        <li class="nav-item userFN">
-        <span id="userFullname"><b><?php echo ucwords($_SESSION['homePosDisp']) . " ";
-        $tempNAME = strtolower($_SESSION['fullname']);
-        echo ucwords($tempNAME); 
-        ?></b></span>
-        </li>
-        <div class="mr-auto"></div>
-        <ul class="navbar-nav">
-            <li class="nav-item mx-1">
-            <a class="nav-link" href="Homepage/index.php">Home</a>
-            </li>
-            <li class="nav-item mx-1" id="userlistID">
-            <a class="nav-link admin-nav" href="userList.php?type=checkRecords">User List</a>
-            </li>
-            <li class="nav-item dropdown mx-1">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-display="static" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Records
-            </a>
-            <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="Student/index.php?type=checkRecords">Student Records</a>
-                <a class="dropdown-item" href="Consultation/index.php?type=checkRecords">Consultation Records</a>
-                <!-- <a class="dropdown-item" href="Followup/index.php?type=checkRecords">Follow-up Consultation</a> -->
-                <a class="dropdown-item" href="MedicalCertificate/index.php?type=checkMC">Medical Certificate</a>
-            </div>
-            </li>
-            <li class="nav-item dropdown mx-1 admin-nav " id="archivedID">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-display="static" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Archived Records
-            </a>
-            <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="Student/index.php?type=checkArchivedStudent">Archived Student Records</a>
-                <a class="dropdown-item" href="Consultation/index.php?type=checkArchivedConsultation">Archived Consultation Records</a>
-                <a class="dropdown-item" href="Followup/index.php?type=checkArchivedFollowUp">Archived Follow-up Records</a>
-                <a class="dropdown-item" href="MedicalCertificate/index.php?type=checkArchivedMC">Archived Medical Certificates</a>
-                <a class="dropdown-item" href="userList.php?type=checkArchivedStaff">Archived Staff Accounts</a>
-                <a class="dropdown-item" href="logs.php?type=checkArchivedLogs">Archived System Logs</a>
-            </div>
-            </li>
-            <li class="nav-item dropdown mx-1 admin-nav " id="maintenanceID">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-display="static" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Maintenance
-            </a>
-            <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="logs.php?type=checkRecords">Logs</a>
-                <a class="dropdown-item" href="degreeList.php">Degree List</a>
-                <a class="dropdown-item" href="vaccineList.php">Vaccine List</a>
-                <a class="dropdown-item" href="backup.php">Backup</a>
-                <a class="dropdown-item" href="restore.php">Restore</a>
-            </div>
-            </li>
-            <li class="nav-item mx-1 active">
-            <a class="nav-link" href="#" href="help.php">Help</a>
-            </li>
-            <li class="nav-item mx-1">
-            <a class="nav-link" href="#" onclick="logout()">Logout</a>
-            </li>
-
-        </ul>
-    </nav>     
+    <?php include '../includes/navbar.php'; ?>     
         <div id="iframeCont">
         </div>
         <!-- <div>

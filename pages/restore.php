@@ -2,7 +2,7 @@
     require_once '../php/centralConnection.php';
     session_start();
     if(empty($_SESSION['logged_in'])){
-        header('Location: ../../index.html');
+        header('Location: ../index.html');
     } 
 
     $message = '';
@@ -11,7 +11,7 @@
 <html>  
  <head>  
   <title>Restore</title>  
-  <script src="dist/jquery.min.js"></script>
+  <script src="../dist/jquery.min.js"></script>
   <link rel = "icon" href = "../images/BSU-Logo.webp" type = "image/x-icon">
   <link rel="stylesheet" type="text/css" href="../css/restore.css">
   <script src="../dist/jquery-3.6.0.min.js"></script>
@@ -69,15 +69,6 @@
                 logAction(act);
             }
         // ---------------------------end functions for System Logs---------------------------------------
-    
-    function openManual(){
-                if(globalAL == "admin"){
-                    window.open("../files/ManualAdmin.pdf");
-                }else if(globalAL == "superadmin"){
-                    window.open("../files/ManualSuperadmin.pdf");
-                }else{
-                    window.open("../files/ManualStandard.pdf");                }
-            }
 
             $(document).ready(function() {
 
@@ -97,12 +88,12 @@
                     }
                   })
                 }
-            }
+            });
   </script>
  </head>  
  <body>  
     <nav>
-        <a href="Homepage/index.php" id="back" class="nav-pages">Go Back</a> 
+        <a href="indexHomepage.php" id="back" class="nav-pages">Go Back</a> 
     </nav> 
   <br /><br />  
 

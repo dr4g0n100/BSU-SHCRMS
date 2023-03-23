@@ -1,5 +1,5 @@
 <?php
-require '../php/centralConnection.php';
+require 'centralConnection.php';
 date_default_timezone_set('Asia/Manila');
 
 function dashDate($date){

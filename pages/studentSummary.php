@@ -25,46 +25,13 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Vaccine List</title>
+        <title>Student Summary</title>
           
         <link rel = "icon" href = "../images/BSU-Logo.webp" type = "image/x-icon">
-        <!-- Bootstrap CSS -->
         
-        <link rel="stylesheet" href="../dist/dataTables.bootstrap.min.css" />
-        <link rel="stylesheet" href="../dist/bootstrap2.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        
-        <link rel="stylesheet" href="../dist/jquery-confirm.min.css">
-        <link rel="stylesheet" type="text/css" href="../dist/dataTable/jquery.dataTables.min.css">
-        <link rel="stylesheet" type="text/css" href="../dist/dataTable/buttons.dataTables.min.css">
+        <?php include '../includes/dependencies0.php'; ?>
 
         <link rel="stylesheet" href="../css/studentSummary.css">
-
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-
-        <script type="text/javascript" src="../dist/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="../dist/jquery-3.6.0.min.js"></script>
-        <script type="text/javascript" src="../dist/jquery-confirm.min.js"></script>
-        <script src="../dist/jquery-ui.js"></script>
-
-        <script type="text/javascript" src="../dist/dataTable/jquery.dataTables.min.js"></script>
-        <script type="text/javascript" src="../dist/dataTable/dataTables.buttons.min.js"></script>
-        <script type="text/javascript" src="../dist/dataTable/jszip.min.js"></script>
-        <script type="text/javascript" src="../dist/dataTable/pdfmake.min.js"></script>
-        <script type="text/javascript" src="../dist/dataTable/vfs_fonts.js"></script>
-        <script type="text/javascript" src="../dist/dataTable/buttons.html5.min.js"></script>
-        <script type="text/javascript" src="../dist/dataTable/buttons.print.min.js"></script>
-
-        
-        
-
-        <script src="../dist/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <script src="../dist/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="../dist/jspdf.debug.js"></script>
-        <script src="../dist/jspdf.min.js"></script>
-        <script src="../dist/html2pdf.bundle.min.js"></script>
-
-       
 
         <script>  
         // ---------------------------start functions for System Logs---------------------------------------
@@ -162,97 +129,25 @@
         </script>  
     </head>
     <body>
-    <nav class="navbar navbar-expand navbar-light bg-light">
-        <li class="nav-item userFN">
-        <span id="userFullname"><b><?php echo ucwords($_SESSION['homePosDisp']) . " ";
-        $tempNAME = strtolower($_SESSION['fullname']);
-        echo ucwords($tempNAME); 
-        ?></b></span>
-        </li>
-        <div class="mr-auto"></div>
-        <ul class="navbar-nav">
-            <li class="nav-item mx-1">
-            <a class="nav-link" href="Homepage/index.php">Home</a>
-            </li>
-
-            </li>
-             <li class="nav-item dropdown mx-1 admin-nav">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-display="static" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Census
-              </a>
-              <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="studentSummary.php">Student Summary</a>
-                <a class="dropdown-item" href="Homepage/index.php">Dashboard</a>
-              </div>
-            </li>
-
-            <li class="nav-item mx-1 " id="userlistID">
-            <a class="nav-link admin-nav" href="userList.php?type=checkRecords">User List</a>
-            </li>
-            <li class="nav-item dropdown mx-1">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-display="static" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Records
-            </a>
-            <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="Student/index.php?type=checkRecords">Student Records</a>
-                <a class="dropdown-item" href="Consultation/index.php?type=checkRecords">Consultation Records</a>
-                <!-- <a class="dropdown-item" href="Followup/index.php?type=checkRecords">Follow-up Consultation</a> -->
-                <a class="dropdown-item" href="MedicalCertificate/index.php?type=checkMC">Medical Certificate</a>
-            </div>
-            </li>
-            <li class="nav-item dropdown mx-1 admin-nav" id="archivedID">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-display="static" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Archived Records
-            </a>
-            <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="Student/index.php?type=checkArchivedStudent">Archived Student Records</a>
-                <a class="dropdown-item" href="Consultation/index.php?type=checkArchivedConsultation">Archived Consultation Records</a>
-                <a class="dropdown-item" href="Followup/index.php?type=checkArchivedFollowUp">Archived Follow-up Records</a>
-                <a class="dropdown-item" href="MedicalCertificate/index.php?type=checkArchivedMC">Archived Medical Certificates</a>
-                <a class="dropdown-item" href="userList.php?type=checkArchivedStaff">Archived Staff Accounts</a>
-                <a class="dropdown-item" href="logs.php?type=checkArchivedLogs">Archived System Logs</a>
-            </div>
-            </li>
-            <li class="nav-item dropdown mx-1 admin-nav active" id="maintenanceID">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-display="static" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Maintenance
-            </a>
-            <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="logs.php?type=checkRecords">Logs</a>
-                <a class="dropdown-item" href="degreeList.php">Degree List</a>
-                <a class="dropdown-item" href="vaccineList.php">Vaccine List</a>
-                <a class="dropdown-item" href="backup.php">Backup</a>
-                <a class="dropdown-item" href="restore.php">Restore</a>
-            </div>
-            </li>
-            <li class="nav-item mx-1">
-            <a class="nav-link" href="help.php?type=<?php echo $_SESSION['accesslevel']; ?>">Help</a>
-            </li>
-            <li class="nav-item mx-1">
-            <a class="nav-link" href="#" onclick="logout()">Logout</a>
-            </li>
-
-        </ul>
-
-   
-  </nav>     
-        <div>
-            <form action="studentSummary.php" method="POST">
-                <div class="form-group">
-                    <div class="search-input">
-                        <label for="idnumber" class="col-form-label">Search</label><br>
-                        <input type="text" name="idnumber" id="idnumber" placeholder="ID Number">
-                        <button class="btn btn-primary" type="Submit" value="Search" name="btnSearch" id="btnSearch">Search</button>
-                    </div>
-                    
-                </div>
-                
-            </form>
-            
-        </div>
+    <?php include '../includes/navbar.php'; ?>    
+        
         <div class="cont container">
             
             <div class="tabs">
+                <div class="search">
+                    <form action="studentSummary.php" method="POST">
+                        <div class="form-group">
+                            <div class="search-input">
+                                <label for="idnumber" class="col-form-label">Search</label><br>
+                                <input type="text" name="idnumber" id="idnumber" placeholder="ID Number">
+                                <button class="btn btn-primary" type="Submit" value="Search" name="btnSearch" id="btnSearch">Search</button>
+                            </div>
+                            
+                        </div>
+                        
+                    </form>
+                    
+                </div>
                 <div class="tabs-head" id="tabsTitle">
                     <span id="tab1" class="tabs-toggle is-active">&bull;&nbsp;Student Info&nbsp;&bull;</span>
                     <span id="tab2" class="tabs-toggle">&bull;&nbsp;Consultation Info&nbsp;&bull;</span>
@@ -303,7 +198,7 @@
                                             <td><?php echo $RowStudent['StudentContactNumber'];?></td>
                                             <td><?php echo $RowStudent['Date'];?></td>
                                             <td>
-                                                <a class="viewBTN btn btn-primary btn-sm" href="Student/pages/newRecord.php?id=<?php echo $RowStudent['StudentIDNumber']; ?>&type=viewRecord">View</a>
+                                                <a class="viewBTN btn btn-primary btn-sm" href="newStudent.php?id=<?php echo $RowStudent['StudentIDNumber']; ?>&type=viewRecord">View</a>
                                                 <a class='viewBTN btn btn-primary btn-sm' id='archiveBTN' onclick='userArchiveRecord(<?php echo $RowStudent['StudentIDNumber']; ?>)'>Archive</a>
                                             </td>
                                         </tr>
@@ -348,8 +243,8 @@
                                             <td><?php echo $Staff; ?></td>
                                             <td><?php echo $RowCons['Dates']; ?></td>
                                             <td>
-                                                <a class="viewBTN btn btn-primary btn-sm"  href="Consultation/pages/newConsultation.php?num=<?php echo $RowCons['Num']; ?>&type=viewCons">View</a>
-                                                <a class="viewBTN btn btn-primary btn-sm"  href="Followup/index.php?id=<?php echo $RowCons['IdNumb']; ?>&date=<?php echo $RowCons['Dates']; ?>&time=<?php echo $RowCons['Times']; ?>&type=checkRelFU">Follow-ups</a>
+                                                <a class="viewBTN btn btn-primary btn-sm"  href="newConsultation.php?num=<?php echo $RowCons['Num']; ?>&type=viewCons">View</a>
+                                                <a class="viewBTN btn btn-primary btn-sm"  href="indexFU.php?id=<?php echo $RowCons['IdNumb']; ?>&date=<?php echo $RowCons['Dates']; ?>&time=<?php echo $RowCons['Times']; ?>&type=checkRelFU">Follow-ups</a>
                                                 <a class="viewBTN btn btn-primary btn-sm" id="archiveBTN" onclick='userArchiveRecord(<?php echo $RowCons['Num']; ?>)'>Archive</a>
                                             </td>
 
@@ -391,7 +286,7 @@
                                             <td><?php echo $staffMC; ?></td>
                                             <td><?php echo $RowMC['date_requested']; ?></td>
                                             <td>
-                                                <a class="viewBTN btn btn-primary btn-sm" href="MedicalCertificate/page/medicalCertificate.php?studentID=<?php echo $RowMC['student_id']; ?>&id=<?php echo $RowMC['mc_id_num']; ?>&type=viewMC">View</a>
+                                                <a class="viewBTN btn btn-primary btn-sm" href="newMC.php?studentID=<?php echo $RowMC['student_id']; ?>&id=<?php echo $RowMC['mc_id_num']; ?>&type=viewMC">View</a>
                                                 <a class="viewBTN btn btn-primary btn-sm" id="archiveBTN" onclick="userArchiveRecord(<?php echo $RowMC['mc_id_num']; ?>)">Archive</a>
                                             </td>
                                         </tr>

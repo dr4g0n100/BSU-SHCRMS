@@ -353,7 +353,8 @@ input[type='text'], input[type='number'], input[type='date'], input[type='Time']
 }
 
 .search-input{
-    margin-left: 5%;
+    margin-left: 2%;
+    margin-top: 1%;
     width: 40%;
 }
 

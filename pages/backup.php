@@ -11,7 +11,7 @@
 <html>
  <head>
   <title>Backup</title>
-  <script src="dist/jquery.min.js"></script>
+  <script src="../dist/jquery.min.js"></script>
   <link rel = "icon" href = "../images/BSU-Logo.webp" type = "image/x-icon">
   <link rel="stylesheet" type="text/css" href="../css/backup.css">
   <script src="../dist/jquery-3.6.0.min.js"></script>
@@ -23,7 +23,7 @@
  </head>
  <body>
     <nav>
-        <a href="Homepage/index.php" id="back" class="nav-pages">Go Back</a>    
+        <a href="indexHomepage.php" id="back" class="nav-pages">Go Back</a>    
     </nav>
 
     

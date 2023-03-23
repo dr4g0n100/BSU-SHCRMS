@@ -20,19 +20,15 @@
         {     
             if($_SERVER['REQUEST_METHOD'] == 'GET'){
                 if($_GET["type"] == "checkRecords"){
-                    $sql = "SELECT * FROM SYSTEMLOGS";          
+                    $sql = "SELECT * FROM USERACCOUNTS";          
                     $ClinicRecordsQuery = $ClinicRecordsDB->GetRows($sql);
-                }else if($_GET["type"] == "checkArchivedLogs"){
-                    $sql = "SELECT * FROM archivedlog";          
+                }else if($_GET["type"] == "checkArchivedStaff"){
+                    $sql = "SELECT * FROM ARCHIVEDSTAFF";          
                     $ClinicRecordsQuery = $ClinicRecordsDB->GetRows($sql);
                 }  
             }  
                    
         }
-    }
-
-    if(empty($_SESSION['logged_in'])){
-        header('Location: ../index.html');
     }
 
 ?>  
@@ -43,17 +39,17 @@
         <meta charset="UTF-8">
         <?php
              if($_GET["type"] == "checkRecords"){
-                echo "<title>System Logs</title>";
-             }else if($_GET["type"] == "checkArchivedLogs"){
-                echo "<title>Archived System Logs</title>";
+                echo "<title>User List</title>";
+             }else if($_GET["type"] == "checkArchivedStaff"){
+                echo "<title>Archived User List</title>";
              }
         ?>
           
         <link rel = "icon" href = "../images/BSU-Logo.webp" type = "image/x-icon">
-        
+
         <?php include '../includes/dependencies0.php'; ?>
 
-        <link rel="stylesheet" href="../css/logs.css">
+        <link rel="stylesheet" href="../css/userList.css">
 
         <script>  
         // ---------------------------start functions for System Logs---------------------------------------
@@ -79,15 +75,13 @@
 
             function editTableNav(y){
                 if(y == "checkArchived"){
-                    document.getElementById('tab1').innerHTML = '&bull;&nbsp;Archived System Logs&nbsp;&bull;';
-                    document.getElementById('maintenanceID').classList.remove('active');
+                    document.getElementById('tab1').innerHTML = '&bull;&nbsp;ARCHIVED USER LIST&nbsp;&bull;';
+                    document.getElementById('userlistID').classList.remove('active');
                     document.getElementById('archivedID').classList.add('active');
                     document.getElementById('maint').classList.add("active");
                     document.getElementById('maint').style.color = "white";
                 }else{
-                    document.getElementById('tab1').innerHTML = '&bull;&nbsp;System Logs&nbsp;&bull;';
-                    document.getElementById('archivedID').classList.remove('active');
-                    document.getElementById('maintenanceID').classList.add('active');
+                    document.getElementById('tab1').innerHTML = '&bull;&nbsp;USER LIST&nbsp;&bull;';
                 }
             }
 
@@ -111,56 +105,55 @@
                 logAction(act);
             }
 
-            function openManual(){
-                if(globalAL == "admin"){
-                    window.open("../files/ManualAdmin.pdf");
-                }else if(globalAL == "superadmin"){
-                    window.open("../files/ManualSuperadmin.pdf");
-                }else{
-                    window.open("../files/ManualStandard.pdf");                }
+            function userViewRecord(StaffID){
+                act = "Checked Staff ID:" +StaffID +" Information."
+                logAction(act);
             }
 
-            function deleteLogs(){
-                var acttype = "archiveLogs";
+            function userArchiveRecord(StaffID){
+                acttype = "archiveStaff";
+                ID = StaffID;
                 var reason = '';
-                if (reason = window.prompt("Specify a reason for archiving?")){
-                    
+                if(reason = window.prompt("Specify a reason for archiving?")){
                     $.ajax({
                     url:"../php/archive.php",
                     method:"GET",
-                    data:jQuery.param({ type: acttype, archReason:reason }),
+                    data:jQuery.param({ type: acttype, id:ID, archReason:reason }),
                     success:function(xml){
                         $(xml).find('output').each(function()
                         {
                             var message = $(this).attr('Message');
-                            logAction(message +" ID " +ID);
+                            logAction(message +" ID " +ID +"");
                             alert(message);
                         });
-                        location.reload();
+                        window.location.href = 'indexStaff.php?type=checkRecords';
+                        
                     }
-                    })
+                })
                 }else if(reason == ''){
                     alert('Please specify a reason');
                 }
 
+
             }
 
             function userRestoreRecord(StaffID){
-                acttype = "restoreLogs";
+                acttype = "restoreStaff";
+                ID = StaffID;
 
-                if(confirm("Are you sure you want to restore all system logs?")){
+                if(confirm("Are you sure you want to restore this staff account?")){
                     $.ajax({
                     url:"../php/restore.php",
                     method:"GET",
-                    data:jQuery.param({ type: acttype}),
+                    data:jQuery.param({ type: acttype, id:ID }),
                     success:function(xml){
                         $(xml).find('output').each(function()
                         {
                             var message = $(this).attr('Message');
-                            logAction(message);
+                            logAction(message +" ID " +ID +"");
                             alert(message);
                         });
-                        location.reload();
+                        window.location.href = 'indexStaff.php?type=checkArchivedStaff';
                         
                     }
                 })
@@ -171,9 +164,28 @@
 
 
         // ---------------------------end functions for System Logs---------------------------------------
+        function checkNameLength(name){
 
+                var nameVal = name.value.trim();
 
-        $(document).ready(function(){ 
+                if(nameVal.length < 3){
+                    $.alert(
+                        {theme: 'modern',
+                        content:'Name should be atleast 3 characters',
+                        title:'', 
+                        useBootstrap: false,
+                        buttons:{
+                            Ok:{
+                            text:'Ok',
+                            btnClass: 'btn-red'
+                        }}});
+                    name.value = '';
+                }else{
+                    name.value = nameVal.trim();
+                }
+            }
+
+        $(document).ready(function(){  
 
             if (sessionStorage.getItem("isLoggedIn") == null){
 
@@ -191,10 +203,35 @@
                     }
                   })
                 }
-         
+            
             var table = $('#user_data').DataTable({
-                dom: 'fltp',
-                'paging': true
+                dom: 'fltpB',
+                buttons: [                              
+                    {
+                        extend:'print',
+                        text:'Print Report',
+                        title:"<h1 style='text-align:center;'>User List</h1>",
+                        exportOptions: {
+                            columns: [0,1,2,3,4,5]
+                        }            
+                    },
+                    {
+                       extend:'pdf',
+                       text:'Export to PDF',
+                       title:"User List",
+                       exportOptions: {
+                            columns: [0,1,2,3,4,5]
+                        }  
+                    },
+                    {
+                       extend:'excel',
+                       text:'Export to Excel',
+                       title:"User List",
+                       exportOptions: {
+                            columns: [0,1,2,3,4,5]
+                        }  
+                    },
+                  ]
             });
             var length = table.page.info().recordsTotal;
 
@@ -258,20 +295,21 @@
         </script>  
     </head>
     <body>
-    <?php include '../includes/navbar.php'; ?>    
+    <?php include '../includes/navbar.php'; ?>     
         <div class="cont container">
             <div class="tabs">
                 <div class="tabs-head">
-                    <span id="tab1" class="tabs-toggle is-active">&bull;&nbsp;SYSTEM LOGS&nbsp;&bull;</span>
+                    <span id="tab1" class="tabs-toggle is-active">&bull;&nbsp;USER LIST&nbsp;&bull;</span>
                 </div>
                 <div id="notif">
-                    <?php if ($type == 'checkArchivedLogs'){
-                        echo "<input type=\"button\" id=\"deleteLogs\" class=\"btn btn-primary\" onclick=\"userRestoreRecord()\" value=\"Restore Logs\"></input>";
-                    }else if ($type == 'checkRecords'){
-                        echo "<input type=\"button\" id=\"deleteLogs\" class=\"btn btn-primary\" onclick=\"deleteLogs()\" value=\"Archive Logs\"></input>";
-                    }
-                    ?>
-                    <span id="NumRecord">Total Number of Record/s: </span>
+                    <?php if ($_GET["type"] == "checkRecords"){
+                        echo "
+                        <a id='newRecord' class='btn btn-primary' href='newStaff.php?type=newRecord' role='button'>New User</a>
+                        <span id='NumRecord'>Total Number of Record/s: </span>
+                        ";
+
+                    } ?>
+                    
                     
                 </div>
                 <div class="tabs-body">
@@ -279,24 +317,71 @@
                     <table id="user_data" class="table table-striped table-bordered">  
                           <thead>  
                                <tr>  
-                                        <th>UserID</th>
-                                        <th>Username</th>
-                                        <th>System Feedback</th>
-                                        <th>Date and Time</th>
-                                        <th>Access Level</th>
+                                        <th>ID No.</th>
+                                        <th>Email</th>
+                                        <th>User name</th>
+                                        <th>Full Name</th>
+                                        <th>Contact Number</th>
+                                        <th>Position</th>
+                                        <th>Account Status</th>
+                                        <th>Code</th>
+                                        <?php 
+                                        if ($_GET["type"] == "checkArchivedStaff")
+                                        echo "<th>Archive Reason</th>";
+                                         ?>
+                                        <th>Action</th>
                                </tr>  
                           </thead>  
                           <?php        
                           while($Row = $ClinicRecordsQuery->fetch_array()) 
                           {  
-                                $Row = array_map('strtoupper', $Row);
+                                /*$Row = array_map('strtoupper', $Row);*/
+                                $Pos = ucwords($Row['Position']);
                                 echo "  
                                 <tr>
-                                    <td>$Row[userID]</td>
-                                    <td>$Row[username]</td>
-                                    <td>$Row[action]</td>
-                                    <td>$Row[date]</td>
-                                    <td>$Row[position]</td>
+                                    <td>$Row[IdNum]</td>
+                                    <td>$Row[Email]</td>
+                                    <td>$Row[Username]</td>
+                                    <td>$Row[LastName], $Row[FirstName] $Row[MiddleName]</td>
+                                    <td>$Row[ContactNum]</td>
+                                    <td>$Pos</td>
+                                    <td>$Row[AccStatus]</td>
+                                    <td>$Row[code]</td>";
+
+                                    if ($_GET["type"] == "checkArchivedStaff")
+                                    echo "<td>$Row[user_archive_reason]</td>";
+
+
+                                    echo "<td>";
+
+                                        if(stripslashes($Row['AccessLevel']) == "superadmin" && $type == 'checkRecords'){
+                                            if ($_SESSION['accesslevel'] == "superadmin"){
+                                                echo "
+                                                <a class='viewBTN btn btn-primary btn-sm' href='newStaff.php?id=$Row[IdNum]&type=viewRecord'>View</a>";
+                                            }
+                                        }else if(stripslashes($Row['AccessLevel']) == "admin" && $type == 'checkRecords'){
+                                            if ($_SESSION['accesslevel'] == "superadmin"){
+                                                echo "
+                                                <a class='viewBTN btn btn-primary btn-sm' href='newStaff.php?id=$Row[IdNum]&type=viewRecord'>View</a>
+                                                <a class='viewBTN btn btn-primary btn-sm' id='archiveBTN' onclick='userArchiveRecord($Row[user_id])'>Archive</a>";
+                                            }else{
+                                                echo "
+                                                <a class='viewBTN btn btn-primary btn-sm' href='newStaff.php?id=$Row[IdNum]&type=viewRecord'>View</a>"; 
+                                            }
+                                        }else if (stripslashes($Row['AccessLevel']) == "standard" && $type == 'checkRecords'){
+                                            echo "
+                                            <a class='viewBTN btn btn-primary btn-sm' href='newStaff.php?id=$Row[IdNum]&type=viewRecord'>View</a>
+                                            <a class='viewBTN btn btn-primary btn-sm' id='archiveBTN' onclick='userArchiveRecord($Row[user_id])'>Archive</a>";
+                                        }else if (stripslashes($Row['AccessLevel']) == "standard" && $type == 'checkArchivedStaff'){
+                                            echo "
+                                            <a class='viewBTN btn btn-primary btn-sm' href='newStaff.php?id=$Row[IdNum]&type=viewArchivedRecord'>View</a>
+                                            <a class='viewBTN btn btn-primary btn-sm' id='archiveBTN' onclick='userRestoreRecord($Row[user_id])'>Restore</a>";
+                                        }else{
+                                            echo "
+                                            <a class='viewBTN btn btn-primary btn-sm' href='newStaff.php?id=$Row[IdNum]&type=viewRecord'>View</a>";
+                                        }
+
+                                    echo "</td>
                                 </tr>
                                ";  
                           }  
@@ -310,7 +395,6 @@
             <button type="Submit" class="btnUp" id="btnUp" name="btnUp" onclick="window.scrollTo(0, 0)"/>
         </div>
         <script src="../js/script-tab.js"></script>
-
     </body>
 </html>
 <?php
@@ -318,7 +402,7 @@
     $tempor =  "";
     $_SESSION["typed"] = $_GET["type"];
 
-    if($_GET["type"] == 'checkArchivedLogs'){
+    if($_GET["type"] == 'checkArchivedStaff'){
         $tempor = "checkArchived";
     }else{
         $tempor = "checkRecord";

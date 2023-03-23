@@ -1,0 +1,298 @@
+/* Global Affects all pages */
+*{
+  margin: 0px;
+  padding: 0px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 1.2vw;
+}
+
+body{
+    background: #299F7E;
+}
+
+
+/* ----Homepage CSS only----- */
+body{
+  overflow: hidden;
+}
+
+body{
+  background: linear-gradient(to top, rgba(41,159,126,0.75), rgba(41,159,126,0.75)), url(../images/clinic.jpg) no-repeat top center;
+  background-size: 100vw 100vh;
+}
+
+h1{
+  padding-bottom: 3%;
+  color:#F2F3EB;
+  height: fit-content;
+  font-size: 3vw;
+}
+
+#form_wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+#form_left {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 3%;
+  margin-left: 4%;
+  margin-right: 8%;
+  margin-top: 5%;
+  border: 3px solid transparent;
+  border-image: conic-gradient(
+      from var(--angle),
+      white 0deg 120deg,
+      #fbb300 120deg 240deg,
+      #062102 240deg 360deg
+    )
+    1 stretch;
+  
+    background-color: rgba(41,159,126,0.75);
+  /* border: 3px solid white;
+  border-top-color: yellow;
+  border-right-color: white;
+  border-bottom-color: black;
+  background-color: rgba(41,159,126,0.75); */
+}
+
+#vission{
+  margin-bottom: 8%;
+}
+
+p{
+  line-height: 24px;
+}
+
+#form_right {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  height: 100%;
+  padding-top: 8%;
+}
+
+#bsuUHS-logo{
+  width: 37.5%;
+  height: 37.5%;
+  margin-top: 22.5%;
+  margin-left: -2%;
+  border: 3px solid white;
+  border-radius: 50%;
+  padding: 2%;
+}
+
+@supports (background: paint(houdini)) {
+  @property --opacity {
+    syntax: "<number>";
+    initial-value: 0.5;
+    inherits: false;
+  }
+
+  @property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  @keyframes opacityChange {
+    to {
+      --opacity: 1;
+    }
+  }
+
+  @keyframes rotate {
+    to {
+      --angle: 360deg;
+    }
+  }
+}
+
+#form_left{
+  animation: rotate 4s linear infinite, opacityChange 3s infinite alternate;
+}
+
+#bsu-logo{
+  width: 50%;
+  height: 50%;
+  margin-left: -10%;
+  margin-top: -12%;
+  border: 3px solid white;
+  border-radius: 50%;
+}
+
+#tableMedicalInfo{
+  width: 75%;
+  margin: 0 12.5% 0 12.5%;
+}
+
+#tablePersonalInfo{
+  width: 96.5%;
+}
+
+#tablePersonalInfo input{
+  margin: 0;
+  padding: 0.25em;
+}
+
+.DocumentCode{
+  width: 25%;
+}
+
+.RevisionNumber{
+  width: 25%;
+}
+
+#topHeader{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 2%;
+}
+
+#PhysicalExaminationHeader{
+  display: flex;
+  flex-direction: row;
+  height: 11vh;
+  width: 40vw;
+  padding: 0 1% 0 1%;
+}
+
+#PhysicalExaminationHeader h3{
+   padding-top: 4.5vh;
+  padding-bottom: 6.5vh; 
+  padding-left: 3%;
+}
+
+#ISO{
+  width: 60vw;
+  padding: 0 1% 0 1%;
+}
+
+#TAHearingDistance, #TASpeech, #TAEyes, #TAEars, #TANose, #TAHead, #TAAbdomen, #TAGenitoUrinary, #TALymphGlands, #TASkin, #TAExtremities, #TADeformities, #TACavityAndThroat, #TALungs, #TAHeart, #TABreast, #TARadiologicExams, #TABloodAnalysis, #TAUrinalysis, #TAFecalysis, #TAPregnancyTest, #TAHBSAg{
+  width: 100%;
+  height: 5vh;
+  overflow: hidden;
+  resize: none;
+  display: none;
+}
+
+#TxtOthers{
+  height: 10vh;
+  width: 100%;
+  overflow: hidden;
+  resize: none;
+}
+
+#TxtRemarks, #TxtRecommendation{
+  height: 10vh;
+  overflow: hidden;
+  resize: none;
+}
+
+#TxtHearingDistanceOption, #TxtSpeechOption, #TxtEyesOption, #TxtEarsOption, #TxtNoseOption, #TxtHeadOption, #TxtAbdomenOption, #TxtGenitoUrinaryOption, #TxtLymphGlandsOption, #TxtSkinOption, #TxtExtremitiesOption, #TxtDeformitiesOption, #TxtCavityAndThroatOption, #TxtLungsOption, #TxtHeartOption, #TxtBreastOption, #TxtRadiologicExamsOption, #TxtBloodAnalysisOption, #TxtUrinalysisOption, #TxtFecalysisOption, #TxtPregnancyTestOption, #TxtHBSAgOption{
+  height: 5vh;
+  margin: 0;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown 
+.dropdown:hover .dropbtn {background-color: black;}*/
+
+/* ----end of Homepage CSS---- */
+
+::-webkit-scrollbar-track {
+  background-color: white;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #299f7e79;
+}
+
+/* Navigation */
+
+.navbar.bg-light {
+  background-color: #f2eeeb !important;
+}
+
+.form-control {
+    border-radius: 4.25rem;
+}
+
+.active{
+  background-color: #299F7E !important; 
+  color: white !important;
+  border: 1px solid #299F7E !important;
+}
+
+.nav-item{
+  padding: 1% 0 !important;
+}
+
+.navbar{
+  padding: 0 1% !important;
+}
+
+.active .nav-link{
+  color: white !important;
+}
+
+li:not(.active):not(.userFN){
+  background-image: linear-gradient(to right,#299F7E,#299F7E 50%,#000 50%) !important;
+  background-size: 200% 100% !important;
+  background-position: -100% !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  transition: all 0.3s ease-in-out !important;
+}
+
+.dropdown-item{
+  -webkit-text-fill-color: #000 !important;
+  
+}
+
+.dropdown-item:hover{
+  background-image: linear-gradient(to right,#299F7E,#299F7E 50%,#000 50%) !important;
+  background-size: 200% 100% !important;
+  background-position: 0% !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  transition: all 1s ease-in-out !important;
+}
+
+.dropdown-menu{
+  background-color: #f2eeeb !important;
+}
+
+li:before {
+  content: '' !important;
+  background: white !important;
+  display: block !important;
+  position: absolute !important;
+  bottom: -3px !important;
+  left: 0 !important;
+  width: 0 !important;
+  height: 3px !important;
+  transition: all 0.3s ease-in-out !important;
+}
+
+li:hover:not(.active) {
+  background-position: 0 !important; 
+}
+
+nav{
+  margin-bottom: 2% !important;
+}
+
+.userFN{
+  list-style-type: none;
+}
+

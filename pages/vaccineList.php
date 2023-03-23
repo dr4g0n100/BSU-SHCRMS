@@ -19,41 +19,10 @@
         <title>Vaccine List</title>
           
         <link rel = "icon" href = "../images/BSU-Logo.webp" type = "image/x-icon">
-        <!-- Bootstrap CSS -->
         
-        <link rel="stylesheet" href="../dist/dataTables.bootstrap.min.css" />
-        <link rel="stylesheet" href="../dist/bootstrap2.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        
-        <link rel="stylesheet" href="../dist/jquery-confirm.min.css">
-        <link rel="stylesheet" type="text/css" href="../dist/dataTable/jquery.dataTables.min.css">
-        <link rel="stylesheet" type="text/css" href="../dist/dataTable/buttons.dataTables.min.css">
+        <?php include '../includes/dependencies0.php'; ?>
 
         <link rel="stylesheet" href="../css/userList.css">
-
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-
-        <script type="text/javascript" src="../dist/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="../dist/jquery-3.6.0.min.js"></script>
-        <script type="text/javascript" src="../dist/jquery-confirm.min.js"></script>
-        <script src="../dist/jquery-ui.js"></script>
-
-        <script type="text/javascript" src="../dist/dataTable/jquery.dataTables.min.js"></script>
-        <script type="text/javascript" src="../dist/dataTable/dataTables.buttons.min.js"></script>
-        <script type="text/javascript" src="../dist/dataTable/jszip.min.js"></script>
-        <script type="text/javascript" src="../dist/dataTable/pdfmake.min.js"></script>
-        <script type="text/javascript" src="../dist/dataTable/vfs_fonts.js"></script>
-        <script type="text/javascript" src="../dist/dataTable/buttons.html5.min.js"></script>
-        <script type="text/javascript" src="../dist/dataTable/buttons.print.min.js"></script>
-
-        
-        
-
-        <script src="../dist/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <script src="../dist/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="../dist/jspdf.debug.js"></script>
-        <script src="../dist/jspdf.min.js"></script>
-        <script src="../dist/html2pdf.bundle.min.js"></script>
 
        
 
