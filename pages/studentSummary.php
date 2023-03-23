@@ -134,11 +134,18 @@
         <div class="cont container">
             
             <div class="tabs">
+                
+                <div class="tabs-head" id="tabsTitle">
+                    <span id="tab1" class="tabs-toggle is-active">&bull;&nbsp;Student Info&nbsp;&bull;</span>
+                    <span id="tab2" class="tabs-toggle">&bull;&nbsp;Consultation Info&nbsp;&bull;</span>
+                    <span id="tab3" class="tabs-toggle">&bull;&nbsp;Medical Certs&nbsp;&bull;</span>
+                </div>
+
                 <div class="search">
                     <form action="studentSummary.php" method="POST">
                         <div class="form-group">
                             <div class="search-input">
-                                <label for="idnumber" class="col-form-label">Search</label><br>
+                                <!-- <label for="idnumber" class="col-form-label">Search</label><br> -->
                                 <input type="text" name="idnumber" id="idnumber" placeholder="ID Number">
                                 <button class="btn btn-primary" type="Submit" value="Search" name="btnSearch" id="btnSearch">Search</button>
                             </div>
@@ -147,11 +154,6 @@
                         
                     </form>
                     
-                </div>
-                <div class="tabs-head" id="tabsTitle">
-                    <span id="tab1" class="tabs-toggle is-active">&bull;&nbsp;Student Info&nbsp;&bull;</span>
-                    <span id="tab2" class="tabs-toggle">&bull;&nbsp;Consultation Info&nbsp;&bull;</span>
-                    <span id="tab3" class="tabs-toggle">&bull;&nbsp;Medical Certs&nbsp;&bull;</span>
                 </div>
                 <!-- <div id="notif">
 

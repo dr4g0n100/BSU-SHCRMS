@@ -59,7 +59,7 @@ body{
     color: #062102;
 }
 
-#tab1{
+#tab1, #tab2, #tab3{
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
 }

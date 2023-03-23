@@ -29,17 +29,26 @@ date_default_timezone_set('Asia/Manila');
   //$endDate = date("Y-m-d", strtotime($endDate));
 
     $dates = "";
-    $CountPM = "";
-    $CountCons = "";
-    $CountFU = "";
-    $CountMC = "";
+    $CountPMMale = "";
+    $CountPMFemale = "";
+    $CountConsMale = "";
+    $CountConsFemale = "";
+    $CountFUMale = "";
+    $CountFUFemale = "";
+    $CountMCMale = "";
+    $CountMCFemale = "";
     $CountMale = "";
     $CountFemale = "";
-    $CountElem = "";
-    $CountHS = "";
-    $CountSHS = "";
-    $CountCollege = "";
-    $CountGrad = "";
+    $CountElemMale = "";
+    $CountElemFemale = "";
+    $CountHSMale = "";
+    $CountHSFemale = "";
+    $CountSHSMale = "";
+    $CountSHSFemale = "";
+    $CountCollegeMale = "";
+    $CountCollegeFemale = "";
+    $CountGradMale = "";
+    $CountGradFemale = "";
 
 
 
@@ -68,13 +77,17 @@ date_default_timezone_set('Asia/Manila');
     } 
 
   $XMLData = '';	
-	$XMLData .= ' <output ';
-	$XMLData .= ' Message = ' . '"'.$Message.'"';
+  $XMLData .= ' <output ';
+  $XMLData .= ' Message = ' . '"'.$Message.'"';
   $XMLData .= ' Error = ' . '"'.$Error.'"';
   $XMLData .= ' dates = ' . '"'.$dates.'"';
   $XMLData .= ' CountPM = ' . '"'.$CountPM.'"';
+  $XMLData .= ' CountPM = ' . '"'.$CountPM.'"';
+  $XMLData .= ' CountCons = ' . '"'.$CountCons.'"';
   $XMLData .= ' CountCons = ' . '"'.$CountCons.'"';
   $XMLData .= ' CountFU = ' . '"'.$CountFU.'"';
+  $XMLData .= ' CountFU = ' . '"'.$CountFU.'"';
+  $XMLData .= ' CountMC = ' . '"'.$CountMC.'"';
   $XMLData .= ' CountMC = ' . '"'.$CountMC.'"';
   $XMLData .= ' CountMale = ' . '"'.$CountMale.'"';
   $XMLData .= ' CountFemale = ' . '"'.$CountFemale.'"';
@@ -128,7 +141,7 @@ date_default_timezone_set('Asia/Manila');
         $datesArr[] =$dt-> format("F-d-Y");
         //$datesArr[] = date("F-d-Y", strtotime($dt1. ' + 1 days'));
 
-        $sql = "SELECT COUNT(*) FROM PersonalMedicalRecord WHERE Date >= '$dt1' AND Date < '$dt2'";
+        $sql = "SELECT COUNT(*) FROM PersonalMedicalRecord WHERE (Date >= '$dt1' AND Date < '$dt2') AND Sex = 'male'";
         $result = mysqli_query($connection, $sql);
 
         if(mysqli_num_rows($result) > 0){

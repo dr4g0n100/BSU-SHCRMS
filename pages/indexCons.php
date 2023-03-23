@@ -266,9 +266,13 @@ require '../php/centralConnection.php';
                 <div class="tabs-head" style="display: inline-block;">
                     <?php  
                         if ($_GET["type"] == "checkRecordsId"){
+                            $stringID = '';
+                            if(!empty($id)){
+                                $stringID = "id=$id";
+                            }
                             echo "
                             <div>
-                            <a id='backButton' class='btn btn-primary' href='index.php?type=checkRecords' role='button'>Go Back</a>
+                            <a id='backButton' class='btn btn-primary' href='indexCons.php?type=checkRecords' role='button'>Go Back</a>
                             </div>";
                         }
                     ?>

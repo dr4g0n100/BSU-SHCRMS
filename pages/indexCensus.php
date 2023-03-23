@@ -1,4 +1,5 @@
 <?php
+    include "../php/centralConnection.php";
     session_start();
     if(empty($_SESSION['logged_in'])){
         header('Location: ../../index.html');
@@ -249,6 +250,48 @@
         <canvas id="studentCategoryPieChart"></canvas>
       </div>
     </div>
+
+    <div class="row col-md-12" id="PieCharts">
+      <legend class="text-center">Summary</legend>
+      <table class="table table-striped table-bordered text-center" id="table-summary">
+          <thead>
+            <tr>
+              <th rowspan="2">Staff Name</th>
+              <th colspan="2">Student Info</th>
+              <th colspan="2">Consultation</th>
+              <th colspan="2">Follow-up</th>
+              <th colspan="2">Medical Certificate</th>
+            </tr>
+
+            <tr>
+              <th>Male</th>
+              <th>Female</th>
+              <th>Male</th>
+              <th>Female</th>
+              <th>Male</th>
+              <th>Female</th>
+              <th>Male</th>
+              <th>Female</th>
+            </tr>
+            
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cadungo, Edrian</td>
+              <td>123</td>
+              <td>123</td>
+              <td>123</td>
+              <td>123</td>
+              <td>123</td>
+              <td>123</td>
+              <td>123</td>
+              <td>123</td>
+            </tr>
+          </tbody>
+      </table>
+      
+    </div>
+
   </div>
 
                <script> 
