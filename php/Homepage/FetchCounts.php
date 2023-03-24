@@ -69,8 +69,8 @@ date_default_timezone_set('Asia/Manila');
     } 
 
   $XMLData = '';    
-    $XMLData .= ' <output ';
-    $XMLData .= ' Message = ' . '"'.$Message.'"';
+  $XMLData .= ' <output ';
+  $XMLData .= ' Message = ' . '"'.$Message.'"';
   $XMLData .= ' Error = ' . '"'.$Error.'"';
   $XMLData .= ' dates = ' . '"'.$dates.'"';
   $XMLData .= ' Staffs = ' . '"'.$Staffs.'"';
@@ -447,6 +447,18 @@ date_default_timezone_set('Asia/Manila');
         }
 
         $sql = "SELECT COUNT(*) FROM followup LEFT JOIN personalmedicalrecord ON followup.IdNumb = personalmedicalrecord.StudentIDNumber WHERE (Dates >= '$dt1' AND Dates < '$dt2') AND (StudentCategory='senior highschool' AND Sex='male')";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0){
+            $Row = $result->fetch_array(); 
+            if($Row){        
+                $SubCountFUArr[] = stripslashes($Row['COUNT(*)']);;
+              }           
+        }else{
+          $SubCountFUArr[] = 0;
+        }
+
+        $sql = "SELECT COUNT(*) FROM followup LEFT JOIN personalmedicalrecord ON followup.IdNumb = personalmedicalrecord.StudentIDNumber WHERE (Dates >= '$dt1' AND Dates < '$dt2') AND (StudentCategory='senior highschool' AND Sex='female')";
         $result = mysqli_query($connection, $sql);
 
         if(mysqli_num_rows($result) > 0){

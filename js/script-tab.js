@@ -30,3 +30,13 @@ tabs.forEach((tab, index) => {
     }
     return true;
   }
+
+  function loadTableData(items, tbodyID) {
+    const table = document.getElementById(tbodyID);
+    let row = table.insertRow();
+    items.forEach( item => {
+      let cell0 = row.insertCell(-1);
+      cell0.innerHTML = item;
+    });
+  }
+
