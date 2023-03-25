@@ -254,6 +254,7 @@
     </div>
     <br>
     <div class="row col-md-12" id="PieCharts">
+      <legend class="text-center">Students Registered</legend>
       <div class="chart-container col-md-4">
         <h4 class="text-center">Gender</h4>
         <canvas id="maleFemalePieChart"></canvas>
@@ -275,6 +276,7 @@
               <th colspan="2">Consultation</th>
               <th colspan="2">Follow-up</th>
               <th colspan="2">Medical Certificate</th>
+              <th rowspan="2">Total</th>
             </tr>
 
             <tr>
@@ -304,6 +306,8 @@
             var PieChartMale = localStorage.getItem("PieChartMale");
             var PieChartFemale = localStorage.getItem("PieChartFemale");
 
+
+
             var ctx = document.getElementById('maleFemalePieChart').getContext('2d');
             var previousChart = Chart.getChart(ctx); // Get the previous chart instance
             if (previousChart) {
@@ -329,14 +333,17 @@
                 }]
               },
               options: {
-                responsive: true,
-                legend: {
-                  position: 'top'
-                },
-                title: {
-                  display: true,
-                  text: 'Male - Female'
+                plugins:{
+                  responsive: true,
+                  legend: {
+                    position: 'top'
+                  },
+                  title: {
+                    display: false,
+                    text: 'Male - Female'
+                  }
                 }
+                
               }
             });
           }
@@ -353,27 +360,173 @@
             var SdataPMGradMale = localStorage.getItem("SdataPMGradMale");
             var SdataPMGradFemale = localStorage.getItem("SdataPMGradFemale");
 
+            var SdataConsElemMale = localStorage.getItem("SdataConsElemMale");
+            var SdataConsElemFemale = localStorage.getItem("SdataConsElemFemale");
+            var SdataConsJuniorMale = localStorage.getItem("SdataConsJuniorMale");
+            var SdataConsJuniorFemale = localStorage.getItem("SdataConsJuniorFemale");
+            var SdataConsSeniorMale = localStorage.getItem("SdataConsSeniorMale");
+            var SdataConsSeniorFemale = localStorage.getItem("SdataConsSeniorFemale");
+            var SdataConsCollegeMale = localStorage.getItem("SdataConsCollegeMale");
+            var SdataConsCollegeFemale = localStorage.getItem("SdataConsCollegeFemale");
+            var SdataConsGradMale = localStorage.getItem("SdataConsGradMale");
+            var SdataConsGradFemale = localStorage.getItem("SdataConsGradFemale");
+
+            var SdataFUElemMale = localStorage.getItem("SdataFUElemMale");
+            var SdataFUElemFemale = localStorage.getItem("SdataFUElemFemale");
+            var SdataFUJuniorMale = localStorage.getItem("SdataFUJuniorMale");
+            var SdataFUJuniorFemale = localStorage.getItem("SdataFUJuniorFemale");
+            var SdataFUSeniorMale = localStorage.getItem("SdataFUSeniorMale");
+            var SdataFUSeniorFemale = localStorage.getItem("SdataFUSeniorFemale");
+            var SdataFUCollegeMale = localStorage.getItem("SdataFUCollegeMale");
+            var SdataFUCollegeFemale = localStorage.getItem("SdataFUCollegeFemale");
+            var SdataFUGradMale = localStorage.getItem("SdataFUGradMale");
+            var SdataFUGradFemale = localStorage.getItem("SdataFUGradFemale");
+
+            var SdataMCElemMale = localStorage.getItem("SdataMCElemMale");
+            var SdataMCElemFemale = localStorage.getItem("SdataMCElemFemale");
+            var SdataMCJuniorMale = localStorage.getItem("SdataMCJuniorMale");
+            var SdataMCJuniorFemale = localStorage.getItem("SdataMCJuniorFemale");
+            var SdataMCSeniorMale = localStorage.getItem("SdataMCSeniorMale");
+            var SdataMCSeniorFemale = localStorage.getItem("SdataMCSeniorFemale");
+            var SdataMCCollegeMale = localStorage.getItem("SdataMCCollegeMale");
+            var SdataMCCollegeFemale = localStorage.getItem("SdataMCCollegeFemale");
+            var SdataMCGradMale = localStorage.getItem("SdataMCGradMale");
+            var SdataMCGradFemale = localStorage.getItem("SdataMCGradFemale");
+
             $("#tblSummaryBody tr").remove();
 
+            var PMArr = [SdataPMElemMale,SdataPMElemFemale,SdataPMJuniorMale,SdataPMJuniorFemale,SdataPMSeniorMale,SdataPMSeniorFemale,SdataPMCollegeMale,SdataPMCollegeFemale,SdataPMGradMale,SdataPMGradFemale];
+            var PMArrNum = PMArr.map(Number);
+            var ConsArr = [SdataConsElemMale,SdataConsElemFemale,SdataConsJuniorMale,SdataConsJuniorFemale,SdataConsSeniorMale,SdataConsSeniorFemale,SdataConsCollegeMale,SdataConsCollegeFemale,SdataConsGradMale,SdataConsGradFemale];
+            var ConsArrNum = ConsArr.map(Number);
+            var FUArr = [SdataFUElemMale,SdataFUElemFemale,SdataFUJuniorMale,SdataFUJuniorFemale,SdataFUSeniorMale,SdataFUSeniorFemale,SdataFUCollegeMale,SdataFUCollegeFemale,SdataFUGradMale,SdataFUGradFemale];
+            var FUArrNum = FUArr.map(Number);
+            var MCArr = [SdataMCElemMale,SdataMCElemFemale,SdataMCJuniorMale,SdataMCJuniorFemale,SdataMCSeniorMale,SdataMCSeniorFemale,SdataMCCollegeMale,SdataMCCollegeFemale,SdataMCGradMale,SdataMCGradFemale];
+            var MCArrNum = MCArr.map(Number);
+
             var tblData = [];
-            /*for (var i = 0; i < category.length; i++) {
-              tblData.push(category[i], );
-            }*/
-            var tblData = [];
-            tblData.push(category[0], SdataPMElemMale, SdataPMElemFemale);
+            var elemSum = 0;
+            var juniorSum = 0;
+            var seniorSum = 0;
+            var collegeSum = 0;
+            var gradSum = 0;
+            var malePMSum = 0;
+            var femalePMSum = 0;
+            var maleConsSum = 0;
+            var femaleConsSum = 0;
+            var maleFUSum = 0;
+            var femaleFUSum = 0;
+            var maleMCSum = 0;
+            var femaleMCSum = 0;
+
+            for (var i = 0; i < PMArrNum.length; i++) {
+              if(i == 0 || i == 1){
+                elemSum += PMArrNum[i];
+              }else if(i == 2 || i == 3){
+                juniorSum += PMArrNum[i];
+              }else if(i == 4 || i == 5){
+                seniorSum += PMArrNum[i];
+              }else if(i == 6 || i == 7){
+                collegeSum += PMArrNum[i];
+              }else if(i == 8 || i == 9){
+                gradSum += PMArrNum[i];
+              }
+
+              if(i % 2 != 0){
+                femalePMSum += PMArrNum[i];
+              }else{
+                malePMSum += PMArrNum[i];
+              }
+              
+            }
+
+            for (var i = 0; i < ConsArrNum.length; i++) {
+              if(i == 0 || i == 1){
+                elemSum += ConsArrNum[i];
+              }else if(i == 2 || i == 3){
+                juniorSum += ConsArrNum[i];
+              }else if(i == 4 || i == 5){
+                seniorSum += ConsArrNum[i];
+              }else if(i == 6 || i == 7){
+                collegeSum += ConsArrNum[i];
+              }else if(i == 8 || i == 9){
+                gradSum += ConsArrNum[i];
+              }
+
+              if(i % 2 != 0){
+                femaleConsSum += ConsArrNum[i];
+              }else{
+                maleConsSum += ConsArrNum[i];
+              }
+              
+            }
+
+            for (var i = 0; i < FUArrNum.length; i++) {
+              if(i == 0 || i == 1){
+                elemSum += FUArrNum[i];
+              }else if(i == 2 || i == 3){
+                juniorSum += FUArrNum[i];
+              }else if(i == 4 || i == 5){
+                seniorSum += FUArrNum[i];
+              }else if(i == 6 || i == 7){
+                collegeSum += FUArrNum[i];
+              }else if(i == 8 || i == 9){
+                gradSum += FUArrNum[i];
+              }
+
+              if(i % 2 != 0){
+                femaleFUSum += FUArrNum[i];
+              }else{
+                maleFUSum += FUArrNum[i];
+              }
+              
+            }
+
+            for (var i = 0; i < MCArrNum.length; i++) {
+              if(i == 0 || i == 1){
+                elemSum += MCArrNum[i];
+              }else if(i == 2 || i == 3){
+                juniorSum += MCArrNum[i];
+              }else if(i == 4 || i == 5){
+                seniorSum += MCArrNum[i];
+              }else if(i == 6 || i == 7){
+                collegeSum += MCArrNum[i];
+              }else if(i == 8 || i == 9){
+                gradSum += MCArrNum[i];
+              }
+
+              if(i % 2 != 0){
+                femaleMCSum += MCArrNum[i];
+              }else{
+                maleMCSum += MCArrNum[i];
+              }
+              
+            }
+
+
+            var grandtotal = malePMSum + femalePMSum + maleConsSum + femaleConsSum + maleFUSum + femaleFUSum + maleMCSum + femaleMCSum;
+
+            tblData = [];
+            tblData.push(category[0], SdataPMElemMale, SdataPMElemFemale, SdataConsElemMale, SdataConsElemFemale, SdataFUElemMale, SdataFUElemFemale, SdataMCElemMale, SdataMCElemFemale, elemSum) ;
             loadTableData(tblData, 'tblSummaryBody');
-            var tblData = [];
-            tblData.push(category[1], SdataPMJuniorMale, SdataPMJuniorFemale);
+            tblData = [];
+            tblData.push(category[1], SdataPMJuniorMale, SdataPMJuniorFemale, SdataConsJuniorMale, SdataConsJuniorFemale, SdataFUJuniorMale, SdataFUJuniorFemale, SdataMCJuniorMale, SdataMCJuniorFemale, juniorSum);
             loadTableData(tblData, 'tblSummaryBody');
-            var tblData = [];
-            tblData.push(category[2], SdataPMSeniorMale, SdataPMSeniorFemale);
+            tblData = [];
+            tblData.push(category[2], SdataPMSeniorMale, SdataPMSeniorFemale, SdataConsSeniorMale, SdataConsSeniorFemale, SdataFUSeniorMale, SdataFUSeniorFemale, SdataMCSeniorMale, SdataMCSeniorFemale, seniorSum);
             loadTableData(tblData, 'tblSummaryBody');
-            var tblData = [];
-            tblData.push(category[3], SdataPMCollegeMale, SdataPMCollegeFemale);
+            tblData = [];
+            tblData.push(category[3], SdataPMCollegeMale, SdataPMCollegeFemale, SdataConsCollegeMale, SdataConsCollegeFemale, SdataFUCollegeMale, SdataFUCollegeFemale, SdataMCCollegeMale, SdataMCCollegeFemale, collegeSum);
             loadTableData(tblData, 'tblSummaryBody');
-            var tblData = [];
-            tblData.push(category[4], SdataPMGradMale, SdataPMGradFemale);
+            tblData = [];
+            tblData.push(category[4], SdataPMGradMale, SdataPMGradFemale, SdataConsGradMale, SdataConsGradFemale, SdataFUGradMale, SdataFUGradFemale, SdataMCGradMale, SdataMCGradFemale, gradSum);
             loadTableData(tblData, 'tblSummaryBody');
+            tblData = [];
+            tblData.push('Total', malePMSum, femalePMSum, maleConsSum, femaleConsSum, maleFUSum, femaleFUSum, maleMCSum, femaleMCSum, grandtotal);
+            loadTableData(tblData, 'tblSummaryBody');
+
+            console.log(malePMSum);
+
             
           }
 
@@ -418,14 +571,17 @@
                 }]
               },
               options: {
-                responsive: true,
-                legend: {
-                  position: 'top'
-                },
-                title: {
-                  display: true,
-                  text: 'Elementary - Junior Highschool - Senior Highschool - Undergraduate - Graduate'
+                plugins:{
+                  responsive: true,
+                  legend: {
+                    position: 'top'
+                  },
+                  title: {
+                    display: false,
+                    text: 'Elementary - Junior Highschool - Senior Highschool - Undergraduate - Graduate'
+                  }
                 }
+                
               }
             });
           }
@@ -449,7 +605,8 @@
           customButton.addEventListener("click", function() {
             var sDate = document.getElementById('start-date').value;
             var eDate = document.getElementById('end-date').value;
-            updateCustomChart(sDate, eDate);
+            //updateCustomChart(sDate, eDate);
+            updateChart();
             updateMaleFemalePieChart();
             updateStudentCategoryPieChart();
             updateSummaryTable();
@@ -480,15 +637,7 @@
 
           var staffs = [];
 
-          var dataPMMale = [];
-          var dataPMFemale = [];
-          var dataConsMale = [];
-          var dataConsFemale = [];
-          var dataFUMale = [];
-          var dataFUFemale = [];
-          var dataMCMale = [];
-          var dataMCFemale = [];
-
+          //data Personal Medical
           var dataPMElemMale = [];
           var dataPMElemFemale = [];
           var dataPMJuniorMale = [];
@@ -500,6 +649,7 @@
           var dataPMGradMale = [];
           var dataPMGradFemale = [];
 
+          //data Cons
           var dataConsElemMale = [];
           var dataConsElemFemale = [];
           var dataConsJuniorMale = [];
@@ -511,6 +661,7 @@
           var dataConsGradMale = [];
           var dataConsGradFemale = [];
 
+          //data Followup
           var dataFUElemMale = [];
           var dataFUElemFemale = [];
           var dataFUJuniorMale = [];
@@ -522,6 +673,7 @@
           var dataFUGradMale = [];
           var dataFUGradFemale = [];
 
+          //data MC
           var dataMCElemMale = [];
           var dataMCElemFemale = [];
           var dataMCJuniorMale = [];
@@ -532,6 +684,8 @@
           var dataMCCollegeFemale = [];
           var dataMCGradMale = [];
           var dataMCGradFemale = [];
+
+
 
           var category = ['Elementary' , 'Junior Highschool' , 'Senior Highschool' , 'College' , 'Graduate'];
 
@@ -598,31 +752,16 @@
                       CountPMArr.forEach((element) => {
                         elementArr = element.split("-");
 
-                        for (var i = 0; i < elementArr.length; ++i) {
-
-                          if (i == 0) {
-                            dataPMElemMale.push(elementArr);
-                          } else if (i == 1) {
-                            dataPMElemFemale.push(elementArr);
-                          } else if (i == 2) {
-                            dataPMJuniorMale.push(elementArr);
-                          } else if (i == 3) {
-                            dataPMJuniorFemale.push(elementArr);
-                          } else if (i == 4) {
-                            dataPMSeniorMale.push(elementArr);
-                          } else if (i == 5) {
-                            dataPMSeniorFemale.push(elementArr);
-                          } else if (i == 6) {
-                            dataPMCollegeMale.push(elementArr);
-                          } else if (i == 7) {
-                            dataPMCollegeFemale.push(elementArr);
-                          } else if (i == 8) {
-                            dataPMGradMale.push(elementArr);
-                          } else if (i == 9) {
-                            dataPMGradFemale.push(elementArr);
-                          }
- 
-                        }
+                        dataPMElemMale.push(elementArr[0]);
+                        dataPMElemFemale.push(elementArr[1]);
+                        dataPMJuniorMale.push(elementArr[2]);
+                        dataPMJuniorFemale.push(elementArr[3]);
+                        dataPMSeniorMale.push(elementArr[4]);
+                        dataPMSeniorFemale.push(elementArr[5]);
+                        dataPMCollegeMale.push(elementArr[6]);
+                        dataPMCollegeFemale.push(elementArr[7]);
+                        dataPMGradMale.push(elementArr[8]);
+                        dataPMGradFemale.push(elementArr[9]);
 
                         total = 0;
                         elementArr.forEach((dataPM) => {
@@ -637,21 +776,18 @@
                       CountConsArr.forEach((element) => {
                         elementArr = element.split("-");
 
-                        var male = 0;
-                        var female = 0;
-                        var ctr = 1;
-                        for (var i = 0; i < elementArr.length; ++i) {
 
-                          if (i % 2 === 0) {
-                            male += parseInt(elementArr[i]);
-                          } else {
-                            female += parseInt(elementArr[i]);
-                          }
- 
-                        }
+                        dataConsElemMale.push(elementArr[0]);
+                        dataConsElemFemale.push(elementArr[1]);
+                        dataConsJuniorMale.push(elementArr[2]);
+                        dataConsJuniorFemale.push(elementArr[3]);
+                        dataConsSeniorMale.push(elementArr[4]);
+                        dataConsSeniorFemale.push(elementArr[5]);
+                        dataConsCollegeMale.push(elementArr[6]);
+                        dataConsCollegeFemale.push(elementArr[7]);
+                        dataConsGradMale.push(elementArr[8]);
+                        dataConsGradFemale.push(elementArr[9]);
 
-                        dataConsMale.push(male);
-                        dataConsFemale.push(female);
 
                         total = 0;
                         elementArr.forEach((dataCons) => {
@@ -660,26 +796,23 @@
                         data2.push(total);  
                       });
 
+                      //alert(dataConsJuniorMale)
+
                       const CountFUArr = CountFU.split(",");
 
                       CountFUArr.forEach((element) => {
                         elementArr = element.split("-");
                         
-                        var male = 0;
-                        var female = 0;
-                        var ctr = 1;
-                        for (var i = 0; i < elementArr.length; ++i) {
-
-                          if (i % 2 === 0) {
-                            male += parseInt(elementArr[i]);
-                          } else {
-                            female += parseInt(elementArr[i]);
-                          }
- 
-                        }
-
-                        dataFUMale.push(male);
-                        dataFUFemale.push(female);
+                        dataFUElemMale.push(elementArr[0]);
+                        dataFUElemFemale.push(elementArr[1]);
+                        dataFUJuniorMale.push(elementArr[2]);
+                        dataFUJuniorFemale.push(elementArr[3]);
+                        dataFUSeniorMale.push(elementArr[4]);
+                        dataFUSeniorFemale.push(elementArr[5]);
+                        dataFUCollegeMale.push(elementArr[6]);
+                        dataFUCollegeFemale.push(elementArr[7]);
+                        dataFUGradMale.push(elementArr[8]);
+                        dataFUGradFemale.push(elementArr[9]);
                         
                         total = 0;
                         elementArr.forEach((dataFU) => {
@@ -693,21 +826,16 @@
                       CountMCArr.forEach((element) => {
                         elementArr = element.split("-");
 
-                        var male = 0;
-                        var female = 0;
-                        var ctr = 1;
-                        for (var i = 0; i < elementArr.length; ++i) {
-
-                          if (i % 2 === 0) {
-                            male += parseInt(elementArr[i]);
-                          } else {
-                            female += parseInt(elementArr[i]);
-                          }
- 
-                        }
-
-                        dataMCMale.push(male);
-                        dataMCFemale.push(female);
+                        dataMCElemMale.push(elementArr[0]);
+                        dataMCElemFemale.push(elementArr[1]);
+                        dataMCJuniorMale.push(elementArr[2]);
+                        dataMCJuniorFemale.push(elementArr[3]);
+                        dataMCSeniorMale.push(elementArr[4]);
+                        dataMCSeniorFemale.push(elementArr[5]);
+                        dataMCCollegeMale.push(elementArr[6]);
+                        dataMCCollegeFemale.push(elementArr[7]);
+                        dataMCGradMale.push(elementArr[8]);
+                        dataMCGradFemale.push(elementArr[9]);
                         
                         total = 0;
                         elementArr.forEach((dataMC) => {
@@ -715,15 +843,6 @@
                         });
                         data4.push(total);  
                       });
-
-                      console.log(dataPMMale);
-                      console.log(dataPMFemale);
-                      console.log(dataConsMale);
-                      console.log(dataConsFemale);
-                      console.log(dataFUMale);
-                      console.log(dataFUFemale);
-                      console.log(dataMCMale);
-                      console.log(dataMCFemale);
 
                       const CountMaleArr = CountMale.split(",");
 
@@ -1022,15 +1141,6 @@
             var filtereddatacollege = datacollege.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
             var filtereddatagrad = datagrad.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
 
-            var filtereddataPMMale = dataPMMale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
-            var filtereddataPMFemale = dataPMFemale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
-            var filtereddataConsMale = dataConsMale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
-            var filtereddataConsFemale = dataConsFemale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
-            var filtereddataFUMale = dataFUMale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
-            var filtereddataFUFemale = dataFUFemale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
-            var filtereddataMCMale = dataMCMale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
-            var filtereddataMCFemale = dataMCFemale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
-
             var fdataPMElemMale = dataPMElemMale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
             var fdataPMElemFemale = dataPMElemFemale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
             var fdataPMJuniorMale = dataPMJuniorMale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
@@ -1042,7 +1152,39 @@
             var fdataPMGradMale = dataPMGradMale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
             var fdataPMGradFemale = dataPMGradFemale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
 
-             
+            var fdataConsElemMale = dataConsElemMale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
+            var fdataConsElemFemale = dataConsElemFemale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
+            var fdataConsJuniorMale = dataConsJuniorMale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
+            var fdataConsJuniorFemale = dataConsJuniorFemale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
+            var fdataConsSeniorMale = dataConsSeniorMale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
+            var fdataConsSeniorFemale = dataConsSeniorFemale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
+            var fdataConsCollegeMale = dataConsCollegeMale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
+            var fdataConsCollegeFemale = dataConsCollegeFemale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
+            var fdataConsGradMale = dataConsGradMale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
+            var fdataConsGradFemale = dataConsGradFemale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
+
+            var fdataFUElemMale = dataFUElemMale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
+            var fdataFUElemFemale = dataFUElemFemale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
+            var fdataFUJuniorMale = dataFUJuniorMale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
+            var fdataFUJuniorFemale = dataFUJuniorFemale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
+            var fdataFUSeniorMale = dataFUSeniorMale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
+            var fdataFUSeniorFemale = dataFUSeniorFemale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
+            var fdataFUCollegeMale = dataFUCollegeMale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
+            var fdataFUCollegeFemale = dataFUCollegeFemale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
+            var fdataFUGradMale = dataFUGradMale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
+            var fdataFUGradFemale = dataFUGradFemale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
+
+            var fdataMCElemMale = dataMCElemMale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
+            var fdataMCElemFemale = dataMCElemFemale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
+            var fdataMCJuniorMale = dataMCJuniorMale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
+            var fdataMCJuniorFemale = dataMCJuniorFemale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
+            var fdataMCSeniorMale = dataMCSeniorMale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
+            var fdataMCSeniorFemale = dataMCSeniorFemale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
+            var fdataMCCollegeMale = dataMCCollegeMale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
+            var fdataMCCollegeFemale = dataMCCollegeFemale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
+            var fdataMCGradMale = dataMCGradMale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
+            var fdataMCGradFemale = dataMCGradFemale.slice(dates.indexOf(filteredDates[0]), dates.indexOf(filteredDates[filteredDates.length - 1]) + 1);
+
             // Get all the DOM elements with class `card-text`
             var cardTexts = document.querySelectorAll('.card-text');
 
@@ -1059,15 +1201,6 @@
             var sumcollege = 0;
             var sumgrad = 0;
 
-            var sumdataPMMale = 0;
-            var sumdataPMFemale = 0;
-            var sumdataConsMale = 0;
-            var sumdataConsFemale = 0;
-            var sumdataFUMale = 0;
-            var sumdataFUFemale = 0;
-            var sumdataMCMale = 0; 
-            var sumdataMCFemale = 0;
-
             var SdataPMElemMale = 0;
             var SdataPMElemFemale = 0;
             var SdataPMJuniorMale = 0;
@@ -1078,6 +1211,39 @@
             var SdataPMCollegeFemale = 0;
             var SdataPMGradMale = 0;
             var SdataPMGradFemale = 0;
+
+            var SdataConsElemMale = 0;
+            var SdataConsElemFemale = 0;
+            var SdataConsJuniorMale = 0;
+            var SdataConsJuniorFemale = 0;
+            var SdataConsSeniorMale = 0;
+            var SdataConsSeniorFemale = 0;
+            var SdataConsCollegeMale = 0;
+            var SdataConsCollegeFemale = 0;
+            var SdataConsGradMale = 0;
+            var SdataConsGradFemale = 0;
+
+            var SdataFUElemMale = 0;
+            var SdataFUElemFemale = 0;
+            var SdataFUJuniorMale = 0;
+            var SdataFUJuniorFemale = 0;
+            var SdataFUSeniorMale = 0;
+            var SdataFUSeniorFemale = 0;
+            var SdataFUCollegeMale = 0;
+            var SdataFUCollegeFemale = 0;
+            var SdataFUGradMale = 0;
+            var SdataFUGradFemale = 0;
+
+            var SdataMCElemMale = 0;
+            var SdataMCElemFemale = 0;
+            var SdataMCJuniorMale = 0;
+            var SdataMCJuniorFemale = 0;
+            var SdataMCSeniorMale = 0;
+            var SdataMCSeniorFemale = 0;
+            var SdataMCCollegeMale = 0;
+            var SdataMCCollegeFemale = 0;
+            var SdataMCGradMale = 0;
+            var SdataMCGradFemale = 0;
 
             for (var i = 0; i < filteredData1.length; i++) {
               sum1 += parseInt(filteredData1[i]) ;
@@ -1114,37 +1280,6 @@
               sumgrad += parseInt(filtereddatagrad[i]);
             }
 
-            for (var i = 0; i < filtereddataPMMale.length; i++) {
-              sumdataPMMale += parseInt(filtereddataPMMale[i]);
-            }
-
-            for (var i = 0; i < filtereddataPMFemale.length; i++) {
-              sumdataPMFemale += parseInt(filtereddataPMFemale[i]);
-            }
-
-            for (var i = 0; i < filtereddataConsMale.length; i++) {
-              sumdataConsMale += parseInt(filtereddataConsMale[i]);
-            }
-
-            for (var i = 0; i < filtereddataConsFemale.length; i++) {
-              sumdataConsFemale += parseInt(filtereddataConsFemale[i]);
-            }
-
-            for (var i = 0; i < filtereddataFUMale.length; i++) {
-              sumdataFUMale += parseInt(filtereddataFUMale[i]);
-            }
-
-            for (var i = 0; i < filtereddataFUFemale.length; i++) {
-              sumdataFUFemale += parseInt(filtereddataFUFemale[i]);
-            }
-
-            for (var i = 0; i < filtereddataMCMale.length; i++) {
-              sumdataMCMale += parseInt(filtereddataMCMale[i]);
-            }
-
-            for (var i = 0; i < filtereddataMCFemale.length; i++) {
-              sumdataMCFemale += parseInt(filtereddataMCFemale[i]);
-            }
 
             for (var i = 0; i < fdataPMElemMale.length; i++) {
               SdataPMElemMale += parseInt(fdataPMElemMale[i]);
@@ -1178,7 +1313,102 @@
             }
 
 
+            for (var i = 0; i < fdataConsElemMale.length; i++) {
+              SdataConsElemMale += parseInt(fdataConsElemMale[i]);
+            }
+            for (var i = 0; i < fdataConsElemFemale.length; i++) {
+              SdataConsElemFemale += parseInt(fdataConsElemFemale[i]);
+            }
+            for (var i = 0; i < fdataConsJuniorMale.length; i++) {
+              SdataConsJuniorMale += parseInt(fdataConsJuniorMale[i]);
+            }
+            
+            for (var i = 0; i < fdataConsJuniorFemale.length; i++) {
+              SdataConsJuniorFemale += parseInt(fdataConsJuniorFemale[i]);
+            }
+            for (var i = 0; i < fdataConsSeniorMale.length; i++) {
+              SdataConsSeniorMale += parseInt(fdataConsSeniorMale[i]);
+            }
+            for (var i = 0; i < fdataConsSeniorFemale.length; i++) {
+              SdataConsSeniorFemale += parseInt(fdataConsSeniorFemale[i]);
+            }
+            for (var i = 0; i < fdataConsCollegeMale.length; i++) {
+              SdataConsCollegeMale += parseInt(fdataConsCollegeMale[i]);
+            }
+            for (var i = 0; i < fdataConsCollegeFemale.length; i++) {
+              SdataConsCollegeFemale += parseInt(fdataConsCollegeFemale[i]);
+            }
+            for (var i = 0; i < fdataConsGradMale.length; i++) {
+              SdataConsGradMale += Number(fdataConsGradMale[i]);
+            }
+            for (var i = 0; i < fdataConsGradFemale.length; i++) {
+              SdataConsGradFemale += parseInt(fdataConsGradFemale[i]);
+            }
+            for (var i = 0; i < fdataFUElemMale.length; i++) {
+              SdataFUElemMale += parseInt(fdataFUElemMale[i]);
+            }
+            for (var i = 0; i < fdataFUElemFemale.length; i++) {
+              SdataFUElemFemale += parseInt(fdataFUElemFemale[i]);
+            }
+            for (var i = 0; i < fdataFUJuniorMale.length; i++) {
+              SdataFUJuniorMale += parseInt(fdataFUJuniorMale[i]);
+            }
+            for (var i = 0; i < fdataFUJuniorFemale.length; i++) {
+              SdataFUJuniorFemale += parseInt(fdataFUJuniorFemale[i]);
+            }
+            for (var i = 0; i < fdataFUSeniorMale.length; i++) {
+              SdataFUSeniorMale += parseInt(fdataFUSeniorMale[i]);
+            }
+            for (var i = 0; i < fdataFUSeniorFemale.length; i++) {
+              SdataFUSeniorFemale += parseInt(fdataFUSeniorFemale[i]);
+            }
+            for (var i = 0; i < fdataFUCollegeMale.length; i++) {
+              SdataFUCollegeMale += parseInt(fdataFUCollegeMale[i]);
+            }
+            for (var i = 0; i < fdataFUCollegeFemale.length; i++) {
+              SdataFUCollegeFemale += parseInt(fdataFUCollegeFemale[i]);
+            }
+            for (var i = 0; i < fdataFUGradMale.length; i++) {
+              SdataFUGradMale += parseInt(fdataFUGradMale[i]);
+            }
+            for (var i = 0; i < fdataFUGradFemale.length; i++) {
+              SdataFUGradFemale += parseInt(fdataFUGradFemale[i]);
+            }
 
+
+            for (var i = 0; i < fdataMCElemMale.length; i++) {
+              SdataMCElemMale += parseInt(fdataMCElemMale[i]);
+            }
+            for (var i = 0; i < fdataMCElemFemale.length; i++) {
+              SdataMCElemFemale += parseInt(fdataMCElemFemale[i]);
+            }
+            for (var i = 0; i < fdataMCJuniorMale.length; i++) {
+              SdataMCJuniorMale += parseInt(fdataMCJuniorMale[i]);
+            }
+            for (var i = 0; i < fdataMCJuniorFemale.length; i++) {
+              SdataMCJuniorFemale += parseInt(fdataMCJuniorFemale[i]);
+            }
+            for (var i = 0; i < fdataMCSeniorMale.length; i++) {
+              SdataMCSeniorMale += parseInt(fdataMCSeniorMale[i]);
+            }
+            for (var i = 0; i < fdataMCSeniorFemale.length; i++) {
+              SdataMCSeniorFemale += parseInt(fdataMCSeniorFemale[i]);
+            }
+            for (var i = 0; i < fdataMCCollegeMale.length; i++) {
+              SdataMCCollegeMale += parseInt(fdataMCCollegeMale[i]);
+            }
+            for (var i = 0; i < fdataMCCollegeFemale.length; i++) {
+              SdataMCCollegeFemale += parseInt(fdataMCCollegeFemale[i]);
+            }
+            for (var i = 0; i < fdataMCGradMale.length; i++) {
+              SdataMCGradMale += parseInt(fdataMCGradMale[i]);
+            }
+            for (var i = 0; i < fdataMCGradFemale.length; i++) {
+              SdataMCGradFemale += parseInt(fdataMCGradFemale[i]);
+            }
+
+
+            alert(summale);
             //alert(sumgrad);
             //Pass data to be used in the pie charts
             //This is only temporary
@@ -1190,15 +1420,6 @@
             localStorage.setItem("sum4", sumcollege);
             localStorage.setItem("sum5", sumgrad);
 
-            localStorage.setItem("sumdataPMMale", sumdataPMMale);
-            localStorage.setItem("sumdataPMFemale", sumdataPMFemale);
-            localStorage.setItem("sumdataConsMale", sumdataConsMale);
-            localStorage.setItem("sumdataConsFemale", sumdataConsFemale);
-            localStorage.setItem("sumdataFUMale", sumdataFUMale);
-            localStorage.setItem("sumdataFUFemale", sumdataFUFemale);
-            localStorage.setItem("sumdataMCMale", sumdataMCMale);
-            localStorage.setItem("sumdataMCFemale", sumdataMCFemale);
-
             localStorage.setItem("SdataPMElemMale", SdataPMElemMale);
             localStorage.setItem("SdataPMElemFemale", SdataPMElemFemale);
             localStorage.setItem("SdataPMJuniorMale", SdataPMJuniorMale);
@@ -1209,6 +1430,41 @@
             localStorage.setItem("SdataPMCollegeFemale", SdataPMCollegeFemale);
             localStorage.setItem("SdataPMGradMale", SdataPMGradMale);
             localStorage.setItem("SdataPMGradFemale", SdataPMGradFemale);
+
+            localStorage.setItem("SdataConsElemMale", SdataConsElemMale);
+            localStorage.setItem("SdataConsElemFemale", SdataConsElemFemale);
+            localStorage.setItem("SdataConsJuniorMale", SdataConsJuniorMale);
+            localStorage.setItem("SdataConsJuniorFemale", SdataConsJuniorFemale);
+            localStorage.setItem("SdataConsSeniorMale", SdataConsSeniorMale);
+            localStorage.setItem("SdataConsSeniorFemale", SdataConsSeniorFemale);
+            localStorage.setItem("SdataConsCollegeMale", SdataConsCollegeMale);
+            localStorage.setItem("SdataConsCollegeFemale", SdataConsCollegeFemale);
+            localStorage.setItem("SdataConsGradMale", SdataConsGradMale);
+            localStorage.setItem("SdataConsGradFemale", SdataConsGradFemale);
+
+            //alert(SdataConsJuniorMale)
+
+            localStorage.setItem("SdataFUElemMale", SdataFUElemMale);
+            localStorage.setItem("SdataFUElemFemale", SdataFUElemFemale);
+            localStorage.setItem("SdataFUJuniorMale", SdataFUJuniorMale);
+            localStorage.setItem("SdataFUJuniorFemale", SdataFUJuniorFemale);
+            localStorage.setItem("SdataFUSeniorMale", SdataFUSeniorMale);
+            localStorage.setItem("SdataFUSeniorFemale", SdataFUSeniorFemale);
+            localStorage.setItem("SdataFUCollegeMale", SdataFUCollegeMale);
+            localStorage.setItem("SdataFUCollegeFemale", SdataFUCollegeFemale);
+            localStorage.setItem("SdataFUGradMale", SdataFUGradMale);
+            localStorage.setItem("SdataFUGradFemale", SdataFUGradFemale);
+
+            localStorage.setItem("SdataMCElemMale", SdataMCElemMale);
+            localStorage.setItem("SdataMCElemFemale", SdataMCElemFemale);
+            localStorage.setItem("SdataMCJuniorMale", SdataMCJuniorMale);
+            localStorage.setItem("SdataMCJuniorFemale", SdataMCJuniorFemale);
+            localStorage.setItem("SdataMCSeniorMale", SdataMCSeniorMale);
+            localStorage.setItem("SdataMCSeniorFemale", SdataMCSeniorFemale);
+            localStorage.setItem("SdataMCCollegeMale", SdataMCCollegeMale);
+            localStorage.setItem("SdataMCCollegeFemale", SdataMCCollegeFemale);
+            localStorage.setItem("SdataMCGradMale", SdataMCGradMale);
+            localStorage.setItem("SdataMCGradFemale", SdataMCGradFemale);
 
           
             // Set the new data for each card
@@ -1325,13 +1581,13 @@
             });
           }
 
-          window.onload = function() {
+          /*window.onload = function() {
             changeLink();
             updateChart();
             updateMaleFemalePieChart();
             updateStudentCategoryPieChart();
             updateSummaryTable();
-          };
+          };*/
           
           //Code for echart ends here
 

@@ -348,69 +348,7 @@
         </script>  
     </head>
     <body>
-    <nav class="navbar navbar-expand navbar-light bg-light">
-        <li class="nav-item userFN">
-        <span id="userFullname"><b><?php echo ucwords($_SESSION['homePosDisp']) . " ";
-        $tempNAME = strtolower($_SESSION['fullname']);
-        echo ucwords($tempNAME); 
-        ?></b></span>
-        </li>
-        <div class="mr-auto"></div>
-        <ul class="navbar-nav">
-            <li class="nav-item mx-1">
-            <a class="nav-link" href="Homepage/index.php">Home</a>
-            </li>
-            <li class="nav-item mx-1 " id="userlistID">
-            <a class="nav-link admin-nav" href="userList.php?type=checkRecords">User List</a>
-            </li>
-            <li class="nav-item dropdown mx-1">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-display="static" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Records
-            </a>
-            <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="Student/index.php?type=checkRecords">Student Records</a>
-                <a class="dropdown-item" href="Consultation/index.php?type=checkRecords">Consultation Records</a>
-                <!-- <a class="dropdown-item" href="Followup/index.php?type=checkRecords">Follow-up Consultation</a> -->
-                <a class="dropdown-item" href="MedicalCertificate/index.php?type=checkMC">Medical Certificate</a>
-            </div>
-            </li>
-            <li class="nav-item dropdown mx-1 admin-nav" id="archivedID">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-display="static" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Archived Records
-            </a>
-            <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="Student/index.php?type=checkArchivedStudent">Archived Student Records</a>
-                <a class="dropdown-item" href="Consultation/index.php?type=checkArchivedConsultation">Archived Consultation Records</a>
-                <a class="dropdown-item" href="Followup/index.php?type=checkArchivedFollowUp">Archived Follow-up Records</a>
-                <a class="dropdown-item" href="MedicalCertificate/index.php?type=checkArchivedMC">Archived Medical Certificates</a>
-                <a class="dropdown-item" href="userList.php?type=checkArchivedStaff">Archived Staff Accounts</a>
-                <a class="dropdown-item" href="logs.php?type=checkArchivedLogs">Archived System Logs</a>
-            </div>
-            </li>
-            <li class="nav-item dropdown mx-1 admin-nav active" id="maintenanceID">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-display="static" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Maintenance
-            </a>
-            <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="logs.php?type=checkRecords">Logs</a>
-                <a class="dropdown-item" href="degreeList.php">Degree List</a>
-                <a class="dropdown-item" href="vaccineList.php">Vaccine List</a>
-                <a class="dropdown-item" href="backup.php">Backup</a>
-                <a class="dropdown-item" href="restore.php">Restore</a>
-            </div>
-            </li>
-            <li class="nav-item mx-1">
-            <a class="nav-link" href="help.php?type=<?php echo $_SESSION['accesslevel']; ?>">Help</a>
-            </li>
-            <li class="nav-item mx-1">
-            <a class="nav-link" href="#" onclick="logout()">Logout</a>
-            </li>
-
-        </ul>
-
-   
-  </nav>     
-
+    <?php include '../includes/navbar.php'; ?> 
         <div class="modal fade" id="VaccineNewModal" tabindex="-1" role="dialog" aria-labelledby="VaccineNewModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
             <div class="modal-content">
