@@ -298,6 +298,38 @@
       
     </div>
 
+    <div class="row col-md-12" id="PieCharts">
+      <legend class="text-center">Summary per Staff</legend>
+      <table class="table table-striped table-bordered text-center" id="table-summary">
+          <thead>
+            <tr>
+              <th rowspan="2">Staff Name</th>
+              <th colspan="2">Student Info</th>
+              <th colspan="2">Consultation</th>
+              <th colspan="2">Follow-up</th>
+              <th colspan="2">Medical Certificate</th>
+              <th rowspan="2">Total</th>
+            </tr>
+
+            <tr>
+              <th>Male</th>
+              <th>Female</th>
+              <th>Male</th>
+              <th>Female</th>
+              <th>Male</th>
+              <th>Female</th>
+              <th>Male</th>
+              <th>Female</th>
+            </tr>
+            
+          </thead>
+          <tbody id="tblSummaryStaffBody">
+            
+          </tbody>
+      </table>
+      
+    </div>
+
   </div>
 
                <script> 
@@ -1408,8 +1440,7 @@
             }
 
 
-            alert(summale);
-            //alert(sumgrad);
+            
             //Pass data to be used in the pie charts
             //This is only temporary
             localStorage.setItem("PieChartMale", summale);
