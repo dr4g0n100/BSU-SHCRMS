@@ -398,7 +398,7 @@ require '../php/centralConnection.php';
                         if ($_GET["type"] == "checkMCId"){
                             echo "
                             <div>
-                            <a id='backButton' class='btn btn-primary' href='index.php?type=checkMC' role='button'>Go Back</a>
+                            <a id='backButton' class='btn btn-primary' href='indexMC.php?type=checkMC' role='button'>Go Back</a>
                             </div>";
                         }
                     ?>

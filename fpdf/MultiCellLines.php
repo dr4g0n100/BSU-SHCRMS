@@ -1,11 +1,12 @@
 <?PHP
+include "fpdf.php";
 /** Extensions to FPDF */
 
 $ActMultiform=null;		// Bad bad bad bad Global variable to our fpdf thingy
 
-class PDF extends FPDF
+class ModifiedPDF extends FPDF
 	{
-	function Header()
+	/*function Header()
 		{
 		Global $ActMultiform;
 		$ActMultiform->Header();	// Your favorite function to create header stuff
@@ -15,7 +16,7 @@ class PDF extends FPDF
 		{
 		Global $ActMultiform;
 		$ActMultiform->Footer();	// Your favorite header to create the bottom lines
-		}
+		}*/
 
 	/**
 	 * Pretty much copy of original MultiCell. But won't output anything, just return number of lines.

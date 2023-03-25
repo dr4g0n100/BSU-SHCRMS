@@ -87,7 +87,7 @@
       </div>
       <div id="form_right">
         <img id="bsuUHS-logo" src="../images/BSU-UHSLogo.png" alt="BSU-UHS Logo">
-        <img id="bsu-logo" src="../images/BSU-Logo.png" alt="BSU Logo">
+        <img id="bsu-logo" src="../images/BSULogo.png" alt="BSU Logo">
       </div>
     </div>
     <script src="../js/script-tab.js"></script>

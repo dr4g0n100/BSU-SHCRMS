@@ -33,5 +33,7 @@
 <script src="../dist/chart.js"></script>
 <script src="../dist/echarts.min.js"></script>
 
+<script src="../dist/fontawsome.js"></script>
+
 
 

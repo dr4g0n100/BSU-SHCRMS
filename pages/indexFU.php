@@ -187,13 +187,13 @@ require '../php/centralConnection.php';
                 alert('User has been logged out. Please login again');
 
                 $.ajax({
-                    url:"../../php/logout.php",
+                    url:"../php/logout.php",
                     method:"POST",
                     data:"",
                     success:function(xml){
                         // sessionStorage.clear();
                         setTimeout(function(){
-                            window.location.href = '../../index.html';
+                            window.location.href = '../index.html';
                         }, 100);
                     }
                   })

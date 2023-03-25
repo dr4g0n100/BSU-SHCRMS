@@ -1,11 +1,11 @@
-<?php require_once "../../php/controllerUserData.php"; ?>
+<?php require_once "../php/controllerUserData.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Forgot Password</title>
-    <link rel="stylesheet" href="../../dist/bootstrap.min.css">
-    <link rel = "icon" href = "../../images/BSU-Logo.webp" type = "image/x-icon">
+    <link rel="stylesheet" href="../dist/bootstrap.min.css">
+    <link rel = "icon" href = "../images/BSU-Logo.webp" type = "image/x-icon">
 <!--     <link rel="stylesheet" href="../css/style.css"> -->
 </head>
 <body>

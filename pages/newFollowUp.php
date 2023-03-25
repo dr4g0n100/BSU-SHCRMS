@@ -1354,7 +1354,7 @@ $userdate = date('Y-m-d H:i:s');
                                 }}});
 
                                 setTimeout(function(){
-                                    window.location="../indexFU.php?type=checkRecords";
+                                    window.location="indexFU.php?type=checkRecords";
                                 }, 2000);
                             }
 

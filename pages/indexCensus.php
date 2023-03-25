@@ -2,7 +2,7 @@
     include "../php/centralConnection.php";
     session_start();
     if(empty($_SESSION['logged_in'])){
-        header('Location: ../../index.html');
+        header('Location: ../index.html');
     } 
 
     $query = mysqli_query($connect, "SELECT * FROM USERACCOUNTS");
@@ -213,7 +213,7 @@
     
     <div id="date-filter">
       <label for="dateRange" id="dateRangelbl" style="font-size: 17.5px;">Select Date Range:</label>
-      <select id="dateRange" onchange="if(this.value !== 'custom') { changeLink(); updateChart(); updateMaleFemalePieChart(); updateStudentCategoryPieChart(); updateSummaryTable(); }">
+      <select id="dateRange" onchange="if(this.value !== 'custom') { changeLink(); updateChart(); updateSumStaffTbl(); updateMaleFemalePieChart(); updateStudentCategoryPieChart(); updateSummaryTable(); }">
         <option value="today" selected>Today</option>
         <option value="yesterday">Yesterday</option>
         <option value="last7days">Last 7 Days</option>
@@ -557,9 +557,6 @@
             tblData.push('Total', malePMSum, femalePMSum, maleConsSum, femaleConsSum, maleFUSum, femaleFUSum, maleMCSum, femaleMCSum, grandtotal);
             loadTableData(tblData, 'tblSummaryBody');
 
-            console.log(malePMSum);
-
-            
           }
 
           //Javascript for the pie chart of student category
@@ -639,6 +636,7 @@
             var eDate = document.getElementById('end-date').value;
             //updateCustomChart(sDate, eDate);
             updateChart();
+            updateSumStaffTbl();
             updateMaleFemalePieChart();
             updateStudentCategoryPieChart();
             updateSummaryTable();
@@ -922,6 +920,7 @@
 
                       changeLink();
                       updateChart();
+                      updateSumStaffTbl();
                       updateMaleFemalePieChart(); 
                       updateStudentCategoryPieChart();
                       updateSummaryTable();
@@ -1097,6 +1096,172 @@
             
              
           }
+
+          function updateSumStaffTbl(){
+
+                    // get the selected filter value
+                    var selectedFilter = document.getElementById('dateRange').value;
+
+                    // set the start and end date based on the selected filter value
+                    switch (selectedFilter) {
+                      case 'today':
+                        startDate = new Date();
+                        endDate = new Date();
+                        break;
+                      case 'yesterday':
+                        startDate = new Date();
+                        startDate.setDate(startDate.getDate() - 1);
+                        endDate = new Date();
+                        endDate.setDate(endDate.getDate() - 1);
+                        break;
+                      case 'last7days':
+                        startDate = new Date();
+                        startDate.setDate(startDate.getDate() - 6);
+                        endDate = new Date();
+                        break;
+                      case 'last30days':
+                        startDate = new Date();
+                        startDate.setDate(startDate.getDate() - 29);
+                        endDate = new Date();
+                        break;
+                      case 'thismonth':
+                        startDate = new Date();
+                        startDate.setDate(1);
+                        endDate = new Date();
+                        break;
+                      case 'lastmonth':
+                        startDate = new Date();
+                        startDate.setMonth(startDate.getMonth() - 1);
+                        startDate.setDate(1);
+                        endDate = new Date();
+                        endDate.setDate(0);
+                        break;
+                      case 'custom':
+                        // get the start and end date from the user input
+                        startDate = new Date(document.getElementById('start-date').value);
+                        endDate = new Date(document.getElementById('end-date').value);
+                        break;
+                    }
+
+                    startDate = startDate.toISOString();
+                    endDate = endDate.toISOString();
+
+                    var form_data = new FormData();
+                    form_data.append("startDate", startDate);
+                    form_data.append("endDate", endDate);
+
+                    $.ajax(
+                    { 
+                        url:"../php/Homepage/FetchSummaryCount.php",
+                        method:"POST",
+                        data:form_data, 
+                        contentType: false,
+                        processData: false,
+                        cache: false,
+                        dataType: "xml",
+                        success:function(xml)
+                        {
+                            $(xml).find('output').each(function()
+                            {
+                                var message = $(this).attr('Message');
+                                var error = $(this).attr('Error');
+                                var Staffs = $(this).attr('Staffs');
+                                var CountPMMale = $(this).attr('CountPMMale');
+                                var CountPMFemale = $(this).attr('CountPMFemale');
+                                var CountConsMale = $(this).attr('CountConsMale');
+                                var CountConsFemale = $(this).attr('CountConsFemale');
+                                var CountFUMale = $(this).attr('CountFUMale');
+                                var CountFUFemale = $(this).attr('CountFUFemale');
+                                var CountMCMale = $(this).attr('CountMCMale');
+                                var CountMCFemale = $(this).attr('CountMCFemale');
+
+                                $("#tblSummaryStaffBody tr").remove();
+
+                                const StaffsArr = Staffs.split("-");
+                                const SCountPMMaleArr = CountPMMale.split("-");
+                                const SCountPMFemaleArr = CountPMFemale.split("-");
+                                const SCountConsMaleArr = CountConsMale.split("-");
+                                const SCountConsFemaleArr = CountConsFemale.split("-");
+                                const SCountFUMaleArr = CountFUMale.split("-");
+                                const SCountFUFemaleArr = CountFUFemale.split("-");
+                                const SCountMCMaleArr = CountMCMale.split("-");
+                                const SCountMCFemaleArr = CountMCFemale.split("-");
+
+                                var CountPMMaleArr = SCountPMMaleArr.map(Number);
+                                var CountPMFemaleArr = SCountPMFemaleArr.map(Number);
+                                var CountConsMaleArr = SCountConsMaleArr.map(Number);
+                                var CountConsFemaleArr = SCountConsFemaleArr.map(Number);
+                                var CountFUMaleArr = SCountFUMaleArr.map(Number);
+                                var CountFUFemaleArr = SCountFUFemaleArr.map(Number);
+                                var CountMCMaleArr = SCountMCMaleArr.map(Number);
+                                var CountMCFemaleArr = SCountMCFemaleArr.map(Number);
+
+                                var PMMaleSum = 0;
+                                var PMFemaleSum = 0;
+                                var ConsMaleSum = 0;
+                                var ConsFemaleSum = 0;
+                                var FUMaleSum = 0;
+                                var FUFemaleSum = 0;
+                                var MCMaleSum = 0;
+                                var MCFemaleSum = 0;
+
+                                for (var i = 0; i < StaffsArr.length; i++) {
+                                  var tblStaffSum = [];
+                                  PMMaleSum += CountPMMaleArr[i];
+                                  PMFemaleSum += CountPMFemaleArr[i];
+                                  ConsMaleSum += CountConsMaleArr[i];
+                                  ConsFemaleSum += CountConsFemaleArr[i];
+                                  FUMaleSum += CountFUMaleArr[i];
+                                  FUFemaleSum += CountFUFemaleArr[i];
+                                  MCMaleSum += CountMCMaleArr[i];
+                                  MCFemaleSum += CountMCFemaleArr[i];
+                                  tblStaffSum.push(StaffsArr[i],CountPMMaleArr[i],CountPMFemaleArr[i],CountConsMaleArr[i],CountConsFemaleArr[i],CountFUMaleArr[i],CountFUFemaleArr[i],CountMCMaleArr[i],CountMCFemaleArr[i]);
+                                  var tblStaffSumNum = tblStaffSum.map(Number);
+                                  
+                                  var totalSum = 0;
+                                  for(var j = 0; j < tblStaffSumNum.length; j++){
+                                    if(j > 0){
+                                      totalSum += tblStaffSumNum[j];
+                                    }
+                                  }
+                                  tblStaffSum.push(totalSum);
+                                  loadTableData(tblStaffSum, 'tblSummaryStaffBody');
+                                }
+
+                                var tblStaffSum = [];
+                                tblStaffSum.push("Total",PMMaleSum,PMFemaleSum,ConsMaleSum,ConsFemaleSum,FUMaleSum,FUFemaleSum,MCMaleSum,MCFemaleSum);
+
+                                var totalSum = 0;
+                                for(var j = 0; j < tblStaffSum.length; j++){
+                                  if(j > 0){
+                                    totalSum += tblStaffSum[j];
+                                  }
+                                }
+                                tblStaffSum.push(totalSum);
+                                loadTableData(tblStaffSum, 'tblSummaryStaffBody');
+
+
+                            });
+                        },  
+                        error: function (e)
+                        {
+                            //Display Alert Box
+                            $.alert(
+                            {theme: 'modern',
+                            content:'Failed to fetch information due to error',
+                            title:'', 
+                            useBootstrap: false,
+                            buttons:{
+                                Ok:{
+                                text:'Ok',
+                                btnClass: 'btn-red'
+                            }}});
+                        }
+                    });
+                
+
+                
+            }
 
           function updateChart() {
 

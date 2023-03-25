@@ -72,15 +72,6 @@
                   })
             }
 
-            function openManual(){
-                if(globalAL == "admin"){
-                    window.open("../files/ManualAdmin.pdf");
-                }else if(globalAL == "superadmin"){
-                    window.open("../files/ManualSuperadmin.pdf");
-                }else{
-                    window.open("../files/ManualStandard.pdf");                }
-            }
-
             function userViewRecord(StaffID){
                 act = "Checked Staff ID:" +StaffID +" Information."
                 logAction(act);

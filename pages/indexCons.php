@@ -67,13 +67,13 @@ require '../php/centralConnection.php';
                 act = "Logged out";
                 logAction(act);
                   $.ajax({
-                    url:"../../php/logout.php",
+                    url:"../php/logout.php",
                     method:"POST",
                     data:"",
                     success:function(xml){
                         // sessionStorage.clear();
                         setTimeout(function(){
-                            window.location.href = '../../index.html';
+                            window.location.href = '../index.html';
                         }, 100);
                     }
                   })
@@ -97,7 +97,7 @@ require '../php/centralConnection.php';
             function logAction(userAction){
                 act = userAction;
                 $.ajax({
-                    url:"../../php/logAction.php",
+                    url:"../php/logAction.php",
                     method:"POST",
                     data:jQuery.param({ action: act, isSuccess:"1" }),
                     dataType: "xml",
@@ -186,7 +186,7 @@ require '../php/centralConnection.php';
                 alert('User has been logged out. Please login again');
 
                 $.ajax({
-                    url:"../../php/logout.php",
+                    url:"../php/logout.php",
                     method:"POST",
                     data:"",
                     success:function(xml){

@@ -1,9 +1,9 @@
 <?php
 //call the FPDF library
-require_once('../fpdf/fpdf.php');
+//require_once('../fpdf/fpdf.php');
 require_once 'Database.php';
 require_once '../php/centralConnection.php';
-require('../fpdf/mem_image.php');
+include('../fpdf/modified.php');
 
 date_default_timezone_set('Asia/Manila');
 
@@ -39,7 +39,7 @@ $Message = '';
       $Error = "1";    
     } 
 
-	    $XMLData = '';	
+	  $XMLData = '';	
 		$XMLData .= ' <output ';
 		$XMLData .= ' Message = ' . '"'.$Message.'"'; 
 		$XMLData .= ' />';
@@ -89,9 +89,8 @@ $Message = '';
 
             //writable horizontal : 219-(10*2)=189mm
 						//create pdf object
-						$pdf = new FPDF('P','mm','Legal');
+						$pdf = new modifiedFPDF('P','mm','Legal');
 
-						$pdf = new PDF_MemImage();
 						//add new page
 						$pdf->AddPage('P', [215.9, 330.2]);
 						$pdf->SetAutoPageBreak(true,1); //123123123
@@ -551,10 +550,15 @@ $Message = '';
 							$pdf->Ln($spacing);
 							$pdf->SetX($X);
 
-							$lines = preg_split('/\n/',$Complaints);
+							/*$lines = preg_split('/\n/',$Complaints);
 							$ComplaintsHeight = count($lines) * 5; 
 							$lines = preg_split('/\n/',$MedicineGiven);
-							$MedicineGivenHeight = count($lines) * 5; 
+							$MedicineGivenHeight = count($lines) * 5; */
+
+							$TextLines = $pdf->NbLines(100,$Complaints);
+							$ComplaintsHeight = $TextLines;
+							$TextLines = $pdf->NbLines(55,$MedicineGiven);
+							$MedicineGivenHeight = $TextLines;
 
 							$pdf->SetFont($font,'',$fontSize);
 							$pdf->MultiCells(100 ,5,$Complaints,0);
@@ -582,10 +586,14 @@ $Message = '';
 							$pdf->Ln($spacing);
 							$pdf->SetX($X);
 
-							$lines = preg_split('/\n/',$PhysicalFindings);
+							/*$lines = preg_split('/\n/',$PhysicalFindings);
 							$PhysicalFindingsHeight = count($lines) * 5; 
 							$lines = preg_split('/\n/',$Remarks);
-							$RemarksHeight = count($lines) * 5; 
+							$RemarksHeight = count($lines) * 5; */
+							$TextLines = $pdf->NbLines(100,$PhysicalFindings);
+							$PhysicalFindingsHeight = $TextLines;
+							$TextLines = $pdf->NbLines(55,$Remarks);
+							$RemarksHeight = $TextLines;
 
 							$pdf->SetFont($font,'',$fontSize);
 							$pdf->MultiCells(100 ,5,$PhysicalFindings,0,0);
@@ -821,10 +829,14 @@ $Message = '';
 										$pdf->Ln($spacing);
 										$pdf->SetX($X);
 
-										$lines = preg_split('/\n/',$Complaints);
+										/*$lines = preg_split('/\n/',$Complaints);
 										$ComplaintsHeight = count($lines) * 5; 
 										$lines = preg_split('/\n/',$Treatment);
-										$TreatmentHeight = count($lines) * 5; 
+										$TreatmentHeight = count($lines) * 5; */
+										$TextLines = $pdf->NbLines(100,$Complaints);
+										$ComplaintsHeight = $TextLines*5;
+										$TextLines = $pdf->NbLines(55,$Treatment);
+										$TreatmentHeight = $TextLines*5;
 
 										$pdf->SetFont($font,'',$fontSize);
 										$pdf->MultiCells(100 ,5,$Complaints,0);
@@ -852,10 +864,14 @@ $Message = '';
 										$pdf->Ln($spacing);
 										$pdf->SetX($X);
 
-										$lines = preg_split('/\n/',$PhysicalFindings);
+										/*$lines = preg_split('/\n/',$PhysicalFindings);
 										$PhysicalFindingsHeight = count($lines) * 5; 
 										$lines = preg_split('/\n/',$MedicineGiven);
-										$MedicineGivenHeight = count($lines) * 5; 
+										$MedicineGivenHeight = count($lines) * 5;*/ 
+										$TextLines = $pdf->NbLines(100,$PhysicalFindings);
+										$PhysicalFindingsHeight = $TextLines*5;
+										$TextLines = $pdf->NbLines(55,$MedicineGiven);
+										$MedicineGivenHeight = $TextLines*5;
 
 										$pdf->SetFont($font,'',$fontSize);
 										$pdf->MultiCells(100 ,5,$PhysicalFindings,0,0);
@@ -883,10 +899,14 @@ $Message = '';
 										$pdf->Ln($spacing);
 										$pdf->SetX($X);
 
-										$lines = preg_split('/\n/',$Diagnosis);
+										/*$lines = preg_split('/\n/',$Diagnosis);
 										$DiagnosisHeight = count($lines) * 5; 
 										$lines = preg_split('/\n/',$Remarks);
-										$RemarksHeight = count($lines) * 5;
+										$RemarksHeight = count($lines) * 5;*/
+										$TextLines = $pdf->NbLines(100,$Diagnosis);
+										$DiagnosisHeight = $TextLines*5;
+										$TextLines = $pdf->NbLines(55,$Remarks);
+										$RemarksHeight = $TextLines*5;
 
 										$pdf->SetFont($font,'',$fontSize);
 										$pdf->MultiCells(100 ,5,$Diagnosis,0,0);
