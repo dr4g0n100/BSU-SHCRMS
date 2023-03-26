@@ -297,10 +297,6 @@ require '../php/centralConnection.php';
              function editTableNav(y){
                 if(y == "checkArchived"){
                     document.getElementById('tab1').innerHTML = '&bull;&nbsp;Archived User Information&nbsp;&bull;';
-                    document.getElementById('userlistID').classList.remove('active');
-                    document.getElementById('archivedID').classList.add('active');
-                    document.getElementById('maint').classList.add("active");
-                    document.getElementById('maint').style.color = "white";
                 }else{
                     document.getElementById('tab1').innerHTML = '&bull;&nbsp;User Information&nbsp;&bull;';
                 }

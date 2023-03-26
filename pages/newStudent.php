@@ -995,18 +995,9 @@ $resultGrad = mysqli_query($connect, $queryGrad);
                 $('#TGPCategory2').val('');
             }
 
-            
-
-            function editTableNav(y){
-                if(y == "checkArchived"){
-                    document.getElementById('studentID').classList.remove('active');
-                    document.getElementById('archivedID').classList.add('active');
-                    document.getElementById('maint').classList.add("active");
-                    document.getElementById('maint').style.color = "white";
-                }
-            }
 
             function setAttr(){
+                document.getElementById("TxtDocumentCode").setAttribute('readonly','readonly');
                 document.getElementById("TxtRevisionNumber").setAttribute('readonly','readonly');
                 document.getElementById("TxtEffectivity").setAttribute('readonly','readonly');
                 document.getElementById("TxtNoLabel").setAttribute('readonly','readonly');
@@ -1161,6 +1152,7 @@ $resultGrad = mysqli_query($connect, $queryGrad);
             }
 
             function removeAttr(){
+                document.getElementById("TxtDocumentCode").removeAttribute("readonly");
                 document.getElementById("TxtRevisionNumber").removeAttribute("readonly");
                 document.getElementById("TxtEffectivity").removeAttribute("readonly");
                 document.getElementById("TxtNoLabel").removeAttribute("readonly");
@@ -1501,6 +1493,7 @@ $resultGrad = mysqli_query($connect, $queryGrad);
             function disableEditing(){
                 
                 setAttr();
+                document.getElementById('TxtDocumentCode').style.backgroundColor = "transparent";
                 document.getElementById('TxtRevisionNumber').style.backgroundColor = "transparent"; 
                 document.getElementById('TxtEffectivity').style.backgroundColor = "transparent"; 
                 document.getElementById('TxtNoLabel').style.backgroundColor = "transparent"; 
@@ -1610,6 +1603,7 @@ $resultGrad = mysqli_query($connect, $queryGrad);
 
             function enableEditing(type){
                 removeAttr();
+                document.getElementById('TxtDocumentCode').style.backgroundColor = "white";
                 document.getElementById('TxtRevisionNumber').style.backgroundColor = "white"; 
                 document.getElementById('TxtEffectivity').style.backgroundColor = "white"; 
                 document.getElementById('TxtNoLabel').style.backgroundColor = "white"; 
@@ -5228,7 +5222,6 @@ $resultGrad = mysqli_query($connect, $queryGrad);
 
     echo "<script type='text/javascript'>
         globalAL = '$tempo';
-        editTableNav('$tempor');
     </script>";
 
 

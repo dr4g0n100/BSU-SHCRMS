@@ -82,10 +82,6 @@ require '../php/centralConnection.php';
             function editTableNav(y,name){
                 if(y == "checkArchived"){
                     document.getElementById('tab1').innerHTML = '&bull;&nbsp;Archived Consultation History&nbsp;&bull;';
-                    document.getElementById('consultationID').classList.remove('active');
-                    document.getElementById('archivedID').classList.add('active');
-                    document.getElementById('maint').classList.add("active");
-                    document.getElementById('maint').style.color = "white";
                 }else if(y == "checkRecords"){
                     document.getElementById('tab1').innerHTML = '&bull;&nbsp;Consultation Summary&nbsp;&bull;';
                 }else if(y == "checkRecordsId"){

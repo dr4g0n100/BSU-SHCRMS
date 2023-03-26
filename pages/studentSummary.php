@@ -96,21 +96,33 @@
                   })
                 }
             
-            var StudentInfoTable = $('#student_info').DataTable({ });
+            var StudentInfoTable = $('#student_info').DataTable({
+                "oLanguage": {
+                "sSearch": "Filter results:"
+                }        
+            });
 
             var StudentInfoLength = StudentInfoTable.page.info().recordsTotal;
 
             /*var span = document.getElementById("StudentInfoSpan");
             span.textContent = "Total Number of Record/s: " + StudentInfoLength.toString();*/
 
-            var ConsTable = $('#cons_info').DataTable({ });
+            var ConsTable = $('#cons_info').DataTable({
+                "oLanguage": {
+                "sSearch": "Filter results:"
+                }  
+            });
 
             var ConsLength = ConsTable.page.info().recordsTotal;
 
             /*var span = document.getElementById("ConsSpan");
             span.textContent = "Total Number of Record/s: " + ConsLength.toString();*/
 
-            var MCTable = $('#mc_info').DataTable({ });
+            var MCTable = $('#mc_info').DataTable({ 
+                "oLanguage": {
+                "sSearch": "Filter results:"
+                }  
+            });
 
             var StudentInfoLength = MCTable.page.info().recordsTotal;
 

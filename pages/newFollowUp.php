@@ -561,10 +561,6 @@ $userdate = date('Y-m-d H:i:s');
             function editTableNav(y){
                 if(y == "checkArchived"){
                     document.getElementById('tab1').innerHTML = '&bull;&nbsp;Archived Consultation&nbsp;&bull;';
-                    document.getElementById('consultationID').classList.remove('active');
-                    document.getElementById('archivedID').classList.add('active');
-                    document.getElementById('maint').classList.add("active");
-                    document.getElementById('maint').style.color = "white";
                 }else{
                     document.getElementById('tab1').innerHTML = '&bull;&nbsp;Consultation&nbsp;&bull;';
                 }

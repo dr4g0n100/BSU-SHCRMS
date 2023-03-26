@@ -85,10 +85,6 @@ require '../php/centralConnection.php';
             function editTableNav(y,name){
                 if(y == "checkArchived"){
                     document.getElementById('tab1').innerHTML = '&bull;&nbsp;Archived Follow-up Consultation&nbsp;&bull;';
-                    document.getElementById('consultationID').classList.remove('active');
-                    document.getElementById('archivedID').classList.add('active');
-                    document.getElementById('maint').classList.add("active");
-                    document.getElementById('maint').style.color = "white";
                 }else if(y == "checkRecord"){
                     document.getElementById('tab1').innerHTML = '&bull;&nbsp;Follow-up Summary&nbsp;&bull;';
                 }else if(y == "checkRecordsId"){
@@ -268,12 +264,12 @@ require '../php/centralConnection.php';
                         if ($_GET["type"] == "checkRecordsId"){
                             echo "
                             <div>
-                            <a id='backButton' class='btn btn-primary' href='index.php?type=checkRecords' role='button'>Go Back</a>
+                            <a id='backButton' class='btn btn-primary' href='indexFU.php?type=checkRecords' role='button'>Go Back</a>
                             </div>";
                         }else if ($_GET["type"] == "checkRelFU"){
                             echo "
                             <div>
-                            <a id='backButton' class='btn btn-primary' href='../Consultation/index.php?id=$id&type=checkRecordsId' role='button'>Go Back</a>
+                            <a id='backButton' class='btn btn-primary' href='indexFU.php?id=$id&type=checkRecordsId' role='button'>Go Back</a>
                             </div>";
                         }
                     ?>

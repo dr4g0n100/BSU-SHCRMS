@@ -128,15 +128,6 @@ $userdate = date('Y-m-d H:i:s');
                 document.getElementById(idnum).style.borderLeft = "solid 1px gray";  
             }
 
-            function editTableNav(y){
-                if(y == "checkArchived"){
-                    document.getElementById('consultationID').classList.remove('active');
-                    document.getElementById('archivedID').classList.add('active');
-                    document.getElementById('maint').classList.add("active");
-                    document.getElementById('maint').style.color = "white";
-                }
-            }
-
             function alphaName(event){
                 var key = event.keyCode;
                 return ((key >= 65 && key <= 90) || key == 8 || key == 32 || key == 189);
@@ -1545,10 +1536,6 @@ $userdate = date('Y-m-d H:i:s');
                         getType = 'newMC';
                       </script>";
             }
-
-            echo "<script type='text/javascript'>
-                editTableNav('$tempor');
-            </script>";
 
         
              

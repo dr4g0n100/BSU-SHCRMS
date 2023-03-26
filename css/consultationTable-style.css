@@ -79,6 +79,7 @@ td a{
 .viewBTN{
     background-color: #299F7E;
     border: 1px solid #299F7E;
+    margin-bottom: 5px;
 }
 
 .viewBTN:hover{

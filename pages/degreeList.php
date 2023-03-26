@@ -45,19 +45,7 @@
                     }
                   })
             }
-
-            function editTableNav(y){
-                if(y == "checkArchived"){
-                    document.getElementById('tab1').innerHTML = '&bull;&nbsp;ARCHIVED USER LIST&nbsp;&bull;';
-                    document.getElementById('userlistID').classList.remove('active');
-                    document.getElementById('archivedID').classList.add('active');
-                    document.getElementById('maint').classList.add("active");
-                    document.getElementById('maint').style.color = "white";
-                }else{
-                    document.getElementById('tab1').innerHTML = '&bull;&nbsp;USER LIST&nbsp;&bull;';
-                }
-            }
-
+            
             //main function for user activity logging
             function logAction(userAction){
                 act = userAction;

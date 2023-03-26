@@ -80,14 +80,8 @@
             function editTableNav(y){
                 if(y == "checkArchived"){
                     document.getElementById('tab1').innerHTML = '&bull;&nbsp;Archived System Logs&nbsp;&bull;';
-                    document.getElementById('maintenanceID').classList.remove('active');
-                    document.getElementById('archivedID').classList.add('active');
-                    document.getElementById('maint').classList.add("active");
-                    document.getElementById('maint').style.color = "white";
                 }else{
                     document.getElementById('tab1').innerHTML = '&bull;&nbsp;System Logs&nbsp;&bull;';
-                    document.getElementById('archivedID').classList.remove('active');
-                    document.getElementById('maintenanceID').classList.add('active');
                 }
             }
 
