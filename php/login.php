@@ -110,8 +110,19 @@
 
 
  
-
-              $_SESSION['homePosDisp'] = stripslashes($Row['Position']);
+              $position = stripslashes($Row['Position']);
+              if($position == 'Doctor'){
+                $position = 'Dr';
+              }else if($position == 'Nurse'){
+                $position = 'Nurse';
+              }else if($position == 'Medical Technologist'){
+                $position = 'Med Tech';
+              }else if($position == 'Administrative Aide'){
+                $position = 'Admin Aide';
+              }else if($position == 'Triage Officer'){
+                $position = 'T.O.';
+              }
+              $_SESSION['homePosDisp'] = $position;
               $_SESSION['userID'] = stripslashes($Row['IdNum']);
               $_SESSION['logged_in'] = 1;
               $_SESSION['user'] = "$TxtUserName";
@@ -119,7 +130,10 @@
               
               $First = stripslashes($Row['FirstName']);
               $_SESSION['userFirstname'] = $First;
-              $Middle = substr(stripslashes($Row['MiddleName']), 0, 1) .'.';
+              $Middle = substr(stripslashes($Row['MiddleName']), 0, 1);
+              if($Middle != ''){
+                $Middle .= '.';
+              }
               $_SESSION['userMiddlename'] = $Middle;
               $Last = stripslashes($Row['LastName']);
               $_SESSION['userLastname'] = $Last;

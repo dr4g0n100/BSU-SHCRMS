@@ -195,7 +195,10 @@ if(empty($_SESSION['logged_in'])){
                             columns: [0,1,2,3,4,5,6]
                         }  
                     },
-                  ]
+                  ],
+                "oLanguage": {
+                "sSearch": "Filter results:"
+                }
             });
             var length = table.page.info().recordsTotal;
 

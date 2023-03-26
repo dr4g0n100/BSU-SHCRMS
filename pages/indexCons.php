@@ -227,7 +227,10 @@ require '../php/centralConnection.php';
                             columns: [0,1,2,3]
                         }   
                     },
-                  ]
+                  ],
+                "oLanguage": {
+                "sSearch": "Filter results:"
+                }
             });
             var length = table.page.info().recordsTotal;
 

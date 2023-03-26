@@ -187,8 +187,9 @@
                 }
          
             var table = $('#user_data').DataTable({
-                dom: 'fltp',
-                'paging': true
+                "oLanguage": {
+                "sSearch": "Filter results:"
+                }
             });
             var length = table.page.info().recordsTotal;
 

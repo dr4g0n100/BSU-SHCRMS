@@ -227,7 +227,10 @@
                             columns: [0,1,2,3,4,5]
                         }  
                     },
-                  ]
+                  ],
+                "oLanguage": {
+                "sSearch": "Filter results:"
+                }
             });
             var length = table.page.info().recordsTotal;
 

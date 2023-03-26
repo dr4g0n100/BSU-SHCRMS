@@ -332,11 +332,11 @@ CREATE TABLE SYSTEMLOGS (
 
 ## Create DEFAULT account for admin
 INSERT INTO useraccounts (IdNum,Email,Username,Password,Status,LastName,FirstName,MiddleName,Extension,Position,Rank,ContactNum,AccStatus,AccessLevel) VALUES (
-                        '1','mejia.roejosept10@gmail.com','superadmin','LuqVpicMn4pJ','old','Mejia','Roe Josept','Lomibao','','Technologist','1','+639458149996','Active','superadmin');
+                        '1','mejia.roejosept10@gmail.com','superadmin','LuqVpicMn4pJ','old','Poltic','Florence','','','Doctor','1','+639458149996','Active','superadmin');
 
 ## Create DEFAULT account for admin
 INSERT INTO useraccounts (IdNum,Email,Username,Password,Status,LastName,FirstName,MiddleName,Extension,Position,Rank,ContactNum,AccStatus,AccessLevel) VALUES (
-                        '2','edriancadungo65@gmail.com','admin','LuqVpicMn4pJ','old','Cadungo','Edrian Joepen','Almazan','','Technologist','1','+639457148887','Active','admin');
+                        '2','edriancadungo65@gmail.com','admin','LuqVpicMn4pJ','old','Cardona-Olavidez','Jamel','','','Doctor','1','+639457148887','Active','admin');
 
 CREATE TABLE ARCHIVEDSTUDENT (
   id_num int(20) unsigned ZEROFILL auto_increment,

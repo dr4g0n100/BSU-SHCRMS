@@ -217,6 +217,9 @@
                 }
             
             var table = $('#user_data').DataTable({
+                "oLanguage": {
+                "sSearch": "Filter results:"
+                }
                 /*dom: 'fltpB',
                 buttons: [                              
                     {
