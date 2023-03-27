@@ -341,7 +341,7 @@ $userdate = date('Y-m-d H:i:s');
                                 }
 
                                 setTimeout(function(){
-                                    window.location.href = '../indexMC.php?type='+tableType;
+                                    window.location.href = 'indexMC.php?type='+tableType;
                                     }, 2000);
                             }else{
 
@@ -557,7 +557,7 @@ $userdate = date('Y-m-d H:i:s');
                                 }
 
                                 setTimeout(function(){
-                                    window.location.href = '../indexMC.php?type='+tableType;
+                                    window.location.href = 'indexMC.php?type='+tableType;
                                     }, 2000);
                             }else{
 
@@ -1083,7 +1083,7 @@ $userdate = date('Y-m-d H:i:s');
                                     logAction(Result);
 
                                     setTimeout(function(){
-                                    window.location.href = '../indexMC.php?type=checkMC';
+                                    window.location.href = 'indexMC.php?type=checkMC';
                                     }, 2000);
                             }
                             
