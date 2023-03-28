@@ -107,8 +107,7 @@ require '../php/centralConnection.php';
                 logAction(act);
             }
 
-            function userArchiveRecord(StudentID){
-                acttype = "archiveMC";
+            function userArchiveRecord(StudentID, acttype){
                 ID = StudentID;
                 var reason = '';
                 if (reason = window.prompt("Specify a reason for archiving?")){
@@ -124,7 +123,7 @@ require '../php/centralConnection.php';
                             logAction(message +" ID " +ID);
                             alert(message);
                         });
-                        window.location.href = 'index.php?type=checkMC';
+                        location.reload();
                     }
                     })
                 }else if(reason == ''){
@@ -149,7 +148,7 @@ require '../php/centralConnection.php';
                             logAction(message +" ID " +ID +"");
                             alert(message);
                         });
-                        window.location.href = 'index.php?type=checkArchivedMC';
+                        location.reload();
                         
                     }
                 })
@@ -392,12 +391,16 @@ require '../php/centralConnection.php';
     <?php include '../includes/navbar.php'; ?>  
         <div class="cont container">
             <div class="tabs">
-                <div class="tabs-head" style="display: inline-block;">
+                <div class="tabs-head" style="display: inline-flex;">
                     <?php  
                         if ($_GET["type"] == "checkMCId"){
                             echo "
                             <div>
-                            <a id='backButton' class='btn btn-light' onclick='window.history.back();' role='button'>Go Back</a>
+                            <a id='backButton' class='btn btn-light m-3 bg-transparent border-0' onclick='window.history.back();' role='button'>
+                                <svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' fill='currentColor' class='bi bi-arrow-left-circle' viewBox='0 0 16 16'>
+                                  <path fill-rule='evenodd' d='M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z'/>
+                                </svg>
+                            </a>
                             </div>";
                         }
                     ?>
@@ -535,7 +538,7 @@ require '../php/centralConnection.php';
                                         if ($type == 'checkMCId' || $type == 'checkRange'){
                                             echo "<td>
                                             <a class='viewBTN btn btn-primary btn-sm' href='newMC.php?studentID=$row[student_id]&id=$row[mc_id_num]&type=viewMC'>View</a>
-                                            <a class='viewBTN btn btn-primary btn-sm' id='archiveBTN' onclick='userArchiveRecord($row[mc_id_num])'>Archive</a>";
+                                            <a class='viewBTN btn btn-primary btn-sm' id='archiveBTN' onclick='userArchiveRecord($row[mc_id_num],\"archiveMC\")'>Archive</a>";
                                         }else if ($type == 'checkArchivedMC'){
                                             echo "<td>
                                             <a class='viewBTN btn btn-primary btn-sm' href='newMC.php?studentID=$row[student_id]&id=$row[mc_id_num]&type=viewArchivedMC'>View</a>
@@ -543,7 +546,7 @@ require '../php/centralConnection.php';
                                         }else if ($type == 'checkMC'){
                                             echo "<td>
                                             <a class='viewBTN btn btn-primary btn-sm' href='indexMC.php?type=checkMCId&id=$row[student_id]'>View All</a>
-                                            <a class='viewBTN btn btn-primary btn-sm' id='archiveBTN' onclick='userArchiveRecord($row[student_id])'>Archive All</a>";
+                                            <a class='viewBTN btn btn-primary btn-sm' id='archiveBTN' onclick='userArchiveRecord($row[student_id],\"archiveAllMC\")'>Archive All</a>";
                                         }
 
                                     echo "</td>

@@ -244,6 +244,21 @@
                 }else{
                     $Message = "Failed to archive Medical Certificate records";
                 }
+            }else if($_GET["type"] == "archiveAllMC"){
+                $id = $_GET["id"];
+
+                $sql = "UPDATE medicalcertificate SET archived_at = CURRENT_TIMESTAMP, mc_archive_reason = '$archive_reason' WHERE student_id  = '$id'";
+                $ResultUpdate = $ClinicRecordsDB->GetRows($sql);
+                $sql = "INSERT INTO archivemedcertificate SELECT * FROM medicalcertificate WHERE student_id  = '$id'";
+                $Result1 = $ClinicRecordsDB->GetRows($sql);
+                $sql = "DELETE FROM medicalcertificate WHERE student_id  = '$id'";
+                $Result2 = $ClinicRecordsDB->GetRows($sql);
+
+                if ($ResultUpdate && $Result1 && $Result2){
+                    $Message = "Successfully archived All Medical Certificate Records";
+                }else{
+                    $Message = "Failed to archive Medical Certificate records";
+                }
             }else if($_GET["type"] == "autoArchive"){
                 $interval = 2555; //7 years
                 $deleteInterval = 365; // 1year

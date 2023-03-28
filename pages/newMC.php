@@ -257,6 +257,7 @@ $userdate = date('Y-m-d H:i:s');
                 document.getElementById("TAMCDiagnosis").removeAttribute("readonly");
                 document.getElementById("TAMCRemarks1").removeAttribute("readonly");
 
+                document.getElementById('studentExaminedOn').style.backgroundColor = "white";
                 document.getElementById('TxtMCDocumentCode').style.backgroundColor = "white";
                 document.getElementById('TxtMCRevisionNumber').style.backgroundColor = "white"; 
                 document.getElementById('TxtMCEffectivity').style.backgroundColor = "white"; 

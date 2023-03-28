@@ -8,6 +8,7 @@ date_default_timezone_set('Asia/Manila');
 
 $userID = $_SESSION['userID'];
 $userFName = strtolower($_SESSION['fullname']);
+$accesslevel = $_SESSION['accesslevel'];
 $userdate = date('Y-m-d H:i:s');
  ?>
 
@@ -233,7 +234,7 @@ $userdate = date('Y-m-d H:i:s');
                                         document.getElementById('TxtPhysicalFindings').setAttribute('readonly','readonly');
 
                                         <?php
-                                        if($_SESSION['homePosDisp'] == 'Doctor'){
+                                        if($_SESSION['homePosDisp'] == 'Doctor' || $accesslevel == 'superadmin' || $accesslevel == 'admin'){
                                             echo"
                                             document.getElementById('TxtDiagnosis').setAttribute('readonly','readonly');
                                             ";
@@ -260,7 +261,7 @@ $userdate = date('Y-m-d H:i:s');
                                         styleInput('TxtComplaints');
 
                                         <?php
-                                        if($_SESSION['homePosDisp'] == 'Doctor'){
+                                        if($_SESSION['homePosDisp'] == 'Doctor' || $accesslevel == 'superadmin' || $accesslevel == 'admin'){
                                             echo"
                                             styleInput('TxtDiagnosis');
                                             ";
@@ -781,7 +782,7 @@ $userdate = date('Y-m-d H:i:s');
                                 styleInput('TxtComplaints');
 
                                 <?php
-                                if($_SESSION['homePosDisp'] == 'Doctor'){
+                                if($_SESSION['homePosDisp'] == 'Doctor' || $accesslevel == 'superadmin' || $accesslevel == 'admin'){
                                     echo"
                                     styleInput('TxtDiagnosis');
                                     ";
@@ -1032,7 +1033,7 @@ $userdate = date('Y-m-d H:i:s');
                                 styleInput('TxtConsTime');
                                 styleInput('TxtComplaints');
                                 <?php
-                                if($_SESSION['homePosDisp'] == 'Doctor'){
+                                if($_SESSION['homePosDisp'] == 'Doctor' || $accesslevel == 'superadmin' || $accesslevel == 'admin'){
                                     echo"
                                     styleInput('TxtDiagnosis');
                                     ";
@@ -1183,7 +1184,7 @@ $userdate = date('Y-m-d H:i:s');
                 document.getElementById("TxtComplaints").removeAttribute("readonly");
 
                 <?php
-                if($_SESSION['homePosDisp'] == 'Doctor'){
+                if($_SESSION['homePosDisp'] == 'Doctor' || $accesslevel == 'superadmin' || $accesslevel == 'admin'){
                     echo"
                     document.getElementById('TxtDiagnosis').removeAttribute('readonly');
                     ";
@@ -1212,7 +1213,7 @@ $userdate = date('Y-m-d H:i:s');
                 document.getElementById('TxtComplaints').style.backgroundColor = "white"; 
 
                 <?php
-                if($_SESSION['homePosDisp'] == 'Doctor'){
+                if($_SESSION['homePosDisp'] == 'Doctor' || $accesslevel == 'superadmin' || $accesslevel == 'admin'){
                     echo"
                     document.getElementById('TxtDiagnosis').style.backgroundColor = 'white'; 
                     ";
@@ -1236,7 +1237,7 @@ $userdate = date('Y-m-d H:i:s');
                 document.getElementById("TxtComplaints").setAttribute("readonly","readonly");
 
                 <?php
-                if($_SESSION['homePosDisp'] == 'Doctor'){
+                if($_SESSION['homePosDisp'] == 'Doctor' || $accesslevel == 'superadmin' || $accesslevel == 'admin'){
                     echo"
                     document.getElementById('TxtDiagnosis').setAttribute('readonly','readonly');
                     ";
@@ -1264,7 +1265,7 @@ $userdate = date('Y-m-d H:i:s');
                 document.getElementById('TxtComplaints').style.backgroundColor = "transparent"; 
 
                 <?php
-                if($_SESSION['homePosDisp'] == 'Doctor'){
+                if($_SESSION['homePosDisp'] == 'Doctor' || $accesslevel == 'superadmin' || $accesslevel == 'admin'){
                     echo"
                     document.getElementById('TxtDiagnosis').style.backgroundColor = 'transparent'; 
                     ";

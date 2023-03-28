@@ -288,11 +288,13 @@ require '../php/centralConnection.php';
                 <div id="notif">
                     <?php if ($_GET["type"] == "checkRecords" || $type == 'checkRange' || $type == 'checkRecordsId' || $type == 'checkRelFU'){
                         echo "
-                        <a id='newFollowUp' class='btn btn-primary' href='newFollowUp.php?type=newFollowUp' role='button'>New Follow-Up</a>
+                        <a id='newFollowUp' class='btn btn-primary' href='newFollowUp.php?id=$id&date=$date&time=$time&type=createFU' role='button'>New Follow-Up</a>
                         <span id='NumFollowUp' style='align:center'>Total Number of Follow-Up/s: </span>
                         ";
-
+                        //"newFollowUp.php?id="+studID+"&date="+date+"&time="+time+"&type=createFU";
                     } ?>
+
+                    
                     
                 </div>
                 <div class="tabs-body">

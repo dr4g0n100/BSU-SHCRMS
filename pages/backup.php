@@ -45,6 +45,7 @@
             <img id="backupIcon" src="../images/backupIcon.webp" alt="Backup Icon" />
       </div>
     </div>
+    <script src="../js/script-tab.js"></script>
  </body>
 </html>
 

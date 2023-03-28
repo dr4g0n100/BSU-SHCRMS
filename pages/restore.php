@@ -112,7 +112,8 @@
       <div id="form_right">
             <img id="restoreIcon" src="../images/restore.webp" alt="Restore Icon" />
       </div>
-    </div> 
+    </div>
+    <script src="../js/script-tab.js"></script> 
  </body>  
 </html>
 
@@ -195,7 +196,7 @@ if(isset($_POST["import"]))
          }}});
 
     setTimeout(function(){
-                window.location.href = 'Homepage/index.php';
+                window.location.href = 'indexHomepage.php';
             }, 2000);
 
  </script>

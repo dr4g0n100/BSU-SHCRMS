@@ -74,6 +74,31 @@
                 logAction(act);
             }
 
+            function userArchiveRecord(StudentID, acttype){
+                ID = StudentID;
+                var reason = '';
+                if (reason = window.prompt("Specify a reason for archiving?")){
+                    
+                    $.ajax({
+                    url:"../php/archive.php",
+                    method:"GET",
+                    data:jQuery.param({ type: acttype, id:ID, archReason:reason }),
+                    success:function(xml){
+                        $(xml).find('output').each(function()
+                        {
+                            var message = $(this).attr('Message');
+                            logAction(message +" ID " +ID);
+                            alert(message);
+                        });
+                        location.reload();
+                    }
+                    })
+                }else if(reason == ''){
+                    alert('Please specify a reason');
+                }
+
+            }
+
 
         // ---------------------------end functions for System Logs---------------------------------------
 
@@ -213,7 +238,7 @@
                                             <td><?php echo $RowStudent['Date'];?></td>
                                             <td>
                                                 <a class="viewBTN btn btn-primary btn-sm" href="newStudent.php?id=<?php echo $RowStudent['StudentIDNumber']; ?>&type=viewRecord">View</a>
-                                                <a class='viewBTN btn btn-primary btn-sm' id='archiveBTN' onclick='userArchiveRecord(<?php echo $RowStudent['StudentIDNumber']; ?>)'>Archive</a>
+                                                <a class='viewBTN btn btn-primary btn-sm' id='archiveBTN' onclick='userArchiveRecord(<?php echo $RowStudent['StudentIDNumber']; ?>,"archiveStudent")'>Archive</a>
                                             </td>
                                         </tr>
                                   <?php
@@ -259,7 +284,7 @@
                                             <td>
                                                 <a class="viewBTN btn btn-primary btn-sm"  href="newConsultation.php?num=<?php echo $RowCons['Num']; ?>&type=viewCons">View</a>
                                                 <a class="viewBTN btn btn-primary btn-sm"  href="indexFU.php?id=<?php echo $RowCons['IdNumb']; ?>&date=<?php echo $RowCons['Dates']; ?>&time=<?php echo $RowCons['Times']; ?>&type=checkRelFU">Follow-ups</a>
-                                                <a class="viewBTN btn btn-primary btn-sm" id="archiveBTN" onclick='userArchiveRecord(<?php echo $RowCons['Num']; ?>)'>Archive</a>
+                                                <a class="viewBTN btn btn-primary btn-sm" id="archiveBTN" onclick='userArchiveRecord(<?php echo $RowCons['Num']; ?>,"archiveConsultation")'>Archive</a>
                                             </td>
 
                                         </tr>
@@ -301,7 +326,7 @@
                                             <td><?php echo $RowMC['date_requested']; ?></td>
                                             <td>
                                                 <a class="viewBTN btn btn-primary btn-sm" href="newMC.php?studentID=<?php echo $RowMC['student_id']; ?>&id=<?php echo $RowMC['mc_id_num']; ?>&type=viewMC">View</a>
-                                                <a class="viewBTN btn btn-primary btn-sm" id="archiveBTN" onclick="userArchiveRecord(<?php echo $RowMC['mc_id_num']; ?>)">Archive</a>
+                                                <a class="viewBTN btn btn-primary btn-sm" id="archiveBTN" onclick="userArchiveRecord(<?php echo $RowMC['mc_id_num']; ?>,'archiveMC')">Archive</a>
                                             </td>
                                         </tr>
                                   <?php
