@@ -59,12 +59,17 @@ body{
     color: #062102;
 }
 
+.student-title{
+    margin-left: 10px;
+}
+
 #tab1, #tab3{
     border-top-left-radius: 16px;
     cursor: pointer;
 }
 
 #tab2{
+    border-top-left-radius: 16px;
     cursor: pointer;
 }
 
@@ -236,9 +241,9 @@ td a{
   background-color: #f2eeeb !important;
 }
 
-.form-control {
+/*.form-control {
     border-radius: 4.25rem;
-}
+}*/
 
 .active{
   background-color: #299F7E !important; 
@@ -356,8 +361,6 @@ input[type='text'], input[type='number'], input[type='date'], input[type='Time']
     letter-spacing: 1px;
     margin: 0em 0 1.875em 0;
     padding: 0.5em 0.5em 0.3em 0.5em;
-    /*text-transform: uppercase;*/
-    width: 70%;
     box-sizing: border-box;
     transition: all 0.3s;
 }
@@ -379,3 +382,25 @@ input[type='text'], input[type='number'], input[type='date'], input[type='Time']
 .btnSearch{
     background: #299F7E;
 }
+
+/*.Two-Info div, .Three-Info div, .Four-Info div{
+    display: inline-block;
+}
+
+.FirstName, .MiddleName, .LastName, .Extension{
+    width: 22.35%;
+    padding: 0 1% 0 1%;
+}
+.Physician, .IDNumForm, .PhysicianIDNumber, .Age, .Sex{
+    width: 47%;
+    padding: 0 1% 0 1%;
+}
+.CourseStrand{
+    width: 60%;
+    padding: 0 1% 0 1%;
+}
+
+.Year{
+    width: 34%;
+    padding: 0 1% 0 1%; 
+}*/

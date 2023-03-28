@@ -17,28 +17,6 @@
         $query ="SELECT * FROM medicalcertificate WHERE student_id = '$id'";  
         $resultMC = mysqli_query($connect, $query);
 
-        if(!empty($resultStudent)){
-            $RowStudent = $resultStudent->fetch_array();
-
-            $ID = $RowStudent['StudentIDNumber'];
-            $Firstname = ucwords($RowStudent['Firstname']);
-            $Middlename = ucwords($RowStudent['Middlename']);
-            $Lastname = ucwords($RowStudent['Lastname']);
-            $Extension = ucwords($RowStudent['Extension']);
-
-            $Age = ucwords($RowStudent['Age']);
-            $Sex = ucwords($RowStudent['Sex']);
-            
-            $course = "";
-            if($RowStudent['Course'] != ""){
-                $course = $RowStudent['Course'];
-            }else{
-                $course = ucwords($RowStudent['StudentCategory']);
-            }
-
-            $year = $RowStudent['Year'];
-        }
-
 ?>  
 
 <!DOCTYPE html>
@@ -139,17 +117,18 @@
                         }, 100);
                     }
                   })
-                } 
+                }
+            
+            var StudentInfoTable = $('#student_info').DataTable({
+                "oLanguage": {
+                "sSearch": "Filter results:"
+                }        
+            });
 
-            $('#TxtStudentIDNumber2').val('<?php echo $ID; ?>');
-            $('#TxtLastName').val('<?php echo $Lastname; ?>');
-            $('#TxtFirstName').val('<?php echo $Firstname; ?>');
-            $('#TxtMiddleName').val('<?php echo $Middlename; ?>');
-            $('#TxtExtension').val('<?php echo $Extension; ?>');
-            $('#TxtAge').val('<?php echo $Age; ?>');
-            $('#TxtSex').val('<?php echo $Sex; ?>');
-            $('#TxtCourseStrand').val('<?php echo $course; ?>');
-            $('#TxtYear').val('<?php echo $year; ?>');
+            var StudentInfoLength = StudentInfoTable.page.info().recordsTotal;
+
+            /*var span = document.getElementById("StudentInfoSpan");
+            span.textContent = "Total Number of Record/s: " + StudentInfoLength.toString();*/
 
             var ConsTable = $('#cons_info').DataTable({
                 "oLanguage": {
@@ -190,78 +169,97 @@
         <div class="cont container">
             
             <div class="tabs">
-                <div class="form-row mr-4 mt-3">
-                    <a id='backButton' class='btn btn-light m-3 bg-transparent border-0' onclick='window.history.back();' role='button'>
-                        <svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' fill='currentColor' class='bi bi-arrow-left-circle' viewBox='0 0 16 16'>
-                          <path fill-rule='evenodd' d='M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z'/>
-                        </svg>
-                    </a>
-                    <span class="h3 student-title" style="margin:auto";>&bull;&nbsp;Student Information&nbsp;&bull;</span>
-                </div>
-                <div class="form-row mx-4 my-2">
-                    <div class="col-md-6">
-                        <label for="TxtStudentIDNumber2">ID Number</label> <span id="req">*</span>
-                        <input name="TxtStudentIDNumber2" class="form-control" type="Number" id="TxtStudentIDNumber2" readonly>
-                    </div>
-                </div>
-
-                <div class="form-row mx-4 my-2">
-                    <div class="col-md-3">
-                        <label for="TxtLastName">Last Name</label>
-                        <input type="text" name="TxtLastName" class="form-control" id="TxtLastName" readonly>
-                    </div>
-                    <div class="col-md-3">
-                        <label for="TxtFirstName">First Name</label>
-                        <input type="text" name="TxtFirstName" class="form-control" id="TxtFirstName" readonly>
-                    </div>
-                    <div class="col-md-3">
-                        <label for="TxtMiddleName">Middle Name</label>
-                        <input type="text" name="TxtMiddleName" class="form-control" id="TxtMiddleName" readonly>
-                    </div>
-                    <div class="col-md-3">
-                        <label for="TxtExtension">Extension</label>
-                        <input type="text" name="TxtExtension" class="form-control" id="TxtExtension" readonly>
-                    </div>
-                </div>
-
-                <div class="form-row mx-4 my-2">
-                    <div class="col-md-6">
-                        <label for="TxtAge">Age</label> 
-                        <input type="number" class="form-control" name="TxtAge" id="TxtAge" readonly >
-                    </div>
-                    <div class="col-md-6">
-                        <label for="TxtSex">Sex</label> 
-                        <input type="text" class="form-control" name="TxtSex" id="TxtSex" readonly>
-                    </div>
-                </div>
-
-                <div class="form-row mx-4 my-2 mb-3">
-                    <div class="col-md-8">
-                        <label for="TxtCourseStrand">Course / Strand</label>
-                        <input type="text" class="form-control" name="TxtCourseStrand" id="TxtCourseStrand" readonly minlength="2">
-                    </div>
-                    <div class="col-md-4">
-                        <label for="TxtYear">Year</label>
-                        <input type="text" class="form-control" name="TxtYear" id="TxtYear" readonly maxlength="3">
-                    </div>
-                </div>
                 
                 <div class="tabs-head" id="tabsTitle">
-                    <span id="tab2" class="tabs-toggle is-active">&bull;&nbsp;Consultation Info&nbsp;&bull;</span>
+                    <span id="tab1" class="tabs-toggle is-active">&bull;&nbsp;Student Info&nbsp;&bull;</span>
+                    <span id="tab2" class="tabs-toggle">&bull;&nbsp;Consultation Info&nbsp;&bull;</span>
                     <span id="tab3" class="tabs-toggle">&bull;&nbsp;Medical Certs&nbsp;&bull;</span>
                 </div>
 
+                <div class="search">
+                    <form action="studentSummary.php" method="GET">
+                        <div class="form-group">
+                            <div class="search-input mt-3">
+                                <!-- <label for="idnumber" class="col-form-label">Search</label><br> -->
+                                <input type="text" name="idnumber" id="idnumber" placeholder="ID Number">
+                                <button class="btn btn-success btnSearch" type="Submit" value="Search" name="btnSearch" id="btnSearch">Search</button>
+                            </div>
+                            
+                        </div>
+                        
+                    </form>
+                    
+                </div>
+                <!-- <div id="notif">
+
+                    <button id='newRecord' data-toggle="modal" data-target="#VaccineNewModal" class='btn btn-primary' >New Vaccine</button>
+                    <span id='StudentInfoSpan'>Total Number of Record/s: </span>
+                     
+                </div> -->
                 <div class="tabs-body">
-                    <div class="tabs-content is-active table-responsive">  
+                    <div class="tabs-content is-active table-responsive"> 
+
+                        <table id="student_info" class="table table-striped table-bordered">  
+                              <thead>  
+                                   <tr>  
+                                        <th>ID</th>
+                                        <th>Full Name</th>
+                                        <th>Course / Strand</th>
+                                        <th>Age</th>
+                                        <th>Sex</th>
+                                        <th>Contact Number</th>
+                                        <th>Date</th>
+                                        <th>Action</th>
+                                   </tr>  
+                              </thead>  
+                              <?php 
+
+                              if(!empty($resultStudent)){
+                                while($RowStudent = $resultStudent->fetch_array()) 
+                                  {  
+                                    $Sex = ucwords($RowStudent['Sex']);
+                                    $course = "";
+                                    $StudentName = "$RowStudent[Lastname], $RowStudent[Firstname] $RowStudent[Middlename]";
+                                        if($RowStudent['Course'] != ""){
+                                            $course = $RowStudent['Course'];
+                                        }else{
+                                            $course = ucwords($RowStudent['StudentCategory']);
+                                        }
+                                    ?>
+                                        <tr>
+                                            <td><?php echo $RowStudent['StudentIDNumber']; ?></td>
+                                            <td><?php echo "$StudentName"; ?></td>
+                                            <td><?php echo "$course";?></td>
+                                            <td><?php echo $RowStudent['Age'];?></td>
+                                            <td><?php echo "$Sex";?></td>
+                                            <td><?php echo $RowStudent['StudentContactNumber'];?></td>
+                                            <td><?php echo $RowStudent['Date'];?></td>
+                                            <td>
+                                                <a class="viewBTN btn btn-primary btn-sm" href="newStudent.php?id=<?php echo $RowStudent['StudentIDNumber']; ?>&type=viewRecord">View</a>
+                                                <a class='viewBTN btn btn-primary btn-sm' id='archiveBTN' onclick='userArchiveRecord(<?php echo $RowStudent['StudentIDNumber']; ?>,"archiveStudent")'>Archive</a>
+                                            </td>
+                                        </tr>
+                                  <?php
+                                       
+                                  } 
+                              } 
+
+                                  
+
+                              ?>  
+                         </table> 
+                    </div>
+                    <div class="tabs-content table-responsive">  
                         
                         <table id="cons_info" class="table table-striped table-bordered">  
                               <thead>  
                                    <tr>  
-                                      <th>Date</th>
-                                      <th>Time</th>
+                                      <th>ID</th>
+                                      <th>Full name</th>
                                       <th>Diagnosis</th>
                                       <th>Treatment</th>
                                       <th>Staff</th>
+                                      <th>Date</th>
                                       <th>Action</th>
                                             
                                    </tr>  
@@ -275,12 +273,12 @@
                                     ?>
                                         
                                         <tr>
-                                            <td><?php echo $RowCons['Dates']; ?></td>
-                                            <td><?php echo $RowCons['Times']; ?></td>
+                                            <td><?php echo $RowCons['IdNumb']; ?></td>
+                                            <td><?php echo "$StudentName"; ?></td>
                                             <td><?php echo $RowCons['Diagnosis']; ?></td>
                                             <td><?php echo $RowCons['DiagnosticTestNeeded']; ?></td>
                                             <td><?php echo $Staff; ?></td>
-                                            
+                                            <td><?php echo $RowCons['Dates']; ?></td>
                                             <td>
                                                 <a class="viewBTN btn btn-primary btn-sm"  href="newConsultation.php?num=<?php echo $RowCons['Num']; ?>&type=viewCons">View</a>
                                                 <a class="viewBTN btn btn-primary btn-sm"  href="indexFU.php?id=<?php echo $RowCons['IdNumb']; ?>&date=<?php echo $RowCons['Dates']; ?>&time=<?php echo $RowCons['Times']; ?>&type=checkRelFU">Follow-ups</a>
@@ -303,10 +301,10 @@
                         <table id="mc_info" class="table table-striped table-bordered">  
                               <thead>  
                                    <tr>  
-                                      <th>Date Requested</th>
-                                      <th>Purpose</th>
+                                      <th>ID</th>
+                                      <th>Full Name</th>
                                       <th>Staff</th>
-                                      
+                                      <th>Date Requested</th>
                                       <th>Action</th>
                                             
                                    </tr>  
@@ -316,22 +314,14 @@
                               if(!empty($resultMC)){
                                 while($RowMC = $resultMC->fetch_array()) 
                                   {  
-                                    $staffMC = ucwords(strtolower($RowMC['mc_physician']));
-                                    $purpose = '';
-                                    
-                                    if(!empty($RowMC['purpose_others'])){
-                                        $purpose = $RowMC['purpose_others'];
-                                    }else if(!empty($RowMC['purpose'])){
-                                        $purpose = $RowMC['purpose'];
-                                    }
-                                        
+                                    $staffMC = ucwords(strtolower($RowMC['mc_physician'])) ;
                                     ?>
                                         
                                         <tr>
-                                            <td><?php echo $RowMC['date_requested']; ?></td>
-                                            <td><?php echo $purpose; ?></td>
+                                            <td><?php echo $RowMC['student_id']; ?></td>
+                                            <td><?php echo $StudentName; ?></td>
                                             <td><?php echo $staffMC; ?></td>
-                                            
+                                            <td><?php echo $RowMC['date_requested']; ?></td>
                                             <td>
                                                 <a class="viewBTN btn btn-primary btn-sm" href="newMC.php?studentID=<?php echo $RowMC['student_id']; ?>&id=<?php echo $RowMC['mc_id_num']; ?>&type=viewMC">View</a>
                                                 <a class="viewBTN btn btn-primary btn-sm" id="archiveBTN" onclick="userArchiveRecord(<?php echo $RowMC['mc_id_num']; ?>,'archiveMC')">Archive</a>
