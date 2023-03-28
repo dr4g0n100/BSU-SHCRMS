@@ -63,9 +63,9 @@ body{
     margin-left: 10px;
 }
 
-#tab1, #tab3{
+#tab1{
     border-top-left-radius: 16px;
-    cursor: pointer;
+    border-top-right-radius: 16px;
 }
 
 #tab2{

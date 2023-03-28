@@ -28,6 +28,7 @@
 
             $Age = ucwords($RowStudent['Age']);
             $Sex = ucwords($RowStudent['Sex']);
+            $ContactNumber = ucwords($RowStudent['StudentContactNumber']);
             
             $course = "";
             if($RowStudent['Course'] != ""){
@@ -148,6 +149,7 @@
             $('#TxtExtension').val('<?php echo $Extension; ?>');
             $('#TxtAge').val('<?php echo $Age; ?>');
             $('#TxtSex').val('<?php echo $Sex; ?>');
+            $('#TxtContactNumber').val('<?php echo $ContactNumber; ?>');
             $('#TxtCourseStrand').val('<?php echo $course; ?>');
             $('#TxtYear').val('<?php echo $year; ?>');
 
@@ -225,13 +227,17 @@
                 </div>
 
                 <div class="form-row mx-4 my-2">
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <label for="TxtAge">Age</label> 
                         <input type="number" class="form-control" name="TxtAge" id="TxtAge" readonly >
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <label for="TxtSex">Sex</label> 
                         <input type="text" class="form-control" name="TxtSex" id="TxtSex" readonly>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="TxtContactNumber">Contact Number</label> 
+                        <input type="text" class="form-control" name="TxtContactNumber" id="TxtContactNumber" readonly>
                     </div>
                 </div>
 

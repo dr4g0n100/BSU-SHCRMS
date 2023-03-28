@@ -24,7 +24,7 @@
             </svg>
           </a>
           <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="studentSummary.php">Student Summary</a>
+            <a class="dropdown-item" href="indexStudentSummary.php">Student Summary</a>
             <a class="dropdown-item" href="indexcensus.php">Dashboard</a>
           </div>
         </li>
