@@ -1,0 +1,4 @@
+.nav-item:not(.userFN){
+	width: 4vw;
+	text-align: center;
+}

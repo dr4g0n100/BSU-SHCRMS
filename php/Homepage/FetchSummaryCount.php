@@ -195,7 +195,7 @@ date_default_timezone_set('Asia/Manila');
       $StaffsArr[] = "";
     }
 
-    $Staffs = implode('-',$StaffArr);
+    $Staffs = implode('|',$StaffArr);
     $CountPMMale = implode('-',$CountPMMaleArr);
     $CountPMFemale = implode('-',$CountPMFemaleArr);
     $CountConsMale = implode('-',$CountConsMaleArr);

@@ -7,8 +7,8 @@
     header('Location: ../index.html');
     }
 
-    if(isset($_POST['idnumber'])){
-        $id = $_POST['idnumber'];
+    if(!empty($_GET['btnSearch'])){
+        $id = $_GET['idnumber'];
         $query ="SELECT * FROM PersonalMedicalRecord WHERE StudentIDNumber = '$id'";  
         $resultStudent = mysqli_query($connect, $query);
 
@@ -154,12 +154,12 @@
                 </div>
 
                 <div class="search">
-                    <form action="studentSummary.php" method="POST">
+                    <form action="studentSummary.php" method="GET">
                         <div class="form-group">
-                            <div class="search-input">
+                            <div class="search-input mt-3">
                                 <!-- <label for="idnumber" class="col-form-label">Search</label><br> -->
                                 <input type="text" name="idnumber" id="idnumber" placeholder="ID Number">
-                                <button class="btn btn-primary" type="Submit" value="Search" name="btnSearch" id="btnSearch">Search</button>
+                                <button class="btn btn-success btnSearch" type="Submit" value="Search" name="btnSearch" id="btnSearch">Search</button>
                             </div>
                             
                         </div>

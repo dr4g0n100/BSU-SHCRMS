@@ -29,6 +29,10 @@ body{
   
 }
 
+.census-card {
+  height: 90%;
+}
+
 .card{
   background-color: #f2eeeb !important;
 }

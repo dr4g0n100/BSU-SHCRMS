@@ -63,6 +63,22 @@
         // ---------------------------end functions for System Logs---------------------------------------
     
             $(document).ready(function() {
+                if (sessionStorage.getItem("isLoggedIn") == null){
+
+                alert('User has been logged out. Please login again');
+
+                $.ajax({
+                    url:"../php/logout.php",
+                    method:"POST",
+                    data:"",
+                    success:function(xml){
+                        // sessionStorage.clear();
+                        setTimeout(function(){
+                            window.location.href = '../index.html';
+                        }, 100);
+                    }
+                  })
+                }
 
                 var acclvl = sessionStorage.getItem('isStandard');
 

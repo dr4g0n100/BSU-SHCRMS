@@ -171,8 +171,8 @@
   <div class="container">
     
     <div class="row">
-      <div class="col-md-3">
-        <div class="card">
+      <div class="col-md-3 d-flex align-items-stretch">
+        <div class="card census-card">
           <div class="card-body">
             <h5 class="card-title">Total Student Records &nbsp&nbsp&nbsp</h5>
             <p class="card-text"></p>
@@ -180,8 +180,8 @@
           </div>
         </div>
       </div>
-      <div class="col-md-3">
-        <div class="card">
+      <div class="col-md-3 d-flex align-items-stretch">
+        <div class="card census-card">
           <div class="card-body">
             <h5 class="card-title">Total Consultation Records</h5>
             <p class="card-text"></p>
@@ -189,8 +189,8 @@
           </div>
         </div>
       </div>
-      <div class="col-md-3">
-        <div class="card">
+      <div class="col-md-3 d-flex align-items-stretch">
+        <div class="card census-card">
           <div class="card-body">
             <h5 class="card-title">Total Follow-up Consultation</h5>
             <p class="card-text"></p>
@@ -198,8 +198,8 @@
           </div>
         </div>
       </div>
-      <div class="col-md-3">
-        <div class="card">
+      <div class="col-md-3 d-flex align-items-stretch">
+        <div class="card census-card">
           <div class="card-body">
             <h5 class="card-title">Total Medical Certificate</h5>
             <p class="card-text"></p>
@@ -1177,7 +1177,7 @@
 
                                 $("#tblSummaryStaffBody tr").remove();
 
-                                const StaffsArr = Staffs.split("-");
+                                const StaffsArr = Staffs.split("|");
                                 const SCountPMMaleArr = CountPMMale.split("-");
                                 const SCountPMFemaleArr = CountPMFemale.split("-");
                                 const SCountConsMaleArr = CountConsMale.split("-");
