@@ -1351,7 +1351,7 @@ $userdate = date('Y-m-d H:i:s');
                                 }}});
 
                                 setTimeout(function(){
-                                    window.location="indexFU.php?type=checkRecords";
+                                    window.location="indexFU.php?id=" +id_stud +"&date="+valDate  +"&time="+valTime  +"&type=checkRelFU";
                                 }, 2000);
                             }
 

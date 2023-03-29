@@ -12,7 +12,7 @@ function getUrlVars() {
   if(curlocation == "indexHomepage.php"){
       //document.getElementsByClassName('nav-link').classList.remove('active');
       document.getElementById('navHome').classList.add('active');
-  }else if(curlocation == "studentSummary.php"){
+  }else if(curlocation == "studentSummary.php" || curlocation == "indexStudentSummary.php"){
       document.getElementById('navCensus').classList.add('active');
   }else if(curlocation == "indexcensus.php"){
       document.getElementById('navCensus').classList.add('active');

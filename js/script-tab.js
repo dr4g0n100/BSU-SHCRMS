@@ -15,6 +15,13 @@ tabs.forEach((tab, index) => {
     })
 })
 
+$("body").tooltip({ selector: '[data-toggle=tooltip]' });
+
+$('[data-toggle="tooltip"]').click(function () {
+    $('[data-toggle="tooltip"]').tooltip("hide");
+
+});
+
 //Allow a textbox to allow only numbers and one decimal point
   function isNumberKey(txt,evt){
     var charCode = (evt.which) ? evt.which : evt.keyChode;

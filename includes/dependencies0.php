@@ -23,8 +23,8 @@
 <script type="text/javascript" src="../dist/dataTable/buttons.html5.min.js"></script>
 <script type="text/javascript" src="../dist/dataTable/buttons.print.min.js"></script>
 
-<script src="../dist/bootstrap.min.js"></script>
 <script src="../dist/popper.min.js"></script>
+<script src="../dist/bootstrap.min.js"></script>
 <script src="../dist/jspdf.debug.js"></script>
 <script src="../dist/jspdf.min.js"></script>
 <script src="../dist/html2pdf.bundle.min.js"></script>

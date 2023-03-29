@@ -245,6 +245,10 @@ td a{
     border-radius: 4.25rem;
 }*/
 
+.form-control:disabled, .form-control[readonly] {
+    background-color: transparent;
+}
+
 .active{
   background-color: #299F7E !important; 
   color: white !important;
@@ -349,21 +353,24 @@ nav{
   min-width: 87%;
 }
 
-input[type='text'], input[type='number'], input[type='date'], input[type='Time'], select, #TCourse, #TGPCategory, #TYear, #TSection, #TGPCategory1, #TGPCategory2{
-    background: white;
+input[type='text'], input[type='number'], input[type='date'], input[type='Time'], select{
     border: none;
-    border-bottom: solid 2px black;
-    border-top: solid 1px gray;
-    border-right: solid 1px gray;
-    border-left: solid 1px gray;
-    color: #062102;
     font-weight: 400;
     letter-spacing: 1px;
-    margin: 0em 0 1.875em 0;
-    padding: 0.5em 0.5em 0.3em 0.5em;
-    box-sizing: border-box;
+    margin-top: 0;
+    padding-left: 0.5em;
+    padding-bottom: 30px;
     transition: all 0.3s;
+
 }
+
+
+
+label {
+    margin-bottom: 0px;
+
+}
+
 
 .search-input{
     margin-left: 2%;
@@ -383,24 +390,6 @@ input[type='text'], input[type='number'], input[type='date'], input[type='Time']
     background: #299F7E;
 }
 
-/*.Two-Info div, .Three-Info div, .Four-Info div{
-    display: inline-block;
+a:hover{
+    text-decoration: none;
 }
-
-.FirstName, .MiddleName, .LastName, .Extension{
-    width: 22.35%;
-    padding: 0 1% 0 1%;
-}
-.Physician, .IDNumForm, .PhysicianIDNumber, .Age, .Sex{
-    width: 47%;
-    padding: 0 1% 0 1%;
-}
-.CourseStrand{
-    width: 60%;
-    padding: 0 1% 0 1%;
-}
-
-.Year{
-    width: 34%;
-    padding: 0 1% 0 1%; 
-}*/

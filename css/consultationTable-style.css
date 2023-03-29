@@ -313,3 +313,8 @@ td a{
     max-width: max-content;
     min-width: 87%;
   }
+
+  a:hover{
+    text-decoration: none;
+    cursor: pointer;
+    }
