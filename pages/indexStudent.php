@@ -239,7 +239,7 @@ if(empty($_SESSION['logged_in'])){
                                <tr>  
                                         <th>ID</th>
                                         <th>Full Name</th>
-                                        <th>Course / Strand</th>
+                                        <th>Degree / Strand</th>
                                         <th>Age</th>
                                         <th>Sex</th>
                                         <th>Contact Number</th>

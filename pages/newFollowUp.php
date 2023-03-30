@@ -1689,7 +1689,7 @@ $userdate = date('Y-m-d H:i:s');
                             </div>
                             <div class="Two-Info">
                                 <div class="CourseStrand">
-                                    <label for="TxtCourseStrand">Course / Strand</label>
+                                    <label for="TxtCourseStrand">Degree / Strand</label>
                                     <input type="text" name="TxtCourseStrand" id="TxtCourseStrand" readonly minlength="2">
                                 </div>
                                 <div class="Year">

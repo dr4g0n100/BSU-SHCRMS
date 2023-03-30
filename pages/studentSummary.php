@@ -244,7 +244,7 @@
 
                     <div class="form-row mx-4">
                         <div class="col-md-8">
-                            <label for="TxtCourseStrand" class="font-weight-bold">Course / Strand</label>
+                            <label for="TxtCourseStrand" class="font-weight-bold">Degree / Strand</label>
                             <input type="text" class="form-control" name="TxtCourseStrand" id="TxtCourseStrand" disabled minlength="2">
                         </div>
                         <div class="col-md-4">
