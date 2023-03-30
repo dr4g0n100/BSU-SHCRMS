@@ -45,7 +45,7 @@ $errors = array();
                     header('location: reset-code.php');
                     exit();
                 }else{
-                    $errors['otp-error'] = "Failed while sending code! Check your internet connection or try asking the admin for a code";
+                    $errors['otp-error'] = "Failed while sending code! Check your internet connection";
                 }
             }else{
                 $errors['db-error'] = "Something went wrong!";
@@ -73,9 +73,7 @@ $errors = array();
             $userID = $_SESSION['userID'];
             $Username = $_SESSION['Username'];
             $AccessLevel = $_SESSION['AccessLevel'];
-            $logAction = "INSERT INTO SYSTEMLOGS (userID,username,action, date, position) 
-                            VALUES ('$userID','$Username','User email $email Successfully confirmed OTP code', CURRENT_TIMESTAMP,'$AccessLevel')";
-            $run_sql = mysqli_query($con, $logAction);
+            
 
             header('location: new-password.php');
             exit();

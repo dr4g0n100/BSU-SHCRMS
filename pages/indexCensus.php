@@ -220,6 +220,7 @@
         <option value="last30days">Last 30 Days</option>
         <option value="thismonth">This Month</option>
         <option value="lastmonth">Last Month</option>
+        <option value="thisyear">This Year</option>
         <option value="custom">Custom</option>
       </select>
 
@@ -256,7 +257,7 @@
     <div class="row col-md-12" id="PieCharts">
       <legend class="text-center">Students Registered</legend>
       <div class="chart-container col-md-4">
-        <h4 class="text-center">Gender</h4>
+        <h4 class="text-center">Sex</h4>
         <canvas id="maleFemalePieChart"></canvas>
       </div>
       <div class="col-md-4"></div>
@@ -930,7 +931,6 @@
               },  
               error: function (e)
               {
-                alert('12300');
                   //Display Alert Box
                   $.alert(
                   {theme: 'modern',
@@ -1034,6 +1034,12 @@
                 startDate.setDate(1);
                 endDate = new Date();
                 break;
+              case 'thisyear':
+                startDate = new Date();
+                startDate.setDate(1);
+                startDate.setMonth(1);
+                endDate = new Date(startDate.getFullYear(),12,0);
+                break;
               case 'lastmonth':
                 startDate = new Date();
                 startDate.setMonth(startDate.getMonth() - 1);
@@ -1128,6 +1134,12 @@
                         startDate = new Date();
                         startDate.setDate(1);
                         endDate = new Date();
+                        break;
+                      case 'thisyear':
+                        startDate = new Date();
+                        startDate.setDate(1);
+                        startDate.setMonth(1);
+                        endDate = new Date(startDate.getFullYear(),12,0);
                         break;
                       case 'lastmonth':
                         startDate = new Date();
@@ -1297,6 +1309,12 @@
                 startDate = new Date();
                 startDate.setDate(1);
                 endDate = new Date();
+                break;
+              case 'thisyear':
+                startDate = new Date();
+                startDate.setDate(1);
+                startDate.setMonth(0);
+                endDate = new Date(startDate.getFullYear(),12,0);
                 break;
               case 'lastmonth':
                 startDate = new Date();

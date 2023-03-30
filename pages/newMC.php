@@ -1264,7 +1264,7 @@ $userdate = date('Y-m-d H:i:s');
                                         </label>
                                     </td>
                                     <td>
-                                        <input type="text" name="TxtMCDocumentCode" id="TxtMCDocumentCode" readonly>
+                                        <input type="text" value="QF-UHS-MC-" name="TxtMCDocumentCode" id="TxtMCDocumentCode" readonly>
                                     </td>
                                     <td class="mcRevisionNumber">
                                         <label for="TxtMCRevisionNumber"> 

@@ -265,7 +265,7 @@ $Message = '';
 						$pdf->Cell(55 ,5,'Number of years as smoker:',0,0);
 						$pdf->Cell(30 ,5,$NumOfYearAsSmoker,'B',0);
 						//3rd Column
-						$pdf->Ln($spacing);
+						$pdf->Ln($spacing*2);
 
 				//5th row
 						//1st Column
@@ -752,7 +752,7 @@ $Message = '';
 										//2nd Column
 										$pdf->Cell(83 ,5,'',0,0);
 										//3rd Column
-										$pdf->Ln($spacing);
+										$pdf->Ln($spacing*2);
 
 										//4th row
 										//1st Column

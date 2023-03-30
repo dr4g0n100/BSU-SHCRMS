@@ -4166,7 +4166,7 @@ $resultGrad = mysqli_query($connect, $queryGrad);
                                         </label>
                                     </td>
                                     <td>
-                                        <input type="text" name="TxtDocumentCode" id="TxtDocumentCode" value="QF-UHS-MC-01" readonly>
+                                        <input type="text" name="TxtDocumentCode" id="TxtDocumentCode" value="QF-UHS-MC-" readonly>
                                     </td>
                                     <td class="RevisionNumber">
                                         <label for="TxtRevisionNumber"> 

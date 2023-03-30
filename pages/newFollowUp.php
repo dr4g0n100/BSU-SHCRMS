@@ -1608,19 +1608,32 @@ $userdate = date('Y-m-d H:i:s');
     </head>
     <body>
     <?php include '../includes/navbar.php'; ?>
+
         <div class="container" id="toDownloadPDF">
+
             <div class="tabs">
                 <div class="tabs-head">
+                    
                     <span id="tab1" class="tabs-toggle is-active" style="margin:auto";>&bull;&nbsp;Follow-up&nbsp;&bull;</span>
                     <span id="wholetab" class="tabs-toggle">&bull;&nbsp;Follow-up&nbsp;&bull;</span>
             </div>
             <div class="tabs-body" id="tabs-bodyID">
-                <div id="ConsultationHeader">
-                    <img id="bsuLogo" alt="BSU Logo" src="../images/BSULogo.webp"/>
-                    <h3 id="bsuCon">Follow-up</h3>
-                </div>
+                    <div>
+                        <a id='backButton' class='btn btn-light m-3 bg-transparent border-0 mx-5' onclick='window.history.back();' role='button'>
+                            <svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' fill='currentColor' class='bi bi-arrow-left-circle' viewBox='0 0 16 16'>
+                              <path fill-rule='evenodd' d='M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z'/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div id="ConsultationHeader">
+                        <img id="bsuLogo" alt="BSU Logo" src="../images/BSULogo.webp"/>
+                        <h3 id="bsuCon">Follow-up</h3>
+                    </div>
+                
+                
                 <!-- Back to consultation button -->
                 <div>
+
                     <button type="Submit" id="BtnBackToCons" class= "backButton" name="BTN"><p>Back to Consultation</p></button>
                 </div>
                 <div class="tabs-content is-active">

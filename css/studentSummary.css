@@ -81,6 +81,7 @@ body{
 
 .tabs-toggle.is-active{
     background: #176a53;
+    color: white;
 }
 
 .tabs-content{
