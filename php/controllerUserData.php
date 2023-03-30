@@ -10,11 +10,22 @@ $errors = array();
         $email = mysqli_real_escape_string($con, $_POST['email']);
         $check_email = "SELECT * FROM useraccounts WHERE email='$email' AND (AccessLevel = 'admin' || AccessLevel = 'superadmin')";
         $run_sql = mysqli_query($con, $check_email);
+        
 
             
              
 
         if(mysqli_num_rows($run_sql) > 0){
+
+            $row_user_info = $run_sql -> fetch_array(MYSQLI_ASSOC);
+            $userID = $row_user_info['IdNum'];
+            $Username = $row_user_info['Username'];
+            $AccessLevel = $row_user_info['AccessLevel'];
+
+            $_SESSION['userID'] = $userID;
+            $_SESSION['Username'] = $Username;
+            $_SESSION['AccessLevel'] = $AccessLevel;
+
             $code = rand(999999, 111111);
             $insert_code = "UPDATE useraccounts SET code = $code WHERE email = '$email' AND (AccessLevel = 'admin' || AccessLevel = 'superadmin')";
             $run_query =  mysqli_query($con, $insert_code);
@@ -27,17 +38,7 @@ $errors = array();
                     $_SESSION['info'] = $info;
                     $_SESSION['email'] = $email;
 
-                    //For System Logs
-                    $userID = $_SESSION['userID'];
-                    $Username = $_SESSION['Username'];
-                    $AccessLevel = $_SESSION['AccessLevel'];
-
                     //for logging purposes
-                    $row = $run_sql -> fetch_array(MYSQLI_ASSOC);
-                    $_SESSION['userID'] = $row['IdNum'];
-                    $_SESSION['Username'] = $row['Username'];
-                    $_SESSION['AccessLevel'] = $row['AccessLevel'];
-
                     $logAction = "INSERT INTO SYSTEMLOGS (userID,username,action, date, position) 
                             VALUES ('$userID','$Username','User email $email requested OTP code', CURRENT_TIMESTAMP,'$AccessLevel')";
                     $run_sql = mysqli_query($con, $logAction);
@@ -68,13 +69,7 @@ $errors = array();
             $info = "Please create a new password that you don't use on any other site.";
             $_SESSION['info'] = $info;
             $_SESSION['isCorrectOTP'] = true;
-
-            //For System Logs
-            $userID = $_SESSION['userID'];
-            $Username = $_SESSION['Username'];
-            $AccessLevel = $_SESSION['AccessLevel'];
             
-
             header('location: new-password.php');
             exit();
         }else{
