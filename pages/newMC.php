@@ -1021,16 +1021,6 @@ $userdate = date('Y-m-d H:i:s');
              function addRecords(form_data)
             {   
 
-                /*var studentLastN = document.getElementById("studentLastN").textContent;
-                var studentFirstN = document.getElementById("studentFirstN").textContent;
-                var studentMiddleN = document.getElementById("studentMiddleN").textContent;
-                var studentExtens = document.getElementById("studentExtens").textContent;
-                //var form_data = new FormData();
-                form_data.append("studentLastN", studentLastN);
-                form_data.append("studentFirstN", studentFirstN);
-                form_data.append("studentMiddleN", studentMiddleN);
-                form_data.append("studentExtens", studentExtens);*/
-
                 var TxtMCMSEditor = '';
                 TxtMCMSEditor = '<?php echo $userID; ?> - <?php echo ucwords($userFName); ?> - <?php echo $userdate; ?>';
                 TxtUserEdit = '<?php echo $userID; ?>';

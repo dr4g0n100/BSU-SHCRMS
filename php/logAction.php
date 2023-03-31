@@ -26,10 +26,27 @@
                           
       if($Result == true)
       {   
-        $sql = "INSERT INTO SYSTEMLOGS 
+        /*$sql = "INSERT INTO SYSTEMLOGS 
               (userID, username, action, isSuccess, date, position) 
               VALUES ('$userID','$TxtUserName', '$Action', '$isSuccess',CURRENT_TIMESTAMP, '$position')";
-        $Result = $ClinicRecordsDB->Execute($sql);
+        $Result = $ClinicRecordsDB->Execute($sql);*/
+
+        $today = date("F-d-Y");
+        $current_time = date("h:i:s A");
+        $filepath = "../logs/$today.txt";
+        if(file_exists($filepath)) {
+            $handle = fopen($filepath, "a");
+        } else {
+            $handle = fopen($filepath, "w");
+        }
+
+        $data = "$current_time - $userID - $TxtUserName - $Action";
+
+        fwrite($handle, $data."\n");
+        fclose($handle);
+
+
+
       }
       else
       {

@@ -407,12 +407,12 @@ require '../php/centralConnection.php';
                     <span id="tab1" class="tabs-toggle is-active">&bull;&nbsp;Medical Certificate History&nbsp;&bull;</span>
                 </div>
                 <div id="notif">
-                    <?php if ($_GET["type"] == "checkMC" || $type == 'checkRange' || $type == 'checkMCId'){
+                    <?php 
+                        if ($_GET["type"] == "checkMC" || $type == 'checkRange' || $type == 'checkMCId'){
                         echo "
                         <a id='newConsultation' class='btn btn-primary' href='newMC.php?type=newMC' role='button'>New Certificate</a>
                         <span id='NumMedCert'>Total Number of Certificate Requests/s: </span>
                         ";
-
                     } ?>
                     
                 </div>

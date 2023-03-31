@@ -11,15 +11,13 @@
 <html>  
  <head>  
   <title>Restore</title>  
-  <script src="../dist/jquery.min.js"></script>
+
   <link rel = "icon" href = "../images/BSU-Logo.webp" type = "image/x-icon">
+
+  <?php include '../includes/dependencies0.php'; ?>
+
   <link rel="stylesheet" type="text/css" href="../css/restore.css">
-  <script src="../dist/jquery-3.6.0.min.js"></script>
-  <link rel="stylesheet" href="../dist/jquery-confirm.min.css">
-  <script src="../dist/jquery-confirm.min.js"></script>
-  <script src="../dist/jspdf.debug.js"></script>
-  <script src="../dist/jspdf.min.js"></script>
-  <script src="../dist/html2pdf.bundle.min.js"></script> 
+
   <script>
     var globalAL = "";
 
@@ -92,9 +90,7 @@
   </script>
  </head>  
  <body>  
-    <nav>
-        <a href="indexHomepage.php" id="back" class="nav-pages">Go Back</a> 
-    </nav> 
+    <?php include '../includes/navbar.php'; ?>
   <br /><br />  
 
     <div id="form_wrapper">
@@ -106,7 +102,7 @@
                 <h3 id="leftSubHeader">Select Sql File</h3>
                 <input type="file" name="database" /></p>
                 <br />
-                <input type="submit" name="import" class="btn btn-info form-button" onclick="userRestore()" value="Restore" /><br><br>
+                <input type="submit" name="import" class="btn btn-info form-button" value="Restore" /><br><br>
             </form>
         </div>
       <div id="form_right">
@@ -186,18 +182,20 @@ if(isset($_POST["import"]))
 
  <script>
     $.alert(
-        {theme: 'modern',
-         content: '$message',
-         title:'', 
-         buttons:{
-             Ok:{
-             text:'Ok',
-             btnClass: '$btnColor'
-         }}});
+    {theme: 'modern',
+     content: '$message',
+     title:'', 
+     buttons:{
+         Ok:{
+         text:'Ok',
+         btnClass: '$btnColor'
+     }}});
+
+     userRestore();
 
     setTimeout(function(){
-                window.location.href = 'indexHomepage.php';
-            }, 2000);
+        window.location.href = 'indexHomepage.php';
+    }, 2000);
 
  </script>
 

@@ -5,34 +5,26 @@
         header('Location: ../index.html');
     }
 
-    
 ?>
 <!DOCTYPE html>
 <html>
  <head>
   <title>Backup</title>
-  <script src="../dist/jquery.min.js"></script>
   <link rel = "icon" href = "../images/BSU-Logo.webp" type = "image/x-icon">
+
+  <?php include '../includes/dependencies0.php'; ?>
+
   <link rel="stylesheet" type="text/css" href="../css/backup.css">
-  <script src="../dist/jquery-3.6.0.min.js"></script>
-  <link rel="stylesheet" href="../dist/jquery-confirm.min.css">
-  <script src="../dist/jquery-confirm.min.js"></script>
-  <script src="../dist/jspdf.debug.js"></script>
-  <script src="../dist/jspdf.min.js"></script>
-  <script src="../dist/html2pdf.bundle.min.js"></script>
+
  </head>
  <body>
-    <nav>
-        <a href="indexHomepage.php" id="back" class="nav-pages">Go Back</a>    
-    </nav>
-
-    
+    <?php include '../includes/navbar.php'; ?>
 
   <br />
   
   <div id="form_wrapper">
         <div id="form_left" class="row">
-            <form method="post" id="export_form">
+            <form method="post" id="export_form" action="../php/backup_db.php">
                 <h3>Download a Backup</h3>
                 <div class="form-group">
                     <label for="TxtFileName">Enter filename</label>
@@ -96,6 +88,7 @@
                 act = "User made a backup." 
                 logAction(act);
             }
+
         // ---------------------------end functions for System Logs---------------------------------------
     
             $(document).ready(function() {
@@ -117,122 +110,7 @@
                   })
                 }
 
-                
             }); 
 </script> 
 
-<?php
 
- if(isset($_POST['TxtFileName']))
-{
-
-    $tables = '*';
-    $return = '';
-  
-    //Call the core function
-    backup_tables($Server, $User, $DBPassword, $Database, $tables);
-
-
-}
-
-//Core function
-function backup_tables($host, $user, $pass, $dbname, $tables = '*') {
-    global $return; 
-    $connect = mysqli_connect($host,$user,$pass, $dbname);
-
-    // Check connection
-    if (mysqli_connect_errno())
-    {
-        echo "Failed to connect to MySQL: " . mysqli_connect_error();
-        exit;
-    }
-
-    mysqli_query($connect, "SET NAMES 'utf8'");
-
-    //get all of the tables
-    if($tables == '*')
-    {
-        $tables = array();
-        $result = mysqli_query($connect, 'SHOW TABLES');
-        while($row = mysqli_fetch_row($result))
-        {
-            $tables[] = $row[0];
-        }
-    }
-    else
-    {
-        $tables = is_array($tables) ? $tables : explode(',',$tables);
-    }
-
-    $TxtFileName = $_POST['TxtFileName'];
-    $return.= "\n\nDROP DATABASE if exists clinicRecord;\n";
-    $return.= "CREATE DATABASE clinicRecord;\n";
-    $return.= "USE clinicRecord;\n";
-
-    
-    //cycle through
-    foreach($tables as $table)
-    {
-        $result = mysqli_query($connect, 'SELECT * FROM '.$table);
-        $num_fields = mysqli_num_fields($result);
-        $num_rows = mysqli_num_rows($result);
-
-        $return.= 'DROP TABLE IF EXISTS '.$table.';';
-        $row2 = mysqli_fetch_row(mysqli_query($connect, 'SHOW CREATE TABLE '.$table));
-        $return.= "\n\n".$row2[1].";\n\n";
-        $counter = 1;
-
-        //Over tables
-        for ($i = 0; $i < $num_fields; $i++) 
-        {   //Over rows
-            while($row = mysqli_fetch_row($result))
-            {   
-                if($counter == 1){
-                    $return.= 'INSERT INTO '.$table.' VALUES(';
-                } else{
-                    $return.= '(';
-                }
-
-                //Over fields
-                for($j=0; $j<$num_fields; $j++) 
-                {
-                    $row[$j] = addslashes($row[$j]);
-                    $row[$j] = str_replace("\n","\\n",$row[$j]);
-                    if (isset($row[$j])) { $return.= '"'.$row[$j].'"' ; } else { $return.= '""'; }
-                    if ($j<($num_fields-1)) { $return.= ','; }
-                }
-
-                if($num_rows == $counter){
-                    $return.= ");\n";
-                } else{
-                    $return.= "),\n";
-                }
-                ++$counter;
-            }
-        }
-        $return.="\n\n\n";
-    }
-
-    //save file
-    $fileName = $TxtFileName ." (" . date('M-d-Y') .'--' . date('h.i A') . ').sql';
-    $handle = fopen($fileName,'w+');
-    fwrite($handle,$return);
-    if(fclose($handle)){
-
-         header('Content-Description: File Transfer');
-         header('Content-Type: application/octet-stream');
-         header('Content-Disposition: attachment; filename=' . basename($fileName));
-         header('Content-Transfer-Encoding: binary');
-         header('Expires: 0');
-         header('Cache-Control: must-revalidate');
-            header('Pragma: public');
-            header('Content-Length: ' . filesize($fileName));
-            ob_clean();
-            flush();
-            readfile($fileName);            
-            unlink($fileName);
-        exit;
-    }
-}
-
-?>

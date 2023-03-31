@@ -25,16 +25,36 @@
 
         if($_SERVER['REQUEST_METHOD'] == 'GET'){
             if($_GET["type"] == "restoreLogs"){
-                $sql = "INSERT INTO SYSTEMLOGS SELECT * FROM ARCHIVEDLOG";
-                $Result1 = $ClinicRecordsDB->GetRows($sql);
-                $sql = "DELETE FROM ARCHIVEDLOG";
-                $Result2 = $ClinicRecordsDB->GetRows($sql);
+                $filename = $_GET["file"];
+                $archRecordPath = "../logs/archive/$filename";
+                $logRecPath = "../logs/$filename";
+                if (file_exists($logRecPath)){
 
-                if ($Result1 && $Result2){
-                    $Message = "Successfully restored logs";
+                    $file_lines = file($archRecordPath);
+                    $file_lines = array_slice($file_lines, 3);
+                    $file_lines = array_slice($file_lines, 0, -3);
+                    $file_contents = implode("", $file_lines);
+
+                    $existing_content = file_get_contents($logRecPath);
+
+                    $updated_content = $file_contents . $existing_content;
+
+                    file_put_contents($logRecPath, $file_contents);
+
+                    unlink($archRecordPath);
+                    $Message = "Successfully restored System Logs";
                 }else{
-                    $Message = "Failed to restore logs";
+
+                    $file = file($archRecordPath);
+
+                    array_splice($file, -2);
+
+                    file_put_contents($archRecordPath, implode('', $file));
+
+                    rename($archRecordPath, "../logs/$filename");
+                    $Message = "Successfully restored System Logs";
                 }
+                
                 
             }else if($_GET["type"] == "restoreStaff"){
                 

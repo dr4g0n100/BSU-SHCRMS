@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once 'Database.php';
     require 'centralConnection.php';
     date_default_timezone_set('Asia/Manila');
@@ -33,18 +34,63 @@
         if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
             $archive_reason = $_GET["archReason"];
+            //$archive_reason = '123';
 
             if($_GET["type"] == "archiveLogs"){
-                $sql = "INSERT INTO ARCHIVEDLOG SELECT * FROM SYSTEMLOGS";
-                $Result1 = $ClinicRecordsDB->GetRows($sql);
-                $sql = "DELETE FROM SYSTEMLOGS";
-                $Result2 = $ClinicRecordsDB->GetRows($sql);
+                $dst_folder = "../logs/archive";
+                $src_folder = "../logs";
 
-                if ($Result1 && $Result2){
-                    $Message = "Successfully archived logs";
-                }else{
-                    $Message = "Failed to Archive logs";
+                // Get a list of all files in the source folder
+                $files = scandir($src_folder);
+
+                //get today logs
+                $today = date("F-d-Y");
+                $todayLogFile = "$today.txt";
+
+                // Loop through each file in the source folder
+                $ctr = 0;
+                foreach ($files as $file) {
+                    if($file != '.' && $file != '..'){
+                        $src_path = $src_folder . '/' . $file; 
+                        if (is_file($src_path)) {
+                            if ($file != $todayLogFile) {
+                                $dst_path = $dst_folder . '/' . $file;
+
+                                $current_time = date("h:i:s A");
+                                $userID = $_SESSION['userID'];
+                                $TxtUserName = $_SESSION['user'];
+
+                                $handle = fopen($src_path, "a");
+
+                                $data = "archived\n$current_time - $TxtUserName - $archive_reason";
+
+                                fwrite($handle, $data);
+                                fclose($handle);
+
+                                if (rename($src_path, $dst_path)) {
+                                    $ctr++;
+                                } else {
+                                    $Message = "Error while archiving!";
+                                    $error = '1';
+                                    break;
+                                }
+                            }
+                        }
+                        
+                    }
+                    
                 }
+
+                $Message = "Successfully archived $ctr System Logs Files";
+                $error = '0';
+                if($ctr == 0){
+                    $Message = "System does not permit archiving today's system logs";
+                    $error = '1';
+                }
+                
+                
+
+                
                 
             }else if($_GET["type"] == "archiveStaff"){
                 
