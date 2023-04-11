@@ -1896,11 +1896,6 @@ $userdate = date('Y-m-d H:i:s');
             $result = $connection->query($sql);
             $Row = $result->fetch_assoc();
 
-            if(!$Row){
-                header("location: ../index.php");
-                exit;
-            }
-
             echo "<script type='text/javascript'>
             document.getElementById('BtnBackToCons').style.display = 'none';
             document.getElementById('MedicalStaffInfo').style.display = 'inline-block';

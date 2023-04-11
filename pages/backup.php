@@ -24,7 +24,7 @@
   
   <div id="form_wrapper">
         <div id="form_left" class="row">
-            <form method="post" id="export_form" action="../php/backup_db.php">
+            <form method="get" id="export_form" action="../php/backup_db.php">
                 <h3>Download a Backup</h3>
                 <div class="form-group">
                     <label for="TxtFileName">Enter filename</label>

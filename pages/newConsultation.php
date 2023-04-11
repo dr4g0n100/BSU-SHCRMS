@@ -2139,7 +2139,6 @@ $resultVaccine = mysqli_query($connect, $queryVaccine);
 
             $num = $Row['Num'];
 
-            
             echo "<script type='text/javascript'>
             document.getElementById('MedicalStaffInfo').style.display = 'inline-block';
             document.getElementById('ExaminedBy').style.display = 'inline-block';

@@ -1,0 +1,5 @@
+09:52:12 AM - 2 - admin - Successfully archived 2 System Logs Files
+09:53:09 AM - 2 - admin - User made a backup.
+10:41:48 AM - 2 - admin - User made a backup.
+02:20:20 PM - 2 - admin - User made a backup.
+05:15:19 PM - 2 - admin - Added new user account

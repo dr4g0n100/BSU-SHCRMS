@@ -1,18 +1,21 @@
 <?php
-require_once '../php/centralConnection.php';
 session_start();
+date_default_timezone_set('Asia/Manila');
+
+$Server = "localhost";    
+$User = "root";
+$DBPassword = "";
+$Database = "clinicRecord";
+$connect = mysqli_connect($Server, $User, $DBPassword, $Database);
 
 
-if(isset($_GET['TxtFileName']))
-{
+$tables = '*';
+$return = '';
 
-    $tables = '*';
-    $return = '';
-  
-    //Call the core function
-    backup_tables($Server, $User, $DBPassword, $Database, $tables);
+//Call the core function
+backup_tables($Server, $User, $DBPassword, $Database, $tables);
 
-}
+
 
 //Core function
 function backup_tables($host, $user, $pass, $dbname, $tables = '*') {
@@ -43,7 +46,7 @@ function backup_tables($host, $user, $pass, $dbname, $tables = '*') {
         $tables = is_array($tables) ? $tables : explode(',',$tables);
     }
 
-    $TxtFileName = $_GET['TxtFileName'];
+
     $return.= "\n\nDROP DATABASE if exists clinicRecord;\n";
     $return.= "CREATE DATABASE clinicRecord;\n";
     $return.= "USE clinicRecord;\n";
@@ -93,24 +96,13 @@ function backup_tables($host, $user, $pass, $dbname, $tables = '*') {
     }
 
     //save file
-    $fileName = $TxtFileName ." (" . date('M-d-Y') .'--' . date('h.i A') . ').sql';
+    $fileName = "C:\Backups\AutoBackup (" . date('M-d-Y') .'--' . date('h.i A') . ').sql';
     $handle = fopen($fileName,'w+');
     fwrite($handle,$return);
     if(fclose($handle)){
-
-         header('Content-Description: File Transfer');
-         header('Content-Type: application/octet-stream');
-         header('Content-Disposition: attachment; filename=' . basename($fileName));
-         header('Content-Transfer-Encoding: binary');
-         header('Expires: 0');
-         header('Cache-Control: must-revalidate');
-            header('Pragma: public');
-            header('Content-Length: ' . filesize($fileName));
-            ob_clean();
-            flush();
-            readfile($fileName);            
-            unlink($fileName);
-        exit;
+         ob_clean();
+         flush();            
+         exit;
     }
 }
 
