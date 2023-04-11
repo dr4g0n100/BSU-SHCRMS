@@ -234,7 +234,12 @@
 
                 "oLanguage": {
                 "sSearch": "Filter results:"
-                }
+                },
+                "columnDefs": [
+                    { "type": "date", targets: 0 },
+                    { "type": "time", targets: 1 }
+                ],
+                "order": [[0, "desc"], [1, "desc"]]
                 
             
 
