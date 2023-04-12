@@ -15,15 +15,24 @@ date_default_timezone_set('Asia/Manila');
   $startDate = '';
   $endDate = date("Y-m-d");
 
-  $sql = "SELECT Date FROM PersonalMedicalRecord ORDER BY Date ASC LIMIT 1";
-        $result = mysqli_query($connection, $sql);
+  $sqlDatePM = "SELECT MIN(dateQuery) AS min_date
+                FROM (
+                  SELECT Date AS dateQuery FROM personalmedicalrecord
+                  UNION 
+                  SELECT Dates AS dateQuery FROM consultationinfo
+                  UNION 
+                  SELECT Dates AS dateQuery FROM followup
+                  UNION 
+                  SELECT date_requested AS dateQuery FROM medicalcertificate
+                ) AS all_dates;";
+  $resultDatePM = mysqli_query($connection, $sqlDatePM);
 
-  if(mysqli_num_rows($result) > 0){
-    $Row = $result->fetch_array(); 
-    if($Row){        
-        $startDate = stripslashes($Row['Date']);;
+  if(mysqli_num_rows($resultDatePM) > 0){
+    $RowDatePM = $resultDatePM->fetch_array(); 
+    if($RowDatePM){        
+        $startDate = stripslashes($RowDatePM['min_date']);;
         }
-    }
+  }
 
   $startDate = date("Y-m-d", strtotime($startDate));
   //$endDate = date("Y-m-d", strtotime($endDate));
