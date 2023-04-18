@@ -538,12 +538,12 @@ require '../php/centralConnection.php';
                                         if ($type == 'checkMCId' || $type == 'checkRange'){
                                             echo "<td class='text-center'>
                                             <a class='viewBTN btn-primary btn-sm' href='newMC.php?studentID=$row[student_id]&id=$row[mc_id_num]&type=viewMC' data-toggle='tooltip' data-placement='bottom' title='View'>
-                                                <svg xmlns='http://www.w3.org/2000/svg' width='20' height='16' fill='currentColor' class='bi bi-eye' viewBox='0 0 16 16'>
+                                                <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='currentColor' class='bi bi-eye' viewBox='0 0 16 16'>
                                                   <path d='M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z'/>
                                                   <path d='M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z'/>
                                                 </svg>
                                             </a>
-                                            &nbsp
+                                            <br>
                                             <a class='btn-danger btn-sm' href='#' id='archiveBTN' onclick='userArchiveRecord($row[mc_id_num],\"archiveMC\")' data-toggle='tooltip' data-placement='bottom' title='Archive'>
                                                 <svg xmlns='http://www.w3.org/2000/svg' width='20' height='16' fill='currentColor' class='bi bi-archive' viewBox='0 0 16 16'>
                                                   <path d='M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/>
@@ -552,26 +552,27 @@ require '../php/centralConnection.php';
                                         }else if ($type == 'checkArchivedMC'){
                                             echo "<td class='text-center'>
                                             <a class='viewBTN btn-primary btn-sm' href='newMC.php?studentID=$row[student_id]&id=$row[mc_id_num]&type=viewArchivedMC' data-toggle='tooltip' data-placement='bottom' title='View'>
-                                                <svg xmlns='http://www.w3.org/2000/svg' width='20' height='16' fill='currentColor' class='bi bi-eye' viewBox='0 0 16 16'>
+                                                <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='currentColor' class='bi bi-eye' viewBox='0 0 16 16'>
                                                   <path d='M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z'/>
                                                   <path d='M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z'/>
                                                 </svg>
                                             </a>
-                                            &nbsp
+                                            <br>
                                             <a class='viewBTN btn-primary btn-sm' href='#' id='archiveBTN' onclick='userRestoreRecord($row[mc_id_num])' data-toggle='tooltip' data-placement='bottom' title='Restore'>
-                                                <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-dropbox' viewBox='0 0 16 16'>
-                                                  <path d='M8.01 4.555 4.005 7.11 8.01 9.665 4.005 12.22 0 9.651l4.005-2.555L0 4.555 4.005 2 8.01 4.555Zm-4.026 8.487 4.006-2.555 4.005 2.555-4.005 2.555-4.006-2.555Zm4.026-3.39 4.005-2.556L8.01 4.555 11.995 2 16 4.555 11.995 7.11 16 9.665l-4.005 2.555L8.01 9.651Z'/>
+                                                <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='currentColor' class='bi bi-arrow-counterclockwise' viewBox='0 0 16 16'>
+                                                <path fill-rule='evenodd' d='M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z'/>
+                                                <path d='M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z'/>
                                                 </svg>
                                             </a>";
                                         }else if ($type == 'checkMC'){
                                             echo "<td class='text-center'>
                                             <a class='viewBTN btn-primary btn-sm' href='indexMC.php?type=checkMCId&id=$row[student_id]' data-toggle='tooltip' data-placement='bottom' title='View All'>
-                                                <svg xmlns='http://www.w3.org/2000/svg' width='20' height='16' fill='currentColor' class='bi bi-eye' viewBox='0 0 16 16'>
+                                                <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='currentColor' class='bi bi-eye' viewBox='0 0 16 16'>
                                                   <path d='M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z'/>
                                                   <path d='M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z'/>
                                                 </svg>
                                             </a>
-                                            &nbsp
+                                            <br>
                                             <a class='btn-danger btn-sm' id='archiveBTN' href='#' onclick='userArchiveRecord($row[student_id],\"archiveAllMC\")' data-toggle='tooltip' data-placement='bottom' title='Archive All'>
                                                 <svg xmlns='http://www.w3.org/2000/svg' width='20' height='16' fill='currentColor' class='bi bi-archive' viewBox='0 0 16 16'>
                                                   <path d='M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/>

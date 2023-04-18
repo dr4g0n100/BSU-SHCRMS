@@ -102,7 +102,7 @@
                 <h3 id="leftSubHeader">Select Sql File</h3>
                 <input type="file" name="database" /></p>
                 <br />
-                <input type="submit" name="import" class="btn btn-info form-button" value="Restore" /><br><br>
+                <input type="submit" name="import" class="btn btn-info form-button" id="btnRestore" value="Restore" /><br><br>
             </form>
         </div>
       <div id="form_right">

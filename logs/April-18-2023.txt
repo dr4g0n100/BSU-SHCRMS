@@ -1,0 +1,11 @@
+10:29:14 AM - 2 - admin - Successfully restored student info ID 1900388
+10:29:23 AM - 2 - admin - Successfully restored consultation record ID 1
+10:29:27 AM - 2 - admin - Successfully restored consultation record ID 2
+10:29:35 AM - 2 - admin - Successfully restored Follow-up Record ID 1
+10:29:43 AM - 2 - admin - Successfully restored consultation record ID 1
+10:36:02 AM - 2 - admin - Successfully Archived student, consultation, medical certificate info and follow-up record ID 1900399
+10:36:37 AM - 2 - admin - Successfully restored student info ID 1900399
+10:36:51 AM - 2 - admin - Successfully Archived student, consultation, medical certificate info and follow-up record ID 1900388
+11:04:54 AM - 2 - admin - Successfully restored staff account ID 3
+11:15:16 AM - 2 - admin - Added new student consultation record
+11:28:46 AM - 2 - admin - Added new follow-up record

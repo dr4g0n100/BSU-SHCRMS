@@ -322,3 +322,39 @@ nav{
   max-width: max-content;
   min-width: 87%;
 }
+
+#btnRestore{
+  display: inline-block;
+  width: 75px;
+  margin: 3px 0px;
+  background-color: #00A896;
+  border: 1px solid #00A896;
+  color: white !important;
+}
+
+#btnRestore:hover, #btnRestore:active{
+  background: #009687 !important;
+}
+
+#newConsultation{
+  background-color: #00A896;
+  border: 1px solid #00A896;
+  color: white !important;
+}
+
+#newConsultation:hover, #newConsultation:active{
+  background: #009687 !important;
+}
+
+#NumRecord{
+  margin-left: auto;
+  margin-right: 3%;
+}
+
+.dateLabel{
+  color: #00A896;
+}
+
+.dateLabel:hover{
+  color: #009687;
+}

@@ -370,15 +370,16 @@
                                         $arrayLine = explode(" - ", $last_line);
 
                                         echo "<tr>";
-                                        echo "<td><a href='../logs/archive/$item' download>" . htmlspecialchars($date) . "</a></td>";
+                                        echo "<td><a class='dateLabel' href='../logs/archive/$item' download>" . htmlspecialchars($date) . "</a></td>";
                                         foreach ($arrayLine as $data){
                                             echo "<td>" . htmlspecialchars($data) . "</td>";
                                         }
                                         echo "
                                             <td class='text-center'> 
-                                                <a class='btn-success btn-sm' href='#' onclick='userRestoreRecord(\"$date\")' data-toggle='tooltip' data-placement='bottom' title='Restore'>
-                                                    <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='currentColor' class='bi bi-dropbox' viewBox='0 2 16 16'>
-                                                      <path d='M8.01 4.555 4.005 7.11 8.01 9.665 4.005 12.22 0 9.651l4.005-2.555L0 4.555 4.005 2 8.01 4.555Zm-4.026 8.487 4.006-2.555 4.005 2.555-4.005 2.555-4.006-2.555Zm4.026-3.39 4.005-2.556L8.01 4.555 11.995 2 16 4.555 11.995 7.11 16 9.665l-4.005 2.555L8.01 9.651Z'/>
+                                                <a id='btnRestore' class='btn-success btn-sm' href='#' onclick='userRestoreRecord(\"$date\")' data-toggle='tooltip' data-placement='bottom' title='Restore'>
+                                                    <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='currentColor' class='bi bi-arrow-counterclockwise' viewBox='0 0 16 16'>
+                                                    <path fill-rule='evenodd' d='M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z'/>
+                                                    <path d='M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z'/>
                                                     </svg>
                                                 </a>
                                             </td>";

@@ -95,6 +95,11 @@ function backup_tables($host, $user, $pass, $dbname, $tables = '*') {
         $return.="\n\n\n";
     }
 
+    
+    if (!file_exists('C:\Backups')) {
+        mkdir('C:\Backups');
+    }
+
     //save file
     $fileName = "C:\Backups\AutoBackup (" . date('M-d-Y') .'--' . date('h.i A') . ').sql';
     $handle = fopen($fileName,'w+');

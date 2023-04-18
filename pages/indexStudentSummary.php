@@ -188,7 +188,7 @@
                                     ?>
                                         <tr>
                                             <td><?php echo $RowStudent['StudentIDNumber']; ?></td>
-                                            <td><a href="studentSummary.php?idnumber=<?php echo $RowStudent['StudentIDNumber']; ?>" ><?php echo "$StudentName"; ?></a></td>
+                                            <td><a class="fullnameLabel" href="studentSummary.php?idnumber=<?php echo $RowStudent['StudentIDNumber']; ?>" ><?php echo "$StudentName"; ?></a></td>
                                             <td><?php echo "$course";?></td>
                                             <td><?php echo $RowStudent['Age'];?></td>
                                             <td><?php echo "$Sex";?></td>
@@ -201,14 +201,15 @@
                                                       <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
                                                     </svg>
                                                 </a>
-                                                &nbsp
+                                                <br>
                                                 <a class='viewBTN btn-success btn-sm' role="button" href="studentSummary.php?idnumber=<?php echo $RowStudent['StudentIDNumber']; ?>" data-toggle="tooltip" data-placement="bottom" title="View Student Records">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-folder-symlink-fill" viewBox="0 0 16 16">
-                                                      <path d="M13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2l.04.87a1.99 1.99 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14h10.348a2 2 0 0 0 1.991-1.819l.637-7A2 2 0 0 0 13.81 3zM2.19 3c-.24 0-.47.042-.683.12L1.5 2.98a1 1 0 0 1 1-.98h3.672a1 1 0 0 1 .707.293L7.586 3H2.19zm9.608 5.271-3.182 1.97c-.27.166-.616-.036-.616-.372V9.1s-2.571-.3-4 2.4c.571-4.8 3.143-4.8 4-4.8v-.769c0-.336.346-.538.616-.371l3.182 1.969c.27.166.27.576 0 .742z"/>
-                                                    </svg>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-folder-symlink" viewBox="0 0 16 16">
+                                                <path d="m11.798 8.271-3.182 1.97c-.27.166-.616-.036-.616-.372V9.1s-2.571-.3-4 2.4c.571-4.8 3.143-4.8 4-4.8v-.769c0-.336.346-.538.616-.371l3.182 1.969c.27.166.27.576 0 .742z"/>
+                                                <path d="m.5 3 .04.87a1.99 1.99 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14h10.348a2 2 0 0 0 1.991-1.819l.637-7A2 2 0 0 0 13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2zm.694 2.09A1 1 0 0 1 2.19 4h11.62a1 1 0 0 1 .996 1.09l-.636 7a1 1 0 0 1-.996.91H2.826a1 1 0 0 1-.995-.91l-.637-7zM6.172 2a1 1 0 0 1 .707.293L7.586 3H2.19c-.24 0-.47.042-.683.12L1.5 2.98a1 1 0 0 1 1-.98h3.672z"/>
+                                                </svg>
                                                 </a>
-                                                &nbsp
-                                                <a class='btn-danger btn-sm' role="button" href="#" onclick='userArchiveRecord(<?php echo $RowStudent['StudentIDNumber']; ?>,"archiveStudent")' data-toggle="tooltip" data-placement="bottom" title="Archive">
+                                                <br>
+                                                <a class='viewBTNArchive btn-danger btn-sm' role="button" href="#" onclick='userArchiveRecord(<?php echo $RowStudent['StudentIDNumber']; ?>,"archiveStudent")' data-toggle="tooltip" data-placement="bottom" title="Archive">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-archive" viewBox="0 0 16 16">
                                                       <path d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
                                                     </svg>

@@ -387,7 +387,7 @@
                                     
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="Submit" class="btn btn-primary">Add Degree</button>
+                        <button id="btnAddDegree" type="Submit" class="btn btn-primary">Add Degree</button>
                     </div>
                 </form>
             </div>
@@ -427,7 +427,10 @@
                                     <td contenteditable="true" onblur="updateDegree(this.innerHTML,'degree_category',<?php echo $Row['id']; ?>)" > <?php echo ucwords($Row['degree_category']); ?></td>
                                     <td contenteditable="true" onblur="updateDegree(this.innerHTML,'degree',<?php echo $Row['id']; ?>)" > <?php echo $Row['degree']; ?></td>
                                     <td contenteditable="true" onblur="updateDegree(this.innerHTML,'degree_acr',<?php echo $Row['id']; ?>)" > <?php echo $Row['degree_acr']; ?></td>
-                                    <td align="center"><button id="deleteDegree" style="background: orangered; align-self: center;" class='viewBTN btn btn-primary btn-sm' onclick="deleteDegree(<?php echo $Row['id']; ?>)">Delete</button></td>
+                                    <td align="center"><button id="deleteDegree" style="align-self: center;" class='viewBTN btn btn-primary btn-sm' onclick="deleteDegree(<?php echo $Row['id']; ?>)" data-toggle='tooltip' data-placement='bottom' title='Delete'><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+                                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+                                    </svg></button></td>
                                 </tr>
                           <?php
                                

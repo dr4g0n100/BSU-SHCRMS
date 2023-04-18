@@ -159,7 +159,7 @@ textarea{
 
 
 .form-button:hover {
-    background: #299F7E;
+    background-color: #00A896;
     color: #F2F3EB;
   }
 
@@ -813,4 +813,13 @@ form .One-Info, form .Two-Info, form .Three-Info, form .Four-Info{
 
     textarea:not(read-only){
         background: white !important;
+    }
+
+    #TxtMSEditorDrop{
+      background-color: white;
+      width: max-content;
+    }
+
+    #BtnCFU:hover, #BtnCFU:active{
+      background: #009687 !important;
     }

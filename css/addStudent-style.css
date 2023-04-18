@@ -103,16 +103,6 @@ body{
     width: 98%;
 }
 
-.Course{
-    width: 96%;
-    padding: 0 1% 0 1%;
-}
-
-.Year, .Section{
-    width: 46.85%;
-    padding: 0 1% 0 1%;
-}
-
 .StudentCategory, .StudentIDNumber, .StudentImage, .Status, .StudentIDNumber1, .Date, .Time{
     width: 46.9%;
     padding: 0 1% 0 1%;
@@ -124,7 +114,7 @@ body{
 }*/
 
 
-.Address, .StudentContactNumber, .GuardianParent, .GPCategory, .ContactPerson, .PGContactNumber{
+.Address, .StudentContactNumber, .GuardianParent, .GPCategory, .ContactPerson, .PGContactNumber, .Year, .Section{
     width: 45%;
     padding: 0 1% 0 3%;
 }
@@ -132,6 +122,10 @@ body{
 .AddHouseNo, .AddStreet, .AddBarangay, .AddMunicipality, .AddProvince{
     width: 17%;
     padding: 0 1% 0 1%;
+}
+
+.AddHouseNo{
+  padding: 0 1% 0 3%;
 }
 
 .IDPicture{
@@ -168,6 +162,12 @@ body{
     width: 65%;
     padding: 0 1% 0 3%;
 }
+
+.Course{
+  width: 65%;
+  padding: 0 1% 0 3%;
+}
+
 .Recommendation{
     margin-top: 2%;
     width: 65%;
@@ -222,7 +222,7 @@ textarea{
 }
 
 .form-button:hover {
-    background: #299F7E;
+  background-color: #00A896;
     color: #F2F3EB;
   }
 
@@ -798,4 +798,9 @@ form .One-Info:not(#pageBreak1, #pageBreak2), form .Two-Info, form .Three-Info, 
     
     margin-top: 2.5% !important;
 
+  }
+
+  #TxtMSEditorDrop{
+    background-color: white;
+    width: max-content;
   }

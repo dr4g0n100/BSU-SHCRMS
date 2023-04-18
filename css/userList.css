@@ -75,17 +75,18 @@ td a{
     width: 100%;
 }
 
-.viewBTN{
-    background-color: #299F7E;
-    border: 1px solid #299F7E;
+.viewBTN:not(#archiveBTN){
+  background-color: #00A896;
+  border: 1px solid #00A896;
 }
 
 #archiveBTN{
     margin-top: 3%;
 }
 
-.viewBTN:hover{
-    background: #23886b;
+.viewBTN:hover:not(#archiveBTN), .viewBTN:active:not(#archiveBTN){
+    background-color: #009687 !important;
+    border: 1px solid #009687 !important;
 }
 
 #deleteLogs{
@@ -98,12 +99,12 @@ td a{
 #newRecord{
     width: 25%;
     margin-left: 2%;
-    background-color: #299F7E;
-    border: 1px solid #299F7E;
+    background-color: #00A896;
+    border: 1px solid #00A896;
 }
 
 #newRecord:hover{
-    background: #23886b;
+    background: #009687;
 }
 
 #notif{
@@ -322,4 +323,35 @@ nav{
 .container{
   max-width: max-content;
   min-width: 87%;
+}
+
+#deleteDegree, #deleteVaccine{
+  display: inline-block;
+  width: 75px;
+  margin: 3px 0px;
+  background-color: #00A896;
+  border: 1px solid #00A896;
+  color: white !important;
+}
+
+#deleteDegree:hover, #deleteVaccine:hover{
+  background: #009687;
+}
+
+.viewBTN:hover{
+  cursor: pointer;
+}
+
+#NumRecord{
+  margin-left: auto;
+  margin-right: 3%;
+}
+
+#btnAddDegree, #addVaccineBtn{
+  background-color: #00A896;
+  border: 1px solid #00A896;
+}
+
+#btnAddDegree:hover, #btnAddDegree:active, #addVaccineBtn:hover, #addVaccineBtn:active{
+  background: #009687 !important;
 }

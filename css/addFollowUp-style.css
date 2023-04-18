@@ -159,8 +159,8 @@ textarea{
 }
 
 
-.form-button:hover {
-    background: #299F7E;
+.form-button:hover, #BtnBackToCons:hover {
+    background: #009687;
     color: #F2F3EB;
   }
 
@@ -834,4 +834,9 @@ form .One-Info, form .Two-Info, form .Three-Info, form .Four-Info{
 
     textarea:not(read-only){
         background: white !important;
+    }
+
+    #TxtMSEditorDrop{
+      background-color: white;
+      width: max-content;
     }

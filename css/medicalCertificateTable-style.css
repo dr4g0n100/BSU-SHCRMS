@@ -202,7 +202,6 @@ td a{
   #NumMedCert{
     margin-left: auto; 
     margin-right: 0;
-    padding-right: 5%;
     font-weight: bold;
     
   }
@@ -311,11 +310,28 @@ td a{
     list-style-type: none;
   }
   
-  .viewBTN{
+  .viewBTN, #newConsultation{
     color: white !important;
+    background-color: #00A896;
+    border: 1px solid #00A896;
+  }
+
+  .viewBTN:hover, .viewBTN:active, #newConsultation:hover, #newConsultation:active{
+    background: #009687 !important;
   }
   
   .container{
     max-width: max-content;
     min-width: 87%;
   }
+
+  .viewBTN, #archiveBTN{
+    display: inline-block;
+    width: 75px;
+    margin: 3px 0px
+}
+
+#NumMedCert{
+  margin-left: auto;
+  margin-right: 3%;
+}

@@ -318,3 +318,23 @@ td a{
     text-decoration: none;
     cursor: pointer;
     }
+
+    .viewBTN, #archiveBTN{
+      display: inline-block;
+      width: 75px;
+      margin: 3px 0px;
+  }
+
+  .viewBTN, #newConsultation{
+    background-color: #00A896;
+    border: 1px solid #00A896;
+  }
+
+  .viewBTN:hover, .viewBTN:active, #newConsultation:hover, #newConsultation:active{
+    background: #009687 !important;
+  }
+
+  #NumConsultation{
+    margin-left: auto;
+    margin-right: 3%;
+  }

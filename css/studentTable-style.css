@@ -103,23 +103,23 @@ td a{
 }
 
 .viewBTN{
-    background-color: #299F7E;
-    border: 1px solid #299F7E;
+  background-color: #00A896;
+  border: 1px solid #00A896;
 }
 
-.viewBTN:hover{
-    background: #23886b;
+.viewBTN:hover, .viewBTN:active{
+    background: #009687 !important;
 }
 
 #newRecord{
     width: 25%;
     margin-left: 2%;
-    background-color: #299F7E;
-    border: 1px solid #299F7E;
+    background-color: #00A896;
+    border: 1px solid #00A896;
 }
 
-#newRecord:hover{
-    background: #23886b;
+#newRecord:hover, #newRecord:active{
+    background: #009687 !important;
 }
 
 #notif{
@@ -134,6 +134,7 @@ td a{
 
 #archiveBTN{
     margin-top: 3%;
+    cursor: pointer;
 }
 
 
@@ -314,8 +315,19 @@ td a{
   .viewBTN{
     color: white !important;
   }
+
+  #archiveBTN, .viewBTN{
+    display: inline-block;
+    width: 75px;
+    margin: 3px 0px
+  }
   
   .container{
     max-width: max-content;
     min-width: 87%;
+  }
+
+  #NumRecord{
+    margin-left: auto;
+    margin-right: 3%;
   }

@@ -4238,7 +4238,9 @@ $resultGrad = mysqli_query($connect, $queryGrad);
 
                             </div>
 
-                            
+                            <div class="One-Info">
+                                <legend>Academic Information</legend>
+                            </div>
 
                             <div class="Two-Info">
                                 <div class="Course" id="Cour">

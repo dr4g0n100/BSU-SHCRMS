@@ -2,3 +2,8 @@
 	width: 4vw;
 	text-align: center;
 }
+
+.navbar-nav li{
+	display: inline-block;
+	width: 60px !important;
+}

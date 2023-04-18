@@ -305,9 +305,26 @@ td a{
   
   .viewBTN{
     color: white !important;
+    background-color: #00A896;
+    border: 1px solid #00A896;
   }
+
+  #newFollowUp{
+    background-color: #00A896;
+    border: 1px solid #00A896;
+  }
+
+  .viewBTN:hover, .viewBTN:active, #newFollowUp:hover, #newFollowUp:active{
+    background: #009687 !important;
+}
   
   .container{
     max-width: max-content;
     min-width: 87%;
   }
+
+  .viewBTN, #archiveBTN{
+    display: inline-block;
+    width: 75px;
+    margin: 3px 0px;
+}

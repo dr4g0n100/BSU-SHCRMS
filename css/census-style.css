@@ -188,5 +188,20 @@ input[type='date'], select{
   float:right;
 }
 
+#linkPrintReport, #linkPrintAllReport{
+  background-color: #00A896;
+  border: 1px solid white;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+#linkPrintReport{
+  margin-right: 10px;
+}
+
+#linkPrintReport:hover, #linkPrintReport:active, #linkPrintAllReport:hover, #linkPrintAllReport:active{
+  background: #009687 !important;
+}
+
 
 
