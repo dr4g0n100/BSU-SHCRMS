@@ -4140,8 +4140,8 @@ $resultGrad = mysqli_query($connect, $queryGrad);
                             </div>
                                     
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="Submit" class="btn btn-primary">Add Degree</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                <button type="Submit" class="btn btn-success">Add Degree</button>
                             </div>
                         </form>
                     </div>
@@ -4206,6 +4206,7 @@ $resultGrad = mysqli_query($connect, $queryGrad);
                                 </div>
                                 <div class="StudentImage">
                                     <label for="TxtStudentImage">Student Image</label><br>
+                                    <label>(Upload file not more than 1 MB)</label><br>
                                     <input name="TxtStudentImage" onchange="LoadImage(this);" accept="image/jpg, image/jpeg, image/png" type="file" id="TxtStudentImage" disabled>
                                 </div>
                             </div>
@@ -4250,9 +4251,14 @@ $resultGrad = mysqli_query($connect, $queryGrad);
 
                                     </datalist>
                                 </div>
-                                <!-- <div class="btn-new-degree" id="NewDegr">
-                                    <button type="button" data-toggle="modal" data-target="#DegreeNewModal">Add New Degree</button>
-                                </div> -->
+                                <div class="btn-new-degree" id="NewDegr">
+                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#DegreeNewModal">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                          <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                                        </svg>
+                                    </button>
+
+                                </div>
                             </div>
                             <div class="Two-Info">
                                 <div class="Year">

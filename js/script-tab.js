@@ -21,6 +21,12 @@ $('body').tooltip({
     $('[data-toggle="tooltip"]').tooltip("hide");
 });
 
+$(document).ready(function() {
+  autoArchive();
+});
+
+
+
 //Allow a textbox to allow only numbers and one decimal point
   function isNumberKey(txt,evt){
     var charCode = (evt.which) ? evt.which : evt.keyChode;
@@ -45,4 +51,87 @@ $('body').tooltip({
       cell0.innerHTML = item;
     });
   }
+
+  function preventNumOnly(inputElement) {
+    var inputValue = inputElement.value;
+
+    // Use a regular expression to check if the input contains only numbers
+    const containsOnlyNumbers = /^\d+$/.test(inputValue);
+
+    // If the input contains only numbers, clear the input field
+    if (containsOnlyNumbers) {
+      $.alert(
+        {theme: 'modern',
+            content: 'Numbers only input are not allowed',
+            title:'', 
+            buttons:{
+            Ok:{
+                text:'Ok',
+                btnClass: 'btn-red'
+        }}});
+      inputElement.value = '';
+    }
+}
+
+function autoArchive(){
+  var reason = 'Auto Archived';
+  $.ajax({
+      url:"../php/archive.php?type=autoArchive",
+          method:"GET",
+          data:jQuery.param({ archReason:reason }),
+          contentType: false,
+          processData: false,
+          cache: false,
+          dataType: "xml",
+          success:function(xml)
+          {   
+              $(xml).find('output').each(function(){
+                  var message = $(this).attr('Message');
+                  var error = $(this).attr('error');
+
+
+                  if(error == 1){
+                      $.alert(
+                      {theme: 'modern',
+                      content:'Failed in auto archiving records!',
+                      title:'', 
+                      useBootstrap: false,
+                      buttons:{
+                          Ok:{
+                          text:'Ok',
+                          btnClass: 'btn-red'
+                      }}});
+                  }/*else{
+                      $.alert(
+                      {theme: 'modern',
+                      content:message,
+                      title:'', 
+                      useBootstrap: false,
+                      buttons:{
+                          Ok:{
+                          text:'Ok',
+                          btnClass: 'btn-green'
+                      }}});
+                  }*/
+                  
+              });
+              
+
+          },
+          error: function (e)
+              {
+                  //Display Alert Box
+                  $.alert(
+                  {theme: 'modern',
+                  content:'Failed to execute due to errors',
+                  title:'', 
+                  useBootstrap: false,
+                  buttons:{
+                      Ok:{
+                      text:'Ok',
+                      btnClass: 'btn-red'
+                  }}});
+              }
+  });
+}
 

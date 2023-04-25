@@ -334,6 +334,9 @@
                           <?php        
                           while($Row = $ClinicRecordsQuery->fetch_array()) 
                           {  
+                                $Lastname = ucwords($Row['LastName']);
+                                $FirstName = ucwords($Row['FirstName']);
+                                $MiddleName = ucwords($Row['MiddleName']);
                                 /*$Row = array_map('strtoupper', $Row);*/
                                 $Pos = ucwords($Row['Position']);
                                 echo "  
@@ -341,7 +344,7 @@
                                     <td>$Row[IdNum]</td>
                                     <td>$Row[Email]</td>
                                     <td>$Row[Username]</td>
-                                    <td>$Row[LastName], $Row[FirstName] $Row[MiddleName]</td>
+                                    <td>$Lastname, $FirstName $MiddleName</td>
                                     <td>$Row[ContactNum]</td>
                                     <td>$Pos</td>
                                     <td>$Row[AccStatus]</td>

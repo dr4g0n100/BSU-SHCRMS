@@ -64,67 +64,6 @@
                 logAction(act);
             }
         // ---------------------------end functions for System Logs---------------------------------------
-            function autoArchive(){
-                var reason = 'Auto Archived';
-                $.ajax({
-                    url:"../php/archive.php?type=autoArchive",
-                        method:"GET",
-                        data:jQuery.param({ archReason:reason }),
-                        contentType: false,
-                        processData: false,
-                        cache: false,
-                        dataType: "xml",
-                        success:function(xml)
-                        {   
-                            $(xml).find('output').each(function(){
-                                var message = $(this).attr('Message');
-                                var error = $(this).attr('error');
-
-
-                                if(error == 1){
-                                    $.alert(
-                                    {theme: 'modern',
-                                    content:'Failed in auto archiving records!',
-                                    title:'', 
-                                    useBootstrap: false,
-                                    buttons:{
-                                        Ok:{
-                                        text:'Ok',
-                                        btnClass: 'btn-red'
-                                    }}});
-                                }/*else{
-                                    $.alert(
-                                    {theme: 'modern',
-                                    content:message,
-                                    title:'', 
-                                    useBootstrap: false,
-                                    buttons:{
-                                        Ok:{
-                                        text:'Ok',
-                                        btnClass: 'btn-green'
-                                    }}});
-                                }*/
-                                
-                            });
-                            
-
-                        },
-                        error: function (e)
-                            {
-                                //Display Alert Box
-                                $.alert(
-                                {theme: 'modern',
-                                content:'Failed to execute due to errors',
-                                title:'', 
-                                useBootstrap: false,
-                                buttons:{
-                                    Ok:{
-                                    text:'Ok',
-                                    btnClass: 'btn-red'
-                                }}});
-                            }
-                });
-            }
 
             /*function loadTableData(items, tbodyID) {
               const table = document.getElementById(tbodyID);
@@ -136,10 +75,7 @@
             }*/
 
             $(document).ready(function() {
-                autoArchive();
-
-
-
+  
                 if (sessionStorage.getItem("isLoggedIn") == null){
 
                 alert('User has been logged out. Please login again');

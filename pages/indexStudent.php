@@ -256,6 +256,9 @@ if(empty($_SESSION['logged_in'])){
                           {  
                                 /*$row = array_map('strtoupper', $row);*/
                                 $Sex = ucwords($row['Sex']);
+                                $Lastname = ucwords($row['Lastname']);
+                                $FirstName = ucwords($row['Firstname']);
+                                $MiddleName = ucwords($row['Middlename']);
                                 $course = "";
                                 if($row['Course'] != ""){
                                     $course = $row['Course'];
@@ -265,7 +268,7 @@ if(empty($_SESSION['logged_in'])){
                                 echo "  
                                 <tr>
                                     <td>$row[StudentIDNumber]</td>
-                                    <td>$row[Lastname], $row[Firstname] $row[Middlename]</td>
+                                    <td>$Lastname, $FirstName $MiddleName</td>
                                     <td>$course</td>
                                     <td>$row[Age]</td>
                                     <td>$Sex</td>

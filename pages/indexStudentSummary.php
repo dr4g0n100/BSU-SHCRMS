@@ -179,7 +179,10 @@
                                   {  
                                     $Sex = ucwords($RowStudent['Sex']);
                                     $course = "";
-                                    $StudentName = "$RowStudent[Lastname], $RowStudent[Firstname] $RowStudent[Middlename]";
+                                    $Lastname = ucwords($RowStudent['Lastname']);
+                                    $FirstName = ucwords($RowStudent['Firstname']);
+                                    $MiddleName = ucwords($RowStudent['Middlename']);
+                                    $StudentName = "$Lastname, $FirstName $MiddleName";
                                         if($RowStudent['Course'] != ""){
                                             $course = $RowStudent['Course'];
                                         }else{

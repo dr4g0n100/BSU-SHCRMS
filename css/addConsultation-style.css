@@ -293,11 +293,12 @@ button{
     box-sizing: border-box;
     transition: all 0.3s;
 }
-
 .VaccineBrand{
     margin-left: 0.3%;
-    width: 32%;
+    width: 33%;
+    display: inline-block;
 }
+
 
 .Booster{
     margin-left: 1.20%;

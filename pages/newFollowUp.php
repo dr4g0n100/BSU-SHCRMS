@@ -1743,37 +1743,37 @@ $userdate = date('Y-m-d H:i:s');
                              <div class="One-Info">
                                 <div class="Complaints">
                                     <label for="TxtComplaints">Complaints</label>
-                                    <textarea type="text" name="TxtComplaints" id="TxtComplaints" cols="105" rows="10" oninput="auto_growTextArea(this)" style="background-color: white;" readonly></textarea>
+                                    <textarea type="text" onchange="preventNumOnly(this)" name="TxtComplaints" id="TxtComplaints" cols="105" rows="10" oninput="auto_growTextArea(this)" style="background-color: white;" readonly></textarea>
                                 </div>
                             </div>
                             <div class="One-Info">
                                 <div class="PhysicalFindings">
                                     <label for="TxtPhysicalFindings">Physical Findings</label>
-                                    <textarea type="text" name="TxtPhysicalFindings" id="TxtPhysicalFindings" cols="105" oninput="auto_growTextArea(this)" rows="10" style="background-color: white;" readonly></textarea>
+                                    <textarea type="text" onchange="preventNumOnly(this)" name="TxtPhysicalFindings" id="TxtPhysicalFindings" cols="105" oninput="auto_growTextArea(this)" rows="10" style="background-color: white;" readonly></textarea>
                                 </div>
                             </div>
                             <div class="One-Info">
                                 <div class="Diagnosis">
                                     <label for="TxtDiagnosis">Diagnosis</label>
-                                    <textarea type="text" name="TxtDiagnosis" id="TxtDiagnosis" cols="105" rows="10" oninput="auto_growTextArea(this)" style="background-color: white;" readonly></textarea>
+                                    <textarea type="text" onchange="preventNumOnly(this)" name="TxtDiagnosis" id="TxtDiagnosis" cols="105" rows="10" oninput="auto_growTextArea(this)" style="background-color: white;" readonly></textarea>
                                 </div>
                             </div>
                             <div class="One-Info">
                                 <div class="DiagnosticTestNeeded">
                                     <label for="TxtDiagnosticTestNeeded">Treatment</label>
-                                    <textarea type="text" name="TxtDiagnosticTest" id="TxtDiagnosticTest" cols="105" rows="10" oninput="auto_growTextArea(this)" style="background-color: white;" readonly></textarea>
+                                    <textarea type="text" onchange="preventNumOnly(this)" name="TxtDiagnosticTest" id="TxtDiagnosticTest" cols="105" rows="10" oninput="auto_growTextArea(this)" style="background-color: white;" readonly></textarea>
                                 </div>
                             </div>
                             <div class="One-Info">
                                 <div class="MedicineGiven">
                                     <label for="TxtMedicineGiven">Medicine Given</label>
-                                    <textarea type="text" name="TxtMedicineGiven" id="TxtMedicineGiven" cols="105" rows="10" oninput="auto_growTextArea(this)" style="background-color: white;" readonly></textarea>
+                                    <textarea type="text" onchange="preventNumOnly(this)" name="TxtMedicineGiven" id="TxtMedicineGiven" cols="105" rows="10" oninput="auto_growTextArea(this)" style="background-color: white;" readonly></textarea>
                                 </div>
                             </div>
                             <div class="One-Info">
                                 <div class="Remarks">
                                     <label for="TxtRemarks">Remarks</label>
-                                    <textarea type="text" name="TxtRemarks" id="TxtRemarks" cols="105" rows="10" oninput="auto_growTextArea(this)" style="background-color: white;" readonly></textarea>
+                                    <textarea type="text" onchange="preventNumOnly(this)" name="TxtRemarks" id="TxtRemarks" cols="105" rows="10" oninput="auto_growTextArea(this)" style="background-color: white;" readonly></textarea>
                                 </div>
                             </div>
                             <div class="One-Info">

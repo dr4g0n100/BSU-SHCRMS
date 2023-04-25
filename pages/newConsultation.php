@@ -1241,8 +1241,8 @@ $resultVaccine = mysqli_query($connect, $queryVaccine);
                 document.getElementById("VaccineBrand" , "Booster").removeAttribute("hidden");
                 document.getElementById("TxtVaccineBrand" , "TxtBooster" ).removeAttribute("hidden");
                 document.getElementById("Booster", "VaccineBrand" ).removeAttribute("hidden");
-                document.getElementById("TxtBooster" , "TxtVaccineBrand"  ).removeAttribute("hidden");
-
+                document.getElementById("TxtBooster" , "TxtVaccineBrand").removeAttribute("hidden");
+                document.getElementById("new_vaccine_btn" ).removeAttribute("hidden");
                 var vaccineOption = document.getElementById('dlVaccine');
                 vaccineOption.options.length = 0;
                 <?php  
@@ -1305,6 +1305,7 @@ $resultVaccine = mysqli_query($connect, $queryVaccine);
             function clickedNotVaccinated(){
                 document.getElementById("VaccineBrand").setAttribute('hidden', 'hidden');
                 document.getElementById("TxtVaccineBrand").setAttribute('hidden', 'hidden');
+                document.getElementById("new_vaccine_btn").setAttribute('hidden', 'hidden');
                 document.getElementById("Booster").setAttribute('hidden', 'hidden');
                 document.getElementById("TxtBooster").setAttribute('hidden', 'hidden');
             }
@@ -1938,8 +1939,16 @@ $resultVaccine = mysqli_query($connect, $queryVaccine);
 
                                     &nbsp;                           
                                 <div class="VaccineBrand">
-                                    <label for="TxtVaccineBrand" id="VaccineBrand" hidden>Vaccine</label><br>
+                                    <label for="TxtVaccineBrand" id="VaccineBrand" hidden>Vaccine</label>
                                     <input id="TxtVaccineBrand" list="dlVaccine" name="TxtVaccineBrand" disabled hidden>
+                                    <div class="btn-new-degree" id="NewDegr">
+                                        <a href="#" role="button" id="new_vaccine_btn" data-toggle="modal" data-target="#DegreeNewModal" hidden>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 14 14" hidden>
+                                              <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                                            </svg>
+                                        </a>
+
+                                    </div>
                                     <datalist id="dlVaccine">
                                         <!-- <option id="AP" value="AztraZeneca Pharmaceuticals"></option>
                                         <option id="BBC" value="Bharat BioTechs Covaxin"></option>
@@ -1950,6 +1959,8 @@ $resultVaccine = mysqli_query($connect, $queryVaccine);
                                         <option id="Sinovac" value="Sinovac Vaccine"></option>
                                         <option id="Sputnik" value="Sputnik Vaccine"></option> -->
                                     </datalist>
+                                    
+                                    
                                         
                                     
                                 </div>
@@ -1968,37 +1979,37 @@ $resultVaccine = mysqli_query($connect, $queryVaccine);
                              <div class="One-Info">
                                 <div class="Complaints">
                                     <label for="TxtComplaints">Complaints</label>
-                                    <textarea type="text" name="TxtComplaints" id="TxtComplaints" cols="105" rows="10" oninput="auto_growTextArea(this)"  readonly></textarea>
+                                    <textarea type="text" onchange="preventNumOnly(this)" name="TxtComplaints" id="TxtComplaints" cols="105" rows="10" oninput="auto_growTextArea(this)"  readonly></textarea>
                                 </div>
                             </div>
                             <div class="One-Info">
                                 <div class="PhysicalFindings">
                                     <label for="TxtPhysicalFindings">Physical Findings</label>
-                                    <textarea type="text" name="TxtPhysicalFindings" id="TxtPhysicalFindings" cols="105" oninput="auto_growTextArea(this)" rows="10"  readonly></textarea>
+                                    <textarea type="text" onchange="preventNumOnly(this)" name="TxtPhysicalFindings" id="TxtPhysicalFindings" cols="105" oninput="auto_growTextArea(this)" rows="10"  readonly></textarea>
                                 </div>
                             </div>
                             <div class="One-Info">
                                 <div class="Diagnosis">
                                     <label for="TxtDiagnosis">Diagnosis</label>
-                                    <textarea type="text" name="TxtDiagnosis" id="TxtDiagnosis" cols="105" rows="10" oninput="auto_growTextArea(this)"  readonly></textarea>
+                                    <textarea type="text" onchange="preventNumOnly(this)" name="TxtDiagnosis" id="TxtDiagnosis" cols="105" rows="10" oninput="auto_growTextArea(this)"  readonly></textarea>
                                 </div>
                             </div>
                             <div class="One-Info">
                                 <div class="DiagnosticTestNeeded">
                                     <label for="TxtDiagnosticTestNeeded">Treatment</label>
-                                    <textarea type="text" name="TxtDiagnosticTest" id="TxtDiagnosticTest" cols="105" rows="10" oninput="auto_growTextArea(this)"  readonly></textarea>
+                                    <textarea type="text" onchange="preventNumOnly(this)" name="TxtDiagnosticTest" id="TxtDiagnosticTest" cols="105" rows="10" oninput="auto_growTextArea(this)"  readonly></textarea>
                                 </div>
                             </div>
                             <div class="One-Info">
                                 <div class="MedicineGiven">
                                     <label for="TxtMedicineGiven">Medicine Given</label>
-                                    <textarea type="text" name="TxtMedicineGiven" id="TxtMedicineGiven" cols="105" rows="10" oninput="auto_growTextArea(this)"  readonly></textarea>
+                                    <textarea type="text" onchange="preventNumOnly(this)" name="TxtMedicineGiven" id="TxtMedicineGiven" cols="105" rows="10" oninput="auto_growTextArea(this)"  readonly></textarea>
                                 </div>
                             </div>
                             <div class="One-Info">
                                 <div class="Remarks">
                                     <label for="TxtRemarks">Remarks</label>
-                                    <textarea type="text" name="TxtRemarks" id="TxtRemarks" cols="105" rows="10" oninput="auto_growTextArea(this)"  readonly></textarea>
+                                    <textarea type="text" onchange="preventNumOnly(this)" name="TxtRemarks" id="TxtRemarks" cols="105" rows="10" oninput="auto_growTextArea(this)"  readonly></textarea>
                                 </div>
                             </div>
                             <div class="One-Info">
