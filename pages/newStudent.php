@@ -416,14 +416,17 @@ $resultGrad = mysqli_query($connect, $queryGrad);
             }
 
             function showAddMore(){
-                document.getElementById('addMore').style.display = 'none';
-                document.getElementById('addMoreForm').style.display = 'block';
-                document.getElementById('addMoreForm1').style.display = 'block';
-                document.getElementById('addMoreForm2').style.display = 'block';
+                if(getType = 'newRecord'){
+                    document.getElementById('addMore').style.display = 'none';
+                    document.getElementById('addMoreForm').style.display = 'block';
+                    document.getElementById('addMoreForm1').style.display = 'block';
+                    document.getElementById('addMoreForm2').style.display = 'block';
 
-                document.getElementById('addMoreForm1').style.display = 'block';
-                document.getElementById('addMoreForm3').style.display = 'block';
-                document.getElementById('addMoreForm4').style.display = 'block';
+                    document.getElementById('addMoreForm1').style.display = 'block';
+                    document.getElementById('addMoreForm3').style.display = 'block';
+                    document.getElementById('addMoreForm4').style.display = 'block';
+                }
+                
             }
 
             
@@ -4205,8 +4208,8 @@ $resultGrad = mysqli_query($connect, $queryGrad);
                                     <input name="TxtStudentIDNumber" type="text" id="TxtStudentIDNumber" onkeypress="return isNumberKey(this,event)" style="background-color: white;" required maxlength="7">
                                 </div>
                                 <div class="StudentImage">
+                                    <p class="img-instructions">(Upload file not more than 1 MB)</p><br>
                                     <label for="TxtStudentImage">Student Image</label><br>
-                                    <label>(Upload file not more than 1 MB)</label><br>
                                     <input name="TxtStudentImage" onchange="LoadImage(this);" accept="image/jpg, image/jpeg, image/png" type="file" id="TxtStudentImage" disabled>
                                 </div>
                             </div>
@@ -4603,14 +4606,14 @@ $resultGrad = mysqli_query($connect, $queryGrad);
                         </div>
 
                         <div class="One-Info">
-                            <div class="Date">
+                            <div class="MedicalOthers">
                                 <label for="TxtMedicalOthers">Others</label>
                                 <input type="text" name="TxtMedicalOthers" id="TxtMedicalOthers" readonly>
                             </div>
                         </div>
 
                         <div class="One-Info">
-                            <div class="Date">
+                            <div class="RLOA mx-3">
                                 <label for="TxtRLOA">Reason for leave of Absence (LOA) for ORS</label>
                                 <input type="text" name="TxtRLOA" id="TxtRLOA" readonly>
                             </div>
@@ -5173,7 +5176,7 @@ $resultGrad = mysqli_query($connect, $queryGrad);
                             <div id="MedicalStaffInfo">
                                 <legend>Medical Staff</legend>
                                 <span id="TxtMSIDNumber1">ID Number:</span><br>
-                                <span id="TxtChartedBy">Charted By:</span><br>
+                                <span id="TxtChartedBy">Charted By:</span>
                                 <span id="TxtMSFullName"></span><br>
                                 <span id="TxtMSEditorTitle">Edited By:</span><br>
                                 <select id="TxtMSEditorDrop" name="TxtMSEditorDrop" ></select>
@@ -5241,7 +5244,7 @@ $resultGrad = mysqli_query($connect, $queryGrad);
             document.getElementById('MedicalStaffInfo').style.display = 'none';
             document.getElementById('ExaminedBy').style.display = 'none';
             document.getElementById('addMore').style.display = 'none';
-            getType = 'viewRecord';
+            getType = 'newRecord';
             </script>";
         }else if($_GET["type"] == "viewRecord"){
 
@@ -5275,6 +5278,7 @@ $resultGrad = mysqli_query($connect, $queryGrad);
             document.getElementById('addMore').style.display = 'none';
             document.getElementById('BtnClear').style.display = 'none';
             document.getElementById('BtnClear1').style.display = 'none';
+            document.getElementById('TxtMSEditorDrop').setAttribute('disabled','disabled');
             getType = 'viewArchivedRecord';
             id_stud = '$id';
             passIDPHP($id);

@@ -1,0 +1,4 @@
+09:22:01 PM - 2 - admin - Successfully Archived student, consultation, medical certificate info and follow-up record ID 1900388
+09:23:37 PM - 2 - admin - Successfully archived staff account ID 3
+archived
+10:26:49 AM - superadmin - asd

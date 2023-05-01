@@ -168,9 +168,9 @@
     <?php include '../includes/navbar.php'; ?>     
         <div id="iframeCont">
         </div>
-        <!-- <div>
+        <div>
             <button type="Submit" class="btnUp" id="btnUp" name="btnUp" onclick="window.scrollTo(0, 0)"/>
-        </div> -->
+        </div>
         <script src="../js/script-tab.js"></script>
         
     </body>

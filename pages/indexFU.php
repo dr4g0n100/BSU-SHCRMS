@@ -33,6 +33,12 @@ require '../php/centralConnection.php';
         }  
     }
     $type = $_GET["type"];
+
+    if($_GET["type"] == 'checkArchivedFollowUp'){
+        $viewType = "viewArchivedFollowUp";
+    }else{
+        $viewType = "viewFollowUp";
+    }
  ?>  
 
 
@@ -286,12 +292,16 @@ require '../php/centralConnection.php';
                     <span id="tab1" class="tabs-toggle is-active">&bull;&nbsp;Follow-Up Consultation&nbsp;&bull;</span>
                 </div>
                 <div id="notif">
-                    <?php if ($_GET["type"] == "checkRecords" || $type == 'checkRange' || $type == 'checkRecordsId' || $type == 'checkRelFU'){
+                    <?php if ($_GET["type"] == "checkRecords" || $type == 'checkRecordsId' || $type == 'checkRelFU'){
                         echo "
                         <a id='newFollowUp' class='btn btn-primary' href='newFollowUp.php?id=$id&date=$date&time=$time&type=createFU' role='button'>New Follow-Up</a>
                         <span id='NumFollowUp' style='align:center'>Total Number of Follow-Up/s: </span>
                         ";
                         //"newFollowUp.php?id="+studID+"&date="+date+"&time="+time+"&type=createFU";
+                    }else{
+                        echo"
+                        <span id='NumFollowUp' style='margin-left:71.8%;'>Total Number of Follow-Up/s: </span>
+                        ";
                     } ?>
 
                     
@@ -331,7 +341,7 @@ require '../php/centralConnection.php';
                                 $Lastname = ucwords($row['Lastname']);
                                 $Firstname = ucwords($row['Firstname']);
                                 $Middlename = ucwords($row['Middlename']);
-                                if(empty($Lastname) && ($type == "checkRecords" || $type == 'checkRange')){
+                                if(empty($Lastname) && ($type == "checkRecords" || $type == 'checkRange' || $type == 'checkRelFU')){
                                     $queryArchive ="SELECT * FROM followup LEFT JOIN archivedstudent ON followup.IdNumb = archivedstudent.StudentIDNumber";
                                     $resultArchive = mysqli_query($connect, $queryArchive);
                                     $rowArchive = mysqli_fetch_array($resultArchive);
@@ -356,7 +366,7 @@ require '../php/centralConnection.php';
                                 echo "  
                                 <tr>
                                     <td>$row[IdNumb]</td>
-                                    <td>$Lastname, $Firstname $Middlename</td>
+                                    <td><a href='newFollowUp.php?num=$row[Num]&type=$viewType'>$Lastname, $Firstname $Middlename</a></td>
                                     
                                     ";
 

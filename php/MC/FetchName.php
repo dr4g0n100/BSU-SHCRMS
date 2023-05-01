@@ -28,9 +28,9 @@ date_default_timezone_set('Asia/Manila');
                           
       if($Result == true)
       {   
-        if(checkIfExistArchive($studentID)){
+        //if(checkIfExistArchive($studentID)){
           FetchStudent($studentID);
-        }
+        //}
         
       }
       else

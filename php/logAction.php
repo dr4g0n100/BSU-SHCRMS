@@ -32,7 +32,7 @@
         $Result = $ClinicRecordsDB->Execute($sql);*/
 
         $today = date("F-d-Y");
-        $current_time = date("h:i:s A");
+        $current_time = date("h:i A");
         $filepath = "../logs/$today.txt";
         if(file_exists($filepath)) {
             $handle = fopen($filepath, "a");

@@ -244,7 +244,7 @@ $Message = '';
 			if($is_pf == 'Physically Fit'){
 				$pf = "3";
 				$pu = "";
-			}else{
+			}else if($is_pf == 'Physically Unfit'){
 				$pf = "";
 				$pu = "3";
 			}
@@ -417,7 +417,7 @@ $Message = '';
 				$check3 = "3";
 				$check4 = "";
 				$showXtraInfo = false;
-			}else{
+			}else if($is_excused == 'others'){
 				$check1 = "";
 				$check2 = "";
 				$check3 = "";

@@ -37,6 +37,9 @@
             <img id="backupIcon" src="../images/backupIcon.webp" alt="Backup Icon" />
       </div>
     </div>
+    <div>
+        <button type="Submit" class="Upbtn" id="btnUp" name="btnUp" onclick="window.scrollTo(0, 0)"/>
+    </div>
     <script src="../js/script-tab.js"></script>
  </body>
 </html>

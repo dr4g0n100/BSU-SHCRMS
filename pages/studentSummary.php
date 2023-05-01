@@ -232,22 +232,22 @@
                             <label for="TxtAge" class="font-weight-bold">Age</label> 
                             <input type="number" class="form-control" name="TxtAge" id="TxtAge" disabled >
                         </div>
-                        <div class="col-md-3" >
+                        <div class="col-md-4" >
                             <label for="TxtSex" class="font-weight-bold">Sex</label> 
                             <input type="text" class="form-control" name="TxtSex" id="TxtSex" disabled>
                         </div>
-                        <div class="col-md-6" >
+                        <div class="col-md-5" >
                             <label for="TxtContactNumber" class="font-weight-bold">Contact Number</label> 
                             <input type="text" class="form-control" name="TxtContactNumber" id="TxtContactNumber" disabled>
                         </div>
                     </div>
 
                     <div class="form-row mx-4">
-                        <div class="col-md-8">
+                        <div class="col-md-7">
                             <label for="TxtCourseStrand" class="font-weight-bold">Degree / Strand</label>
                             <input type="text" class="form-control" name="TxtCourseStrand" id="TxtCourseStrand" disabled minlength="2">
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-5">
                             <label for="TxtYear" class="font-weight-bold">Year</label>
                             <input type="text" class="form-control" name="TxtYear" id="TxtYear" disabled maxlength="3">
                         </div>
@@ -304,7 +304,7 @@
                                                     </svg>
                                                 </a>
                                                 &nbsp
-                                                <a class="btn-danger btn-sm" id="archiveBTN" onclick='userArchiveRecord(<?php echo $RowCons['Num']; ?>,"archiveConsultation")' data-toggle="tooltip" data-placement="bottom" title="Archive Records">
+                                                <a class="archiveBTN btn-danger btn-sm" id="archiveBTN" onclick='userArchiveRecord(<?php echo $RowCons['Num']; ?>,"archiveConsultation")' data-toggle="tooltip" data-placement="bottom" title="Archive Records">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-archive" viewBox="0 0 16 16">
                                                       <path d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
                                                     </svg>
@@ -364,7 +364,7 @@
                                                     </svg>
                                                 </a>
                                                 &nbsp
-                                                <a class="btn-danger btn-sm" id="archiveBTN" onclick="userArchiveRecord(<?php echo $RowMC['mc_id_num']; ?>,'archiveMC')" data-toggle="tooltip" data-placement="bottom" title="Archive Records">
+                                                <a class="archiveBTN btn-danger btn-sm" id="archiveBTN" onclick="userArchiveRecord(<?php echo $RowMC['mc_id_num']; ?>,'archiveMC')" data-toggle="tooltip" data-placement="bottom" title="Archive Records">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-archive" viewBox="0 0 16 16">
                                                       <path d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
                                                     </svg>

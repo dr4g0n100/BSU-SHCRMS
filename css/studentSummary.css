@@ -79,6 +79,11 @@ body{
     cursor: pointer;
 }
 
+.tabs-toggle.is-active{
+    background: #f2eeeb;
+    color: #062102;
+}
+
 .tabs-content{
     padding: 2%;
     display: none;
@@ -92,6 +97,10 @@ body{
     color: #062102;
 }
 
+.tabs-text{
+    color: #062102;
+}
+
 td a{
     width: 100%;
 }
@@ -99,6 +108,11 @@ td a{
 .viewBTN{
     background-color: #00A896;
     border: 1px solid #00A896;
+}
+
+.archiveBTN{
+    background-color: #dc3545;
+    border: 1px solid #dc3545;
 }
 
 .fullnameLabel{
@@ -398,7 +412,7 @@ a:hover{
     text-decoration: none;
 }
 
-.viewBTN, .viewBTNArchive{
+.viewBTN, .viewBTNArchive, .archiveBTN{
     display: inline-block;
     width: 75px;
     margin: 3px 0px

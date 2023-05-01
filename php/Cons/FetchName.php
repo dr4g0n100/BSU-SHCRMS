@@ -25,9 +25,9 @@ date_default_timezone_set('Asia/Manila');
                           
       if($Result == true)
       {   
-        if(checkIfExistArchive($temp)){
+        //if(checkIfExistArchive($temp)){
           FetchUser($temp);
-        }
+        //}
       }
       else
       {
@@ -76,7 +76,7 @@ date_default_timezone_set('Asia/Manila');
       $ClinicRecordQuery = $ClinicRecordsDB->GetRows($sql);
       $Row = $ClinicRecordQuery->fetch_array();                
 
-      /*if(empty($Row)){
+      if(empty($Row)){
           $sql = "SELECT * FROM archivedstudent WHERE StudentIDNumber='$temp'";
 
           $Result = $ClinicRecordsDB->Execute($sql);
@@ -84,7 +84,7 @@ date_default_timezone_set('Asia/Manila');
           $ClinicRecordQuery = $ClinicRecordsDB->GetRows($sql);
           $Row = $ClinicRecordQuery->fetch_array();                
           
-      }*/
+      }
 
       if($ClinicRecordQuery)
       {

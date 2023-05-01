@@ -9,6 +9,12 @@
 
     $type = $_GET["type"];
 
+    if($_GET["type"] == 'checkArchivedStaff'){
+        $viewType = "viewArchivedRecord";
+    }else{
+        $viewType = "viewRecord";
+    }
+
     $ClinicRecordsDB = new Database($Server,$User,$DBPassword);
 
     if ($ClinicRecordsDB->Connect()==true)
@@ -307,6 +313,10 @@
                         <span id='NumRecord'>Total Number of Record/s: </span>
                         ";
 
+                    }else{
+                        echo"
+                        <span id='NumRecord' style='margin-left:71.8%;'>Total Number of Record/s: </span>
+                        ";
                     } ?>
                     
                     
@@ -344,7 +354,7 @@
                                     <td>$Row[IdNum]</td>
                                     <td>$Row[Email]</td>
                                     <td>$Row[Username]</td>
-                                    <td>$Lastname, $FirstName $MiddleName</td>
+                                    <td><a href='newStaff.php?id=$Row[IdNum]&type=$viewType'>$Lastname, $FirstName $MiddleName</a></td>
                                     <td>$Row[ContactNum]</td>
                                     <td>$Pos</td>
                                     <td>$Row[AccStatus]</td>

@@ -20,6 +20,12 @@ if(empty($_SESSION['logged_in'])){
         }  
 
         $type = $_GET["type"];
+
+        if($_GET["type"] == 'checkArchivedStudent'){
+            $viewType = "viewArchivedRecord";
+        }else{
+            $viewType = "viewRecord";
+        }
     }  
  ?>  
 
@@ -229,6 +235,10 @@ if(empty($_SESSION['logged_in'])){
                     <span id='NumRecord'>Total Number of Record/s: </span>
                         ";
 
+                    }else{
+                        echo "
+                        <span id='NumRecord' style='margin-left:71.8%;'>Total Number of Record/s: </span>
+                        ";
                     } ?>
                     
                 </div>
@@ -268,7 +278,7 @@ if(empty($_SESSION['logged_in'])){
                                 echo "  
                                 <tr>
                                     <td>$row[StudentIDNumber]</td>
-                                    <td>$Lastname, $FirstName $MiddleName</td>
+                                    <td><a href='newStudent.php?id=$row[StudentIDNumber]&type=$viewType'>$Lastname, $FirstName $MiddleName</a></td>
                                     <td>$course</td>
                                     <td>$row[Age]</td>
                                     <td>$Sex</td>

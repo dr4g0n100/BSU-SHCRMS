@@ -149,6 +149,8 @@ $userdate = date('Y-m-d H:i:s');
                     modifyAttrib('TxtConsTime','removeAttribute','disabled');
                 }
 
+
+
                 if (IDNumberLen > 7){
                     $.alert(
                         {theme: 'modern',
@@ -160,8 +162,8 @@ $userdate = date('Y-m-d H:i:s');
                                 btnClass: 'btn-red'
                             }}});
                 }else{
-                    var temp = document.getElementById('TxtStudentIDNumber2').value;
                     
+                    var temp = document.getElementById('TxtStudentIDNumber2').value;
                     var form_data = new FormData();
                     form_data.append("temp", temp);
 
@@ -363,7 +365,7 @@ $userdate = date('Y-m-d H:i:s');
                                         });
 
                                         $('#TxtConsTime').val(value);
-                                        if(getType != 'viewFollowUp'){
+                                        if(getType != 'viewFollowUp' && getType != 'viewArchivedFollowUp'){
                                             clickEdit();
                                         }
 
@@ -656,113 +658,82 @@ $userdate = date('Y-m-d H:i:s');
                             valTime = ConsTime;
                         
                             if(error == "1"){
-                            //Display Alert Box
-                                /* $.alert(
-                                {theme: 'modern',
-                                    content: message,
-                                    title:'', 
-                                    buttons:{
-                                    Ok:{
-                                        text:'Ok',
-                                        btnClass: 'btn-red'
-                                    }}}); */
 
+                                $('#TxtStudentIDNumber2').val('');
+                                $('#TxtFirstName').val('');
+                                $('#TxtMiddleName').val('');
+                                $('#TxtLastName').val('');
+                                $('#TxtExtension').val('');
+                                $('#TxtAge').val('');
+                                $('#TxtSex').val('');
+                                $('#TxtCourseStrand').val('');
+                                $('#TxtYear').val('');
+                                document.getElementById('TxtMSIDNumber1').innerHTML = 'ID Number:';
+                                document.getElementById('TxtMSFullName').innerHTML = '';
+                                document.getElementById('TxtConsMSEditor').innerHTML = '';
+                                $('#TxtDate').val('');
+                                $('#TxtTime').val('');
+                                $('#TxtConsDate').val('');
+                                $('#TxtConsTime').val('');
+                                $('#TxtComplaints').val('');
+                                $('#TxtDiagnosis').val('');
+                                $('#TxtDiagnosticTest').val('');
+                                $('#TxtMedicineGiven').val('');
+                                $('#TxtRemarks').val('');
+                                $('#TxtPhysicalFindings').val('');
 
-
-                                   
-                                    $('#TxtStudentIDNumber2').val('');
-                                    $('#TxtFirstName').val('');
-                                    $('#TxtMiddleName').val('');
-                                    $('#TxtLastName').val('');
-                                    $('#TxtExtension').val('');
-                                    $('#TxtAge').val('');
-                                    $('#TxtSex').val('');
-                                    $('#TxtCourseStrand').val('');
-                                    $('#TxtYear').val('');
-                                    document.getElementById('TxtMSIDNumber1').innerHTML = 'ID Number:';
-                                    document.getElementById('TxtMSFullName').innerHTML = '';
-                                    document.getElementById('TxtConsMSEditor').innerHTML = '';
-                                    $('#TxtDate').val('');
-                                    $('#TxtTime').val('');
-                                    $('#TxtConsDate').val('');
-                                    $('#TxtConsTime').val('');
-                                    $('#TxtComplaints').val('');
-                                    $('#TxtDiagnosis').val('');
-                                    $('#TxtDiagnosticTest').val('');
-                                    $('#TxtMedicineGiven').val('');
-                                    $('#TxtRemarks').val('');
-                                    $('#TxtPhysicalFindings').val('');
-
-                                    $('#TxtTemperature').val('');
-                                    $('#TxtBP').val('');
-                                    $('#TxtPR').val('');
+                                $('#TxtTemperature').val('');
+                                $('#TxtBP').val('');
+                                $('#TxtPR').val('');
                                     
                             }else{
-                                    //alert(ConsTime);
-                                    $('#TxtStudentIDNumber2').val(StudentIDNumber);
-                                    document.getElementById('TxtMSIDNumber1').innerHTML = 'ID Number: ' + PhysicianIDNumber;
-                                    document.getElementById('TxtMSFullName').innerHTML = '&nbsp&nbsp&nbsp' + Physician.toUpperCase();
-                                    $('#TxtDate').val(Date);
-                                    $('#TxtTime').val(Time);
-                                    $('#TxtConsDate').val(ConsDate);
-                                    $('#TxtConsTime').val(ConsTime);
-                                    $('#TxtComplaints').val(Complaints);
-                                    $('#TxtDiagnosis').val(Diagnosis);
-                                    $('#TxtDiagnosticTest').val(DiagnosticTest);
-                                    $('#TxtMedicineGiven').val(MedicineGiven);
-                                    $('#TxtRemarks').val(Remarks);
-                                    $('#TxtPhysicalFindings').val(PhysicalFindings);
+                                $('#TxtStudentIDNumber2').val(StudentIDNumber);
 
-                                    $('#TxtTemperature').val(Temperature);
-                                    $('#TxtBP').val(BP);
-                                    $('#TxtPR').val(PR);
+                                document.getElementById('TxtMSIDNumber1').innerHTML = 'ID Number: ' + PhysicianIDNumber;
+                                document.getElementById('TxtMSFullName').innerHTML = '&nbsp&nbsp&nbsp' + Physician.toUpperCase();
+                                $('#TxtDate').val(Date);
+                                $('#TxtTime').val(Time);
+                                $('#TxtConsDate').val(ConsDate);
+                                $('#TxtConsTime').val(ConsTime);
+                                $('#TxtComplaints').val(Complaints);
+                                $('#TxtDiagnosis').val(Diagnosis);
+                                $('#TxtDiagnosticTest').val(DiagnosticTest);
+                                $('#TxtMedicineGiven').val(MedicineGiven);
+                                $('#TxtRemarks').val(Remarks);
+                                $('#TxtPhysicalFindings').val(PhysicalFindings);
 
+                                $('#TxtTemperature').val(Temperature);
+                                $('#TxtBP').val(BP);
+                                $('#TxtPR').val(PR);
 
+                                fetchName();
 
-                                    /*$('#TxtConsDate').val(ConsDate).change();
-                                    $("#TxtConsTime").val(ConsTime).change();*/
-
-
-
-
-                                    var editedByDD = document.getElementById("TxtMSEditorDrop");
-                                    editedByDD.options.length = 0;
-                                    const ConsMSEditorDDArr = ConsMSEditor.split("/");
-
-                                    ConsMSEditorDDArr.forEach((element) => {
-                                        let option_elem = document.createElement('option');
-
-                                        // Add index to option_elem
-                                        option_elem.value = element;
-                                          
-                                        // Add element HTML
-                                        option_elem.textContent = element;
-                                          
-                                        // Append option_elem to select_elem
-                                        editedByDD.prepend(option_elem);
-                                    });
-
-                                    var lastOption = $('#TxtMSEditorDrop option:first').val();
-                                    $('#TxtMSEditorDrop').val(lastOption);
+                                /*$('#TxtConsDate').val(ConsDate).change();
+                                $("#TxtConsTime").val(ConsTime).change();*/
 
 
 
 
-                                    
-                                    
+                                var editedByDD = document.getElementById("TxtMSEditorDrop");
+                                editedByDD.options.length = 0;
+                                const ConsMSEditorDDArr = ConsMSEditor.split("/");
 
-                                    
+                                ConsMSEditorDDArr.forEach((element) => {
+                                    let option_elem = document.createElement('option');
 
-                                /* //Display Alert Box
-                                $.alert(
-                                {theme: 'modern',
-                                content: message,
-                                title:'', 
-                                buttons:{
-                                    Ok:{
-                                    text:'Ok',
-                                    btnClass: 'btn-green'
-                                }}}); */
+                                    // Add index to option_elem
+                                    option_elem.value = element;
+                                      
+                                    // Add element HTML
+                                    option_elem.textContent = element;
+                                      
+                                    // Append option_elem to select_elem
+                                    editedByDD.prepend(option_elem);
+                                });
+
+                                var lastOption = $('#TxtMSEditorDrop option:first').val();
+                                $('#TxtMSEditorDrop').val(lastOption);
+
                             }
 
                                 
@@ -819,7 +790,7 @@ $userdate = date('Y-m-d H:i:s');
                     }
                 });
 
-                fetchName();
+                
             }
 
             function selectElement(id, valueToSelect) {    
@@ -1780,9 +1751,9 @@ $userdate = date('Y-m-d H:i:s');
                                 <div id="MedicalStaffInfo">
                                     <legend>Medical Staff</legend>
                                     <span id="TxtMSIDNumber1">ID Number:</span><br>
-                                    <span id="TxtMSChartedBy">Charted By:</span><br>
+                                    <span id="TxtMSChartedBy">Charted By:</span>
                                     <span id="TxtMSFullName"></span><br>
-                                    <span id="TxtConsMSEditorTitle">Edited By:</span><br>
+                                    <span id="TxtConsMSEditor">Edited By:</span><br>
                                     <select id="TxtMSEditorDrop" name="TxtMSEditorDrop" class="form-select" aria-label="Default select example"></select>
                                 </div>
                                 <div id="ExaminedBy">
@@ -1901,6 +1872,7 @@ $userdate = date('Y-m-d H:i:s');
             document.getElementById('MedicalStaffInfo').style.display = 'inline-block';
             document.getElementById('ExaminedBy').style.display = 'inline-block';
             document.getElementById('BtnAdd').style.display = 'none';
+            document.getElementById('TxtMSEditorDrop').setAttribute('disabled','disabled');
             getType = 'viewArchivedFollowUp';
             cons_id = '$num';
             id_stud = '$id';

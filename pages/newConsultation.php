@@ -427,163 +427,137 @@ $resultVaccine = mysqli_query($connect, $queryVaccine);
                             var ConsMSEditor = $(this).attr('ConsMSEditor');
                         
                             if(error == "1"){
-                            //Display Alert Box
-                                /* $.alert(
-                                {theme: 'modern',
-                                    content: message,
-                                    title:'', 
-                                    buttons:{
-                                    Ok:{
-                                        text:'Ok',
-                                        btnClass: 'btn-red'
-                                    }}}); */
+                                $('#TxtStudentIDNumber2').val('');
+                                $('#TxtFirstName').val('');
+                                $('#TxtMiddleName').val('');
+                                $('#TxtLastName').val('');
+                                $('#TxtExtension').val('');
+                                $('#TxtAge').val('');
+                                $('#TxtSex').val('');
+                                $('#TxtCourseStrand').val('');
+                                $('#TxtYear').val('');
+                                document.getElementById('TxtMSIDNumber1').innerHTML = 'ID Number:';
+                                document.getElementById('TxtMSFullName').innerHTML = '';
+                                document.getElementById('TxtConsMSEditor').innerHTML = '';
+                                $('#TxtDate').val('');
+                                $('#TxtTime').val('');
+                                $('#TxtComplaints').val('');
+                                $('#TxtDiagnosis').val('');
+                                $('#TxtDiagnosticTest').val('');
+                                $('#TxtMedicineGiven').val('');
+                                $('#TxtRemarks').val('');
+                                $('#TxtPhysicalFindings').val('');
 
-                                   
-                                    $('#TxtStudentIDNumber2').val('');
-                                    $('#TxtFirstName').val('');
-                                    $('#TxtMiddleName').val('');
-                                    $('#TxtLastName').val('');
-                                    $('#TxtExtension').val('');
-                                    $('#TxtAge').val('');
-                                    $('#TxtSex').val('');
-                                    $('#TxtCourseStrand').val('');
-                                    $('#TxtYear').val('');
-                                    document.getElementById('TxtMSIDNumber1').innerHTML = 'ID Number:';
-                                    document.getElementById('TxtMSFullName').innerHTML = '';
-                                    document.getElementById('TxtConsMSEditor').innerHTML = '';
-                                    $('#TxtDate').val('');
-                                    $('#TxtTime').val('');
-                                    $('#TxtComplaints').val('');
-                                    $('#TxtDiagnosis').val('');
-                                    $('#TxtDiagnosticTest').val('');
-                                    $('#TxtMedicineGiven').val('');
-                                    $('#TxtRemarks').val('');
-                                    $('#TxtPhysicalFindings').val('');
-
-                                    $('#TxtTemperature').val('');
-                                    $('#TxtBP').val('');
-                                    $('#TxtPR').val('');
-                                    $('#RadSmoker').val('');
-                                    $('#RadSanger').val('');
-                                    $('#RadMoma').val('');
-                                    $('#RadVS').val('');
-                                    $('#TxtBooster').val('');
-                                    $('#TxtVaccineBrand').val('');
-                                    $('#TxtNumberOfStick').val('');
-                                    $('#TxtNumberOfYears').val('');
-                                    $('#TxtAgeStarted').val('');
-                                    $('#TxtOthers').val('');
-                                    $('#TxtMomaSpan').val('');
+                                $('#TxtTemperature').val('');
+                                $('#TxtBP').val('');
+                                $('#TxtPR').val('');
+                                $('#RadSmoker').val('');
+                                $('#RadSanger').val('');
+                                $('#RadMoma').val('');
+                                $('#RadVS').val('');
+                                $('#TxtBooster').val('');
+                                $('#TxtVaccineBrand').val('');
+                                $('#TxtNumberOfStick').val('');
+                                $('#TxtNumberOfYears').val('');
+                                $('#TxtAgeStarted').val('');
+                                $('#TxtOthers').val('');
+                                $('#TxtMomaSpan').val('');
                             }else{
                                     
-                                    $('#TxtStudentIDNumber2').val(StudentIDNumber);
-                                    document.getElementById('TxtMSIDNumber1').innerHTML = 'ID Number: ' + PhysicianIDNumber;
-                                    document.getElementById('TxtMSFullName').innerHTML = '&nbsp&nbsp&nbsp' + Physician.toUpperCase();
-                                    $('#TxtDate').val(Date);
-                                    $('#TxtTime').val(Time);
-                                    $('#TxtComplaints').val(Complaints);
-                                    $('#TxtDiagnosis').val(Diagnosis);
-                                    $('#TxtDiagnosticTest').val(DiagnosticTest);
-                                    $('#TxtMedicineGiven').val(MedicineGiven);
-                                    $('#TxtRemarks').val(Remarks);
-                                    $('#TxtPhysicalFindings').val(PhysicalFindings);
+                                $('#TxtStudentIDNumber2').val(StudentIDNumber);
+                                document.getElementById('TxtMSIDNumber1').innerHTML = 'ID Number: ' + PhysicianIDNumber;
+                                document.getElementById('TxtMSFullName').innerHTML = '&nbsp&nbsp&nbsp' + Physician.toUpperCase();
+                                $('#TxtDate').val(Date);
+                                $('#TxtTime').val(Time);
+                                $('#TxtComplaints').val(Complaints);
+                                $('#TxtDiagnosis').val(Diagnosis);
+                                $('#TxtDiagnosticTest').val(DiagnosticTest);
+                                $('#TxtMedicineGiven').val(MedicineGiven);
+                                $('#TxtRemarks').val(Remarks);
+                                $('#TxtPhysicalFindings').val(PhysicalFindings);
 
-                                    $('#TxtTemperature').val(Temperature);
-                                    $('#TxtBP').val(BP);
-                                    $('#TxtPR').val(PR);
-                                    if(Smoker == "Yes"){
-                                        $('#RadSmokerYes').prop('checked', true);
-                                        clickedSmokingYes();
-                                    }else if(Smoker == "No"){
-                                        $('#RadSmokerNo').prop('checked', true);
-                                    }
-                                    if(Sanger == "Yes"){
-                                        $('#RadSangerYes').prop('checked', true);
-                                        clickedDrinkerYes();
-                                    }else if(Sanger == "No"){
-                                        $('#RadSangerNo').prop('checked', true);
-                                    }
-                                    if(Moma == "Yes"){
-                                        $('#RadMomaYes').prop('checked', true);
-                                        clickedChewerYes();
-                                    }else if(Moma == "No"){
-                                        $('#RadMomaNo').prop('checked', true);
-                                    }
-                                    if(VS == "Fully Vaccinated"){
-                                        $('#RadFully').prop('checked', true);
-                                        clickedVaccinated();
-                                    }else if(VS == "Not Vaccinated"){
-                                        $('#RadNot').prop('checked', true);
-                                    }
-                                    if(Booster == "Without booster"){
-                                        document.getElementById("WOBooster").setAttribute('selected','selected');
-                                    }else if(Booster == "Booster 1"){
-                                        document.getElementById("Booster1").setAttribute('selected','selected');
-                                    }else if(Booster == "Booster 2"){
-                                        document.getElementById("Booster2").setAttribute('selected','selected');
-                                    } 
-                                    
-                                    $('#TxtVaccineBrand').val(VaccineBrand);
-                                    /* if(VaccineBrand == "AztraZeneca Pharmaceuticals"){
-                                        document.getElementById("AP").setAttribute('selected','selected');
-                                    }else if(VaccineBrand == "Bharat BioTechs Covaxin"){
-                                        document.getElementById("BBC").setAttribute('selected','selected');
-                                    }else if(VaccineBrand == "Janssen Vaccine"){
-                                        document.getElementById("Janssen").setAttribute('selected','selected');
-                                    }else if(VaccineBrand == "Johnson and Johnsons"){
-                                        document.getElementById("JnJ").setAttribute('selected','selected');
-                                    }else if(VaccineBrand == "Moderna Vaccine"){
-                                        document.getElementById("Moderna").setAttribute('selected','selected');
-                                    }else if(VaccineBrand == "Pfizer-BioNTech"){
-                                        document.getElementById("PB").setAttribute('selected','selected');
-                                    }else if(VaccineBrand == "Sinovac Vaccine"){
-                                        document.getElementById("Sinovac").setAttribute('selected','selected');
-                                    }else if(VaccineBrand == "Sputnik Vaccine"){
-                                        document.getElementById("Sputnik").setAttribute('selected','selected');
-                                    }*/
+                                $('#TxtTemperature').val(Temperature);
+                                $('#TxtBP').val(BP);
+                                $('#TxtPR').val(PR);
+                                if(Smoker == "Yes"){
+                                    $('#RadSmokerYes').prop('checked', true);
+                                    clickedSmokingYes();
+                                }else if(Smoker == "No"){
+                                    $('#RadSmokerNo').prop('checked', true);
+                                }
+                                if(Sanger == "Yes"){
+                                    $('#RadSangerYes').prop('checked', true);
+                                    clickedDrinkerYes();
+                                }else if(Sanger == "No"){
+                                    $('#RadSangerNo').prop('checked', true);
+                                }
+                                if(Moma == "Yes"){
+                                    $('#RadMomaYes').prop('checked', true);
+                                    clickedChewerYes();
+                                }else if(Moma == "No"){
+                                    $('#RadMomaNo').prop('checked', true);
+                                }
+                                if(VS == "Fully Vaccinated"){
+                                    $('#RadFully').prop('checked', true);
+                                    clickedVaccinated();
+                                }else if(VS == "Not Vaccinated"){
+                                    $('#RadNot').prop('checked', true);
+                                }
+                                if(Booster == "Without booster"){
+                                    document.getElementById("WOBooster").setAttribute('selected','selected');
+                                }else if(Booster == "Booster 1"){
+                                    document.getElementById("Booster1").setAttribute('selected','selected');
+                                }else if(Booster == "Booster 2"){
+                                    document.getElementById("Booster2").setAttribute('selected','selected');
+                                } 
+                                
+                                $('#TxtVaccineBrand').val(VaccineBrand);
+                                /* if(VaccineBrand == "AztraZeneca Pharmaceuticals"){
+                                    document.getElementById("AP").setAttribute('selected','selected');
+                                }else if(VaccineBrand == "Bharat BioTechs Covaxin"){
+                                    document.getElementById("BBC").setAttribute('selected','selected');
+                                }else if(VaccineBrand == "Janssen Vaccine"){
+                                    document.getElementById("Janssen").setAttribute('selected','selected');
+                                }else if(VaccineBrand == "Johnson and Johnsons"){
+                                    document.getElementById("JnJ").setAttribute('selected','selected');
+                                }else if(VaccineBrand == "Moderna Vaccine"){
+                                    document.getElementById("Moderna").setAttribute('selected','selected');
+                                }else if(VaccineBrand == "Pfizer-BioNTech"){
+                                    document.getElementById("PB").setAttribute('selected','selected');
+                                }else if(VaccineBrand == "Sinovac Vaccine"){
+                                    document.getElementById("Sinovac").setAttribute('selected','selected');
+                                }else if(VaccineBrand == "Sputnik Vaccine"){
+                                    document.getElementById("Sputnik").setAttribute('selected','selected');
+                                }*/
 
-                                    $('#TxtNumberOfStick').val(NumOfStick);
-                                    $('#TxtNumberOfYears').val(NumOfYearAsSmoker);
-                                    $('#TxtAgeStarted').val(AgeStartedAsDrinker);
-                                    $('#TxtOthers').val(Others);
-                                    $('#TxtMomaSpan').val(HowLongAsChewer);
-
-
-                                    var editedByDD = document.getElementById("TxtMSEditorDrop");
-                                    editedByDD.options.length = 0;
-                                    const ConsMSEditorDDArr = ConsMSEditor.split("/");
-
-                                    ConsMSEditorDDArr.forEach((element) => {
-                                        let option_elem = document.createElement('option');
-
-                                        // Add index to option_elem
-                                        option_elem.value = element;
-                                          
-                                        // Add element HTML
-                                        option_elem.textContent = element;
-                                          
-                                        // Append option_elem to select_elem
-                                        editedByDD.prepend(option_elem);
-                                    });
-
-                                    var lastOption = $('#TxtMSEditorDrop option:first').val();
-                                    $('#TxtMSEditorDrop').val(lastOption);
-
-                                    
+                                $('#TxtNumberOfStick').val(NumOfStick);
+                                $('#TxtNumberOfYears').val(NumOfYearAsSmoker);
+                                $('#TxtAgeStarted').val(AgeStartedAsDrinker);
+                                $('#TxtOthers').val(Others);
+                                $('#TxtMomaSpan').val(HowLongAsChewer);
 
 
-                                    
+                                var editedByDD = document.getElementById("TxtMSEditorDrop");
+                                editedByDD.options.length = 0;
+                                const ConsMSEditorDDArr = ConsMSEditor.split("/");
 
-                                /* //Display Alert Box
-                                $.alert(
-                                {theme: 'modern',
-                                content: message,
-                                title:'', 
-                                buttons:{
-                                    Ok:{
-                                    text:'Ok',
-                                    btnClass: 'btn-green'
-                                }}}); */
+                                ConsMSEditorDDArr.forEach((element) => {
+                                    let option_elem = document.createElement('option');
+
+                                    // Add index to option_elem
+                                    option_elem.value = element;
+                                      
+                                    // Add element HTML
+                                    option_elem.textContent = element;
+                                      
+                                    // Append option_elem to select_elem
+                                    editedByDD.prepend(option_elem);
+                                });
+
+                                var lastOption = $('#TxtMSEditorDrop option:first').val();
+                                $('#TxtMSEditorDrop').val(lastOption);
+
+                                fetchName();
                             }
 
                                 
@@ -626,7 +600,7 @@ $resultVaccine = mysqli_query($connect, $queryVaccine);
                                 styleInput('TxtMomaSpan');
                         });
 
-                    fetchName();
+                    
 
                         
                     },  
@@ -1242,7 +1216,6 @@ $resultVaccine = mysqli_query($connect, $queryVaccine);
                 document.getElementById("TxtVaccineBrand" , "TxtBooster" ).removeAttribute("hidden");
                 document.getElementById("Booster", "VaccineBrand" ).removeAttribute("hidden");
                 document.getElementById("TxtBooster" , "TxtVaccineBrand").removeAttribute("hidden");
-                document.getElementById("new_vaccine_btn" ).removeAttribute("hidden");
                 var vaccineOption = document.getElementById('dlVaccine');
                 vaccineOption.options.length = 0;
                 <?php  
@@ -1305,9 +1278,10 @@ $resultVaccine = mysqli_query($connect, $queryVaccine);
             function clickedNotVaccinated(){
                 document.getElementById("VaccineBrand").setAttribute('hidden', 'hidden');
                 document.getElementById("TxtVaccineBrand").setAttribute('hidden', 'hidden');
-                document.getElementById("new_vaccine_btn").setAttribute('hidden', 'hidden');
                 document.getElementById("Booster").setAttribute('hidden', 'hidden');
                 document.getElementById("TxtBooster").setAttribute('hidden', 'hidden');
+                document.getElementById("TxtVaccineBrand").value = '';
+                document.getElementById("TxtBooster").value = '';
             }
             
             
@@ -2016,9 +1990,9 @@ $resultVaccine = mysqli_query($connect, $queryVaccine);
                                 <div id="MedicalStaffInfo">
                                     <legend>Medical Staff</legend>
                                     <span id="TxtMSIDNumber1">ID Number:</span><br>
-                                    <span id="TxtMSChartedBy">Charted By:</span><br>
+                                    <span id="TxtMSChartedBy">Charted By:</span>
                                     <span id="TxtMSFullName"></span><br>
-                                    <span id="TxtConsMSEditorTitle">Edited By:</span><br>
+                                    <span id="TxtConsMSEditor">Edited By:</span><br>
                                     <select id="TxtMSEditorDrop" name="TxtMSEditorDrop" class="form-select" aria-label="Default select example">
                                         <option selected>Select file history</option>
                                     </select>
@@ -2132,6 +2106,7 @@ $resultVaccine = mysqli_query($connect, $queryVaccine);
             document.getElementById('MedicalStaffInfo').style.display = 'inline-block';
             document.getElementById('ExaminedBy').style.display = 'inline-block';
             document.getElementById('BtnAdd').style.display = 'none';
+            document.getElementById('TxtMSEditorDrop').setAttribute('disabled','disabled');
             getType = 'viewArchivedCons';
             cons_id = '$num';
             id_stud = '$id';

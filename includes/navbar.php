@@ -52,7 +52,7 @@ $staff_name = preg_replace_callback('/(?:^|\-)\K\w/',
           </svg>
           </a>
           <div class="dropdown-menu dropdown-menu-lg-right" data-toggle="tooltip" data-placement="left" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="indexStudent.php?type=checkRecords">Student Records</a>
+            <!-- <a class="dropdown-item" href="indexStudent.php?type=checkRecords">Student Records</a> -->
             <a class="dropdown-item" href="indexCons.php?type=checkRecords">Consultation Records</a>
             <!-- <a class="dropdown-item" href="indexFU.php?type=checkRecords">Follow-up Consultation</a> -->
             <a class="dropdown-item" href="indexMC.php?type=checkMC">Medical Certificate</a>

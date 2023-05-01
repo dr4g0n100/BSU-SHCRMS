@@ -150,12 +150,13 @@
                     </form>
                     
                 </div> -->
-                <!-- <div id="notif">
 
-                    <button id='newRecord' data-toggle="modal" data-target="#VaccineNewModal" class='btn btn-primary' >New Vaccine</button>
-                    <span id='StudentInfoSpan'>Total Number of Record/s: </span>
+                <div id="notif">
+
+                    <a id='newRecord' class='btn btn-primary' href='newStudent.php?type=newRecord' role='button'>New Record</a>
+                        <span id='NumRecord'>Total Number of Record/s: </span>
                      
-                </div> -->
+                </div>
                 <div class="tabs-body">
                     <div class="tabs-content is-active table-responsive"> 
 

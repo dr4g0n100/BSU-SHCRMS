@@ -7,6 +7,7 @@ date_default_timezone_set('Asia/Manila');
   $Error = "0";
 
   $temp = $_POST['temp'];
+  /*$temp = '123';*/
 
     $TxtFirstName = "";
     $TxtMiddleName = "";
@@ -27,9 +28,9 @@ date_default_timezone_set('Asia/Manila');
                           
       if($Result == true)
       {   
-        if(checkIfExistArchive($temp)){       
+        //if(checkIfExistArchive($temp)){       
             FetchUser($temp);
-        }
+        //}
       }
       else
       {
@@ -76,11 +77,10 @@ date_default_timezone_set('Asia/Manila');
       $sql = "SELECT * FROM PersonalMedicalRecord WHERE StudentIDNumber='$temp'";
 
       $Result = $ClinicRecordsDB->Execute($sql);
-      
       $ClinicRecordQuery = $ClinicRecordsDB->GetRows($sql);
       $Row = $ClinicRecordQuery->fetch_array();                
 
-      /*if(empty($Row)){
+      if(empty($Row)){
           $sql = "SELECT * FROM archivedstudent WHERE StudentIDNumber='$temp'";
 
           $Result = $ClinicRecordsDB->Execute($sql);
@@ -88,7 +88,7 @@ date_default_timezone_set('Asia/Manila');
           $ClinicRecordQuery = $ClinicRecordsDB->GetRows($sql);
           $Row = $ClinicRecordQuery->fetch_array();                
           
-      }*/
+      }
 
       if($ClinicRecordQuery)
       {
@@ -106,9 +106,6 @@ date_default_timezone_set('Asia/Manila');
               $TxtYear = stripslashes($Row['Year']);;
               $Message = "Search completed!";
               $Error = "0"; 
-
-              
-
             }
           }else{
             $Message = "No Student Record found. Please make sure to create a student record first at Student page.";

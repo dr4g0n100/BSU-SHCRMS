@@ -1437,7 +1437,7 @@ $userdate = date('Y-m-d H:i:s');
                                     <div id="MedicalStaffInfo">
                                         <legend>Medical Staff</legend>
                                         <span id="TxtMSIDNumber1">ID Number:</span><br>
-                                        <span id="TxtMSChartedBy">Charted By:</span><br>
+                                        <span id="TxtMSChartedBy">Charted By:</span>
                                         <span id="TxtMSFullName"></span><br>
                                         <span id="TxtMCMSEditorTitle">Edited By:</span><br>
                                         <select id="TxtMSEditorDrop" name="TxtMSEditorDrop"></select>
@@ -1515,6 +1515,7 @@ $userdate = date('Y-m-d H:i:s');
                 $tempor = "checkArchived";
 
                 echo "<script type='text/javascript'>
+                        document.getElementById('TxtMSEditorDrop').setAttribute('disabled','disabled');
                         getType = '$type';
                         tblNum = '$id_num';
                         id_stud = '$id';

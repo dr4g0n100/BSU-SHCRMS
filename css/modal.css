@@ -193,3 +193,57 @@ button.close {
     max-width: 300px;
   }
 }
+
+.Upbtn {
+  position: fixed;
+  bottom: 2%;      
+  right: 1%;     
+  place-self: end;
+  
+  /* visual styling */
+  width:45px;
+  aspect-ratio:1;
+  background:white;
+  border-radius:10px;
+}
+.Upbtn:before {
+  content:"";
+  position:absolute;
+  inset:30%;
+  transform:translateY(20%) rotate(-45deg);
+  border-top:5px solid black;
+  border-right:5px solid black;
+}
+.Upbtn:hover{
+ color:#333;
+ background-color:slategrey;
+}
+
+.btnUp {
+  position: fixed;
+  bottom: 2%;      
+  right: 1%;   
+  place-self: end;
+  
+  /* visual styling */
+  width:45px;
+  aspect-ratio:1;
+  background:white;
+  border-radius:10px;
+}
+.btnUp:before {
+  content:"";
+  position:absolute;
+  inset:30%;
+  transform:translateY(20%) rotate(-45deg);
+  border-top:5px solid black;
+  border-right:5px solid black;
+}
+.btnUp:hover{
+ color:#333;
+ background-color:slategrey;
+}
+
+    #TxtMSFullName{
+        margin-left: -2%;
+    }

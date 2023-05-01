@@ -25,6 +25,12 @@ require '../php/centralConnection.php';
         }   
     }
     $type = $_GET["type"];
+
+    if($_GET["type"] == 'checkArchivedMC'){
+        $viewType = "viewArchivedMC";
+    }else{
+        $viewType = "viewMC";
+    }
  ?>  
 
 
@@ -34,7 +40,7 @@ require '../php/centralConnection.php';
         <meta charset="UTF-8">
         <?php
             if($_GET["type"] == "checkMC" || $type == 'checkRange') {
-                echo "<title>Consultation Summary</title>";
+                echo "<title>Medical Certificate Summary</title>";
             } else if($_GET["type"] == "checkArchivedMC") {
                 echo "<title>Archived Medical Certificates</title>";
             }else if($_GET["type"] == "checkMCId"){
@@ -395,16 +401,19 @@ require '../php/centralConnection.php';
                     <?php  
                         if ($_GET["type"] == "checkMCId"){
                             echo "
-                            <div>
-                            <a id='backButton' class='btn btn-light m-3 bg-transparent border-0' onclick='window.history.back();' role='button'>
+                            <a id='backButton' class='btn btn-light m-3 bg-transparent border-0 col-lg-1' onclick='window.history.back();' role='button'>
                                 <svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' fill='currentColor' class='bi bi-arrow-left-circle' viewBox='0 0 16 16'>
                                   <path fill-rule='evenodd' d='M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z'/>
                                 </svg>
                             </a>
-                            </div>";
+                            <span id='tab1' class='tabs-toggle is-active col-lg-10'>&bull;&nbsp;Medical Certificate History&nbsp;&bull;</span>
+                            ";
+                        }else{
+                            echo "
+                            <span id='tab1' class='tabs-toggle is-active col-lg-12'>&bull;&nbsp;Medical Certificate History&nbsp;&bull;</span>
+                            ";
                         }
                     ?>
-                    <span id="tab1" class="tabs-toggle is-active">&bull;&nbsp;Medical Certificate History&nbsp;&bull;</span>
                 </div>
                 <div id="notif">
                     <?php 
@@ -412,6 +421,10 @@ require '../php/centralConnection.php';
                         echo "
                         <a id='newConsultation' class='btn btn-primary' href='newMC.php?type=newMC' role='button'>New Certificate</a>
                         <span id='NumMedCert'>Total Number of Certificate Requests/s: </span>
+                        ";
+                    }else{
+                        echo "
+                        <span id='NumMedCert' style='margin-left:71.8%;'>Total Number of Certificate Requests/s: </span>
                         ";
                     } ?>
                     
@@ -496,7 +509,7 @@ require '../php/centralConnection.php';
                                 echo "  
                                 <tr>
                                     <td>$row[student_id]</td>
-                                    <td>$Lastname, $Firstname $Middlename $Extension</td>
+                                    <td><a href='newMC.php?studentID=$row[student_id]&id=$row[mc_id_num]&type=$viewType'>$Lastname, $Firstname $Middlename $Extension</a></td>
                                 ";
 
                                 if ($_GET["type"] == "checkMC"){
