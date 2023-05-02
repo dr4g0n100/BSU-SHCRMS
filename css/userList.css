@@ -355,3 +355,12 @@ nav{
 #btnAddDegree:hover, #btnAddDegree:active, #addVaccineBtn:hover, #addVaccineBtn:active{
   background: #009687 !important;
 }
+
+td a{
+  color: #00A896;
+}
+
+td a:hover{
+  color: #009687;
+  text-decoration: none;
+}

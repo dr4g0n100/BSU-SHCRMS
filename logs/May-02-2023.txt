@@ -21,3 +21,22 @@
 05:23 AM - 2 - admin - Successfully restored Follow-up Record ID 2
 05:26 AM - 2 - admin - Successfully archived All Medical Certificate Records ID 123
 05:49 AM - 2 - admin - added new student information
+10:55 AM - 2 - admin - added new student information
+11:03 AM - 2 - admin - Successfully restored consultation record ID 1
+11:04 AM - 2 - admin - Successfully restored consultation record ID 1
+11:05 AM - 2 - admin - Successfully archived All Medical Certificate Records ID 1900388
+11:06 AM - 2 - admin - Added new follow-up record
+11:08 AM - 2 - admin - Successfully archived consultation record, medical certificates and follow-up consultations of the Student ID 1900388
+11:11 AM - 2 - admin - Successfully restored student info ID 1900388
+11:11 AM - 2 - admin - Successfully restored consultation record ID 1
+11:12 AM - 2 - admin - Successfully restored Follow-up Record ID 1
+11:13 AM - 2 - admin - Successfully restored consultation record ID 1
+11:13 AM - 2 - admin - Successfully restored staff account ID 3
+11:13 AM - 2 - admin - Successfully restored System Logs
+11:14 AM - 2 - admin - Successfully archived staff account ID 3
+11:14 AM - 2 - admin - Successfully archived consultation record, medical certificates and follow-up consultations of the Student ID 1900388
+11:16 AM - 2 - admin - Successfully restored staff account ID 3
+11:16 AM - 2 - admin - Successfully restored consultation record ID 1
+11:19 AM - 2 - admin - Successfully archived staff account ID 3
+11:20 AM - 2 - admin - Successfully restored staff account ID 3
+11:23 AM - 2 - admin - added new student information

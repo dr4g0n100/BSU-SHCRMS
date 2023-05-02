@@ -328,3 +328,12 @@ td a{
     width: 75px;
     margin: 3px 0px;
 }
+
+td a{
+  color: #00A896;
+}
+
+td a:hover{
+  color: #009687;
+  text-decoration: none;
+}

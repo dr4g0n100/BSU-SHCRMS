@@ -331,3 +331,12 @@ td a{
     margin-left: auto;
     margin-right: 3%;
   }
+
+  td a{
+    color: #00A896;
+  }
+  
+  td a:hover{
+    color: #009687;
+    text-decoration: none;
+  }
