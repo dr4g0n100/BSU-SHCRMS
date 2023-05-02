@@ -40,3 +40,12 @@
 11:19 AM - 2 - admin - Successfully archived staff account ID 3
 11:20 AM - 2 - admin - Successfully restored staff account ID 3
 11:23 AM - 2 - admin - added new student information
+10:35 PM - 2 - admin - Successfully restored student info ID 123
+10:36 PM - 2 - admin - Successfully Archived student, consultation, medical certificate info and follow-up record ID 123
+10:36 PM - 2 - admin - Successfully restored student info ID 123
+10:36 PM - 2 - admin - Successfully restored consultation record ID 1
+10:36 PM - 2 - admin - Successfully restored Follow-up Record ID 1
+10:36 PM - 2 - admin - Successfully restored consultation record ID 1
+10:37 PM - 2 - admin - Successfully restored staff account ID 4
+10:37 PM - 2 - admin - Successfully restored System Logs
+10:39 PM - 2 - admin - added new student information

@@ -9,6 +9,12 @@ function getUrlVars() {
   var currentLocation = window.location.pathname;
   var locationArr = currentLocation.split("/");
   var curlocation = locationArr[4];
+
+  var getType = getUrlVars()['type'];
+  if(getType){
+    getType = getType.replace(/#.*$/, '');
+  }
+  
   if(curlocation == "indexHomepage.php"){
       document.getElementById('navHome').classList.add('active');
   }else if(curlocation == "studentSummary.php" || curlocation == "indexStudentSummary.php"){
@@ -16,42 +22,36 @@ function getUrlVars() {
   }else if(curlocation == "indexcensus.php"){
       document.getElementById('navCensus').classList.add('active');
   }else if(curlocation == "indexStaff.php"){
-    var getType = getUrlVars()['type'];
     if(getType == 'checkArchivedStaff'){
         document.getElementById('navArchive').classList.add('active');
     }else{
         document.getElementById('navUser').classList.add('active');
     }   
   }else if(curlocation == "indexStudent.php"){
-    var getType = getUrlVars()['type'];
     if(getType == 'checkArchivedStudent'){
         document.getElementById('navArchive').classList.add('active');
     }else{
         document.getElementById('navRecord').classList.add('active');
     } 
   }else if(curlocation == "indexCons.php"){
-    var getType = getUrlVars()['type'];
     if(getType == 'checkArchivedConsultation'){
         document.getElementById('navArchive').classList.add('active');
     }else{
         document.getElementById('navRecord').classList.add('active');
     }
   }else if(curlocation == "indexFU.php"){
-    var getType = getUrlVars()['type'];
     if(getType == 'checkArchivedFollowUp'){
         document.getElementById('navArchive').classList.add('active');
     }else{
         document.getElementById('navRecord').classList.add('active');
     }
   }else if(curlocation == "indexMC.php"){
-    var getType = getUrlVars()['type'];
     if(getType == 'checkArchivedMC'){
         document.getElementById('navArchive').classList.add('active');
     }else{
         document.getElementById('navRecord').classList.add('active');
     }   
   }else if(curlocation == "logs.php"){
-    var getType = getUrlVars()['type'];
     if(getType == 'checkArchivedLogs'){
         document.getElementById('navArchive').classList.add('active');
     }else{
@@ -64,7 +64,6 @@ function getUrlVars() {
   }else if(curlocation == "help.php"){
     document.getElementById('navHelp').classList.add('active');  
   }else if(curlocation == "newStudent.php" || curlocation == "newConsultation.php" || curlocation == "newFollowUp.php" || curlocation == "newMC.php"){
-    var getType = getUrlVars()['type'];
     if(getType == 'viewArchivedRecord' || getType == 'viewArchivedCons' || getType == 'viewArchivedFollowUp' || getType == 'viewArchivedMC'){
         document.getElementById('navArchive').classList.add('active');
     }else{
@@ -72,7 +71,6 @@ function getUrlVars() {
     }
     
   }else if(curlocation == "newStaff.php"){
-    var getType = getUrlVars()['type'];
     if(getType == 'viewArchivedRecord'){
         document.getElementById('navArchive').classList.add('active');
     }else{

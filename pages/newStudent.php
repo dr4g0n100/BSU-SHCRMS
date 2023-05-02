@@ -3855,7 +3855,7 @@ $resultGrad = mysqli_query($connect, $queryGrad);
                                         btnClass: 'btn-green'
                                     }}});
                                 setTimeout(function(){
-                                   window.location.href="indexStudent.php?type=checkRecords";
+                                   window.location.href="indexStudentSummary.php";
                                 }, 2000);
                             }
 
