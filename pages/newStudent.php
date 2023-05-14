@@ -758,6 +758,7 @@ $resultGrad = mysqli_query($connect, $queryGrad);
                             categoryOption.append(option_elem);
                             ";
                         }
+
                     }
 
                     ?>
@@ -768,6 +769,18 @@ $resultGrad = mysqli_query($connect, $queryGrad);
                     $('#TYear').val('');
                     $('#TSection').val('');
                 }
+
+
+                option_elem = document.createElement('option');
+
+                // Add index to option_elem
+                option_elem.value = '-- Add Course to the list --';
+                                      
+                // Add element HTML
+                option_elem.textContent = '-- Add Course to the list --';
+
+                categoryOption.append(option_elem);
+                        
 
                 for (let i = yearStart; i <= yearEnd; i++) {
                     option_elem = document.createElement('option');
@@ -3952,6 +3965,14 @@ $resultGrad = mysqli_query($connect, $queryGrad);
                 }
 
                 $("#add-personal-information").keypress(preventEnterSubmit);
+
+                $('#TCourse').change(function(){
+                    var InpVal = $(this).val();
+                    if (InpVal == '-- Add Course to the list --'){
+                        $('#DegreeNewModal').modal('show');
+                        $('#TCourse').val('');
+                    }
+                })
 
                 /*$("#BtnCFU").click(function{
                     var date = document.getElementById("TxtDate").value;

@@ -6,6 +6,8 @@ date_default_timezone_set('Asia/Manila');
  header('Location: ../index.html');
 }
 
+
+
 $userID = $_SESSION['userID'];
 $userFName = strtolower($_SESSION['fullname']);
 $accesslevel = $_SESSION['accesslevel'];
@@ -575,7 +577,7 @@ $resultVaccine = mysqli_query($connect, $queryVaccine);
                                 styleInput('TxtComplaints');
 
                                 <?php
-                                if($_SESSION['homePosDisp'] == 'Doctor' || $accesslevel == 'superadmin' || $accesslevel == 'admin'){
+                                if($_SESSION['homePosDisp'] == 'Dr' || $accesslevel == 'superadmin' || $accesslevel == 'admin'){
                                     echo"
                                     styleInput('TxtDiagnosis');
                                     ";
@@ -865,7 +867,7 @@ $resultVaccine = mysqli_query($connect, $queryVaccine);
                                 styleInput('TxtTime');
                                 styleInput('TxtComplaints');
                                 <?php
-                                if($_SESSION['homePosDisp'] == 'Doctor' || $accesslevel == 'superadmin' || $accesslevel == 'admin'){
+                                if($_SESSION['homePosDisp'] == 'Dr' || $accesslevel == 'superadmin' || $accesslevel == 'admin'){
                                     echo"
                                     styleInput('TxtDiagnosis');
                                     ";
@@ -1002,7 +1004,7 @@ $resultVaccine = mysqli_query($connect, $queryVaccine);
                 $('#TxtComplaints').val('');
 
                 <?php
-                if($_SESSION['homePosDisp'] == 'Doctor' || $accesslevel == 'superadmin' || $accesslevel == 'admin'){
+                if($_SESSION['homePosDisp'] == 'Dr' || $accesslevel == 'superadmin' || $accesslevel == 'admin'){
                     echo"
                     $('#TxtDiagnosis').val('');
                     ";
@@ -1042,7 +1044,7 @@ $resultVaccine = mysqli_query($connect, $queryVaccine);
                 document.getElementById("TxtComplaints").removeAttribute("readonly");
 
                 <?php
-                if($_SESSION['homePosDisp'] == 'Doctor' || $accesslevel == 'superadmin' || $accesslevel == 'admin'){
+                if($_SESSION['homePosDisp'] == 'Dr' || $accesslevel == 'superadmin' || $accesslevel == 'admin'){
                     echo"
                     document.getElementById('TxtDiagnosis').removeAttribute('readonly');
                     ";
@@ -1086,7 +1088,7 @@ $resultVaccine = mysqli_query($connect, $queryVaccine);
                 document.getElementById('TxtTime').style.backgroundColor = "white"; */
                 document.getElementById('TxtComplaints').style.backgroundColor = "white";
                 <?php
-                if($_SESSION['homePosDisp'] == 'Doctor' || $accesslevel == 'superadmin' || $accesslevel == 'admin'){
+                if($_SESSION['homePosDisp'] == 'Dr' || $accesslevel == 'superadmin' || $accesslevel == 'admin'){
                     echo"
                     document.getElementById('TxtDiagnosis').style.backgroundColor = 'white';
                     ";
@@ -1120,7 +1122,7 @@ $resultVaccine = mysqli_query($connect, $queryVaccine);
                 //document.getElementById("TxtStudentIDNumber2").setAttribute("readonly","readonly");
                 document.getElementById("TxtComplaints").setAttribute("readonly","readonly");
                 <?php
-                if($_SESSION['homePosDisp'] == 'Doctor' || $accesslevel == 'superadmin' || $accesslevel == 'admin'){
+                if($_SESSION['homePosDisp'] == 'Dr' || $accesslevel == 'superadmin' || $accesslevel == 'admin'){
                     echo"
                     document.getElementById('TxtDiagnosis').setAttribute('readonly','readonly');
                     ";
@@ -1160,7 +1162,7 @@ $resultVaccine = mysqli_query($connect, $queryVaccine);
                 document.getElementById('TxtTime').style.backgroundColor = "transparent"; */
                 document.getElementById('TxtComplaints').style.backgroundColor = "transparent";
                 <?php
-                if($_SESSION['homePosDisp'] == 'Doctor' || $accesslevel == 'superadmin' || $accesslevel == 'admin'){
+                if($_SESSION['homePosDisp'] == 'Dr' || $accesslevel == 'superadmin' || $accesslevel == 'admin'){
                     echo"
                     document.getElementById('TxtDiagnosis').style.backgroundColor = 'transparent';
                     ";
@@ -2049,19 +2051,23 @@ $resultVaccine = mysqli_query($connect, $queryVaccine);
     $tempo = $_SESSION['accesslevel'];
     $tempor =  "";
 
-    if($_SESSION["typed"] == 'checkArchivedConsultation'){
-        $tempor = "checkArchived";
-    }else{
-        $tempor = "checkRecord";
-    }
-
-     echo "<script type='text/javascript'>
-        globalAL = '$tempo';
-        editTableNav('$tempor');
-    </script>";
 
     if($_SERVER['REQUEST_METHOD'] == 'GET'){
         if($_GET["type"] == "newCons"){
+
+            if(!empty($_GET['id'])){
+                $id = $_GET['id'];
+
+                echo "
+                <script>
+                    document.getElementById('TxtStudentIDNumber2').value = '$id';
+                    getType = 'newCons';
+                    id_stud = '$id';
+                    fetchName();
+                </script>    
+                ";
+            }
+
             echo "<script type='text/javascript'>
             document.getElementById('BtnCFU').style.display = 'none';
             document.getElementById('TxtStudentIDNumber2').removeAttribute('readonly');
@@ -2080,6 +2086,8 @@ $resultVaccine = mysqli_query($connect, $queryVaccine);
             $sql = "SELECT * FROM ConsultationInfo WHERE Num='$num'";
             $result = $connection->query($sql);
             $Row = $result->fetch_assoc();
+
+            $tempor = "checkRecord";
 
             $id = $Row['IdNumb'];
 
@@ -2100,6 +2108,8 @@ $resultVaccine = mysqli_query($connect, $queryVaccine);
             $sql = "SELECT * FROM archivedconsultation WHERE Num='$num'";
             $result = $connection->query($sql);
             $Row = $result->fetch_assoc();
+
+            $tempor = "checkArchived";
 
             echo "<script type='text/javascript'>
             document.getElementById('BtnCFU').style.display = 'none';
@@ -2123,6 +2133,8 @@ $resultVaccine = mysqli_query($connect, $queryVaccine);
             $result = $connection->query($sql);
             $Row = $result->fetch_assoc();
 
+            $tempor = "checkRecord";
+
             $num = $Row['Num'];
 
             echo "<script type='text/javascript'>
@@ -2137,5 +2149,10 @@ $resultVaccine = mysqli_query($connect, $queryVaccine);
             </script>";
         }  
     }
+
+    echo "<script type='text/javascript'>
+        globalAL = '$tempo';
+        editTableNav('$tempor');
+    </script>";
 ?>
 

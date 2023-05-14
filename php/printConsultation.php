@@ -65,14 +65,14 @@ $Message = '';
         $sql = "SELECT * FROM ConsultationInfo  WHERE IdNumb = '$ID'";
       }*/
   
-      $sql = "SELECT * FROM consultationinfo LEFT JOIN personalmedicalrecord ON consultationinfo.IdNumb = personalmedicalrecord.StudentIDNumber WHERE IdNumb = '$idnumber'";
+      $sql = "SELECT * FROM consultationinfo LEFT JOIN personalmedicalrecord ON consultationinfo.IdNumb = personalmedicalrecord.StudentIDNumber WHERE IdNumb = '$idnumber' AND Dates = '$cons_date' AND Times = '$cons_time'";
 
       $result = mysqli_query($connect, $sql);
       
       $Row = mysqli_fetch_array($result);
       
       if(empty($Row['Lastname'])){
-          $sql = "SELECT * FROM consultationinfo LEFT JOIN archivedstudent ON consultationinfo.IdNumb = archivedstudent.StudentIDNumber WHERE IdNumb = '$idnumber'";
+          $sql = "SELECT * FROM consultationinfo LEFT JOIN archivedstudent ON consultationinfo.IdNumb = archivedstudent.StudentIDNumber WHERE IdNumb = '$idnumber' AND Dates = '$cons_date' AND Times = '$cons_time'";
 
           $result = mysqli_query($connect, $sql);
           
@@ -105,15 +105,16 @@ $Message = '';
 						$Age = stripslashes($Row['Age']);;
 						$Sex = stripslashes($Row['Sex']);;
 						$CourseStrand = stripslashes($Row['Course']);;
-						if(!empty($CourseStrand)){
-							if(str_contains($CourseStrand, '()')){
-								$Course = explode(')', (explode('(', $CourseStrand)[1]))[0];
-							}else{
-								$Course = ucwords(stripslashes($Row['StudentCategory']));;;
-							}
-							
-						}else{
-							$Course = ucwords(stripslashes($Row['StudentCategory']));;;
+						if (!empty($CourseStrand)) {
+						    $openParenPos = strpos($CourseStrand, '(');
+						    $closeParenPos = strpos($CourseStrand, ')');
+						    if ($openParenPos !== false && $closeParenPos !== false && $openParenPos < $closeParenPos) {
+						        $Course = explode(')', (explode('(', $CourseStrand)[1]))[0];
+						    } else {
+						        $Course = ucwords(stripslashes($Row['StudentCategory']));
+						    }
+						} else {
+						    $Course = ucwords(stripslashes($Row['StudentCategory']));
 						}
 						
 

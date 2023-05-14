@@ -28,6 +28,7 @@ $(document).ready(function() {
 
 
 //Allow a textbox to allow only numbers and one decimal point
+
   function isNumberKey(txt,evt){
     var charCode = (evt.which) ? evt.which : evt.keyChode;
     if(charCode == 46){

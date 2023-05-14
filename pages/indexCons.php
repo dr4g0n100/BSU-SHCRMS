@@ -293,8 +293,12 @@ require '../php/centralConnection.php';
                 </div>
                 <div id="notif">
                     <?php if ($_GET["type"] == "checkRecords" || $type == 'checkRange' || $type == 'checkRecordsId' ){
+                        $stringID = '';
+                        if(!empty($id)){
+                            $stringID = "&id=$id";
+                        }
                         echo "
-                        <a id='newConsultation' class='btn btn-primary' href='newConsultation.php?type=newCons' role='button'>New Consultation</a>
+                        <a id='newConsultation' class='btn btn-primary' href='newConsultation.php?type=newCons$stringID' role='button'>New Consultation</a>
                         <span id='NumConsultation'>Total Number of Consultation/s: </span>
                         ";
 
@@ -347,6 +351,7 @@ require '../php/centralConnection.php';
                             $Middlename = '';
                             while($row = mysqli_fetch_array($result)){  
                                 /*$row = array_map('strtoupper', $row);*/
+                                $id = $row['IdNumb'];
                                 $Lastname = ucwords($row['Lastname']);
                                 $Firstname = ucwords($row['Firstname']);
                                 $Middlename = ucwords($row['Middlename']);
@@ -377,8 +382,21 @@ require '../php/centralConnection.php';
                                 echo "  
                                 <tr>
                                     <td>$row[IdNumb]</td>
-                                    <td><a href='newConsultation.php?num=$row[Num]&type=$viewType'>$Lastname, $Firstname $Middlename</a></td>
                                 ";
+
+                                if($_GET["type"] == "checkRecords"){
+                                    echo "
+                                        <td><a href='indexCons.php?type=checkRecordsId&id=$id'>$Lastname, $Firstname $Middlename</a>
+                                        </td>
+                                    ";
+                                }else{
+                                    echo "
+                                        <td><a href='newConsultation.php?num=$row[Num]&type=$viewType'>$Lastname, $Firstname $Middlename</a>
+                                        </td>
+                                    ";
+                                }
+
+                                
 
                                 if ($_GET["type"] == "checkRecordsId"){
                                     echo "
