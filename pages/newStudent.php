@@ -5244,13 +5244,6 @@ $resultGrad = mysqli_query($connect, $queryGrad);
 
 
     $tempo = $_SESSION['accesslevel'];
-    $tempor =  "";
-
-    if($_SESSION["typed"] == 'checkArchivedStudent'){
-        $tempor = "checkArchived";
-    }else{
-        $tempor = "checkRecord";
-    }
 
     echo "<script type='text/javascript'>
         globalAL = '$tempo';
