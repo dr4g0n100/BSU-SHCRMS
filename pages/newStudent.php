@@ -4362,11 +4362,11 @@ $resultGrad = mysqli_query($connect, $queryGrad);
                                     </div>
                                     <div class="AddStreet"> 
                                         <label for="TxtPresAddStreet">Street</label>
-                                        <input type="text" maxlength="10" name="TxtPresAddStreet" id="TxtPresAddStreet" readonly>
+                                        <input type="text" maxlength="15" name="TxtPresAddStreet" id="TxtPresAddStreet" readonly>
                                     </div>
                                     <div class="AddBarangay"> 
                                         <label for="TxtPresAddBrgy">Barangay</label>
-                                        <input type="text" maxlength="10" name="TxtPresAddBrgy" id="TxtPresAddBrgy" readonly>
+                                        <input type="text" maxlength="15" name="TxtPresAddBrgy" id="TxtPresAddBrgy" readonly>
                                     </div>
                                     <div class="AddMunicipality"> 
                                         <label for="TxtPresAddMunicipal">Municipality</label>
@@ -4388,11 +4388,11 @@ $resultGrad = mysqli_query($connect, $queryGrad);
                                     </div>
                                     <div class="AddStreet"> 
                                         <label for="TxtPresAddStreet">Street</label>
-                                        <input type="text" maxlength="10" name="TxtProvAddStreet" id="TxtProvAddStreet" readonly>
+                                        <input type="text" maxlength="15" name="TxtProvAddStreet" id="TxtProvAddStreet" readonly>
                                     </div>
                                     <div class="AddBarangay"> 
                                         <label for="TxtPresAddBrgy">Barangay</label>
-                                        <input type="text" maxlength="10" name="TxtProvAddBrgy" id="TxtProvAddBrgy" readonly>
+                                        <input type="text" maxlength="15" name="TxtProvAddBrgy" id="TxtProvAddBrgy" readonly>
                                     </div>
                                     <div class="AddMunicipality"> 
                                         <label for="TxtPresAddMunicipal">Municipality</label>
