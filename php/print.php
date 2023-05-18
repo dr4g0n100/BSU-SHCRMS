@@ -86,10 +86,16 @@ $Message = '';
             $StudentIDNumber = stripslashes($Row['StudentIDNumber']);;
             $StudentCategory = stripslashes($Row['StudentCategory']);;
             $Course = stripslashes($Row['Course']);;
-            if(!empty($Course)){
-							$Course = explode(')', (explode('(', $Course)[1]))[0];
-						}else{
-							$Course = ucwords(stripslashes($Row['StudentCategory']));;;
+            if (!empty($Course)) {
+						    $openParenPos = strpos($Course, '(');
+						    $closeParenPos = strpos($Course, ')');
+						    if ($openParenPos !== false && $closeParenPos !== false && $openParenPos < $closeParenPos) {
+						        $Course = explode(')', (explode('(', $Course)[1]))[0];
+						    } else {
+						        $Course = ucwords(stripslashes($Row['Course']));
+						    }
+						} else {
+						    $Course = ucwords(stripslashes($Row['StudentCategory']));
 						}
 
             $Year = stripslashes($Row['Year']);;
@@ -142,15 +148,39 @@ $Message = '';
             $PhysicianName .= ' ' .stripslashes($Row['StaffLastname']);;
             $PhysicianName .= ' ' .stripslashes($Row['StaffExtension']);;
             $LMP = stripslashes($Row['LMP']);;
+            if($LMP == ""){
+            		$LMP = "N/A";
+            }
             $Pregnancy = stripslashes($Row['Pregnancy']);;
+            if($Pregnancy == ""){
+            		$Pregnancy = "N/A";
+            }
             $Allergies = stripslashes($Row['Allergies']);;
+            if($Allergies == ""){
+            		$Allergies = "N/A";
+            }
             $Surgeries = stripslashes($Row['Surgeries']);;
+            if($Surgeries == ""){
+            		$Surgeries = "N/A";
+            }
             $Injuries = stripslashes($Row['Injuries']);;
+            if($Injuries == ""){
+            		$Injuries = "N/A";
+            }
             $Illness = stripslashes($Row['Illness']);;
+            if($Illness == ""){
+            		$Illness = "N/A";
+            }
 
             ////////////////
             $PastOthers = stripslashes($Row['MedicalOthers']);;
+            if($PastOthers == ""){
+            		$PastOthers = "N/A";
+            }
             $RLOA = stripslashes($Row['RLOA']);;
+            if($RLOA == ""){
+            		$RLOA = "N/A";
+            }
             ////////////////
 
             $SchoolYear = stripslashes($Row['SchoolYear']);;

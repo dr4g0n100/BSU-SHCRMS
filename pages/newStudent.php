@@ -4358,23 +4358,23 @@ $resultGrad = mysqli_query($connect, $queryGrad);
                                     <legend>Present Address</legend>
                                     <div class="AddHouseNo"> 
                                         <label for="TxtPresAddHouseNo">House No.</label>
-                                        <input type="text" name="TxtPresAddHouseNo" id="TxtPresAddHouseNo" readonly>
+                                        <input type="text" maxlength="4" name="TxtPresAddHouseNo" id="TxtPresAddHouseNo" readonly>
                                     </div>
                                     <div class="AddStreet"> 
                                         <label for="TxtPresAddStreet">Street</label>
-                                        <input type="text" name="TxtPresAddStreet" id="TxtPresAddStreet" readonly>
+                                        <input type="text" maxlength="10" name="TxtPresAddStreet" id="TxtPresAddStreet" readonly>
                                     </div>
                                     <div class="AddBarangay"> 
                                         <label for="TxtPresAddBrgy">Barangay</label>
-                                        <input type="text" name="TxtPresAddBrgy" id="TxtPresAddBrgy" readonly>
+                                        <input type="text" maxlength="10" name="TxtPresAddBrgy" id="TxtPresAddBrgy" readonly>
                                     </div>
                                     <div class="AddMunicipality"> 
                                         <label for="TxtPresAddMunicipal">Municipality</label>
-                                        <input type="text" name="TxtPresAddMunicipal" id="TxtPresAddMunicipal" readonly>
+                                        <input type="text" maxlength="15" name="TxtPresAddMunicipal" id="TxtPresAddMunicipal" readonly>
                                     </div>
                                     <div class="AddProvince"> 
                                         <label for="TxtPresAddProvince">Province</label>
-                                        <input type="text" name="TxtPresAddProvince" id="TxtPresAddProvince" readonly>
+                                        <input type="text" maxlength="10" name="TxtPresAddProvince" id="TxtPresAddProvince" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -4384,23 +4384,23 @@ $resultGrad = mysqli_query($connect, $queryGrad);
                                     <legend>Provincial Address</legend>
                                     <div class="AddHouseNo"> 
                                         <label for="TxtPresAddHouseNo">House No.</label>
-                                        <input type="text" name="TxtProvAddHouseNo" id="TxtProvAddHouseNo" readonly>
+                                        <input type="text" maxlength="4" name="TxtProvAddHouseNo" id="TxtProvAddHouseNo" readonly>
                                     </div>
                                     <div class="AddStreet"> 
                                         <label for="TxtPresAddStreet">Street</label>
-                                        <input type="text" name="TxtProvAddStreet" id="TxtProvAddStreet" readonly>
+                                        <input type="text" maxlength="10" name="TxtProvAddStreet" id="TxtProvAddStreet" readonly>
                                     </div>
                                     <div class="AddBarangay"> 
                                         <label for="TxtPresAddBrgy">Barangay</label>
-                                        <input type="text" name="TxtProvAddBrgy" id="TxtProvAddBrgy" readonly>
+                                        <input type="text" maxlength="10" name="TxtProvAddBrgy" id="TxtProvAddBrgy" readonly>
                                     </div>
                                     <div class="AddMunicipality"> 
                                         <label for="TxtPresAddMunicipal">Municipality</label>
-                                        <input type="text" name="TxtProvAddMunicipal" id="TxtProvAddMunicipal" readonly>
+                                        <input type="text" maxlength="15" name="TxtProvAddMunicipal" id="TxtProvAddMunicipal" readonly>
                                     </div>
                                     <div class="AddProvince"> 
                                         <label for="TxtPresAddProvince">Province</label>
-                                        <input type="text" name="TxtProvAddProvince" id="TxtProvAddProvince" readonly>
+                                        <input type="text" maxlength="10" name="TxtProvAddProvince" id="TxtProvAddProvince" readonly>
                                     </div>
                                 </div>
                             </div>
