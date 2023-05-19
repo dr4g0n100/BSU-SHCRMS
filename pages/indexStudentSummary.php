@@ -108,6 +108,33 @@
                 }
             
             var StudentInfoTable = $('#student_info').DataTable({
+                dom: 'fltpB',
+                buttons: [                              
+                    {
+                        extend:'print',
+                        text:'Print Report',
+                        title:"<h1 style='text-align:center;'>Students Record</h1>",
+                        exportOptions: {
+                            columns: [0,1,2,3,4,5,6]
+                        }            
+                    },
+                    {
+                       extend:'pdf',
+                       text:'Export to PDF',
+                       title:"Students Record",
+                       exportOptions: {
+                            columns: [0,1,2,3,4,5,6]
+                        }  
+                    },
+                    {
+                       extend:'excel',
+                       text:'Export to Excel',
+                       title:"Students Record",
+                       exportOptions: {
+                            columns: [0,1,2,3,4,5,6]
+                        }  
+                    },
+                  ],
                 "oLanguage": {
                 "sSearch": "Filter results:"
                 }        
