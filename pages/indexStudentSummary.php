@@ -106,7 +106,13 @@
                     }
                   })
                 }
-            
+
+            if(getType == 'checkRecords'){
+                reportTitle = "Student Records";
+            }else if(getType == 'checkArchivedStudent'){
+                reportTitle = "Archived Student Records";
+            }
+
             var StudentInfoTable = $('#student_info').DataTable({
                 dom: 'fltpB',
                 buttons: [                              

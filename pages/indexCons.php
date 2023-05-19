@@ -205,6 +205,8 @@ require '../php/centralConnection.php';
                 reportTitle = "Consultation Summary";
             }else if(getType == 'checkRecordsId'){
                 reportTitle = "Consultation History of " +fullname;
+            }else if(getType == 'checkArchivedConsultation'){
+                reportTitle = "Archived Consultations";
             }
             var table = $('#consultation_data').DataTable({
                 dom: 'fltpB',

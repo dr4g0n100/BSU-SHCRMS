@@ -173,6 +173,12 @@ if(empty($_SESSION['logged_in'])){
                     }
                   })
                 }
+
+            if(getType == 'checkRecords'){
+                reportTitle = "Student Records";
+            }else if(getType == 'checkArchivedStudent'){
+                reportTitle = "Archived Student Records";
+            }
             
             var table = $('#student_data').DataTable({
                 dom: 'fltpB',
@@ -180,7 +186,7 @@ if(empty($_SESSION['logged_in'])){
                     {
                         extend:'print',
                         text:'Print Report',
-                        title:"<h1 style='text-align:center;'>Students Record</h1>",
+                        title:"<h1 style='text-align:center;'>"+reportTitle+"</h1>",
                         exportOptions: {
                             columns: [0,1,2,3,4,5,6]
                         }            
@@ -188,7 +194,7 @@ if(empty($_SESSION['logged_in'])){
                     {
                        extend:'pdf',
                        text:'Export to PDF',
-                       title:"Students Record",
+                       title:reportTitle,
                        exportOptions: {
                             columns: [0,1,2,3,4,5,6]
                         }  
@@ -196,7 +202,7 @@ if(empty($_SESSION['logged_in'])){
                     {
                        extend:'excel',
                        text:'Export to Excel',
-                       title:"Students Record",
+                       title:reportTitle,
                        exportOptions: {
                             columns: [0,1,2,3,4,5,6]
                         }  
@@ -350,6 +356,7 @@ if(empty($_SESSION['logged_in'])){
     echo "<script type='text/javascript'>
         globalAL = '$tempo';
         editTableNav('$tempor');
+        getType = '$type';
     </script>";
 ?>
  

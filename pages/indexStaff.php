@@ -205,6 +205,12 @@
                     }
                   })
                 }
+
+            if(getType == 'checkRecords'){
+                reportTitle = "User List";
+            }else if(getType == 'checkArchivedStaff'){
+                reportTitle = "Archived User List";
+            }
             
             var table = $('#user_data').DataTable({
                 dom: 'fltpB',
@@ -212,7 +218,7 @@
                     {
                         extend:'print',
                         text:'Print Report',
-                        title:"<h1 style='text-align:center;'>User List</h1>",
+                        title:"<h1 style='text-align:center;'>"+reportTitle +"</h1>",
                         exportOptions: {
                             columns: [0,1,2,3,4,5]
                         }            
@@ -220,7 +226,7 @@
                     {
                        extend:'pdf',
                        text:'Export to PDF',
-                       title:"User List",
+                       title:reportTitle,
                        exportOptions: {
                             columns: [0,1,2,3,4,5]
                         }  
@@ -228,7 +234,7 @@
                     {
                        extend:'excel',
                        text:'Export to Excel',
-                       title:"User List",
+                       title:reportTitle,
                        exportOptions: {
                             columns: [0,1,2,3,4,5]
                         }  
@@ -448,6 +454,7 @@
     echo "<script type='text/javascript'>
         globalAL = '$tempo';
         editTableNav('$tempor');
+        getType = '$type';
     </script>";
 ?>
  

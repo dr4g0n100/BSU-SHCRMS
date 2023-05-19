@@ -190,6 +190,8 @@ require '../php/centralConnection.php';
                 reportTitle = "Medical Certificates Summary";
             }else if(getType == 'checkMCId'){
                 reportTitle = "Medical Certificate Requests of " +fullname;
+            }else if(getType == 'checkArchivedMC'){
+                reportTitle = "Archived Medical Certificates";
             }
             var table = $('#MC_data').DataTable({
                 dom: 'fltpB',

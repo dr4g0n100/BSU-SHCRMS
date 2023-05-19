@@ -206,6 +206,8 @@ require '../php/centralConnection.php';
                 reportTitle = "Follow-up Summary";
             }else if(getType == 'checkRecordsId' || getType == 'checkRelFU'){
                 reportTitle = "Follow-up History of " +fullname;
+            }else if(getType == 'checkArchivedFollowUp'){
+                reportTitle = "Archived Follow-ups";
             }
             var table = $('#followup_data').DataTable({
                 dom: 'fltpB',
