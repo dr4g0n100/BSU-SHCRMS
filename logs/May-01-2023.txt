@@ -1,5 +1,0 @@
-06:22 PM - 2 - admin - Successfully archived consultation record, medical certificates and follow-up consultations ID 1
-06:31 PM - 2 - admin - Successfully Archived student, consultation, medical certificate info and follow-up record ID 123
-06:32 PM - 2 - admin - Successfully restored consultation record ID 1
-06:32 PM - 2 - admin - Successfully restored student info ID 123
-06:33 PM - 2 - admin - Added new follow-up record

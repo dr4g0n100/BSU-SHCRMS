@@ -1617,7 +1617,7 @@ $resultVaccine = mysqli_query($connect, $queryVaccine);
                     var form_data = new FormData(this);            
                     $.ajax(
                     {
-                        url:"../php/Cons/addVaccine.php",
+                        url:"../php/addVaccine.php",
                         method:"POST",
                         data:form_data,
                         contentType: false,
@@ -1707,7 +1707,7 @@ $resultVaccine = mysqli_query($connect, $queryVaccine);
             <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="DegreeNewModalLabel">Add New Degree</h5>
+                <h5 class="modal-title" id="DegreeNewModalLabel">Add New Vaccine</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

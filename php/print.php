@@ -355,7 +355,7 @@ $Message = '';
 			$pdf->Cell(10 ,10,'',0,0);
 			$pdf->MultiCells(25, 5, 'Effectivity Date:', 1); 
 			$pdf->Cell(30, 10, ucwords($Effectivity), 1,0,'C'); 
-			$pdf->Cell(35, 10, '', 1,0,'C');
+			$pdf->Cell(35, 10, $TxtNoLabel, 1,0,'L');
 			$pdf->Cell(0, 10, '',0,0); //end of line
 
 			

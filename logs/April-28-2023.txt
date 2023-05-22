@@ -1,5 +1,0 @@
-02:51:30 PM - 2 - admin - Successfully restored student info ID 1900388
-02:51:36 PM - 2 - admin - Successfully restored consultation record ID 1
-02:51:43 PM - 2 - admin - Successfully restored Follow-up Record ID 1
-02:51:50 PM - 2 - admin - Successfully restored consultation record ID 1
-02:52:05 PM - 2 - admin - Successfully Archived student, consultation, medical certificate info and follow-up record ID 1900388
