@@ -1084,8 +1084,6 @@ $resultVaccine = mysqli_query($connect, $queryVaccine);
                 document.getElementById("RadNot").removeAttribute("disabled");
 
                 document.getElementById('TxtStudentIDNumber2').style.backgroundColor = "white";    
-                /*document.getElementById('TxtDate').style.backgroundColor = "white";
-                document.getElementById('TxtTime').style.backgroundColor = "white"; */
                 document.getElementById('TxtComplaints').style.backgroundColor = "white";
                 <?php
                 if($_SESSION['homePosDisp'] == 'Dr' || $accesslevel == 'superadmin' || $accesslevel == 'admin'){
@@ -1119,7 +1117,6 @@ $resultVaccine = mysqli_query($connect, $queryVaccine);
                     document.getElementById("TxtStudentIDNumber2").setAttribute("readonly","readonly");
                 }
 
-                //document.getElementById("TxtStudentIDNumber2").setAttribute("readonly","readonly");
                 document.getElementById("TxtComplaints").setAttribute("readonly","readonly");
                 <?php
                 if($_SESSION['homePosDisp'] == 'Dr' || $accesslevel == 'superadmin' || $accesslevel == 'admin'){
@@ -1146,8 +1143,6 @@ $resultVaccine = mysqli_query($connect, $queryVaccine);
                 document.getElementById("TxtTemperature").setAttribute("readonly","readonly");
                 document.getElementById("TxtBP").setAttribute("readonly","readonly");
                 document.getElementById("TxtPR").setAttribute("readonly","readonly");
-                /*document.getElementById("TxtDate").setAttribute("readonly","readonly");
-                document.getElementById("TxtTime").setAttribute("readonly","readonly");*/
                 document.getElementById("RadSmokerYes").setAttribute("disabled","disabled");
                 document.getElementById("RadSmokerNo").setAttribute("disabled","disabled");
                 document.getElementById("RadSangerYes").setAttribute("disabled","disabled");
@@ -1156,10 +1151,6 @@ $resultVaccine = mysqli_query($connect, $queryVaccine);
                 document.getElementById("RadMomaNo").setAttribute("disabled","disabled");
                 document.getElementById("RadFully").setAttribute("disabled","disabled");
                 document.getElementById("RadNot").setAttribute("disabled","disabled");
-
-                //document.getElementById('TxtStudentIDNumber2').style.backgroundColor = "transparent";    
-                /*document.getElementById('TxtDate').style.backgroundColor = "transparent";
-                document.getElementById('TxtTime').style.backgroundColor = "transparent"; */
                 document.getElementById('TxtComplaints').style.backgroundColor = "transparent";
                 <?php
                 if($_SESSION['homePosDisp'] == 'Dr' || $accesslevel == 'superadmin' || $accesslevel == 'admin'){
@@ -1503,7 +1494,6 @@ $resultVaccine = mysqli_query($connect, $queryVaccine);
                     method:"POST",
                     data:"",
                     success:function(xml){
-                        // sessionStorage.clear();
                         setTimeout(function(){
                             window.location.href = '../index.html';
                         }, 100);
@@ -1570,12 +1560,6 @@ $resultVaccine = mysqli_query($connect, $queryVaccine);
                 if(acclvl == "true"){
                     $(".admin-nav").hide();
                     document.getElementById("userFullname").style.width = "52%";
-                    /*document.getElementById("nav2").style.width = "9.33%";
-                    document.getElementById("nav3").style.width = "9.33%";
-                    document.getElementById("nav4").style.width = "9.33%";
-                    document.getElementById("nav5").style.width = "9.33%";
-                    document.getElementById("nav7").style.width = "9.33%";
-                    document.getElementById("nav8").style.width = "9.33%";*/
                 }
 
                 $('#TxtMSEditorDrop').change(function(){
@@ -1800,16 +1784,6 @@ $resultVaccine = mysqli_query($connect, $queryVaccine);
                                     <input type="text" name="TxtYear" id="TxtYear" readonly maxlength="3">
                                 </div>
                             </div>
-                            <!-- <div class="Three-Info">
-                                <div class="Physician">
-                                    <label for="Physician">Physician Name</label>
-                                    <input type="text" name="TxtPhysician" id="TxtPhysician" onkeydown="return alphaOnly(event);" readonly required>
-                                </div>
-                                <div class="PhysicianIDNumber">
-                                    <label for="TxtPhysicianIDNumber">Physician ID Number</label>
-                                    <input type="text" name="TxtPhysicianIDNumber" id="TxtPhysicianIDNumber" onkeypress="return isNumberKey(this,event)" readonly required>
-                                </div>
-                            </div> -->
                         
                         <div class="Three-Info">
                                 <div class="Temperature">
@@ -1917,23 +1891,9 @@ $resultVaccine = mysqli_query($connect, $queryVaccine);
                                 <div class="VaccineBrand">
                                     <label for="TxtVaccineBrand" id="VaccineBrand" hidden>Vaccine</label>
                                     <input id="TxtVaccineBrand" list="dlVaccine" name="TxtVaccineBrand" disabled hidden>
-                                    <!-- <div class="btn-new-degree" id="NewDegr">
-                                        <a href="#" role="button" id="new_vaccine_btn" data-toggle="modal" data-target="#DegreeNewModal" hidden>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 14 14" hidden>
-                                              <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
-                                            </svg>
-                                        </a>
 
-                                    </div> -->
                                     <datalist id="dlVaccine">
-                                        <!-- <option id="AP" value="AztraZeneca Pharmaceuticals"></option>
-                                        <option id="BBC" value="Bharat BioTechs Covaxin"></option>
-                                        <option id="Janssen" value="Janssen Vaccine"></option>
-                                        <option id="JnJ" value="Johnson and Johnsons"></option>
-                                        <option id="Moderna" value="Moderna Vaccine"></option>
-                                        <option id="PB" value="Pfizer-BioNTech"></option>
-                                        <option id="Sinovac" value="Sinovac Vaccine"></option>
-                                        <option id="Sputnik" value="Sputnik Vaccine"></option> -->
+
                                     </datalist>
                                     
                                     

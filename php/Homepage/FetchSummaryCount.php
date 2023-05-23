@@ -9,9 +9,6 @@ date_default_timezone_set('Asia/Manila');
   $startDate = $_POST['startDate'];
   $endDate = $_POST['endDate'];
 
-  /*$startDate = "2023-03-25";
-  $endDate = "2023-03-25";*/
-
   $startDate = date("Y-m-d", strtotime($startDate));
   $endDate = date("Y-m-d", strtotime($endDate));
 

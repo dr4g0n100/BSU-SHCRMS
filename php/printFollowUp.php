@@ -11,8 +11,6 @@ date_default_timezone_set('Asia/Manila');
 
 $idnumber = $_GET['id'];
 $type = $_GET['type'];
-/*$idnumber = '1900495';
-$type = 'viewRecord';*/
 $Message = '';
 
 

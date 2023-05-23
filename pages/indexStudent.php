@@ -174,10 +174,10 @@ if(empty($_SESSION['logged_in'])){
                   })
                 }
 
-            if(getType == 'checkRecords'){
-                reportTitle = "Student Records";
-            }else if(getType == 'checkArchivedStudent'){
+            if(getType == 'checkArchivedStudent'){
                 reportTitle = "Archived Student Records";
+            }else{
+                reportTitle = "Student Records";
             }
             
             var table = $('#student_data').DataTable({

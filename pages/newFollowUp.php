@@ -708,11 +708,6 @@ $userdate = date('Y-m-d H:i:s');
 
                                 fetchName();
 
-                                /*$('#TxtConsDate').val(ConsDate).change();
-                                $("#TxtConsTime").val(ConsTime).change();*/
-
-
-
 
                                 var editedByDD = document.getElementById("TxtMSEditorDrop");
                                 editedByDD.options.length = 0;
@@ -1509,12 +1504,6 @@ $userdate = date('Y-m-d H:i:s');
                 if(acclvl == "true"){
                     $(".admin-nav").hide();
                     document.getElementById("userFullname").style.width = "52%";
-                    /*document.getElementById("nav2").style.width = "9.33%";
-                    document.getElementById("nav3").style.width = "9.33%";
-                    document.getElementById("nav4").style.width = "9.33%";
-                    document.getElementById("nav5").style.width = "9.33%";
-                    document.getElementById("nav7").style.width = "9.33%";
-                    document.getElementById("nav8").style.width = "9.33%";*/
                 }
 
                 $("#BtnBackToCons").click(function(){
@@ -1557,16 +1546,10 @@ $userdate = date('Y-m-d H:i:s');
 
                     editDate = editDate.replace(':','/');
 
-                    //alert(studentid+' ' +editorID +' ' +editDate);
-
                     if(getType == 'viewFollowUp'){
                         fetchHistory(studentid,editorID,editDate);
                     }
-                    
 
-                    //window.location.href = 'newRecord.php?id_stud='+id_stud+'&staffIDnum=' +editorID + '&editdate='+editDate+'&type=viewRecordHistory';
-
-                    //alert('id_stud='+id_stud+'staffIDnum=' +editorID + '&editdate='+editDate+'&type=viewRecordHistory');
                 })
 
 
@@ -1590,7 +1573,7 @@ $userdate = date('Y-m-d H:i:s');
             </div>
             <div class="tabs-body" id="tabs-bodyID">
                     <div>
-                        <a id='backButton' class='backButton btn btn-primary' onclick='window.history.back();' role='button' style="margin-left: -1%;">
+                        <a id='backButton' class='backButton btn btn-primary' onclick='window.history.back();' role='button' style="margin : 0">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 12 12">
                               <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
                             </svg>
@@ -1681,16 +1664,6 @@ $userdate = date('Y-m-d H:i:s');
                                     <input type="text" name="TxtYear" id="TxtYear" readonly maxlength="3">
                                 </div>
                             </div>
-                            <!-- <div class="Three-Info">
-                                <div class="Physician">
-                                    <label for="Physician">Physician Name</label>
-                                    <input type="text" name="TxtPhysician" id="TxtPhysician" onkeydown="return alphaOnly(event);" readonly required>
-                                </div>
-                                <div class="PhysicianIDNumber">
-                                    <label for="TxtPhysicianIDNumber">Physician ID Number</label>
-                                    <input type="text" name="TxtPhysicianIDNumber" id="TxtPhysicianIDNumber" onkeypress="return isNumberKey(this,event)" readonly required>
-                                </div>
-                            </div> -->
                         
                         <div class="Three-Info">
                                 <div class="Temperature">

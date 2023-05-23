@@ -5,15 +5,6 @@
 
   $TxtStudentIDNumber2 = $_POST['TxtStudentIDNumber2'];
 
-  /*$TxtFirstName = $_POST['TxtFirstName'];
-  $TxtMiddleName = $_POST['TxtMiddleName'];
-  $TxtLastName = $_POST['TxtLastName'];
-  $TxtExtension = $_POST['TxtExtension'];
-  $TxtAge = $_POST['TxtAge'];
-  $TxtSex = $_POST['TxtSex'];
-  $TxtCourseStrand = $_POST['TxtCourseStrand'];
-  $TxtYear = $_POST['TxtYear'];*/
-
   $TxtPhysician = $_POST['userFullN'];
   $TxtPhysicianIDNumber = $_POST['userID'];
   $TxtDate = $_POST['TxtDate'];

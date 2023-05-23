@@ -6,12 +6,6 @@ date_default_timezone_set('Asia/Manila');
   $Message = '';
   $Error = "0";
 
-  /*$startDate = $_POST['startDate'];
-  $endDate = $_POST['endDate'];*/
-
-  /*$startDate = "2023-03-10";
-  $endDate = "2023-03-10";*/
-
   $startDate = '';
   $endDate = date("Y-m-d");
 
@@ -35,7 +29,6 @@ date_default_timezone_set('Asia/Manila');
   }
 
   $startDate = date("Y-m-d", strtotime($startDate));
-  //$endDate = date("Y-m-d", strtotime($endDate));
 
     $dates = "";
     $Staffs = "";

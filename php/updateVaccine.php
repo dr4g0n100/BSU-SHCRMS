@@ -8,11 +8,6 @@
 
     $vaccine_name = trim($_POST['vaccine_name']);
     $vaccine_id = trim($_POST['vaccine_id']);
-
-    /*$vaccine_name = 'Bachelor of Science in Information Technology';
-    $degree_col = 'degree';
-    $vaccine_id = '7';*/
-    
     
     $ClinicRecordsDB = new Database($Server,$User,$DBPassword);
 

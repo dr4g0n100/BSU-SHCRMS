@@ -17,7 +17,7 @@ function getUrlVars() {
   
   if(curlocation == "indexHomepage.php"){
       document.getElementById('navHome').classList.add('active');
-  }else if(curlocation == "studentSummary.php" || curlocation == "indexStudentSummary.php"){
+  }else if(curlocation == "newStudent.php" || curlocation == "studentSummary.php" || curlocation == "indexStudentSummary.php"){
       document.getElementById('navCensus').classList.add('active');
   }else if(curlocation == "indexcensus.php"){
       document.getElementById('navCensus').classList.add('active');
@@ -31,7 +31,7 @@ function getUrlVars() {
     if(getType == 'checkArchivedStudent'){
         document.getElementById('navArchive').classList.add('active');
     }else{
-        document.getElementById('navRecord').classList.add('active');
+        document.getElementById('navCensus').classList.add('active');
     } 
   }else if(curlocation == "indexCons.php"){
     if(getType == 'checkArchivedConsultation'){
@@ -63,7 +63,7 @@ function getUrlVars() {
     document.getElementById('navMaintenance').classList.add('active');  
   }else if(curlocation == "help.php"){
     document.getElementById('navHelp').classList.add('active');  
-  }else if(curlocation == "newStudent.php" || curlocation == "newConsultation.php" || curlocation == "newFollowUp.php" || curlocation == "newMC.php"){
+  }else if(curlocation == "newConsultation.php" || curlocation == "newFollowUp.php" || curlocation == "newMC.php"){
     if(getType == 'viewArchivedRecord' || getType == 'viewArchivedCons' || getType == 'viewArchivedFollowUp' || getType == 'viewArchivedMC'){
         document.getElementById('navArchive').classList.add('active');
     }else{

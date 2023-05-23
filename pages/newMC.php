@@ -38,15 +38,6 @@ $userdate = date('Y-m-d H:i:s');
             var globalAL = "";
             var id_stud = "";
 
-            /* function ValidateEmail(input) {
-                var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+.com*$/;
-                if (input.value.match(validRegex)) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } */
-
             function clickedOthers(){
                 if(document.getElementById('RadOthers').checked) {
                     document.getElementById("TAOthers").removeAttribute("readonly");

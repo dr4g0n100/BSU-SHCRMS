@@ -12,15 +12,6 @@ date_default_timezone_set('Asia/Manila');
 
     $TxtStudentIDNumber = "";
 
-    /*$TxtFirstName = "";
-    $TxtMiddleName = "";
-    $TxtLastName = "";
-    $TxtExtension = "";
-    $TxtAge = "";
-    $TxtSex = "";
-    $TxtCourseStrand = "";
-    $TxtYear = "";*/
-
     $TxtPhysician = "";
     $TxtPhysicianIDNumber = "";
     $TxtDate = "";

@@ -9,11 +9,6 @@
     $degree_name = trim($_POST['degree_name']);
     $degree_col = trim($_POST['degree_col']);
     $degree_id = trim($_POST['degree_id']);
-
-    /*$degree_name = 'Bachelor of Science in Information Technology';
-    $degree_col = 'degree';
-    $degree_id = '7';*/
-    
     
     $ClinicRecordsDB = new Database($Server,$User,$DBPassword);
 

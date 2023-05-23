@@ -10,21 +10,7 @@ date_default_timezone_set('Asia/Manila');
   $userid = $_POST['userid'];
   $editdate = $_POST['editdate'];
 
-  /*$num = '00000000000000000001';
-  $userid = '2';
-  $editdate = '2023-02-16 12:47:27';*/
-
     $TxtStudentIDNumber = "";
-
-    /*$TxtFirstName = "";
-    $TxtMiddleName = "";
-    $TxtLastName = "";
-    $TxtExtension = "";
-    $TxtAge = "";
-    $TxtSex = "";
-    $TxtCourseStrand = "";
-    $TxtYear = "";*/
-
     $TxtPhysician = "";
     $TxtPhysicianIDNumber = "";
     $TxtDate = "";

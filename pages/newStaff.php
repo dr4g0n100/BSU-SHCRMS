@@ -25,16 +25,7 @@ require '../php/centralConnection.php';
             var accessLevel = "";
             var globalAL = "";
 
-            /* function ValidateEmail(input) {
 
-                var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+.com*$/;
-
-                if (input.value.match(validRegex)) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } */
 
             async function clickedPDF(){
                 const element = document.getElementById('toDownloadPDF');

@@ -26,10 +26,6 @@
                           
       if($Result == true)
       {   
-        /*$sql = "INSERT INTO SYSTEMLOGS 
-              (userID, username, action, isSuccess, date, position) 
-              VALUES ('$userID','$TxtUserName', '$Action', '$isSuccess',CURRENT_TIMESTAMP, '$position')";
-        $Result = $ClinicRecordsDB->Execute($sql);*/
 
         $today = date("F-d-Y");
         $current_time = date("h:i A");

@@ -116,8 +116,17 @@ date_default_timezone_set('Asia/Manila');
                     $TxtDates .= $row['Dates'] . ' ';
                 }
             }else{
-                $Message = "No consultation record found.";
-                $Error = "1";
+
+                $query = "SELECT * FROM archivedconsultation WHERE IdNumb = '$studentID'";
+                $result = $connection->query($query);
+
+                if ($result->num_rows > 0) {
+                  $Message = "Please restore Consultation Record first before you can access the data.";
+                  $Error = "1";
+                }else{
+                  $Message = "No Consultation record found. Please make sure to create consultation record first at the Consultation page.";
+                  $Error = "1";
+                }
             }
 
             
