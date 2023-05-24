@@ -529,7 +529,7 @@ $Message = '';
 
 						$pdf->Cell(40 ,5,'',0,0);
 						$X = $pdf->GetX();
-						
+						$Y1 = $pdf->GetY();
 
 							$pdf->SetXY($col3_X,$Y3rdCol);
 							$pdf->SetFont($font,'B',$fontSize);
@@ -537,9 +537,16 @@ $Message = '';
 							$pdf->Ln($spacing);
 							$pdf->SetX($col3_X);
 							$pdf->SetFont($font,'',$fontSize);
-							$pdf->MultiCell(55 ,5,$Treatment,0,0);
-							$Y = $pdf->GetY();
+							$pdf->MultiCell(55 ,5,$Treatment,0,'J');
+
+							$Y2 = $pdf->GetY();
+							if($Y1 > $Y2){
+								$Y = $Y1;
+							}else{
+								$Y = $Y2;
+							}
 							
+
 							$pdf->SetY($Y);
 							$pdf->SetX($X);
 
