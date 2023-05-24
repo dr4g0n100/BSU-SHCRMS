@@ -4114,9 +4114,17 @@ $resultGrad = mysqli_query($connect, $queryGrad);
                     //alert('id_stud='+id_stud+'staffIDnum=' +editorID + '&editdate='+editDate+'&type=viewRecordHistory');
                 })
 
-                
-
-
+                $('#degree-category').change(function(){
+                    var degreeSelected = document.getElementById('degree-category').value;
+                    if(degreeSelected == 'senior highschool'){
+                        document.getElementById('degree_course_lbl').textContent = 'Strand';
+                        document.getElementById('degree_course_lbl_accr').textContent = 'Strand Acronym';
+                        
+                    }else{
+                        document.getElementById('degree_course_lbl').textContent = 'Degree';
+                        document.getElementById('degree_course_lbl_accr').textContent = 'Degree Acronym';
+                    }
+                })
             }); 
         </script>
     </head>
@@ -4153,11 +4161,11 @@ $resultGrad = mysqli_query($connect, $queryGrad);
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label" >Degree</label>
+                                    <label id="degree_course_lbl" for="message-text" class="col-form-label" >Degree</label>
                                     <input type="text" class="form-control" name="degree-name" id="degree-name" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label" >Degree Acronym</label>
+                                    <label id="degree_course_lbl_accr" for="message-text" class="col-form-label" >Degree Acronym</label>
                                     <input type="text" class="form-control" name="degree-acr" id="degree-acr" required>
                                 </div>
                                         

@@ -166,8 +166,9 @@ require '../php/centralConnection.php';
                         $(xml).find('output').each(function()
                         {
                             var message = $(this).attr('Message');
-                            logAction(message +" ID " +ID +"");
                             alert(message);
+                            logAction(message);
+                            
                         });
                         location.reload();
                         

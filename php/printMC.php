@@ -156,16 +156,16 @@ $Message = '';
 
 			$pdf->Cell(12 ,5,'',0,0);
 			$pdf->SetFont($font,'',$fontSize);
-			$pdf->Cell(37 ,5,'This is to certify that',0,0);
+			$pdf->Cell(37 ,10,'This is to certify that',0,0);
 			$pdf->SetFont($font,'',$fontSize);
-			$pdf->Cell(75 ,5, ucwords($fullname) ,'B',0, 'C');
+			$pdf->MultiCells(75 ,5, ucwords($fullname) ,'B',0, 'C');
 			$pdf->SetFont($font,'',$fontSize);
-			$pdf->Cell(3 ,5,', ',0,0);
+			$pdf->Cell(3 ,10,', ',0,0);
 			$pdf->SetFont($font,'',$fontSize);
-			$pdf->Cell(25, 5, strtoupper($age_sex), 'B',0, 'C');
-			$pdf->Cell(3 ,5,', ',0,0);
+			$pdf->Cell(25, 10, strtoupper($age_sex), 'B',0, 'C');
+			$pdf->Cell(3 ,10,', ',0,0);
 			$pdf->SetFont($font,'',$fontSize);
-			$pdf->Cell(42 ,5, ucwords($degree) .' - ' .ucwords($year) ,'B',1,'C');
+			$pdf->Cell(42 ,10, ucwords($degree) .' - ' .ucwords($year) ,'B',1,'C');
 
 			$pdf->Cell(0 ,1,'',0,1);
 			$pdf->SetFont($font,'I',$fontSize-1);

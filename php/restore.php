@@ -21,7 +21,7 @@
     }
 
     function archiveRecord (){
-        global $ClinicRecordsDB, $Message;
+        global $ClinicRecordsDB, $Message, $connect;
 
         if($_SERVER['REQUEST_METHOD'] == 'GET'){
             if($_GET["type"] == "restoreLogs"){
@@ -92,6 +92,13 @@
             }else if($_GET["type"] == "restoreConsultation"){
                 $id = $_GET["id"];
 
+                $StudID = '';
+                $resultStudID = mysqli_query($connect, "SELECT IdNumb FROM ARCHIVEDCONSULTATION WHERE Num = '$id'");
+                if ($resultStudID) {
+                    $rowStudID = mysqli_fetch_array($resultStudID);
+                    $StudID = $rowStudID['IdNumb'];
+                }
+
                 $sql = "INSERT INTO CONSULTATIONINFO SELECT * FROM ARCHIVEDCONSULTATION WHERE Num = '$id'";
                 $Result1 = $ClinicRecordsDB->GetRows($sql);
                 $sql = "DELETE FROM ARCHIVEDCONSULTATION WHERE Num = '$id'";
@@ -100,12 +107,19 @@
                 if ($Result1 && $Result2){
                     $sql = "UPDATE CONSULTATIONINFO SET archived_at = '', created_at = CURRENT_TIMESTAMP WHERE Num ='$id'";
                     $query = $ClinicRecordsDB->GetRows($sql);
-                    $Message = "Successfully restored consultation record";
+                    $Message = "Successfully restored consultation record of Student ID of $StudID";
                 }else{
                     $Message = "Failed to restore consultation record";
                 }
             }else if($_GET["type"] == "restoreFollowUp"){
                 $id = $_GET["id"];
+
+                $StudID = '';
+                $resultStudID = mysqli_query($connect, "SELECT IdNumb FROM archivedfollowup WHERE Num = '$id'");
+                if ($resultStudID) {
+                    $rowStudID = mysqli_fetch_array($resultStudID);
+                    $StudID = $rowStudID['IdNumb'];
+                }
 
                 $sql = "INSERT INTO followup SELECT * FROM archivedfollowup WHERE Num = '$id'";
                 $Result1 = $ClinicRecordsDB->GetRows($sql);
@@ -115,12 +129,19 @@
                 if ($Result1 && $Result2){
                     $sql = "UPDATE followup SET archived_at = '', created_at = CURRENT_TIMESTAMP WHERE Num ='$id'";
                     $query = $ClinicRecordsDB->GetRows($sql);
-                    $Message = "Successfully restored Follow-up Record";
+                    $Message = "Successfully restored Follow-up Record of Student ID of $StudID";
                 }else{
                     $Message = "Failed to restored Follow-up Record";
                 }
             }else if($_GET["type"] == "restoreMC"){
                 $id = $_GET["id"];
+
+                $StudID = '';
+                $resultStudID = mysqli_query($connect, "SELECT student_id FROM archivemedcertificate WHERE mc_id_num = '$id'");
+                if ($resultStudID) {
+                    $rowStudID = mysqli_fetch_array($resultStudID);
+                    $StudID = $rowStudID['student_id'];
+                }
 
                 $sql = "INSERT INTO medicalcertificate SELECT * FROM archivemedcertificate WHERE mc_id_num = '$id'";
                 $Result1 = $ClinicRecordsDB->GetRows($sql);
@@ -130,9 +151,9 @@
                 if ($Result1 && $Result2){
                     $sql = "UPDATE medicalcertificate SET archived_at = '', created_at = CURRENT_TIMESTAMP WHERE id_num ='$id'";
                     $query = $ClinicRecordsDB->GetRows($sql);
-                    $Message = "Successfully restored consultation record";
+                    $Message = "Successfully restored medical certificate of Student ID of $StudID";
                 }else{
-                    $Message = "Failed to restore consultation record";
+                    $Message = "Failed to restore medical certificate";
                 }
             }
         }

@@ -529,7 +529,7 @@ $Message = '';
 
 						$pdf->Cell(40 ,5,'',0,0);
 						$X = $pdf->GetX();
-						$Y = $pdf->GetY();
+						
 
 							$pdf->SetXY($col3_X,$Y3rdCol);
 							$pdf->SetFont($font,'B',$fontSize);
@@ -538,7 +538,8 @@ $Message = '';
 							$pdf->SetX($col3_X);
 							$pdf->SetFont($font,'',$fontSize);
 							$pdf->MultiCell(55 ,5,$Treatment,0,0);
-
+							$Y = $pdf->GetY();
+							
 							$pdf->SetY($Y);
 							$pdf->SetX($X);
 

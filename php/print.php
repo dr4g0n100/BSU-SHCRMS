@@ -398,10 +398,10 @@ $Message = '';
 
 			$pdf->SetFont($font,'',$fontSize);
 			$pdf->Cell(20 ,$fieldsSpacing,'','',0, 'L');
-			$pdf->Cell(40 ,$fieldsSpacing,ucwords($LastName),'B',0, 'L');
-			$pdf->Cell(40 ,$fieldsSpacing,ucwords($FirstName),'B',0, 'L');
+			$pdf->MultiCells(40 ,$fieldsSpacing/2,ucwords($LastName),0,0, 'L');
+			$pdf->MultiCells(40 ,$fieldsSpacing/2,ucwords($FirstName),0,0, 'L');
 			$MiddleInitial =  substr($MiddleName, 0, 1) . '.';
-			$pdf->Cell(10 ,$fieldsSpacing,strtoupper($MiddleInitial),'B R',0, 'C');
+			$pdf->MultiCells(10 ,$fieldsSpacing/2,strtoupper($MiddleInitial),'R',0, 'C');
 
 			$pdf->SetX($X+2);
 			if($StudentStatus == 'new'){
@@ -422,9 +422,9 @@ $Message = '';
 			$pdf->Ln($fieldsSpacing);
 			$pdf->SetFont($font,'I',$fontSize);
 			$pdf->Cell(20 ,$fieldsSpacing,'',0,0);
-			$pdf->Cell(40 ,$fieldsSpacing,'(Surname)',0,0, 'L');
-			$pdf->Cell(38 ,$fieldsSpacing,'(First Name)',0,0, 'L');
-			$pdf->Cell(12 ,$fieldsSpacing,'(M.I.)','R',0, 'L');
+			$pdf->Cell(40 ,$fieldsSpacing,'(Surname)','T',0, 'L');
+			$pdf->Cell(38 ,$fieldsSpacing,'(First Name)','T',0, 'L');
+			$pdf->Cell(12 ,$fieldsSpacing,'(M.I.)','T R',0, 'L');
 			$pdf->Cell(1 ,($fieldsSpacing*2)-1,'','L',0);
 
 			$pdf->SetY($pdf->GetY()+1);
