@@ -71,10 +71,8 @@
 
             function openManual(type){
                 var src = '';
-                if(globalAL == "admin"){
+                if(globalAL == "admin" || globalAL == "superadmin"){
                     src = "../files/ManualAdmin.pdf";
-                }else if(globalAL == "superadmin"){
-                    src = "../files/ManualSuperadmin.pdf";
                 }else{
                     src = "../files/ManualStandard.pdf";                
                 }
